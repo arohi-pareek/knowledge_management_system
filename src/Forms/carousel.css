@@ -1,0 +1,43 @@
+.carousel{
+    margin-top: 10px;
+    width: 77%;
+    height: 470px;
+    margin-left: 180px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.carouselInner {
+    
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    border-radius: 20px;
+}
+
+.carouselInner .left{
+    flex: 5%;
+    display: grid;
+    place-items: center;
+    height: 100%;
+    color: black;
+    cursor: pointer;
+}
+
+.carouselInner .center{
+    flex: 80%;
+    height: 100%;
+}
+
+.carouselInner .right{
+    display: grid;
+    place-items: center;
+    flex: 5%;
+    height: 100%;
+    color: black;
+    cursor: pointer;
+    
+}
