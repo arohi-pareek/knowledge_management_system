@@ -2,6 +2,7 @@ import React from 'react'
 import SellIcon from '@mui/icons-material/Sell';
 import { useContext } from 'react';
 import { CartContext } from './Cart';
+import {FaTrash} from "react-icons/fa";
 const Items=({id,imgsrc,title,para,stars,lecture,quantity,price})=> {
   const {removeItem,increment,decrement} = useContext(CartContext);
     return (
@@ -27,7 +28,8 @@ const Items=({id,imgsrc,title,para,stars,lecture,quantity,price})=> {
       <SellIcon className='sellicon'/>
     </div>*/}
     <div className="remove-item">
-      <p className=" remove"onClick={()=>removeItem(id)}>remove</p>
+    <FaTrash  className=" remove " onClick={()=>removeItem(id)}/>
+      
     </div>
   </div>
   <hr/>

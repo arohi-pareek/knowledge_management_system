@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"; //mui icons
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { images } from "../Helpers/carsouelData"; //Helpers folder for storing sliding images
+import { images } from "../helpers/carsouelData"; //Helpers folder for storing sliding images
 
 function Carousel() {
   const [currImg, setCurrImg] = useState(0);

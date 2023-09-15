@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-
+import { IconButton } from "@mui/material";
+import { Subscriptions } from "@mui/icons-material";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import Items from "./Items";
 import { CartContext } from "./Cart";
@@ -30,8 +31,10 @@ const ContextCart = () => {
           />
         </div>
 
-        <div className="cart-icon">
-          <img src="./images/cart.png" alt="cart" />
+        <div >
+        <IconButton className="cart-icon" >
+        <Subscriptions />
+      </IconButton>
           <p>{totalItems}</p>
         </div>
       </header>

@@ -1,5 +1,5 @@
 import React, { createContext,useEffect, useReducer } from "react";
-import "./cart.css"
+import "../style/cart.css"
 import {products} from './Products'
 import { reducer } from "./reducer";
 import ContextCart from "./ContextCart";

@@ -6,21 +6,10 @@ import hary from "../harry.png";
 import master from "../master.jpg"
 import apna from "../apna.jpg";
 import webdev from "../webdev.jpg"
-import Devnav from "./Devnav"
 import rajat from '../rajat.jpg'
-import design from '../design.jpg'
+
 const Course = () => {
-  
-
-  const { courseType } = useParams() 
-  const {DevType}=useParams() 
-  
-
-  useEffect(()=>{
-   console.log(courseType)
-  },[])
-  if(courseType == course.DEVELOPMENT ){
-  return(
+   return(
     <>
     
     <div className='contain'>
@@ -59,7 +48,7 @@ const Course = () => {
     para='Javascript'
      />
      <Product
-     imgsrc={design} 
+     imgsrc={master} 
     title='CodeWithHarry'
     para='Javascript'
      /><Product
@@ -81,36 +70,8 @@ const Course = () => {
      </div>
     </div>
     </>
-  )
-  }
-  else if(courseType == course.Music ){
-    return(
-      <div className='contain'>
-      <div style={{
-        display:"flex",
-        flexWrap:"wrap",
-        margin:"170px 140px ",
-        gap:"4em",
-        width:"75em",
-        
-        justifyContent:"space-evenly",
-        
-      }}>
-      
-       
-       <Product
-       imgsrc={hary} 
-      title='CodeWithHarry'
-       />
-       <Product
-       imgsrc={hary} 
-      title='CodeWithHarry'
-       />
-       
-       </div>
-      </div>
-    )
-
-}
-}
+  );
+  };
+  
+  
 export default Course

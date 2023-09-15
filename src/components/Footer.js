@@ -1,5 +1,7 @@
 import React from "react";
-import practice from "../images/PRACTICE.png";
+import "../style/Footer.css";
+import practice from "../Practicenerd.png";
+// import practice from "./images/PRACTICE.png";
 function Footer() {
   return (
     <div>
@@ -73,7 +75,7 @@ function Footer() {
         <a className="footer-brand" href="#">
           <img
             className="img"
-            src={practice}
+             src={practice}
             alt="Udemy"
             width="10"
             height="15"

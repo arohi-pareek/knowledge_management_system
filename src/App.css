@@ -19,7 +19,7 @@
 @font-face{
   font-family:'Courier New', Courier, monospace;
 }
-.page {
+/* .page {
   
   width:70%;
   height: 100vh;
@@ -70,12 +70,12 @@ input:focus{
   transition: 0.5s;
   border-radius: 0.25em;
   cursor: pointer;
-  background-color: #5624d0;
+  background-color:#5624d0;
   color: white;
 
 }
-.btn:hover{transform: scale(1.25);}
-.top{
+.btn:hover{transform: scale(1.25);} */
+/* .top{
   background-color:white;
   overflow: hidden;
   position: absolute;
@@ -91,15 +91,15 @@ input:focus{
   /* margin-bottom: 15em; */
   /* position: absolute;  */
   /* margin-top: -5em; */
-  margin-top: 3px;
+  /* margin-top: 3px; */
   
   /* top: 10%; */
 
   
 
-}
 
 
+/*
 .btn-dark{
  color:white;
  background-color: black;
@@ -110,7 +110,7 @@ input:focus{
  width:110px;
  cursor: pointer;
  /* right:1%; */
- position: absolute;
+ /* position: absolute;
 
 }
 .btn-dark:hover{transform: scale(1.10);}
@@ -131,9 +131,9 @@ margin-left:100em;
   position: absolute;
   left:25em;
   top:22px;
-  
+   */
 
-}
+
 .cart-icon1 p {
     position: absolute;
     width: 1.5rem;
@@ -142,7 +142,7 @@ margin-left:100em;
     top:1em;
     border-radius: 50%; 
     background: #99cbf7;
-    color: #fff;
+    color: red;
     box-sizing: border-box;
     font-size: 1rem;
     display: flex;
@@ -157,15 +157,18 @@ margin-left:100em;
   border:1px solid black;
   
 }
+.cart-icon{
+  
+}
 
-.magni{
+/* .magni{
   position: absolute;
   
   
   left:10px;
   bottom:0.6em;
   
-}
+} */
 
 input{
   right:6em;
@@ -175,7 +178,7 @@ input{
   position: absolute;
   right:275px;
   top:30px;
-  cursor: pointer;
+
   height: 2em;
   width: 2em;
 }
@@ -421,11 +424,6 @@ a{
   border-color: grey;
 }
 
-.footer{
-  background-color: #1c1d1f;;
-  margin-top:12em;
-  padding:70px 0;
-}
 .container{
   max-width:1170px;
   
@@ -438,10 +436,7 @@ ul{
   display: flex;
   flex-wrap: wrap;
 }
-.footer-col{
-  width:25%;
-  padding: 0 15px;
-}
+
 
 /* .footer-col h4::before{
   content:'';
@@ -453,37 +448,9 @@ ul{
   box-sizing:border-box;
   width:50px;
 } */
-.footer-col ul li:not(:last-child){
-  margin-bottom:9px;
-  right: 0;
-}
-.footer-col ul li a{
-  font-size:14px;
-  text-transform: capitalize;
-  color:#ffff;
-  text-decoration: none;
-  font-weight: 300;
-  color:white;
-  display:block;
-  transition: all 0.3s ease;
-  
-}
-.footer-col ul li a:hover{
 
-   text-decoration:underline;
-}
-.img{
-  height:105px;
-  width:145px;
-  
-  position: absolute; 
-  
-}
-.since{
-  color:white;
-  margin-left:103em;
-  font-size: small;
-}
+
+
 .btn3{
  background-color: transparent;
  color:white;

@@ -1,5 +1,6 @@
 import React, { useContext, createContext } from "react";
 import practice from "../Practicenerd.png";
+import "../style/Navbar.css";
 import cart from "../cart.png";
 import { CartContext } from "./Cart";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
@@ -38,10 +39,12 @@ const Navbar = () => {
             />{" "}
             {/*udemy Logo*/}
           </a>
-
-          <IconButton onClick={() => navigate("/cart")}>
-            <Subscriptions />
-          </IconButton>
+           <div className="subscribe">
+           <IconButton  onClick={() => navigate("/cart")}>
+           <Subscriptions />
+         </IconButton>
+           </div>
+         
 
           <button type="button" className="btn1 btn-dark">
             Sign Up
@@ -62,6 +65,7 @@ const Navbar = () => {
             />
             <SearchOutlinedIcon className="magni" />
           </form>
+        
         </div>
       </nav>
     </>
