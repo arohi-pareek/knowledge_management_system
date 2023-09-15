@@ -2,6 +2,10 @@ import React from "react";
 import "./learning.css";
 import { useNavigate } from "react-router-dom";
 import c1 from "../C1.jpg";
+import c2 from "../C2.jpg";
+import c5 from "../C5.png";
+import c6 from "../C6.png";
+import c7 from "../C7.jpg";
 
 const Learning = () => {
 
@@ -71,38 +75,37 @@ const Learning = () => {
                       </div>
                       <div className="items-info">
                           <div className="product-img">
-                              <img src={c1} alt="" />  
+                              <img src={c2} alt="" />  
                           </div>
                           <div className="title">
-                              <h3>JAVA PROGRAMMING</h3>
+                              <h3>C++ PROGRAMMING</h3>
                           </div>
                       </div>
                       <div className="items-info">
                           <div className="product-img">
-                              <img src={c1} alt="" />  
+                              <img src={c5} alt="" />  
                           </div>
                           <div className="title">
-                              <h3>JAVA PROGRAMMING</h3>
+                              <h3>WEB DEVELOPMENT</h3>
                           </div>
                       </div>
                       <div className="items-info">
                           <div className="product-img">
-                              <img src={c1} alt="" />  
+                              <img src={c6} alt="" />  
                           </div>
                           <div className="title">
-                              <h3>JAVA PROGRAMMING</h3>
+                              <h3>REACT JS</h3>
                           </div>
                       </div>
                       <div className="items-info">
                           <div className="product-img">
-                              <img src={c1} alt="" />  
+                              <img src={c7} alt="" />  
                           </div>
                           <div className="title">
-                              <h3>JAVA PROGRAMMING</h3>
+                              <h3>PYTHON PROGRAMMING</h3>
                           </div>
                       </div>
                   </div>
-
               </div>
           </section>
       
