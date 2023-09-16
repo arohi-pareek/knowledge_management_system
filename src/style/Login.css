@@ -1,13 +1,16 @@
+
 .page {
   width: 70%;
   height: 100vh;
   display: flex;
+  
   justify-content: center;
   align-items: center;
 }
 .cover {
-  background-color: white;
+  background-color: var(--bg-clr);
   width: 25em;
+  color:var(--main-heading);
   height: 29em;
   margin-left: 45%;
   margin-bottom: 8em;
@@ -31,7 +34,34 @@ input {
 input:focus {
   outline-color: rgb(32, 177, 255);
 }
-.btn {
+.btn5{
+  width:150px;
+  height:50px;
+  margin-left: -100px;
+  margin-bottom: -30px;
+  background-color: black;
+  color:white;
+  cursor: pointer;
+}
+.btn8{
+  width:150px;
+  height:50px;
+ 
+  background-color: var(--btn-bg-color);
+  color:var(--btn-text-clr);
+  cursor: pointer;
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  border-radius: 0.25em;
+}
+.darkmode{
+  margin-top: 370px;
+  margin-left:-2em ;
+}
+/* .btn6 {
   width: 40%;
   height: 3em;
   background-color: rgb(32, 177, 255);
@@ -40,10 +70,12 @@ input:focus {
   align-items: center;
   transition: 0.5s;
   border-radius: 0.25em;
+  border-color: var(--btn-border-clr);
   cursor: pointer;
-  background-color: black;
-  color: white;
-}
-.btn:hover {
+  background-color:var(--btn-bg-clr);
+  color: var(--btn-text-clr);
+} */
+/* .btn:hover {
   transform: scale(1.25);
-}
+} */
+

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "../style/Login.css";
 import { useNavigate } from "react-router-dom";
 //Formik for Form handler and yup for form validation
 import { useFormik } from "formik"; //useformik in formik
 import { logInSchema } from "../schemas/index";
+
 
 const initialValues = {
   name: "",
@@ -29,14 +30,16 @@ const Login = () => {
   //   navigate("/Dashboard");
 
   // }
+  
 
   return (
     <>
-      <form className="cover">
+      
+      <form className="cover" >
         {" "}
         {/* Login Form*/}
         <h1>Login</h1>
-        <input
+        <input 
           type="text"
           placeholder="username"
           name="name"
@@ -59,11 +62,15 @@ const Login = () => {
         {errors.password && touched.password ? (
           <p className="form-error">{errors.password}</p>
         ) : null}
-        <div className="btn" onClick={handleSubmit}>
-          Login
+        <div className="btn6" onClick={handleSubmit}>
+        <button type="button" className="btn8 btn-primary">Login</button>
         </div>
       </form>
+     
+      <div >
       
+
+</div>
     </>
   );
 };
