@@ -23,6 +23,20 @@ import {
 
 const Courses = () => {
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
+
+  // function handlesubscribe() {
+  //   dispatch({
+  //     type: "subscribe",
+  //     payload: {
+  //       title: props.title,
+  //       desc: props.para,
+  //       stars: props.stars,
+  //       lecture: props.lecture,
+  //     },
+  //   });
+  //   // navigate("/cart");
+  // }
 
   const [open, setOpen] = useState(false);
   const [course, setCourse] = useState({

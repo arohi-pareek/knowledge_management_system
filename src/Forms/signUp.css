@@ -80,9 +80,21 @@ input:focus{
     height: 59px;
     width: 65px;
     margin-left: 20px;
-    margin-top: 5px;
+    margin-top: -7em;
     
 }
+.sun{
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+  .switch{
+    margin-left: 80rem;
+    margin-top: 1rem;
+    background-color: black;
+    width:35px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 
 
 .color{
