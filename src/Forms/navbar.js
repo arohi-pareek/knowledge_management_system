@@ -29,7 +29,6 @@ const Navbar = () => {
               placeholder="Search Anything"
               aria-label="Search"/>
           </form>
-          {/* <img className="cart" src={cartImg} alt="" /> */}
           <button type="button" className="btn2 btn-light" onClick={handleClick1}>
             Sign-Up
           </button>
