@@ -9,14 +9,12 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-    function handleClick1()
-    {
-      navigate("/")
-    }
-    function handleClick2()
-    {
-      navigate("/login")
-    }
+  function handleClick1() {
+    navigate("/")
+  }
+  function handleClick2() {
+    navigate("/login")
+  }
   return (
     <nav className="navbar bg-body-tertiary">
       <div className="container">
@@ -27,7 +25,7 @@ const Navbar = () => {
               className="form-control me-2"
               type="search"
               placeholder="Search Anything"
-              aria-label="Search"/>
+              aria-label="Search" />
           </form>
           {/* <img className="cart" src={cartImg} alt="" /> */}
           <button type="button" className="btn2 btn-light" onClick={handleClick1}>
@@ -35,7 +33,7 @@ const Navbar = () => {
           </button>
           <button type="button" className="btn1 btn-light" onClick={handleClick2}>
             Login
-          </button> 
+          </button>
         </a>
       </div>
     </nav>

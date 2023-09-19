@@ -124,11 +124,11 @@ const Dashboard = () => {
           </p>
         </div>
       </div>
-      
-       <div className="footer">
+
+      <div className="footer">
         <img className="fimg" src={Img} alt="" />
         <div className="f">© 2023 Educom-Let Us Study, Inc.</div>
-      </div> 
+      </div>
     </div>
   );
 };

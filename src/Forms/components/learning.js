@@ -2,10 +2,11 @@ import React from "react";
 import "./learning.css";
 import { useNavigate } from "react-router-dom";
 import c1 from "../C1.jpg";
+import { Button } from "@material-ui/core";
 
 const Learning = () => {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function handleClick1() {
     navigate("/dashboard");
@@ -15,6 +16,10 @@ const Learning = () => {
   }
   function handleClick3() {
     navigate("/learning");
+  }
+
+  function handleplayList (){
+    navigate("/playlist")
   }
   return (
     <div className="container">
@@ -49,65 +54,70 @@ const Learning = () => {
         </button>
       </nav>
       <header>
-      <div className="continue-shopping">
-          <img src="./arrow.png" alt="arrow" className="arrow-icon" onClick={handleClick2}/>
+        <div className="continue-shopping">
+          <img src="./arrow.png" alt="arrow" className="arrow-icon" onClick={handleClick2} />
           <h3>Subscribe More!</h3>
-      </div>
-  </header>
-     
-          <section className="main-cart-section">
-              <h1>SUBSCRIBED COURSES</h1>
-          
-              <div className="cart-items">
+        </div>
+      </header>
 
-                  <div className="cart-items-container">
-                      <div className="items-info">
-                          <div className="product-img">
-                              <img src={c1} alt="" />  
-                          </div>
-                          <div className="title">
-                              <h3>JAVA PROGRAMMING</h3>
-                          </div>
-                      </div>
-                      <div className="items-info">
-                          <div className="product-img">
-                              <img src={c1} alt="" />  
-                          </div>
-                          <div className="title">
-                              <h3>JAVA PROGRAMMING</h3>
-                          </div>
-                      </div>
-                      <div className="items-info">
-                          <div className="product-img">
-                              <img src={c1} alt="" />  
-                          </div>
-                          <div className="title">
-                              <h3>JAVA PROGRAMMING</h3>
-                          </div>
-                      </div>
-                      <div className="items-info">
-                          <div className="product-img">
-                              <img src={c1} alt="" />  
-                          </div>
-                          <div className="title">
-                              <h3>JAVA PROGRAMMING</h3>
-                          </div>
-                      </div>
-                      <div className="items-info">
-                          <div className="product-img">
-                              <img src={c1} alt="" />  
-                          </div>
-                          <div className="title">
-                              <h3>JAVA PROGRAMMING</h3>
-                          </div>
-                      </div>
-                  </div>
+      <section className="main-cart-section">
+        <h1>SUBSCRIBED COURSES</h1>
 
+        <div className="cart-items">
+
+          <div className="cart-items-container">
+            <div className="items-info">
+              <div className="product-img">
+                <img src={c1} alt="" />
               </div>
-          </section>
-      
+              <div className="title">
+                <h3>JAVA PROGRAMMING</h3>
+              </div>
+
+              <div className="PlayList">
+                <Button variant="contained" onClick={handleplayList}>GO TO PLAYLIST</Button>
+              </div>
+            </div>
+
+            <div className="items-info">
+              <div className="product-img">
+                <img src={c1} alt="" />
+              </div>
+              <div className="title">
+                <h3>JAVA PROGRAMMING</h3>
+              </div>
+            </div>
+            <div className="items-info">
+              <div className="product-img">
+                <img src={c1} alt="" />
+              </div>
+              <div className="title">
+                <h3>JAVA PROGRAMMING</h3>
+              </div>
+            </div>
+            <div className="items-info">
+              <div className="product-img">
+                <img src={c1} alt="" />
+              </div>
+              <div className="title">
+                <h3>JAVA PROGRAMMING</h3>
+              </div>
+            </div>
+            <div className="items-info">
+              <div className="product-img">
+                <img src={c1} alt="" />
+              </div>
+              <div className="title">
+                <h3>JAVA PROGRAMMING</h3>
+              </div>
+            </div>
           </div>
-      
+
+        </div>
+      </section>
+
+    </div>
+
   )
 };
 
