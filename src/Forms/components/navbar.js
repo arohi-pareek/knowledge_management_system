@@ -2,9 +2,9 @@ import React ,{useState,useEffect}from "react";
 import { IconButton, Tooltip } from "@mui/material";
 import LightModeOutlinedIcon from '@mui/icons-material/LightMode';
 import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
-import "./login.css";
-import "./signUp.css";
-import navImg from "../logoFinal.png";
+import "../login.css";
+import "../signUp.css";
+// import navImg from "./logoFinal.png";
 // import cartImg from "../cart.png";
 import { useNavigate } from "react-router-dom";
 
@@ -39,7 +39,7 @@ const Navbar = () => {
     document.body.className=theme;
   }, [theme]);
   return (
-    <nav className="navbar bg-body-tertiary">
+    <nav className="navbar  bg-body-tertiary">
     <Tooltip className="tool" title={btnState} arrow placement="left">
      
     <div className="switch"  onClick={()=> toggleTheme()} color={isFavorite ? 'secondary' : 'default'}>
@@ -49,7 +49,7 @@ const Navbar = () => {
         <label></label>
       <div className="container">
         <a className="navbar-brand" href="#">
-          <img className="image" src={navImg} alt="" />
+          <img className="image"  alt="" />
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"

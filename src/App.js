@@ -1,9 +1,9 @@
 //  import React, { useState } from 'react';
-//  import './App.css';
+  import './App.css';
 import React from "react";
 import Login from "./Forms/login";
 import SignUp from "./Forms/signUp";
-import Navbar from "./Forms/navbar";
+import Navbar from "./Forms/components/navbar";
 import Dashboard from "./Forms/dashboard";
 import Courses from "./Forms/courses";
 import Learning from "./Forms/components/learning";

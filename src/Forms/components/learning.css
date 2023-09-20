@@ -10,6 +10,7 @@
     height: 53px;
     color: black;
     box-shadow: #f7f9fa;
+    background-color: var(--form);
     
 }
 navbar-toggler:focus{
