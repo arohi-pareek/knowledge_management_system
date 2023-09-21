@@ -34,7 +34,7 @@ const Navbar = () => {
             Sign-Up
           </button>
           <button type="button" className="btn1 btn-light" onClick={handleClick2}>
-            Login
+            Log out
           </button> 
         </a>
       </div>

@@ -125,10 +125,79 @@ const Dashboard = () => {
         </div>
       </div>
       
-       <div className="footer">
-        <img className="fimg" src={Img} alt="" />
+       {/* <div className="footer">
         <div className="f">© 2023 Educom-Let Us Study, Inc.</div>
-      </div> 
+      </div>  */}
+
+<div className="footer">
+<footer>
+      
+        
+      
+
+      <div className="columns">
+        <div className="column">
+          <p>
+                Business
+          </p>
+          <p>
+               Teach 
+          </p>
+          <p>
+               Get the app
+          </p>
+          <p>
+               About us
+          </p>
+          <p>
+               Contact us
+          </p>
+        </div>
+
+        <div className="column">
+        <p>
+               Careers
+          </p>
+          <p>
+               Blog
+          </p>
+          <p>
+               Help and Support
+          </p>
+          <p>
+               Affiliate
+          </p>
+          <p>
+               Investors
+          </p>
+        </div>
+
+        <div className="column">
+        <p>
+               Terms
+          </p>
+          <p>
+               Privacy Policy
+          </p>
+          <p>
+               Cookie settings
+          </p>
+          <p>
+               Sitemap
+          </p>
+          <p>
+               Accessibility statement
+          </p>
+        </div>
+      </div>
+      <br />
+      <p className="copy">&copy;{ new Date().getFullYear()} Letusstudy,Inc.</p>
+
+    </footer>
+</div>
+
+
+
     </div>
   );
 };

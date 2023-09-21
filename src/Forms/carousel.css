@@ -1,10 +1,18 @@
 .carousel{
     margin-top: 10px;
-    width: 77%;
-    height: 470px;
-    margin-left: 180px;
+    width: 80%;
+    height: 400px;
+    margin-left: 1800px;
     background-color: black;
     border-radius: 20px;
+    position:relative;
+    justify-content: center;
+    border-width: 10px;
+    border-style: none;
+    border-color: #fff;
+     margin: 20px 140px 0px  ;
+    /* z-index: 400; */
+   /* scroll-behavior: inherit; */
 }
 
 .carouselInner {
@@ -16,6 +24,8 @@
     background-size: cover;
     display: flex;
     border-radius: 20px;
+    
+
 }
 
 .carouselInner .left{
