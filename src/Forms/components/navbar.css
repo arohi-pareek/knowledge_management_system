@@ -1,0 +1,32 @@
+/* Modify the styles according to your design */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand img {
+    height: 40px; /* Adjust the height of the logo as needed */
+  }
+  
+  .form-control {
+    width: 300px; /* Adjust the width of the search input as needed */
+  }
+  
+  .navbar-buttons button {
+    margin-left: 10px; /* Adjust the spacing between buttons as needed */
+  }
+  
+
+  .sun{
+    margin-top: 0.2rem;
+    margin-left: 5px;
+  }
+  .switch{
+    margin-left: 84rem;
+    background-color: white;
+    width:34px;
+    height:30px;
+    top:0.5rem;
+    border-radius: 70%;
+    cursor: pointer;
+    position: fixed;
+  }

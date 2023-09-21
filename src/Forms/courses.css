@@ -2,7 +2,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-.navbar-toggler{
+/* .navbar-toggler{
     width: 100%;
     border-color: rgb(232, 232, 232);
     height: 53px;
@@ -14,7 +14,7 @@
 navbar-toggler:focus{
     background-color: rgb(235, 243, 243);
     
-}
+} */
 a{
     margin: 45px;
     color: black;
@@ -79,11 +79,10 @@ a{
 }
 
 .courseBox{
-    height: 1220px;
+    height: auto;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
     background-color:#f7f9fa;
 
 }
@@ -126,11 +125,10 @@ a{
     margin-left: -15px;
 }
 .courseBox{
-    height: 1000px;
+    height: auto;
     width: 100%;
     display: flex;
-    margin-top: 20px;
-    margin-bottom: 200px;
+
 
 }
 

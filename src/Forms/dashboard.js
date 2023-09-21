@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   return (
     <div className="container">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <button
           className="navbar-toggler"
           type="button"
@@ -54,7 +54,7 @@ const Dashboard = () => {
 
           <span className="navbar-toggler-icon"></span>
         </button>
-      </nav>
+      </nav> */}
       <Carousel />
       {/* <img className="bgimage" src={bgImg} alt="" /> */}
       <div className="brands">
@@ -125,10 +125,10 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="footer">
+      {/* <div className="footer">
         <img className="fimg" src={Img} alt="" />
         <div className="f">© 2023 Educom-Let Us Study, Inc.</div>
-      </div>
+      </div> */}
     </div>
   );
 };

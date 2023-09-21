@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import App from "../App"
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, Grid, TextField, makeStyles } from "@material-ui/core";
 import Img from "../Udemy-Symbol.png";
+import { createAccount } from "./components/Redux/Actions/firstaction";
+import { useDispatch } from "react-redux";
+import ReactDOM from "react-dom";
+import CryptoJS from "crypto-js";
 
 const useStyles = makeStyles({
   loginBtn: {
@@ -26,18 +31,36 @@ const useStyles = makeStyles({
 });
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [userErr, setUserErr] = useState(false);
   const [passErr, setPassErr] = useState(false);
-
-
+  const [Cred, setCred] = useState({
+    username: "",
+    password: "",
+    error: "",
+  });
 
   const classes = useStyles();
 
-  //  Formik Implimentation 
+  //  For encryption if needed 
+
+  function encryptFun(password, username) {
+    var keybefore = username + "appolocomputers";
+    var ivbefore = username + "costacloud012014";
+    var key = CryptoJS.enc.Latin1.parse(keybefore.substring(0, 16));
+    var iv = CryptoJS.enc.Latin1.parse(ivbefore.substring(0, 16));
+    var ciphertext = CryptoJS.AES.encrypt(password, key, {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.ZeroPadding,
+    }).toString();
+    return ciphertext;
+  }
+
 
   const INITIAL_STATE = {
     username: "",
@@ -62,43 +85,54 @@ const Login = () => {
     },
   });
 
-  // function handleClick(e) {
+  const handleClick = async (value) => {
 
-  //     navigate("/dashboard");
+    try {
+      const headers = {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Accept: "application/json",
+      };
 
-  //   e.preventDefault()
-  // }
+      const formData = new URLSearchParams();
+      formData.append("username", value.username);
+      formData.append("password", value.password);
+      formData.append("client_id", "costa_client");
+      formData.append("grant_type", "password");
+      formData.append("client_secret", "Ty2YvrBETIcQ6IR0tc9gs8NKktXkVuQe");
 
-  const handleClick = () => {
-    navigate("/dashboard")
-  }
+      const login = await fetch("http://11.0.0.70:8880/realms/master/protocol/openid-connect/token", {
+        method: "POST",
+        headers,
+        body: formData.toString(), 
+      }).then(response => response.json());
 
-  // function userHandler(e) {
-  //   let item = e.target.value;
-  //   if (item.length < 3) {
-  //     setUserErr(true)
-  //   }
-  //   else {
-  //     setUserErr(false)
-  //   }
-  //   setUser(item)
-  // }
-
-  // function passwordHandler(e) {
-  //   let item = e.target.value;
-  //   if (item.length < 3) {
-  //     setPassErr(true)
-  //   }
-  //   else {
-  //     setPassErr(false)
-  //   }
-  //   setPassword(item)
-  // }
+      if (login.message) {
+        setCred({
+          ...Cred,
+          error: login.message,
+        });
+      } else {
+        sessionStorage.setItem("jwt_token", login.access_token);
+        sessionStorage.setItem("sessionId", login.session_state);
+        localStorage.setItem("refresh_token", login.refresh_token);
+        localStorage.setItem("client_id", "costa_cloud");
+        localStorage.setItem("username", Cred.username);
+        localStorage.setItem("expires_in", login.expires_in);
+        document.body.style.zoom = "95%";
+        ReactDOM.render(<App />, document.getElementById("root"));
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      setCred({
+        ...Cred,
+        error: error.message,
+      });
+    }
+  };
 
   return (
     <>
       <form className="cover" onSubmit={formik.handleSubmit}>
-
 
         <h1 className="login">LOGIN</h1>
         {/* <input type="text" placeholder="Username" onChange={userHandler}/>{userErr?<span>Enter atleast 4 letters</span>:""}
