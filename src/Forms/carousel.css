@@ -1,5 +1,4 @@
 .carousel{
-    margin-top: 10px;
     width: 80%;
     height: 400px;
     margin-left: 1800px;
@@ -10,7 +9,8 @@
     border-width: 10px;
     border-style: none;
     border-color: #fff;
-     margin: 20px 140px 0px  ;
+    margin: 20px 140px 0px  ;
+    margin-top: 91px;
     /* z-index: 400; */
    /* scroll-behavior: inherit; */
 }

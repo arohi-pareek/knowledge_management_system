@@ -65,7 +65,7 @@ const Courses = () => {
   return (
     <>
       <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <button
             className="navbar-toggler"
             type="button"
@@ -94,7 +94,7 @@ const Courses = () => {
             </div>
             <span className="navbar-toggler-icon"></span>
           </button>
-        </nav>
+        </nav> */}
         <div className="coursesTop">
           <div>
             <b className="left">COURSES</b>

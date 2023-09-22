@@ -1,5 +1,5 @@
 //  import React, { useState } from 'react';
-//  import './App.css';
+ import './App.css';
 import React from "react";
 import Login from "./Forms/login";
 import SignUp from "./Forms/signUp";
@@ -17,6 +17,7 @@ import Item7 from "./Forms/items/item7";
 // import Cart from "./Forms/components/cart";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Sidenavbar from "./Forms/sidenavbar/sidenavbar";
 
 function App() {
   return (
@@ -24,8 +25,10 @@ function App() {
       <BrowserRouter>
         <div className="top">
           <Navbar />
+          <Sidenavbar />
           
-        </div>
+        
+        <div className="content">
         <Routes>
           {/* <Route path="/" element={<div className="page"><Login /></div>} /> */}
           <Route path="/login" element={<div className="page"><Login /></div>} />
@@ -42,7 +45,8 @@ function App() {
           <Route exact path="/courses/item7" element={<Item7 />} />
           {/* <Route exact path="/cart" element={<Cart />} /> */}
         </Routes>
-        
+        </div>
+        </div>
       </BrowserRouter>
     </>
   );

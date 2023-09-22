@@ -1,6 +1,7 @@
 import React from "react";
 import "./dashboard.css";
 import Carousel from "./carousel";
+import Sidenavbar from "./sidenavbar/sidenavbar";
 // import bgImg from "../bg1.png";
 import Img from "../logoFinal.png";
 import b1 from "./img1.svg";
@@ -27,37 +28,12 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="container">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="#" onClick={handleClick1}>
-                Dashboard
-              </a>
-              <a class="nav-item nav-link" href="#" onClick={handleClick2}>
-                Courses
-              </a>
-              <a class="nav-item nav-link " href="#" onClick={handleClick3}>
-                My Learning
-              </a>
-            </div>
-          </div>
-
-          <span className="navbar-toggler-icon"></span>
-        </button>
-      </nav>
+    <>
+   
+      
       <Carousel />
       {/* <img className="bgimage" src={bgImg} alt="" /> */}
-      <div className="brands">
+      {/* <div className="brands">
         <p className="brandsInside">
           Trusted by over 14,400 companies and millions of learners around the
           world
@@ -72,8 +48,8 @@ const Dashboard = () => {
           <img className="img1" src={b7} alt="" />
           <img className="img1" src={b8} alt="" />
         </div>
-      </div>
-      <div className="jumbotron jumbotron-fluid">
+      </div> */}
+      {/* <div className="jumbotron jumbotron-fluid">
         <div className="container">
           <h1 className="display-4">A broad selection of courses</h1>
           <p className="lead">
@@ -85,7 +61,7 @@ const Dashboard = () => {
             </div>
           </p>
         </div>
-      </div>
+      </div> */}
       <div className="grid">
         <p className="gridInside">
           How learners like you are achieving their goals
@@ -124,81 +100,45 @@ const Dashboard = () => {
           </p>
         </div>
       </div>
-      
-       {/* <div className="footer">
+
+      {/* <div className="footer">
         <div className="f">© 2023 Educom-Let Us Study, Inc.</div>
       </div>  */}
 
-<div className="footer">
-<footer>
-      
-        
-      
+      <div className="footer">
+        <footer>
+          <div className="columns">
+            <div className="column">
+              <p>Business</p>
+              <p>Teach</p>
+              <p>Get the app</p>
+              <p>About us</p>
+              <p>Contact us</p>
+            </div>
 
-      <div className="columns">
-        <div className="column">
-          <p>
-                Business
-          </p>
-          <p>
-               Teach 
-          </p>
-          <p>
-               Get the app
-          </p>
-          <p>
-               About us
-          </p>
-          <p>
-               Contact us
-          </p>
-        </div>
+            <div className="column">
+              <p>Careers</p>
+              <p>Blog</p>
+              <p>Help and Support</p>
+              <p>Affiliate</p>
+              <p>Investors</p>
+            </div>
 
-        <div className="column">
-        <p>
-               Careers
+            <div className="column">
+              <p>Terms</p>
+              <p>Privacy Policy</p>
+              <p>Cookie settings</p>
+              <p>Sitemap</p>
+              <p>Accessibility statement</p>
+            </div>
+          </div>
+          <br />
+          <p className="copy">
+            &copy;{new Date().getFullYear()} Letusstudy,Inc.
           </p>
-          <p>
-               Blog
-          </p>
-          <p>
-               Help and Support
-          </p>
-          <p>
-               Affiliate
-          </p>
-          <p>
-               Investors
-          </p>
-        </div>
-
-        <div className="column">
-        <p>
-               Terms
-          </p>
-          <p>
-               Privacy Policy
-          </p>
-          <p>
-               Cookie settings
-          </p>
-          <p>
-               Sitemap
-          </p>
-          <p>
-               Accessibility statement
-          </p>
-        </div>
+        </footer>
       </div>
-      <br />
-      <p className="copy">&copy;{ new Date().getFullYear()} Letusstudy,Inc.</p>
-
-    </footer>
-</div>
-
-
-
-    </div>
+    </>
   );
 };
 export default Dashboard;

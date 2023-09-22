@@ -22,7 +22,7 @@ const Learning = () => {
   }
   return (
     <div className="container">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <button
           className="navbar-toggler"
           type="button"
@@ -51,14 +51,14 @@ const Learning = () => {
           </div>
           <span className="navbar-toggler-icon"></span>
         </button>
-      </nav>
-      <header>
+      </nav> */}
+      {/* <header>
       <div className="continue-shopping">
           <img src="./arrow.png" alt="arrow" className="arrow-icon" onClick={handleClick2}/>
           <h3>Subscribe More!</h3>
       </div>
   </header>
-     
+      */}
           <section className="main-cart-section">
               <h1>SUBSCRIBED COURSES</h1>
           

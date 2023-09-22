@@ -6,8 +6,16 @@
 .navbar{
 
     position: fixed;
-    /* z-index: 500; */
+    height: auto;
+    z-index: 2;
    
+}
+
+.sec-navbar{
+    margin-top: 19px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
 }
 
 
