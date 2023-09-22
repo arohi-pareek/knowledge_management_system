@@ -1,5 +1,11 @@
 import Axios from "axios";
-import { GET_CITY_FAILURE, GET_CITY_REQUEST, GET_CITY_SUCCESS } from "../Constant/ActionTypes";
+import {
+  GET_CITY_FAILURE,
+  GET_CITY_REQUEST,
+  GET_CITY_SUCCESS,
+  SET_SNACKBAR,
+  SUBSCRIBE_COURSE__SUCCESS,
+} from "../Constant/ActionTypes";
 
 export const createAccount = (value) => async (dispatch) => {
   const config = {
@@ -18,3 +24,19 @@ export const createAccount = (value) => async (dispatch) => {
     dispatch({ type: GET_CITY_FAILURE, payload: error });
   }
 };
+
+export const setSnackbar = (
+  snackbarOpen,
+  snackbarType = "success",
+  snackbarMessage = ""
+) => ({
+  type: SET_SNACKBAR,
+  snackbarOpen,
+  snackbarType,
+  snackbarMessage,
+});
+
+export const subscribe = (payload) => ({
+  type: SUBSCRIBE_COURSE__SUCCESS,
+  payload: payload,
+});

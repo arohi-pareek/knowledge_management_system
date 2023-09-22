@@ -1,31 +1,34 @@
 import React, { useState } from "react";
-import App from "../App"
+import App from "../App";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, Grid, TextField, makeStyles } from "@material-ui/core";
 import Img from "../Udemy-Symbol.png";
-import { createAccount } from "./components/Redux/Actions/firstaction";
+import {
+  createAccount,
+  setSnackbar,
+} from "./components/Redux/Actions/firstaction";
 import { useDispatch } from "react-redux";
 import ReactDOM from "react-dom";
 import CryptoJS from "crypto-js";
 
 const useStyles = makeStyles({
   loginBtn: {
-    width: '40%',
-    height: '3em',
-    backgroundColor: 'black',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    transition: '0.5s',
-    borderRadius: '0.25em',
-    cursor: 'pointer',
-    color: 'white',
-    '&:hover': {
-      transform: 'scale(1.25)',
-      backgroundColor: 'black',
+    width: "40%",
+    height: "3em",
+    backgroundColor: "black",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    transition: "0.5s",
+    borderRadius: "0.25em",
+    cursor: "pointer",
+    color: "white",
+    "&:hover": {
+      transform: "scale(1.25)",
+      backgroundColor: "black",
     },
   },
 });
@@ -46,7 +49,11 @@ const Login = () => {
 
   const classes = useStyles();
 
-  //  For encryption if needed 
+  const callMessageOut = (msg, type) => {
+    dispatch(setSnackbar(true, type, msg));
+  };
+
+  //  For encryption if needed
 
   function encryptFun(password, username) {
     var keybefore = username + "appolocomputers";
@@ -60,7 +67,6 @@ const Login = () => {
     }).toString();
     return ciphertext;
   }
-
 
   const INITIAL_STATE = {
     username: "",
@@ -103,7 +109,7 @@ const Login = () => {
   //     const login = await fetch("http://11.0.0.70:8880/realms/master/protocol/openid-connect/token", {
   //       method: "POST",
   //       headers,
-  //       body: formData.toString(), 
+  //       body: formData.toString(),
   //     }).then(response => response.json());
 
   //     if (login.message) {
@@ -130,14 +136,14 @@ const Login = () => {
   //   }
   // };
 
-const handleClick = () =>{
-  navigate("/dashboard");
-}
+  const handleClick = () => {
+    callMessageOut("Logged In Successfully", "success");
+    navigate("/dashboard");
+  };
 
   return (
     <>
       <form className="cover" onSubmit={formik.handleSubmit}>
-
         <h1 className="login">LOGIN</h1>
         {/* <input type="text" placeholder="Username" onChange={userHandler}/>{userErr?<span>Enter atleast 4 letters</span>:""}
           <input type="password" placeholder="Password" onChange={passwordHandler}/>{passErr?<span>Password not valid</span>:""} */}
@@ -162,13 +168,10 @@ const handleClick = () =>{
           helperText={formik.touched.password && formik.errors.password}
         />
 
-        <Button className={classes.loginBtn} type="submit" variant="contained" >
+        <Button className={classes.loginBtn} type="submit" variant="contained">
           Login
         </Button>
       </form>
-
-
-
     </>
   );
 };

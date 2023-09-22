@@ -19,6 +19,7 @@ import Item7 from "./Forms/items/item7";
 import CoursesplayList from "./Forms/components/PlayList/coursesplayList";
 import "./App.css";
 import Sidebar from "./Forms/components/sidebar";
+import CustomizedSnackbars from "./Snackbar";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -57,6 +58,7 @@ function App() {
             <Route exact path="/courses/item7" element={<Item7 />} />
             <Route exact path="/playlist" element={<CoursesplayList />} />
           </Routes>
+          <CustomizedSnackbars />
         </Layout>
       </BrowserRouter>
     </Provider>
