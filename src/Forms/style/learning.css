@@ -4,26 +4,7 @@
     box-sizing: border-box;
     font-family: Mulish;
 }
-.navbar-toggler{
-    width: 100%;
-    border-color: rgb(232, 232, 232);
-    height: 53px;
-    color: black;
-    box-shadow: #f7f9fa;
-    background-color: var(--form);
-    
-}
-navbar-toggler:focus{
-    background-color: rgb(235, 243, 243);
-    
-}
-a{
-    margin: 45px;
-    color: black;
-    font-size: 15px;
-    font-family: var(--font-stack-heading-serif);
-    text-decoration: none;
-}
+
 
   html {
     font-size: 99.5%;

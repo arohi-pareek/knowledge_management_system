@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import "./cart.css";
+import Nav from './nav'
 import c1 from "../C1.jpg";
 
 const Cart = () => {
@@ -11,6 +12,7 @@ const Cart = () => {
   }
   return (
     <>
+    <Nav/>
     <header>
         <div className="continue-shopping">
             <img src="./arrow.png" alt="arrow" className="arrow-icon" onClick={handleClick}/>

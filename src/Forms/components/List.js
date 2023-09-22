@@ -1,9 +1,4 @@
-import React from "react";
-import "../style/learning.css";
-import Nav from "./nav";
-import Navbar from './navbar';
-import Footer from './Footer';
-import { useNavigate } from "react-router-dom";
+import React from 'react'
 import c1 from "../C1.jpg";
 import c2 from "../C2.jpg";
 import c5 from "../C5.png";
@@ -11,29 +6,13 @@ import c6 from "../C6.png";
 import c7 from "../C7.jpg";
 import { Button } from "@material-ui/core";
 
-
-const Learning = () => {
-  const navigate = useNavigate();
-
-  function handleplayList (){
-    navigate("/playlist")
-  }
-
-  function handleClick1() {
-    navigate("/dashboard");
-  }
-  function handleClick2() {
-    navigate("/courses");
-  }
-  function handleClick3() {
-    navigate("/learning");
-  }
+const List = () => {
   return (
     <div className="container">
     
       
       <section className="main-cart-section">
-        <h1>SUBSCRIBED COURSES</h1>
+        
 
         <div className="cart-items">
           <div className="cart-items-container">
@@ -45,9 +24,7 @@ const Learning = () => {
                 <h3>JAVA PROGRAMMING</h3>
               </div>
               <div className="PlayList">
-                <Button variant="contained" onClick={handleplayList}>
-                  GO TO PLAYLIST
-                </Button>
+                
               </div>
             </div>
             <div className="items-info">
@@ -88,7 +65,8 @@ const Learning = () => {
       
     </div>
 
+  
   );
-};
+}
 
-export default Learning;
+export default List

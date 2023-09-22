@@ -1,16 +1,19 @@
 import React from "react";
-import "./dashboard.css";
+import "../style/dashboard.css";
 import Carousel from "./carousel";
+import Nav from './nav';
+
+
 // import bgImg from "../bg1.png";
-import Img from "../logoFinal.png";
-import b1 from "./img1.svg";
-import b2 from "./img2.svg";
-import b3 from "./img3.svg";
-import b4 from "./img4.svg";
-import b5 from "./img5.svg";
-import b6 from "./img6.svg";
-import b7 from "./img7.svg";
-import b8 from "./img8.svg";
+import Img from "../Images/logoFinal.png";
+import b1 from "../Images/img1.svg";
+import b2 from "../Images/img2.svg";
+import b3 from "../Images/img3.svg";
+import b4 from "../Images/img4.svg";
+import b5 from "../Images/img5.svg";
+import b6 from "../Images/img6.svg";
+import b7 from "../Images/img7.svg";
+import b8 from "../Images/img8.svg";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -19,6 +22,7 @@ const Dashboard = () => {
   function handleClick1() {
     navigate("/dashboard");
   }
+
   function handleClick2() {
     navigate("/courses");
   }
@@ -28,33 +32,7 @@ const Dashboard = () => {
 
   return (
     <div className="container">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="#" onClick={handleClick1}>
-                Dashboard
-              </a>
-              <a class="nav-item nav-link" href="#" onClick={handleClick2}>
-                Courses
-              </a>
-              <a class="nav-item nav-link " href="#" onClick={handleClick3}>
-                My Learning
-              </a>
-            </div>
-          </div>
-
-          <span className="navbar-toggler-icon"></span>
-        </button>
-      </nav>
+    
       <Carousel />
       {/* <img className="bgimage" src={bgImg} alt="" /> */}
       <div className="brands">
@@ -125,10 +103,6 @@ const Dashboard = () => {
         </div>
       </div>
       
-       <div className="footer">
-        <img className="fimg" src={Img} alt="" />
-        <div className="f">© 2023 Educom-Let Us Study, Inc.</div>
-      </div> 
     </div>
   );
 };

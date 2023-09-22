@@ -1,10 +1,13 @@
 import React ,{useState,useEffect}from "react";
 import { IconButton, Tooltip } from "@mui/material";
-import LightModeOutlinedIcon from '@mui/icons-material/LightMode';
-import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
-import "../login.css";
-import "../signUp.css";
-// import navImg from "./logoFinal.png";
+import Brightness7Icon from "@material-ui/icons/Brightness7";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
+import "../style/login.css";
+import "../style/signUp.css";
+import "../style/navbar.css";
+
+import navImg from "../Images/logoFinal.png";
 // import cartImg from "../cart.png";
 import { useNavigate } from "react-router-dom";
 
@@ -42,14 +45,16 @@ const Navbar = () => {
     <nav className="navbar  bg-body-tertiary">
     <Tooltip className="tool" title={btnState} arrow placement="left">
      
-    <div className="switch"  onClick={()=> toggleTheme()} color={isFavorite ? 'secondary' : 'default'}>
-      {isFavorite ? <NightlightOutlinedIcon className="sun" /> : <LightModeOutlinedIcon className="sun"/>}</div>
-      
+    <div className="switch" onClick={() => toggleTheme()} color={isFavorite ? 'secondary' : 'default'}>
+          {isFavorite ? <Brightness7Icon className="sun" /> : <Brightness4Icon className="sun" />}</div>
       </Tooltip>
+      
         <label></label>
+        
       <div className="container">
+      <LogoutTwoToneIcon className="logout"/>
         <a className="navbar-brand" href="#">
-          <img className="image"  alt="" />
+          {/*<img className="image" src={navImg} alt="" />
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"
@@ -58,12 +63,7 @@ const Navbar = () => {
               aria-label="Search"/>
           </form>
           {/* <img className="cart" src={cartImg} alt="" /> */}
-          <button type="button" className="btn2 btn-light" onClick={handleClick1}>
-            Sign-Up
-          </button>
-          <button type="button" className="btn1 btn-light" onClick={handleClick2}>
-            Login
-          </button> 
+         
         </a>
       </div>
     </nav>

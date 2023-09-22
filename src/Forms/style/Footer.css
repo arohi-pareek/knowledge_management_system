@@ -1,0 +1,25 @@
+
+.hover-area {
+    /* Background color for the hover area */
+   /* padding: 20px 0px; */
+   text-align: center;
+}
+.footer{
+   background-color: var(--foot);
+   height: 30px;
+   
+   color: white;
+   opacity: 0;
+   /* transition: 10s; */
+   transition: all 0.2s ease-in;
+}
+.hover-area:hover .footer {
+   opacity: 1;
+   
+   /* animation: pulse 5s ease-in-out infinite; */
+}
+
+ .f{
+   margin-left: 1250px;
+   margin-top: -20px;
+}

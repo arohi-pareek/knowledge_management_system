@@ -13,7 +13,7 @@
   --btn-text-clr:black;
   --bg-clr:#111b20;
   --form:#36454F;
-  --foot:#36454F;;
+  --foot:#111b20;;
  --comp:#36454F;
 }
 .light-theme{
@@ -22,6 +22,7 @@
   --btn-bg-color:#111b20;
   --btn-text-clr:#fff;
   --bg-clr:#fff;
+  --form:whitesmoke;
   --foot:#111b20;
   --comp:whitesmoke;
   --shadow: 0 0.188em 1.55em rgb(156, 156, 156);
