@@ -25,6 +25,7 @@ const Courses = () => {
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
+  const [opendialog, setopendialog] = useState(false);
   const [course, setCourse] = useState({
     heading: "",
     subheading: "",
@@ -65,7 +66,7 @@ const Courses = () => {
   return (
     <>
       <div className="container">
-  
+
         <div className="coursesTop">
           <div>
             <b className="left">COURSES</b>
@@ -130,7 +131,7 @@ const Courses = () => {
             <p>Rating: ⭐⭐⭐</p>
             <p>
               Course Description:{" "}
-              <button onClick={handleClick4}>Explore</button>
+              <button onClick={() => { setopendialog(true) }}>Explore</button>
             </p>
             <div>
               <button className="subscribe-btn">SUBSCRIBE</button>
@@ -295,7 +296,7 @@ const Courses = () => {
               <button className="subscribe-btn">SUBSCRIBE</button>
             </div>
           </p>*/}
-        {/* </div> 
+          {/* </div> 
         <div className="courseBox"> */}
           <p className="Cbox">
             <img
@@ -486,6 +487,11 @@ const Courses = () => {
             );
           })}
         </DialogContent>
+      </Dialog>
+
+      <Dialog open={opendialog} onClose={() => { setopendialog(false) }}>
+        <DialogTitle></DialogTitle>
+        <DialogContent></DialogContent>
       </Dialog>
     </>
   );

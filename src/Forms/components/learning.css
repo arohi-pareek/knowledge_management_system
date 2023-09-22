@@ -99,13 +99,8 @@ a{
       background-color: #f7f9fa;
       box-shadow: rgba(0, 0, 0, 0.08) 0rem 0.4rem 1.2rem;
       border-radius: 2rem;
-     
-      margin-top: 40px;
-      margin-left: 40px;
-      margin-right: 40px;
       display: grid;
       place-items: center;
-      margin-left: 5rem;
     }
     
     .cart-items hr {

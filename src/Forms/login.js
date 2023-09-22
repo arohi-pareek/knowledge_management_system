@@ -85,50 +85,54 @@ const Login = () => {
     },
   });
 
-  const handleClick = async (value) => {
+  // const handleClick = async (value) => {
 
-    try {
-      const headers = {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Accept: "application/json",
-      };
+  //   try {
+  //     const headers = {
+  //       "Content-Type": "application/x-www-form-urlencoded",
+  //       Accept: "application/json",
+  //     };
 
-      const formData = new URLSearchParams();
-      formData.append("username", value.username);
-      formData.append("password", value.password);
-      formData.append("client_id", "costa_client");
-      formData.append("grant_type", "password");
-      formData.append("client_secret", "Ty2YvrBETIcQ6IR0tc9gs8NKktXkVuQe");
+  //     const formData = new URLSearchParams();
+  //     formData.append("username", value.username);
+  //     formData.append("password", value.password);
+  //     formData.append("client_id", "costa_client");
+  //     formData.append("grant_type", "password");
+  //     formData.append("client_secret", "Ty2YvrBETIcQ6IR0tc9gs8NKktXkVuQe");
 
-      const login = await fetch("http://11.0.0.70:8880/realms/master/protocol/openid-connect/token", {
-        method: "POST",
-        headers,
-        body: formData.toString(), 
-      }).then(response => response.json());
+  //     const login = await fetch("http://11.0.0.70:8880/realms/master/protocol/openid-connect/token", {
+  //       method: "POST",
+  //       headers,
+  //       body: formData.toString(), 
+  //     }).then(response => response.json());
 
-      if (login.message) {
-        setCred({
-          ...Cred,
-          error: login.message,
-        });
-      } else {
-        sessionStorage.setItem("jwt_token", login.access_token);
-        sessionStorage.setItem("sessionId", login.session_state);
-        localStorage.setItem("refresh_token", login.refresh_token);
-        localStorage.setItem("client_id", "costa_cloud");
-        localStorage.setItem("username", Cred.username);
-        localStorage.setItem("expires_in", login.expires_in);
-        document.body.style.zoom = "95%";
-        ReactDOM.render(<App />, document.getElementById("root"));
-        navigate("/dashboard");
-      }
-    } catch (error) {
-      setCred({
-        ...Cred,
-        error: error.message,
-      });
-    }
-  };
+  //     if (login.message) {
+  //       setCred({
+  //         ...Cred,
+  //         error: login.message,
+  //       });
+  //     } else {
+  //       sessionStorage.setItem("jwt_token", login.access_token);
+  //       sessionStorage.setItem("sessionId", login.session_state);
+  //       localStorage.setItem("refresh_token", login.refresh_token);
+  //       localStorage.setItem("client_id", "costa_cloud");
+  //       localStorage.setItem("username", Cred.username);
+  //       localStorage.setItem("expires_in", login.expires_in);
+  //       document.body.style.zoom = "95%";
+  //       ReactDOM.render(<App />, document.getElementById("root"));
+  //       navigate("/dashboard");
+  //     }
+  //   } catch (error) {
+  //     setCred({
+  //       ...Cred,
+  //       error: error.message,
+  //     });
+  //   }
+  // };
+
+const handleClick = () =>{
+  navigate("/dashboard");
+}
 
   return (
     <>
