@@ -3,12 +3,11 @@
     box-sizing: border-box;
 } */
 
-.navbar{
+/* .navbar{
     background-color:white;
     width: 100%;
     height: 100%;
-    position: fixed;
-}
+} */
 
 .page{
     height: 600px;
@@ -18,7 +17,7 @@
     align-items: center;
 }
 
-.cover{
+/* .cover{
     background-color: white;
     width: 25em;
     height: 33em;
@@ -32,7 +31,7 @@
     color: red;
     margin-top: 40px;
     
-}
+} */
 
 .signUp{
     color: black;
@@ -134,7 +133,7 @@ input:focus{
     background-color: #f7f9fa;;
 
 }
-
+/* 
 .footer{
     background-color: rgb(141, 133, 133);
     height: 85px;
@@ -144,7 +143,7 @@ input:focus{
     left: 0;
     position: relative;
 
-}
+} */
 .fimg{
     height: 59px;
     width: 65px;

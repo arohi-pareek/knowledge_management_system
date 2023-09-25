@@ -28,9 +28,34 @@ const Dashboard = () => {
   }
 
   return (
-    <>
-   
-      
+    <div className="container">
+      {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="#" onClick={handleClick1}>
+                Dashboard
+              </a>
+              <a class="nav-item nav-link" href="#" onClick={handleClick2}>
+                Courses
+              </a>
+              <a class="nav-item nav-link " href="#" onClick={handleClick3}>
+                My Learning
+              </a>
+            </div>
+          </div>
+
+          <span className="navbar-toggler-icon"></span>
+        </button>
+      </nav> */}
       <Carousel />
       {/* <img className="bgimage" src={bgImg} alt="" /> */}
       {/* <div className="brands">
@@ -102,43 +127,10 @@ const Dashboard = () => {
       </div>
 
       {/* <div className="footer">
+        <img className="fimg" src={Img} alt="" />
         <div className="f">© 2023 Educom-Let Us Study, Inc.</div>
-      </div>  */}
-
-      <div className="footer">
-        <footer>
-          <div className="columns">
-            <div className="column">
-              <p>Business</p>
-              <p>Teach</p>
-              <p>Get the app</p>
-              <p>About us</p>
-              <p>Contact us</p>
-            </div>
-
-            <div className="column">
-              <p>Careers</p>
-              <p>Blog</p>
-              <p>Help and Support</p>
-              <p>Affiliate</p>
-              <p>Investors</p>
-            </div>
-
-            <div className="column">
-              <p>Terms</p>
-              <p>Privacy Policy</p>
-              <p>Cookie settings</p>
-              <p>Sitemap</p>
-              <p>Accessibility statement</p>
-            </div>
-          </div>
-          <br />
-          <p className="copy">
-            &copy;{new Date().getFullYear()} Letusstudy,Inc.
-          </p>
-        </footer>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 };
 export default Dashboard;

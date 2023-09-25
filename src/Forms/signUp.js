@@ -16,7 +16,6 @@ const SignUp = () => {
   return (
     <>
       <form className="cover">
-       
         <h1 className="signUp">Create Account !</h1>
         <input type="text" placeholder="Username" />
         <input type="password" placeholder="Password" />
