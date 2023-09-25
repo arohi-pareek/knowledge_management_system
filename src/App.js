@@ -8,6 +8,7 @@ import Dashboard from "./Forms/dashboard";
 import Courses from "./Forms/courses";
 import Learning from "./Forms/components/learning";
 import Item1 from "./Forms/items/item1";
+import  CoursesPlayList  from './Forms/components/PlayList/courseplayList';
 import Item2 from "./Forms/items/item2";
 import Item3 from "./Forms/items/item3";
 import Item4 from "./Forms/items/item4";
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/courses/item5" element={<Item5 />} />
           <Route exact path="/courses/item6" element={<Item6 />} />
           <Route exact path="/courses/item7" element={<Item7 />} />
+          <Route exact path="/playlist" element={<CoursesPlayList/>} />
           {/* <Route exact path="/cart" element={<Cart />} /> */}
         </Routes>
         </div>
