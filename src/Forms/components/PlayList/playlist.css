@@ -26,4 +26,50 @@
     content: counter(my-counter) ". "; /* Use a counter to display numbers */
     counter-increment: my-counter;
   }
+
+  .playlist-container {
+    padding: 1rem;
+  }
+  
+  .playlist-header {
+    margin-bottom: 10px;
+    padding: 1rem;
+  }
+  
+  .custom-list {
+    padding: 0;
+    list-style-type: none;
+    margin: 0;
+  }
+  
+  .custom-list li {
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-list li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-list .number {
+    margin-right: 1rem;
+    font-weight: bold;
+  }
+  
+  .custom-list .video-title {
+    font-size: 1rem;
+  }
+  
+  .playlist-video.playing {
+    background-color: #e0e0e0;
+  }
+  
+  /* Additional styling for better appearance */
+  .playlist-video {
+    transition: background-color 0.3s ease-in-out;
+  }
   

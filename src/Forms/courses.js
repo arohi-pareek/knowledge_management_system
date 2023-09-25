@@ -2,13 +2,6 @@ import "./courses.css";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import c1 from "./C1.jpg";
-import c2 from "./C2.jpg";
-import c3 from "./C3.png";
-import c4 from "./C4.jpg";
-import c5 from "./C5.png";
-import c6 from "./C6.png";
-import c7 from "./C7.jpg";
 import {
   Accordion,
   AccordionDetails,
@@ -37,37 +30,6 @@ const Courses = () => {
     subheading: "",
     desc: [],
   });
-
-  function handleClick1() {
-    navigate("/dashboard");
-  }
-  function handleClick2() {
-    navigate("/courses");
-  }
-  function handleClick3() {
-    navigate("/learning");
-  }
-  function handleClick4() {
-    navigate("/courses/item1");
-  }
-  function handleClick5() {
-    navigate("/courses/item2");
-  }
-  function handleClick6() {
-    navigate("/courses/item3");
-  }
-  function handleClick7() {
-    navigate("/courses/item4");
-  }
-  function handleClick8() {
-    navigate("/courses/item5");
-  }
-  function handleClick9() {
-    navigate("/courses/item6");
-  }
-  function handleClick10() {
-    navigate("/courses/item7");
-  }
 
   const handleSubscribe = (payload) => {
     if (!payload.subscribe) {
