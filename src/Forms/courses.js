@@ -2,10 +2,9 @@ import "./courses.css";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import c1 from "./C1.jpg";
 import c2 from "./C2.jpg";
-import c3 from "./C3.png";
-import c4 from "./C4.jpg";
 import c5 from "./C5.png";
 import c6 from "./C6.png";
 import c7 from "./C7.jpg";
@@ -13,23 +12,30 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
   Typography,
+
 } from "@mui/material";
 
 const Courses = () => {
   const navigate = useNavigate();
-
+  const [openPopup, setOpenPopup] = useState(false);
+  const [popup, setPopup] = useState({
+    heading: "",
+    subheading: "",
+  }
+  );
+  
   const [open, setOpen] = useState(false);
   const [course, setCourse] = useState({
     heading: "",
     subheading: "",
     desc: [],
-  });
+  }
+  );
 
   function handleClick1() {
     navigate("/dashboard");
@@ -45,12 +51,6 @@ const Courses = () => {
   }
   function handleClick5() {
     navigate("/courses/item2");
-  }
-  function handleClick6() {
-    navigate("/courses/item3");
-  }
-  function handleClick7() {
-    navigate("/courses/item4");
   }
   function handleClick8() {
     navigate("/courses/item5");
@@ -112,7 +112,8 @@ const Courses = () => {
         </div>
 
         <div className="courseBox">
-          <p className="Cbox">
+          <p className="Cbox"
+          >
             <img
               className="courseImg"
               src={c1}
@@ -159,7 +160,17 @@ const Courses = () => {
             <p>Rating: ⭐⭐⭐</p>
             <p>
               Course Description:{" "}
-              <button onClick={handleClick4}>Explore</button>
+              <button 
+              onClick={() => {
+                setOpenPopup(true);
+                setPopup({
+                  heading: "JAVA PROGRAMMING",
+                  subheading: "Category: Programming  |  Rating: ⭐⭐⭐"
+                  
+                });
+              }}
+              
+              >Explore</button>
             </p>
             <div>
               <button className="subscribe-btn">SUBSCRIBE</button>
@@ -212,120 +223,21 @@ const Courses = () => {
             <p>Rating: ⭐⭐⭐⭐</p>
             <p>
               Course Description:{" "}
-              <button onClick={handleClick5}>Explore</button>
+              <button 
+              onClick={() => {
+                setOpenPopup(true);
+                setPopup({
+                  heading: "C++ PROGRAMMING",
+                  subheading: "Category: Programming  |  Rating: ⭐⭐⭐⭐"
+                  
+                });
+              }}
+              >Explore</button>
             </p>
             <div>
               <button className="subscribe-btn">SUBSCRIBE</button>
             </div>
           </p>
-          {/* <p className="Cbox">
-            <img
-              className="courseImg"
-              src={c3}
-              alt=""
-              onClick={() => {
-                setOpen(true);
-                setCourse({
-                  heading: "CORE JAVA",
-                  subheading: "TOPICS TO BE COVERD:",
-                  desc: [
-                    {
-                      title: "Introduction to Programming",
-                      description:
-                        "Learn the basics of programming concepts and start your journey into the world of coding.",
-                    },
-                    {
-                      title: "Web Development Fundamentals",
-                      description:
-                        "Explore the foundational technologies of web development, including HTML, CSS, and JavaScript.",
-                    },
-                    {
-                      title: "Data Science Essentials",
-                      description:
-                        "Discover the essential techniques for analyzing and interpreting data to gain valuable insights.",
-                    },
-                    {
-                      title: "Mobile App Development",
-                      description:
-                        "Build mobile applications for iOS and Android using popular frameworks like React Native.",
-                    },
-                    {
-                      title: "Machine Learning and AI",
-                      description:
-                        "Dive into the field of machine learning and artificial intelligence to create intelligent systems.",
-                    },
-                  ],
-                });
-              }}
-            />
-            <p>
-              <b className="cTop">Core Java</b>
-            </p>
-            <p>Category: Programming</p>
-            <p>Rating: ⭐⭐⭐⭐⭐</p>
-            <p>
-              Course Description:{" "}
-              <button onClick={handleClick6}>Explore</button>
-            </p>
-            <div>
-              <button className="subscribe-btn">SUBSCRIBE</button>
-            </div>
-          </p> */}
-          {/* <p className="Cbox">
-            <img
-              className="courseImg"
-              src={c4}
-              alt=""
-              onClick={() => {
-                setOpen(true);
-                setCourse({
-                  heading: "ADVANCED JAVA",
-                  subheading: "TOPICS TO BE COVERD:",
-                  desc: [
-                    {
-                      title: "Introduction to Programming",
-                      description:
-                        "Learn the basics of programming concepts and start your journey into the world of coding.",
-                    },
-                    {
-                      title: "Web Development Fundamentals",
-                      description:
-                        "Explore the foundational technologies of web development, including HTML, CSS, and JavaScript.",
-                    },
-                    {
-                      title: "Data Science Essentials",
-                      description:
-                        "Discover the essential techniques for analyzing and interpreting data to gain valuable insights.",
-                    },
-                    {
-                      title: "Mobile App Development",
-                      description:
-                        "Build mobile applications for iOS and Android using popular frameworks like React Native.",
-                    },
-                    {
-                      title: "Machine Learning and AI",
-                      description:
-                        "Dive into the field of machine learning and artificial intelligence to create intelligent systems.",
-                    },
-                  ],
-                });
-              }}
-            />
-            <p>
-              <b className="cTop">Advanced Java</b>
-            </p>
-            <p>Category: Programming</p>
-            <p>Rating: ⭐⭐⭐⭐</p>
-            <p>
-              Course Description:{" "}
-              <button onClick={handleClick7}>Explore</button>
-            </p>
-            <div>
-              <button className="subscribe-btn">SUBSCRIBE</button>
-            </div>
-          </p>*/}
-        {/* </div> 
-        <div className="courseBox"> */}
           <p className="Cbox">
             <img
               className="courseImg"
@@ -373,7 +285,16 @@ const Courses = () => {
             <p>Rating: ⭐⭐⭐⭐</p>
             <p>
               Course Description:{" "}
-              <button onClick={handleClick8}>Explore</button>
+              <button 
+              onClick={() => {
+                setOpenPopup(true);
+                setPopup({
+                  heading: "WEB DEVELOPMENT",
+                  subheading: "Category: Development | Rating: ⭐⭐⭐⭐"
+                  
+                });
+              }}
+              >Explore</button>
             </p>
             <div>
               <button className="subscribe-btn">SUBSCRIBE</button>
@@ -426,7 +347,16 @@ const Courses = () => {
             <p>Rating: ⭐⭐⭐⭐⭐</p>
             <p>
               Course Description:{" "}
-              <button onClick={handleClick9}>Explore</button>
+              <button 
+              onClick={() => {
+                setOpenPopup(true);
+                setPopup({
+                  heading: "REACT JS",
+                  subheading: "Category: Development |  Rating: ⭐⭐⭐⭐⭐"
+                  
+                });
+              }}
+              >Explore</button>
             </p>
             <div>
               <button className="subscribe-btn">SUBSCRIBE</button>
@@ -479,16 +409,26 @@ const Courses = () => {
             <p>Rating: ⭐⭐⭐⭐</p>
             <p>
               Course Description:{" "}
-              <button onClick={handleClick10}>Explore</button>
+              <button 
+              onClick={() => {
+                setOpenPopup(true);
+                setPopup({
+                  heading: "PYTHON PROGRAMMING",
+                  subheading: "Category: Programming  |  Rating: ⭐⭐⭐⭐"
+                  
+                });
+              }}
+              >Explore</button>
             </p>
             <div>
               <button className="subscribe-btn">SUBSCRIBE</button>
             </div>
           </p>
         </div>
+      
       </div>
 
-      <Dialog open={open} onClose={() => setOpen(false)}>
+      <Dialog open={open} fullWidth onClose={() => setOpen(false)}>
         <DialogTitle>
           <h1>{course.heading}</h1>
           <h5>
@@ -516,8 +456,72 @@ const Courses = () => {
           })}
         </DialogContent>
       </Dialog>
+
+
+      <Dialog open={openPopup} onClose={() => setOpenPopup(false)}>
+        <DialogTitle>
+            <h2 >{popup.heading}<button className="dialogButton" onClick={()=>{setOpenPopup(false)}}><b>X</b></button></h2>
+            <h5>
+            <ul>{popup.subheading}</ul>
+            </h5>
+        </DialogTitle>
+        <DialogContent  className="dialogBox">
+
+        <div className="outer">
+             <img className="dialogImage" src={c1} alt="" />
+             <div className="inside">
+        
+        <p>
+          <b>Course Title: Comprehensive Java Programming Course</b> <p>Unlock the Power
+          of Java Programming and Launch Your Software Development Journey!</p> <p>Are you eager to become a proficient Java programmer and create dynamic
+          applications? Look no further! Our Comprehensive Java Programming
+          Course is designed to take you from a beginner to a confident Java
+          developer. Whether you're new to programming or seeking to deepen your
+          coding skills, this course offers an immersive learning experience
+          that equips you with the knowledge and practical skills needed to
+          succeed.</p>
+
+
+          <b>Course Highlights:</b> <p><b>● Beginner-Friendly Approach:</b>No prior
+          programming experience? No problem! Our course starts with the basics
+          and gradually builds a strong foundation, ensuring learners of all
+          levels can follow along.</p> <p><b>● Hands-On Learning:</b> Theory comes to life
+          through hands-on exercises and coding challenges. Develop real-world
+          applications and solidify your understanding of Java concepts.</p><p><b>● Expert
+          Guidance:</b> Our experienced instructors bring years of industry
+          expertise to the table. Benefit from their insights, tips, and best
+          practices for writing clean, efficient, and industry-standard Java
+          code.</p><p><b>● Comprehensive Curriculum:</b> From core Java fundamentals to
+          advanced topics like GUI programming, networking, and concurrency, our
+          course covers it all. Gain a well-rounded understanding of Java's
+          versatility.</p> <p><b>● Interactive Quizzes:</b> Reinforce your learning with
+          interactive quizzes after each module. Test your knowledge, identify
+          areas for improvement, and boost your confidence. </p><p><b>● Real-World Project:</b>
+          Apply your skills to a hands-on project, bringing together the
+          concepts learned throughout the course. Showcase your abilities in
+          building a complete Java application.</p> <p><b>● Lifetime Access:</b> Once enrolled,
+          you'll have lifetime access to the course content. Review materials,
+          stay updated with Java advancements, and continue learning at your own
+          pace. </p><p>Whether you aspire to develop web applications, mobile apps, or
+          delve into the world of software engineering, our Comprehensive Java
+          Programming Course provides the stepping stones to achieve your goals.
+          Join us on this exciting journey and unlock the potential of Java
+          programming!</p> <p>Enroll now to secure your spot and embark on a path to
+          becoming a confident Java programmer.</p>
+        </p>
+      </div>
+      </div>
+
+
+        </DialogContent>
+      </Dialog>
+      {/* <Popup 
+       openPopup = {openPopup}
+       setOpenPopup = {setOpenPopup}
+      >
+      </Popup> */}
     </>
   );
-};
-
+  };
 export default Courses;
+
