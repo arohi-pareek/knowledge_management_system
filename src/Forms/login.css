@@ -78,11 +78,12 @@ input:focus{
     border-radius: 0.25em;
     cursor: pointer;
     color: white;
+    margin-left: 7rem;
 }
 
-.login-btn:hover{
+/* .login-btn:hover{
     transform: scale(1.25);
-}
+} */
 
 .top{
     height: 4.5em;
@@ -116,12 +117,12 @@ input:focus{
      
 }
 
-.btn1:hover{
+/* .btn1:hover{
     transform: scale(1.15);
 }
 .btn2:hover{
     transform: scale(1.15);
-}
+} */
 .form-control{
     position: absolute;
     width: 50em;
