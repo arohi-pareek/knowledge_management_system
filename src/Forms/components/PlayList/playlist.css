@@ -1,0 +1,29 @@
+.list {
+    margin-left: 10px;
+}
+
+.custom-list {
+    list-style-type: none; /* Remove the default bullet point */
+    padding: 0; /* Remove any default padding */
+  }
+  
+  .custom-list div {
+    margin-left: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .number {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .video-title {
+    cursor: pointer;
+  }
+  
+  /* Style for the numbers */
+  .number::before {
+    content: counter(my-counter) ". "; /* Use a counter to display numbers */
+    counter-increment: my-counter;
+  }
+  

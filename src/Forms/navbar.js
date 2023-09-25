@@ -9,6 +9,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { IconButton, Tooltip } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import "../../src/Forms/components/navbar.css"
+import { useDispatch } from "react-redux";
+import { setSnackbar } from "./components/Redux/Actions/firstaction";
 
 const Navbar = () => {
 
@@ -18,6 +20,15 @@ const Navbar = () => {
   const [fullScreen, setFullScreen] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const callMessageOut = (msg, type) => {
+    dispatch(setSnackbar(true, type, msg));
+  };
+
+  const handleLogOut = () => {
+    callMessageOut("Logged Out Successfully", "success");
+    navigate("/");
+  };
   
   const openFullScreen = () => {
     setFullScreen(true);
@@ -40,7 +51,6 @@ const Navbar = () => {
     if (document.exitFullscreen) {
       document.exitFullscreen();
     } else if (document.mozCancelFullScreen) {
-      // document.mozCancelFullScreen();
     } else if (document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
     } else if (document.msExitFullscreen) {
@@ -82,7 +92,7 @@ const Navbar = () => {
           {isFavorite ? <Brightness7Icon/> : <Brightness4Icon className="sun" />}</div>
           <ExitToAppIcon onClick={()=>navigate("/")} style={{cursor:"pointer"}}/>
           <FullscreenIcon style={{cursor:"pointer"}}/> */}
-          {/* {fullScreen ? (
+           {/* {fullScreen ? (
                   <Tooltip
                     title="exit_fullScreen"
                     aria-label="Exit FullScreen"
@@ -90,17 +100,17 @@ const Navbar = () => {
                     
                       <IconButton
                         id="closeFullScreen_Button"
-                        onClick={this.closeFullScreen}
+                        onClick={closeFullScreen}
                       >
                         <FullscreenExitIcon style={{ color: "#fff" }} />
                       </IconButton>
                   </Tooltip>
                 ) : (
-                  <Tooltip title={t("fullScreen")} aria-label="FullScreen">
+                  <Tooltip title="fullScreen" aria-label="FullScreen">
                     <span className="hide_menu_topbar">
                       <IconButton
                         id="fullScreen_Button"
-                        onClick={this.openFullScreen}
+                        onClick={openFullScreen}
                       >
                         <FullscreenIcon style={{ color: "#fff" }} />
                       </IconButton>
