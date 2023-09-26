@@ -3,9 +3,10 @@ import "./login.css";
 import "./signUp.css";
 import navImg from "../logoFinal.png";
 import { Navigate, useNavigate } from "react-router-dom";
-// import Brightness7Icon from "@material-ui/icons/Brightness7";
-// import Brightness4Icon from "@material-ui/icons/Brightness4";
-// import FullscreenIcon from "@material-ui/icons/Fullscreen";
+import Brightness7Icon from "@material-ui/icons/Brightness7";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+import FullscreenIcon from "@material-ui/icons/Fullscreen";
+// import FullscreenExitIcon from "@material-ui/icons/FullscreenExitIcon";
 import { IconButton, Tooltip } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import "../../src/Forms/components/navbar.css"
@@ -88,11 +89,11 @@ const Navbar = () => {
       </Tooltip> */}
       <div className="navbar-right">
         <div className="icon-container">
-          {/* <div onClick={() => toggleTheme()} color={isFavorite ? 'secondary' : 'default'}>
+          <div onClick={() => toggleTheme()} color={isFavorite ? 'secondary' : 'default'}>
           {isFavorite ? <Brightness7Icon/> : <Brightness4Icon className="sun" />}</div>
           <ExitToAppIcon onClick={()=>navigate("/")} style={{cursor:"pointer"}}/>
-          <FullscreenIcon style={{cursor:"pointer"}}/> */}
-           {/* {fullScreen ? (
+          <FullscreenIcon style={{cursor:"pointer"}}/>
+           {fullScreen ? (
                   <Tooltip
                     title="exit_fullScreen"
                     aria-label="Exit FullScreen"
@@ -102,7 +103,7 @@ const Navbar = () => {
                         id="closeFullScreen_Button"
                         onClick={closeFullScreen}
                       >
-                        <FullscreenExitIcon style={{ color: "#fff" }} />
+                        {/* <FullscreenExitIcon style={{ color: "#fff" }} /> */}
                       </IconButton>
                   </Tooltip>
                 ) : (
@@ -116,7 +117,7 @@ const Navbar = () => {
                       </IconButton>
                     </span>
                   </Tooltip>
-                )} */}
+                )}
         </div>  
       </div>
     </nav>
