@@ -27,7 +27,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="container">
+    <div className="DashBoard_container">
       {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <button
           className="navbar-toggler"

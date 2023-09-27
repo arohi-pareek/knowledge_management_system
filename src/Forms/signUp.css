@@ -37,7 +37,7 @@
     color: black;
 }
 
-input {
+/* input {
     border: none;
     background-color: rgb(233, 231, 231);;
     height: 4em;
@@ -48,7 +48,7 @@ input {
 
 input:focus{
     outline-color: rgb(122, 121, 121);
-}
+} */
 
 .signUp-btn{
     width: 40%;

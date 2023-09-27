@@ -54,18 +54,18 @@
     color: black;
 }
 
-input {
+/* input {
     border: none;
     background-color: rgb(233, 231, 231);;
     height: 4em;
     width: 80%;
     border-radius: 0.25em;
     padding: 2em;
-}
+} */
 
-input:focus{
+/* input:focus{
     outline-color: rgb(122, 121, 121);
-}
+} */
 
 .login-btn{
     width: 40%;

@@ -84,6 +84,7 @@ a{
     display: flex;
     flex-wrap: wrap;
     background-color:#f7f9fa;
+    justify-content: space-evenly;
 
 }
 
