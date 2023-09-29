@@ -51,7 +51,8 @@ const playlistData = [
                 duration: '5:30',
                 description: 'This is the first video.',
                 videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
             }, {
                 id: 6,
                 title: 'Setstate method in react js',
@@ -127,7 +128,7 @@ const CoursesPlaylist = () => {
     const TotalVid = `${Math.floor((overallProgress / 100) * totalVideos)} VIDEOS OF ${totalVideos} VIDEOS COMPLETE`
 
     return (
-        <Grid container spacing={2} style={{ padding: "1rem" ,width: "96rem",
+        <Grid container spacing={2} style={{ padding: "1rem" ,width: "96%",
         margin: "0 auto"}}>
             <Grid item xs={9} style={{ paddingRight: '10px' }}>
                 <div>

@@ -11,11 +11,15 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Tooltip,
   Typography,
 } from "@mui/material";
 // import { CoursesArr } from "./StaticContent/Courses";
 import { useDispatch, useSelector } from "react-redux";
 import { setSnackbar, subscribe } from "./components/Redux/Actions/firstaction";
+import GridViewIcon from "@mui/icons-material/GridView"
+import ViewListIcon from "@mui/icons-material/ViewList"
+import List from "./components/Coursesmain/List";
 
 const Courses = () => {
   const dispatch = useDispatch();
@@ -25,11 +29,24 @@ const Courses = () => {
 
   const [open, setOpen] = useState(false);
   const [opendialog, setopendialog] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(true);
+  const [Gridview, setIsGridView] = useState(true);
   const [course, setCourse] = useState({
     heading: "",
     subheading: "",
     desc: [],
   });
+
+  const toggleTheme = () => {
+    if (isFavorite === true) {
+      setIsFavorite(!isFavorite);
+      setIsGridView(!Gridview);
+    }
+    else {
+      setIsFavorite(!isFavorite);
+      setIsGridView(!Gridview);
+    }
+  };
 
   const handleSubscribe = (payload) => {
     if (!payload.subscribe) {
@@ -47,47 +64,52 @@ const Courses = () => {
 
   return (
     <>
-        <div className="courseBox">
-          {CourseArr.map((item, i) => {
-            return (
-              <p key={i} className="Cbox">
-                <img
-                  className="courseImg"
-                  src={item.img}
-                  alt=""
-                  onClick={() => {
-                    setOpen(true);
-                    setCourse(item.courseDesc);
-                  }}
-                />
-                <p>
-                  <b className="cTop">{item.name}</b>
-                </p>
-                <p>Category: {item.category}</p>
-                <p>Rating {item.rating}</p>
-                <p>
-                  Course Description:{" "}
-                  <button
-                    onClick={() => {
-                      setopendialog(true);
-                    }}
-                  >
-                    Explore
-                  </button>
-                </p>
-                <div>
-                  <button
-                    className="subscribe-btn"
-                    onClick={() => handleSubscribe(item)}
-                  >
-                    {item.subscribe ? "UNSUBCRIBE" : "SUBCRIBE"}
-                  </button>
-                </div>
+      <div style={{
+        position: "fixed",
+        top: "3.2rem",
+        right: "1%",
+        cursor: "pointer"
+      }}>{isFavorite ? <Tooltip title="SWITCH TO LIST VIEW"><GridViewIcon className="grid" onClick={() => toggleTheme()} /></Tooltip> : <Tooltip title="SWITCH TO GRID VIEW"><ViewListIcon className="grid" onClick={() => toggleTheme()} /></Tooltip>}
+      </div>{Gridview ? <div className="courseBox">
+        {CourseArr.map((item, i) => {
+          return (
+            <p key={i} className="Cbox">
+              <img
+                className="courseImg"
+                src={item.img}
+                alt=""
+                onClick={() => {
+                  setOpen(true);
+                  setCourse(item.courseDesc);
+                }}
+              />
+              <p>
+                <b className="cTop">{item.name}</b>
               </p>
-            );
-          })}
-        </div>
-      {/* </div> */}
+              <p>Category: {item.category}</p>
+              <p>Rating {item.rating}</p>
+              <p>
+                Course Description:{" "}
+                <button
+                  onClick={() => {
+                    setopendialog(true);
+                  }}
+                >
+                  Explore
+                </button>
+              </p>
+              <div>
+                <button
+                  className="subscribe-btn"
+                  onClick={() => handleSubscribe(item)}
+                >
+                  {item.subscribe ? "UNSUBCRIBE" : "SUBCRIBE"}
+                </button>
+              </div>
+            </p>
+          );
+        })}
+      </div> : <List />}
 
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>
@@ -126,7 +148,7 @@ const Courses = () => {
         }}
       >
         <DialogTitle>
-          
+
         </DialogTitle>
         <DialogContent>
 

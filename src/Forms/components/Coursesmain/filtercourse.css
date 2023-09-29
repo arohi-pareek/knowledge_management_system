@@ -1,0 +1,13 @@
+.typography-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .text {
+    flex: 1;
+  }
+  
+  .close-icon {
+    cursor: pointer;
+  }

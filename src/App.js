@@ -21,10 +21,11 @@ import "./App.css";
 import Sidebar from "./Forms/components/sidebar";
 import CustomizedSnackbars from "./Snackbar";
 import Mainfile from "./Forms/components/Coursesmain/mainfile";
+import AdminDashboard from "./Forms/components/Admin/adminDashboard";
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const isLoginOrSignup = location.pathname === "/login" || location.pathname === "/";
+  const isLoginOrSignup = location.pathname === "/";
 
   return (
     <>
@@ -59,6 +60,7 @@ function App() {
             <Route exact path="/courses/item7" element={<Item7 />} />
             <Route exact path="/playlist" element={<CoursesplayList />} />
             <Route exact path="/courses/search" element={<Mainfile />} />
+            <Route exact path="/adminPanel" element={<AdminDashboard />} />
           </Routes>
           <CustomizedSnackbars />
         </Layout>
