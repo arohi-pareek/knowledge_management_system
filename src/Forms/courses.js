@@ -47,23 +47,6 @@ const Courses = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="coursesTop">
-          <div>
-            <b className="left">COURSES</b>
-          </div>
-          <div className="rightt">
-            Welcome to the Courses Section of our educational website! Here, we
-            have carefully crafted a variety of courses to cater to your
-            learning needs and interests. Our goal is to provide you with
-            high-quality education that's engaging, interactive, and tailored to
-            your pace. Whether you're a beginner looking to explore new subjects
-            or an expert seeking to deepen your expertise, we have something for
-            everyone. Let's embark on a journey of knowledge together!
-          </div>
-          {/* <img className="topimg" src={courseBack}  alt="" />    */}
-        </div>
-
         <div className="courseBox">
           {CourseArr.map((item, i) => {
             return (
@@ -97,14 +80,14 @@ const Courses = () => {
                     className="subscribe-btn"
                     onClick={() => handleSubscribe(item)}
                   >
-                    {item.subscribe ? "Unsubscribe" : "subscribe"}
+                    {item.subscribe ? "UNSUBCRIBE" : "SUBCRIBE"}
                   </button>
                 </div>
               </p>
             );
           })}
         </div>
-      </div>
+      {/* </div> */}
 
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>
@@ -137,15 +120,21 @@ const Courses = () => {
 
       <Dialog
         open={opendialog}
+        fullWidth
         onClose={() => {
           setopendialog(false);
         }}
       >
-        <DialogTitle></DialogTitle>
-        <DialogContent></DialogContent>
+        <DialogTitle>
+          
+        </DialogTitle>
+        <DialogContent>
+
+        </DialogContent>
       </Dialog>
     </>
   );
 };
 
 export default Courses;
+

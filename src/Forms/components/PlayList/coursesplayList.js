@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Grid, List, Card, CardContent, Typography, CardMedia, Tabs, Tab } from '@material-ui/core';
+import { Grid, List, Card, CardContent, Typography, CardMedia, Tabs, Tab, CircularProgress, Tooltip } from '@material-ui/core';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import "./playlist.css"
+import ImgTrophy from "../../../../src/Images/trophy.jpg"
 
 const playlistData = [
     {
@@ -16,7 +17,8 @@ const playlistData = [
                 duration: '5:30',
                 description: 'This is the first video.',
                 videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
             },
             {
                 id: 2,
@@ -24,7 +26,8 @@ const playlistData = [
                 duration: '5:30',
                 description: 'This is the first video.',
                 videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
             },
             {
                 id: 3,
@@ -32,14 +35,16 @@ const playlistData = [
                 duration: '5:30',
                 description: 'This is the first video.',
                 videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
             }, {
                 id: 4,
                 title: 'Angular vs React js',
                 duration: '5:30',
                 description: 'This is the first video.',
                 videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
             }, {
                 id: 5,
                 title: 'How to connect React js with Node js',
@@ -60,13 +65,47 @@ const playlistData = [
     {
         chapter: "CHAPTER 2 : ANOTHER CHAPTER",
         videos: [
-            // Add videos for another chapter as needed
+            {
+                id: 7,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+            {
+                id: 8,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 9,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            }
         ]
     },
     // Add more chapters and videos as needed
 ];
 
 const tabs = ['Overview', 'Q&A', 'Notes', 'Reviews', 'Learning Tools'];
+
+const calculateOverallProgress = () => {
+    const totalVideos = playlistData.reduce((total, chapter) => total + chapter.videos.length, 0);
+    const watchedVideos = playlistData.reduce((total, chapter) => {
+        return total + chapter.videos.filter(video => video.watched).length;
+    }, 0);
+
+    return (watchedVideos / totalVideos) * 100;
+};
+
+const overallProgress = calculateOverallProgress();
 
 const CoursesPlaylist = () => {
     const [selectedVideo, setSelectedVideo] = useState(playlistData[0]);
@@ -83,10 +122,13 @@ const CoursesPlaylist = () => {
 
     const selectedVideoInfo = playlistData.find((video) => video === selectedVideo);
 
-    console.log(selectedVideo?.videoUrl)
+    const totalVideos = playlistData.reduce((total, chapter) => total + chapter.videos.length, 0);
+
+    const TotalVid = `${Math.floor((overallProgress / 100) * totalVideos)} VIDEOS OF ${totalVideos} VIDEOS COMPLETE`
 
     return (
-        <Grid container spacing={2} style={{ padding: "1rem" }}>
+        <Grid container spacing={2} style={{ padding: "1rem" ,width: "96rem",
+        margin: "0 auto"}}>
             <Grid item xs={9} style={{ paddingRight: '10px' }}>
                 <div>
                     <video key={selectedVideo.id} controls autoPlay type="video/mp4" style={{ background: "black", width: '100%', borderRadius: "1rem", height: "30rem" }}>
@@ -103,20 +145,20 @@ const CoursesPlaylist = () => {
 
                 {/* Content for each tab */}
                 {selectedTab === 0 && (
-                     <div style={{ padding: "1rem" }}>
-                     <h2>About the Course</h2>
-                     <p>
-                       This course covers the fundamentals of React.js, including concepts like components, state, props, and more.
-                       You'll also learn how to set up and manage a React.js application, handle events, and work with forms.
-                     </p>
-                     <br></br>
-                     <h2>Target Audience</h2>
-                    
-                     <p>
-                       This course is designed for web developers who want to enhance their skills in building dynamic user interfaces
-                       using React.js. Familiarity with HTML, CSS, and JavaScript is recommended.
-                     </p>
-                   </div>
+                    <div style={{ padding: "1rem" }}>
+                        <h2>About the Course</h2>
+                        <p>
+                            This course covers the fundamentals of React.js, including concepts like components, state, props, and more.
+                            You'll also learn how to set up and manage a React.js application, handle events, and work with forms.
+                        </p>
+                        <br></br>
+                        <h2>Target Audience</h2>
+
+                        <p>
+                            This course is designed for web developers who want to enhance their skills in building dynamic user interfaces
+                            using React.js. Familiarity with HTML, CSS, and JavaScript is recommended.
+                        </p>
+                    </div>
                 )}
                 {selectedTab === 1 && (
                     <div style={{ padding: "1rem" }}>
@@ -146,6 +188,28 @@ const CoursesPlaylist = () => {
             </Grid>
             <Grid item xs={3} style={{ paddingLeft: '10px' }}>
                 <div className="playlist-container">
+
+                    <CircularProgress
+                        variant="determinate"
+                        value={overallProgress}
+                        style={{ position: "absolute", top: "8%", right: "3%", width: "2.5rem", height: "2.5rem" }}
+                    />
+                    <Tooltip title={TotalVid}>
+                        <img
+                            src={ImgTrophy}
+                            alt="Trophy"
+                            style={{
+                                position: 'absolute',
+                                top: '10.5%',
+                                right: '2.5%',
+                                transform: 'translate(-50%, -50%)',
+                                width: '1.8rem', 
+                                height: '1.8rem', 
+                                borderRadius: '1rem',
+                                cursor: "pointer"
+                            }}
+                        />
+                    </Tooltip>
                     <div style={{ marginBottom: '10px', padding: "1rem" }}>
                         <h2>Course content</h2>
                     </div>

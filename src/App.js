@@ -21,6 +21,7 @@ import CoursesplayList from "./Forms/components/PlayList/coursesplayList";
 import "./App.css";
 import Sidebar from "./Forms/components/sidebar";
 import CustomizedSnackbars from "./Snackbar";
+import Mainfile from "./Forms/components/Coursesmain/mainfile";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -58,6 +59,7 @@ function App() {
             <Route exact path="/courses/item6" element={<Item6 />} />
             <Route exact path="/courses/item7" element={<Item7 />} />
             <Route exact path="/playlist" element={<CoursesplayList />} />
+            <Route exact path="/courses/search" element={<Mainfile />} />
           </Routes>
           <CustomizedSnackbars />
         </Layout>

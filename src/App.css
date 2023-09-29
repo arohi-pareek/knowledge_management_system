@@ -118,12 +118,16 @@
 }
 
 .card {
-  width: 30%;
+  position: relative;
+  width:15%;
   padding: 10px;
   border-radius: 20px;
   -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
   box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .img {
@@ -264,11 +268,11 @@
   margin-right: 10px;
 }
 
-input{
+/* input{
   width: 200px;
   padding: 15px 20px;
   margin-bottom: 20px;
-}
+} */
 
 .submit{
   width: 200px;

@@ -118,7 +118,7 @@ import React from "react";
 import "./learning.css";
 import { Link, useNavigate } from "react-router-dom"; // Import Link from react-router-dom
 import c1 from "../C1.jpg";
-import { Button } from "@material-ui/core";
+import { Button, LinearProgress } from "@material-ui/core";
 import { SUBSCRIBE_COURSE__SUCCESS } from "./Redux/Constant/ActionTypes";
 import { connect } from "react-redux";
 
@@ -145,39 +145,6 @@ const Learning = ({ subArr, subscribeCourse }) => {
 
         <div className="cart-items">
           <div className="cart-items-container">
-            {subscribedCourses.map((course, index) => (
-              // Wrap the entire card in a Link component
-              <Link to={course.link} key={index} className="course-card">
-                <div className="course-image">
-                  <img src={c1} alt="" />
-                </div>
-                <br />
-                <div className="course-details">
-                  <h3 className="course-title">{course.title}</h3>
-                  <br />
-                  <div className="completion-bar">
-                    <div
-                      className="completion-progress"
-                      style={{
-                        width: `${course.completion}%`,
-                      }}
-                    ></div>
-                  </div>
-                  <div className="percentage-label">
-                    {course.completion}% Completed
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      <section className="main-cart-section">
-        <h1>SUBSCRIBED COURSES</h1>
-
-        <div className="cart-items">
-          <div className="cart-items-container">
 
             {subArr?.filter((course) => course.subscribe)?.map((course, index) => (
               <div key={index} className="items-info">
@@ -195,14 +162,41 @@ const Learning = ({ subArr, subscribeCourse }) => {
             ))}
           </div>
         </div>
-      </section>
-    </div>
-  );
+      </section> */}
+
+      <div className="subscribe_container">
+        <section className="main-cart-section">
+          <h1>SUBSCRIBED COURSES</h1>
+
+          <div className="cart-items">
+            <div className="cart-items-container">
+              {subArr?.filter((course) => course.subscribe)?.map((course, index) => (
+                <div key={index} className="card" onClick={() => handleplayList(course)} >
+                  <div className="product-img">
+                    <img src={course.img} alt="" />
+                    <div className="play-icon">▶</div>
+                  </div>
+                  <div className="title">
+                    <h3>{course.name}</h3>
+                  </div>
+                  <div className="progress-bar">
+                    <LinearProgress variant="determinate" value={course.progress} />
+                    <div className="percentage-text">{`${100}% completed`}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
+     </div> 
+  )
 };
 
 const mapStateToProps = (state) => {
   return {
-    subArr: state.subscribe.subArr, // Assuming your Redux state structure is { subArr: [...] }
+    subArr: state.subscribe.subArr,
   };
 };
 
@@ -211,7 +205,7 @@ const mapDispatchToProps = (dispatch) => {
     subscribeCourse: (course) =>
       dispatch({
         type: SUBSCRIBE_COURSE__SUCCESS,
-        payload: { name: course.name }, // You may want to pass more course information here
+        payload: { name: course.name },
       }),
   };
 };
