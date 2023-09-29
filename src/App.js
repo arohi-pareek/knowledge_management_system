@@ -1,11 +1,12 @@
-//  import React, { useState } from 'react';
-import "./App.css";
 import React from "react";
-import Login from "./Forms/components/login";
-
-import Navbar from "./Forms/components/navbar";
-import Dashboard from "./Forms/components/dashboard";
-import Courses from "./Forms/components/courses";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./Forms/components/Redux/store";
+import Navbar from "./Forms/navbar";
+import Footer from "./Forms/components/Footer";
+import Login from "./Forms/login";
+import Dashboard from "../src/Forms/components/dashboard";
+import Courses from "./Forms/courses";
 import Learning from "./Forms/components/learning";
 import Item1 from "./Forms/items/item1";
 import Item2 from "./Forms/items/item2";
@@ -14,44 +15,37 @@ import Item4 from "./Forms/items/item4";
 import Item5 from "./Forms/items/item5";
 import Item6 from "./Forms/items/item6";
 import Item7 from "./Forms/items/item7";
-import CoursesplayList from "../src/Forms/components/PlayList/coursesplayList";
-// import Cart from "./Forms/components/cart";
-
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CoursesPlaylist from "../src/Forms/components/PlayList/coursesplayList";
-import { useLocation } from "react-router-dom/dist/umd/react-router-dom.development";
-import Footer from "./Forms/components/Footer";
+import CoursesplayList from "./Forms/components/PlayList/coursesplayList";
+import "./App.css";
+import Sidebar from "./Forms/components/sidebar";
+import CustomizedSnackbars from "./Snackbar";
+import Mainfile from "./Forms/components/Coursesmain/mainfile";
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const isLoginOrSignup =
-    location.pathname === "/login" || location.pathname === "/";
+  const isLoginOrSignup = location.pathname === "/login" || location.pathname === "/";
 
   return (
     <>
-      {!isLoginOrSignup && <Navbar />}
-      {children}
-      {!isLoginOrSignup && <Footer />}
-    </>
+    {!isLoginOrSignup && <Navbar />}
+    <div className="layout-container">
+      {!isLoginOrSignup && <Sidebar />}
+      <div className="content">
+        {children}
+      </div>
+    </div>
+    {!isLoginOrSignup && <Footer />}
+  </>
   );
 };
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <BrowserRouter>
         <Layout>
           <Routes>
-            {/* <Route path="/" element={<div className="page"><Login /></div>} /> */}
-            <Route
-              path="/"
-              element={
-                <div className="page">
-                  <Login />
-                </div>
-              }
-            />
-
+            <Route path="/" element={<Login />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
             <Route exact path="/courses" element={<Courses />} />
             <Route exact path="/learning" element={<Learning />} />
@@ -62,13 +56,16 @@ function App() {
             <Route exact path="/courses/item5" element={<Item5 />} />
             <Route exact path="/courses/item6" element={<Item6 />} />
             <Route exact path="/courses/item7" element={<Item7 />} />
-            <Route exact path="/playlist" element={<CoursesPlaylist />} />
-            {/* <Route exact path="/cart" element={<Cart />} /> */}
+            <Route exact path="/playlist" element={<CoursesplayList />} />
+            <Route exact path="/courses/search" element={<Mainfile />} />
           </Routes>
+          <CustomizedSnackbars />
         </Layout>
       </BrowserRouter>
-    </>
+    </Provider>
   );
 }
 
 export default App;
+
+

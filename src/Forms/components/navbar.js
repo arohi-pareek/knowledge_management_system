@@ -4,7 +4,6 @@ import Brightness7Icon from "@material-ui/icons/Brightness7";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 import "../style/login.css";
-import "../style/signUp.css";
 import "../style/navbar.css";
 
 import navImg from "../Images/logoFinal.png";

@@ -1,19 +1,119 @@
 import React, { useState } from 'react';
-import { Grid, List, Card, CardContent, Typography, CardMedia } from '@material-ui/core';
-import Navbar from '../navbar';
-import Footer from '../Footer';
+import { Grid, List, Card, CardContent, Typography, CardMedia, Tabs, Tab, CircularProgress, Tooltip } from '@material-ui/core';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import "./playlist.css"
+import ImgTrophy from "../../../../src/Images/trophy.jpg"
+
 const playlistData = [
-    { id: 1, title: 'Introduction to React js ', duration: '5:30', description: 'This is the first video.', videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=" },
-    { id: 2, title: 'How to Setup and Install ', duration: '7:15', description: 'A brief description of the second video.', videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4", thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=" },
-    { id: 3, title: 'Props in React js', duration: '5:30', description: 'A brief description of the second video.', videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=" },
-    { id: 4, title: 'Angular vs React js', duration: '7:15', description: 'A brief description of the second video.', videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=" },
-    { id: 5, title: 'How to connect React js with Node js', duration: '3:45', description: 'A brief description of the second video.', videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=" },
-    { id: 6, title: 'Setstate method in react js', duration: '5:30', description: 'A brief description of the second video.', videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=" },
-    // Add more videos to the playlist as needed
+    {
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },
+    {
+        chapter: "CHAPTER 2 : ANOTHER CHAPTER",
+        videos: [
+            {
+                id: 7,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+            {
+                id: 8,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 9,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            }
+        ]
+    },
+    // Add more chapters and videos as needed
 ];
+
+const tabs = ['Overview', 'Q&A', 'Notes', 'Reviews', 'Learning Tools'];
+
+const calculateOverallProgress = () => {
+    const totalVideos = playlistData.reduce((total, chapter) => total + chapter.videos.length, 0);
+    const watchedVideos = playlistData.reduce((total, chapter) => {
+        return total + chapter.videos.filter(video => video.watched).length;
+    }, 0);
+
+    return (watchedVideos / totalVideos) * 100;
+};
+
+const overallProgress = calculateOverallProgress();
 
 const CoursesPlaylist = () => {
     const [selectedVideo, setSelectedVideo] = useState(playlistData[0]);
+    const [selectedTab, setSelectedTab] = useState(0);
+
+    const handleChangeTab = (event, newValue) => {
+        setSelectedTab(newValue);
+    };
 
     const handleVideoClick = (video) => {
         setSelectedVideo(video);
@@ -22,89 +122,129 @@ const CoursesPlaylist = () => {
 
     const selectedVideoInfo = playlistData.find((video) => video === selectedVideo);
 
-    console.log(selectedVideo?.videoUrl)
+    const totalVideos = playlistData.reduce((total, chapter) => total + chapter.videos.length, 0);
+
+    const TotalVid = `${Math.floor((overallProgress / 100) * totalVideos)} VIDEOS OF ${totalVideos} VIDEOS COMPLETE`
 
     return (
-        <>
-        
-        <Grid container spacing={2} style={{ padding: "1rem" }}>
-            <Grid item xs={8} style={{ paddingRight: '10px' }}>
-                <div style={{ marginBottom: '10px', padding: "1rem" }}>
-                    <h2>VIDEOS</h2>
-                </div>
-
-                {/* <div style={{ width: '100%', height: '25rem', border: '1px solid #ccc', borderRadius: "8px", padding: "1rem" }}>
-                    {selectedVideo ? `Playing Video ${selectedVideo}` : 'Select a video from the playlist'}
-                </div> */}
-
-                {/* {selectedVideo && ( */}
+        <Grid container spacing={2} style={{ padding: "1rem" ,width: "96%",
+        margin: "0 auto"}}>
+            <Grid item xs={9} style={{ paddingRight: '10px' }}>
                 <div>
-                    <video key={selectedVideo.id} controls autoPlay type="video/mp4" style={{ width: '100%', borderRadius: "2rem", padding: "1rem", height: "30rem" }}>
+                    <video key={selectedVideo.id} controls autoPlay type="video/mp4" style={{ background: "black", width: '100%', borderRadius: "1rem", height: "30rem" }}>
                         <source src={selectedVideo?.videoUrl} />
                     </video>
                 </div>
-                {/* )} */}
 
-                {selectedVideoInfo && (
+
+                <Tabs value={selectedTab} onChange={handleChangeTab} variant="scrollable" scrollButtons="auto">
+                    {tabs.map((tab, index) => (
+                        <Tab key={index} label={tab} />
+                    ))}
+                </Tabs>
+
+                {/* Content for each tab */}
+                {selectedTab === 0 && (
                     <div style={{ padding: "1rem" }}>
-                        <div style={{ marginBottom: "1rem" }}>
-                            <h2 style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "0.5rem" }}>{selectedVideoInfo.title}</h2>
-                        </div>
-                        <div style={{ fontSize: "1.2rem", color: "#555", marginBottom: "1rem" }}>
-                            {selectedVideoInfo.description}
-                        </div>
+                        <h2>About the Course</h2>
+                        <p>
+                            This course covers the fundamentals of React.js, including concepts like components, state, props, and more.
+                            You'll also learn how to set up and manage a React.js application, handle events, and work with forms.
+                        </p>
+                        <br></br>
+                        <h2>Target Audience</h2>
+
+                        <p>
+                            This course is designed for web developers who want to enhance their skills in building dynamic user interfaces
+                            using React.js. Familiarity with HTML, CSS, and JavaScript is recommended.
+                        </p>
                     </div>
                 )}
-            </Grid>
-            <Grid item xs={4} style={{ paddingLeft: '10px' }}>
-                <div style={{ marginBottom: '10px', padding: "1rem" }}>
-                    <h2>PLAYLIST</h2>
-                </div>
-                <List component="nav">
-                    {playlistData.map((video) => (
+                {selectedTab === 1 && (
+                    <div style={{ padding: "1rem" }}>
+                        <h3>Q&A Content</h3>
+                        {/* Add content for the Q&A tab */}
+                    </div>
+                )}
+                {selectedTab === 2 && (
+                    <div style={{ padding: "1rem" }}>
+                        <h3>Notes Content</h3>
+                        {/* Add content for the Notes tab */}
+                    </div>
+                )}
+                {selectedTab === 3 && (
+                    <div style={{ padding: "1rem" }}>
+                        <h3>Reviews Content</h3>
+                        {/* Add content for the Reviews tab */}
+                    </div>
+                )}
+                {selectedTab === 4 && (
+                    <div style={{ padding: "1rem" }}>
+                        <h3>Learning Tools Content</h3>
+                        {/* Add content for the Learning Tools tab */}
+                    </div>
+                )}
 
-                        <Card
-                            key={video.id}
-                            onClick={() => handleVideoClick(video)}
-                            variant={selectedVideo === video ? 'outlined' : 'elevation'}
-                            style={{ marginBottom: '10px', cursor: 'pointer', display: 'flex' }}
-                        >
-                            <CardMedia
-                                component="img"
-                                alt="Video Thumbnail"
-                                style={{ width: '35%', height: "5rem" }}  // Adjust width to 50%
-                                image={video.thumbnail}
-                            />
-                            {/* <CardContent style={{ width: '50%' ,maxHeight: '5rem', overflow: 'hidden', textOverflow: 'ellipsis'}}>
-                                <Typography variant="subtitle1">{video.title}</Typography>
-                                <Typography variant="body2" color="textSecondary">
-                                    Duration: {video.duration}
+            </Grid>
+            <Grid item xs={3} style={{ paddingLeft: '10px' }}>
+                <div className="playlist-container">
+
+                    <CircularProgress
+                        variant="determinate"
+                        value={overallProgress}
+                        style={{ position: "absolute", top: "8%", right: "3%", width: "2.5rem", height: "2.5rem" }}
+                    />
+                    <Tooltip title={TotalVid}>
+                        <img
+                            src={ImgTrophy}
+                            alt="Trophy"
+                            style={{
+                                position: 'absolute',
+                                top: '10.5%',
+                                right: '2.5%',
+                                transform: 'translate(-50%, -50%)',
+                                width: '1.8rem', 
+                                height: '1.8rem', 
+                                borderRadius: '1rem',
+                                cursor: "pointer"
+                            }}
+                        />
+                    </Tooltip>
+                    <div style={{ marginBottom: '10px', padding: "1rem" }}>
+                        <h2>Course content</h2>
+                    </div>
+                    {playlistData.map((chapterData, index) => (
+                        <Accordion key={index}>
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`panel${index + 1}-a-content`} id={`panel${index + 1}-a-header`}>
+                                <Typography><b>{chapterData.chapter}</b></Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography>
+                                    <ul className="custom-list">
+                                        {chapterData.videos.map((video, index) => (
+                                            <li
+                                                key={video.id}
+                                                onClick={() => handleVideoClick(video)}
+                                                className={`playlist-video ${video === selectedVideo ? 'playing' : ''}`}
+                                            >
+                                                <div className="video-info">
+                                                    <span className="number">{index + 1}</span>
+                                                    <span className="video-title">{video.title}</span>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </Typography>
-                            </CardContent> */}
-
-                            <CardContent style={{ width: '65%', maxHeight: '5rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                                <div style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
-                                    <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                        <Typography variant="subtitle1" style={{ marginBottom: '0.5rem' }}>
-                                            {video.title}
-                                        </Typography>
-                                    </div>
-                                    <div>
-                                        <Typography variant="body2" color="textSecondary">
-                                            Duration: {video.duration}
-                                        </Typography>
-                                    </div>
-                                </div>
-                            </CardContent>
-
-                        </Card>
+                            </AccordionDetails>
+                        </Accordion>
                     ))}
-                </List>
+                </div>
             </Grid>
+
         </Grid>
-        
-        </>
     );
 };
 
 export default CoursesPlaylist;
+
+

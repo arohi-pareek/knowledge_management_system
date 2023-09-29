@@ -1,6 +1,7 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    
 }
 /* .navbar-toggler{
     width: 100%;
@@ -15,13 +16,13 @@ navbar-toggler:focus{
     background-color: rgb(235, 243, 243);
     
 } */
-/* a{
+a{
     margin: 45px;
     color: black;
     font-size: 15px;
     font-family: var(--font-stack-heading-serif);
     text-decoration: none;
-} */
+}
 .coursesTop{
     
     margin-top: 20px;
@@ -40,19 +41,18 @@ navbar-toggler:focus{
     /* margin: 30px;   */
 }
 .left{
-    font-family: 'Montserrat', sans-serif;
-    margin-left: 52px;
+    font-family: 'Anton', sans-serif;
+    margin-left: 50px;
     color:  rgb(88, 88, 88);
     display: flex;
     justify-content: left;
-    font-size:32px;
-    margin-top: -1rem;
+    font-size:40px;
+    
     
 }
 
 .rightt{
-    
-    height: 90px;
+    height: 110px;
     width: 90%;
     display: flex;
     margin-top: 8px;
@@ -81,24 +81,69 @@ navbar-toggler:focus{
 }
 
 .courseBox{
-    height: 1220px;
+    height: auto;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    background-color:var(--bg-clr);
+    justify-content: space-evenly;
+
+}
+/* 
+.Cbox{
+
+        height: 450px;
+        width: 350px;
+        background-color: var(--form);
+        color: black;
+        font-size: 17px;
+        font-family: 'Anton', sans-serif;
+        margin: 10px;
+        border-radius: 8px;
+        border-color: whitesmoke;
+        box-shadow: rgb(180, 177, 177);
+        border-style: solid;
+        justify-content: center;
+        align-items: center;
+        padding: 19px;
+    
+} */
+
+.courseImg{
+    height: 180px;
+    width: 100%;
+    /* margin-left: 30px; */
     margin-top: 20px;
-    background-color:white;
+    box-shadow: #f7f9fa;
+    margin-bottom: 20px;
+   
+}
+
+.cTop{
+    font-size: 25px;
+    font-family: 'Anton', sans-serif;
     justify-content: center;
     align-items: center;
+    padding: 17px;
+    margin-left: -15px;
+    color:var(--main-heading);
+}
+.courseBox{
+    height: auto;
+    width: 100%;
+    display: flex;
+
+
 }
 
 .Cbox{
 
         height: 450px;
         width: 350px;
-        background-color: white;
+        background-color: var(--form);
         color: black;
         font-size: 17px;
-        font-family: Arial, sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         margin: 10px;
         border-radius: 8px;
         border-color: whitesmoke;
@@ -110,75 +155,19 @@ navbar-toggler:focus{
     
 }
 
-.courseImg{
-    height: 150px;
-    width: 85%;
-    /* margin-left: 30px; */
-    margin-top: 10px;
-    margin-left: 10px;
-    box-shadow: #f7f9fa;
-    margin-bottom: 20px;
-   
-}
-.grid{
-    margin-left: 90rem;
-    margin-top: 1rem;
-    display: flex;
-    cursor: pointer;
-}
-
-.cTop{
-    font-size: 25px;
-    font-family: 'Anton', sans-serif;
-    justify-content: center;
-    align-items: center;
-    padding: 17px;
-    margin-left: -10px;
-}
-.courseBox{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 200px;
-
-}
-
-.Cbox{
-
-        height: 410px;
-        width: 340px;
-        background-color: whitesmoke;
-        color: black;
-        font-size: 17px;
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 65px;
-        border-radius: 8px;
-        border-color: whitesmoke;
-        box-shadow: rgb(180, 177, 177);
-        border-style: solid;
-        justify-content: center;
-        align-items: center;
-        padding: 12px;
-    
-}
-.category{
-    margin-left: 1rem;
-}
-
 .subscribe-btn{
-    width: 70%;
+    width: 80%;
     height: 2em;
-    background-color:black;
+    background-color:var(--btn-bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.5s;
     cursor: pointer;
-    color: white;
+    color: var(--btn-text-clr);
     border-radius: 4px;
     padding: 19px;
-    margin-left: 25px;
+    margin-left: 35px;
     margin-top: 30PX;
 }
 
@@ -191,8 +180,7 @@ navbar-toggler:focus{
 .backdropbox{
     margin-top: 10px;
     height: 300px;
-    
-    background-color:whitesmoke;
+    background-color: whitesmoke;
 }
 
 .css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type {

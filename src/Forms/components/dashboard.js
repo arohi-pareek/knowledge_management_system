@@ -31,8 +31,34 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="container">
-    
+    <div className="DashBoard_container">
+      {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="#" onClick={handleClick1}>
+                Dashboard
+              </a>
+              <a class="nav-item nav-link" href="#" onClick={handleClick2}>
+                Courses
+              </a>
+              <a class="nav-item nav-link " href="#" onClick={handleClick3}>
+                My Learning
+              </a>
+            </div>
+          </div>
+
+          <span className="navbar-toggler-icon"></span>
+        </button>
+      </nav> */}
       <Carousel />
       {/* <img className="bgimage" src={bgImg} alt="" /> */}
       <div className="brands">
@@ -102,7 +128,11 @@ const Dashboard = () => {
           </p>
         </div>
       </div>
-      
+
+      {/* <div className="footer">
+        <img className="fimg" src={Img} alt="" />
+        <div className="f">© 2023 Educom-Let Us Study, Inc.</div>
+      </div> */}
     </div>
   );
 };

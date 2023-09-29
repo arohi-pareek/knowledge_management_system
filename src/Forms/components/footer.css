@@ -1,0 +1,41 @@
+
+/* .hover-area {
+   text-align: center;
+}
+.footer{
+   background-color: black;
+   height: 30px;
+   color: white;
+   opacity: 0;
+   transition: all 0.2s ease-in;
+}
+.hover-area:hover .footer {
+   opacity: 1;
+}
+
+ .f{
+   margin-left: 1250px;
+   margin-top: -20px;
+} */
+
+.AppBottom{
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    height: 27px;
+}
+
+.Footercontainer {
+    padding: 0px !important;
+    justify-content: space-around;
+    background-color: rgb(82 81 81);
+    width: 100%;
+    display: flex;
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+    bottom: -100%;
+}
+
+.AppBottom:hover .Footercontainer{
+    bottom: 0%;
+}

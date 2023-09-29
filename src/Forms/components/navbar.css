@@ -1,0 +1,106 @@
+/* Modify the styles according to your design */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.navbar-brand img {
+  height: 40px;
+}
+
+.form-control {
+  top:3rem,
+}
+
+.form-control #search{
+  top:4rem,
+}
+
+.navbar-buttons button {
+  margin-left: 10px;
+}
+
+
+.sun {
+  color: white
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: fixed;
+}
+
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  margin:-2rem
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  display: flex;
+  color: white;
+  cursor:"pointer"
+}
+
+.icon-container > *:not(:last-child) {
+  margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.Search {
+  width: 30%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc; 
+  border-radius: 20px; 
+  margin-right: 40%;
+}
+
+/* Optional: Style placeholder text */
+.Search::placeholder {
+  color: #999; /* Adjust placeholder text color as needed */
+}
+
+/* Optional: Style when the input is focused */
+.Search:focus {
+  outline: none; /* Remove outline on focus if desired */
+  border-color: #4CAF50; /* Adjust border color on focus as needed */
+}
+
+
+/* navbar button */
+
+.navbar-brand{
+  font-size: 20px;
+  span{
+    color: var(--clr-orange);
+  }
+}
+.text-uppercase{text-transform: uppercase;}
+
+.ls-1{letter-spacing: 1px;}
+.fw-8{font-weight: 800;}
+
+/* search */
+
+.search-container {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Adjust as needed to position the icon */
+  transform: translateY(-50%);
+  cursor: pointer;
+}
