@@ -116,7 +116,7 @@
 
 import React from "react";
 import "./learning.css";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useNavigate } from "react-router-dom"; // Import Link from react-router-dom
 import c1 from "../C1.jpg";
 import { Button } from "@material-ui/core";
 import { SUBSCRIBE_COURSE__SUCCESS } from "./Redux/Constant/ActionTypes";
