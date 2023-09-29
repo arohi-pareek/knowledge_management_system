@@ -1,0 +1,44 @@
+/* Add your custom sidebar styles */
+.sidebar {
+    height: 100%;
+    width:35px;
+    color: white;
+    position: fixed;
+    top: 3rem;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1.1);
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    top: 1rem;
+    position: fixed;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: 2s;
+    height: 1rem;
+  }
+  
+  /* .side-navbar a:hover {
+    background-color: gray; 
+  } */
+
+  .icon{
+   margin-left:-50px;
+  }
+
+  
