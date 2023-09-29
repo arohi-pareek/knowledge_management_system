@@ -128,11 +128,11 @@ const Navbar = () => {
           <div onClick={() => toggleTheme()} color={isFavorite ? 'secondary' : 'default'}>
             {isFavorite ? <Brightness7Icon style={{ cursor: "pointer" }}/> : <Brightness4Icon style={{ cursor: "pointer" }}/>}</div>
           <ExitToAppIcon onClick={() => handleLogOut()} style={{ cursor: "pointer" }} />
-          {fullScreen ? (
-                <FullscreenExitIcon style={{ cursor: "pointer" }} onClick={closeFullScreen} />
+          {/* {fullScreen ? (
+                // <FullscreenExitIcon style={{ cursor: "pointer" }} onClick={closeFullScreen} />
           ) : (
                   <FullscreenIcon style={{ cursor: "pointer" }} onClick={openFullScreen}/>
-          )}
+          )} */}
         </div>
       </div>
     </nav>
