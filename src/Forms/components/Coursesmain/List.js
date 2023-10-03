@@ -1,8 +1,23 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setSnackbar, subscribe } from "../Redux/Actions/firstaction";
 const List = () => {
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleSubscribe = (payload) => {
+    if (!payload.subscribe) {
+      dispatch(subscribe(payload));
+      callMessageOut(`Subscribed To ${payload.name}`, "success");
+    } else {
+      dispatch(subscribe(payload));
+      callMessageOut(`Unsubscribed To ${payload.name}`, "success");
+    }
+  };
+  const callMessageOut = (msg, type) => {
+    dispatch(setSnackbar(true, type, msg));
+  };
     const CourseArr = useSelector((state) => state.subscribe.subArr);
     console.log(CourseArr)
     return (
@@ -17,15 +32,19 @@ const List = () => {
                   </div>
                   <div className="title">
                     <h3>{item.name}</h3>
-                    <p className='listcat'>Category: {item.category}</p>
+                    <p>Category: {item.category}</p>
+                    
+                    <p className='listcat'>Rating:  {item.rating}</p>
+                    <p className='desc'>Course Description:</p>
+                    <div>
+                    <button className="sub-btn" onClick={() => handleSubscribe(item)}
+                    >
+                      {item.subscribe ? "UNSUBSCRIBE" : "SUBSCRIBE"}</button>
+                  </div>
                     
                     
                   </div>
-                  <div>
-                    <p className='listcat'>Rating:  {item.rating}</p>
-                    
-
-                    </div>
+                  
                   <div className="PlayList">{/* Add content for Playlist */}</div>
                 </div>
               ))}

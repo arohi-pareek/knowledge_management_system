@@ -62,12 +62,14 @@
 
 .layout-container {
   display: flex;
+  
 }
 
 .content {
   flex: 1; /* This allows the content area to take up the remaining space */
   padding-left: 30px; /* Adjust this value to match the width of your sidebar */
   padding-top: 3rem;
+  
 }
 
 .navbar {

@@ -43,7 +43,7 @@ const Learning = ({ subArr, subscribeCourse }) => {
               ))}
             </div>
           </div> */}
-           <div className="cart-items">
+           <div className="cart-item">
         
           {subArr?.filter((course) => course.subscribe)?.map((course, index) => (
             <div key={index} className="card" onClick={() => handleplayList(course)}>

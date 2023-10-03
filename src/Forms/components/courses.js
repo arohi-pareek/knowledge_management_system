@@ -77,7 +77,7 @@ const Courses = () => {
       
        
         <div className="coursesTop" >
-         {isFavorite ? <GridViewIcon className="grid" onClick={() => toggleTheme()}/> : <ViewListIcon className="grid" onClick={() => toggleTheme()}/>} 
+         {isFavorite ? <GridViewIcon className="listview" onClick={() => toggleTheme()}/> : <ViewListIcon className="grid" onClick={() => toggleTheme()}/>} 
          
           <div>
             <b className="left">COURSES</b>

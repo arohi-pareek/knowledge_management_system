@@ -97,14 +97,14 @@ header {
   margin-bottom: 1rem;
 }
 
- .cart-items {
+ .cart-item {
   /* background: linear-gradient(
         103.49deg,
         #ffffff -28.13%,
         rgba(242, 247, 255, 0.5) 116.84%
       ); */
-  background-color: var(--form);
-  box-shadow: rgba(0, 0, 0, 0.08) 0rem 0.4rem 1.2rem;
+   /* background-color: var(--form);  */
+  /*box-shadow: rgba(0, 0, 0, 0.08) 0rem 0.4rem 1.2rem; */
   border-radius: 2rem;
   display: flex;
   place-items: center;
@@ -112,9 +112,10 @@ header {
   padding: 10px;
   
 }
-.listcat{
+
+/* .listcat{
   font-size: 2px;
-}
+} */
 
 
 .cart-items hr {
@@ -141,6 +142,7 @@ header {
   flex-wrap: wrap;
   margin-top: 1rem;
   margin-left: 3rem;
+  background-color: var(--form);
 }
 .cart-items-container-list{
   width: 95%;
@@ -175,6 +177,7 @@ header {
   filter: drop-shadow(0rem 0.4rem 1rem #f1f7ff);
   border-radius: 1rem;
   margin-top: 21px;
+  margin-left: 1rem;;
 }
 
 .items-info .title {
@@ -185,6 +188,7 @@ header {
   margin-left: 300px;
   width: 300px;
   
+  
 }
 
 .items-info .title h2 {
@@ -194,27 +198,55 @@ header {
   display: flex;
   align-items: center;
   text-transform: capitalize;
-  color: var(--main-color);
+  color: var(--main-heading);
 }
 
 .items-info .title p {
-  font-style: normal;
+  font-style:normal;
   font-weight: normal;
-  font-size: 1.8rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   text-transform: capitalize;
   text-align: left;
-  color: var(--primary-color);
+  color: black;
 }
-
+.items-info .title .listcat{
+  margin-left: -6em;
+}
+.items-info .title .desc{
+  margin-left: -2em;
+}
+.items-info .title .sub-btn{
+  margin-left: -3em;
+  margin-top: -0.8rem;
+  width: 8rem;
+  height: 2em;
+  background-color:var(--btn-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  cursor: pointer;
+  color: var(--btn-text-clr);
+  border-radius: 4px;
+  /* padding: 19px; */
+}
+.sub-btn:hover {
+  cursor: pointer;
+  transition: 0.27s;
+  transform: scale(1.10);
+}
+.course-details{
+  color:black
+}
 
 .card {
   border: 1px solid #ccc;
   /* padding: 20px; */
   margin-bottom: 20px;
   border-radius: 20px;
-  background-color:var(--comp);
+  background-color:var(--form);
   
     position: relative;
     width:20%;
@@ -229,6 +261,9 @@ header {
     cursor: pointer;
   
 }
+.title .listcat{
+  font-size: small;
+}
 
 .product-img img {
   width: 100%;
@@ -241,12 +276,12 @@ header {
 
 .title h3 {
   margin: 10px 0;
-  color: var(--learn);
+  color: var(--main-heading);
 }
 
 .progress-bar {
   margin: 10px 0;
-  color: var(--learn);
+  color: black
 }
 
 .PlayList {
