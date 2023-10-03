@@ -109,9 +109,9 @@ const Navbar = () => {
   return (
     <nav className="navbar bg-body-tertiary fixed-top">
       <div className="navbar-left">
-        <Link to="/" className='navbar-brand text-uppercase ls-1 fw-8'>
+        <Link to="/dashboard" className='navbar-brand text-uppercase ls-1 fw-8'>
           <span style={{ color: "orange" }}>c</span><span style={{ color: "white" }}>oursean</span>
-        </Link>
+        </Link> 
       </div>
       <input
         className="Search"

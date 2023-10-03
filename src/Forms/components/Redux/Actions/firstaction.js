@@ -1,13 +1,13 @@
 import Axios from "axios";
 import {
-  GET_CITY_FAILURE,
-  GET_CITY_REQUEST,
-  GET_CITY_SUCCESS,
+  GET_COURSE_FAILURE,
+  GET_COURSE_REQUEST,
+  GET_COURSE_SUCCESS,
   SET_SNACKBAR,
   SUBSCRIBE_COURSE__SUCCESS,
 } from "../Constant/ActionTypes";
 
-export const createAccount = (value) => async (dispatch) => {
+export const AddCourse = (value) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -16,12 +16,12 @@ export const createAccount = (value) => async (dispatch) => {
     },
   };
 
-  dispatch({ type: GET_CITY_REQUEST });
+  dispatch({ type: GET_COURSE_REQUEST });
   try {
-    const response = await Axios.post(`/crm/api/addAccount`, value, config);
-    dispatch({ type: GET_CITY_SUCCESS, payload: response.data });
+    const response = await Axios.post(`/course/add-course`, value, config);
+    dispatch({ type: GET_COURSE_SUCCESS, payload: response.data });
   } catch (error) {
-    dispatch({ type: GET_CITY_FAILURE, payload: error });
+    dispatch({ type: GET_COURSE_FAILURE, payload: error });
   }
 };
 
@@ -40,3 +40,4 @@ export const subscribe = (payload) => ({
   type: SUBSCRIBE_COURSE__SUCCESS,
   payload: payload,
 });
+

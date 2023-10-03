@@ -1,26 +1,26 @@
 
-import { GET_CITY_FAILURE, GET_CITY_REQUEST, GET_CITY_SUCCESS } from "../Constant/ActionTypes";
+import { GET_COURSE_FAILURE, GET_COURSE_REQUEST, GET_COURSE_SUCCESS } from "../Constant/ActionTypes";
 
-const countryData = {
+const courseData = {
   loading: false,
   error: "",
-  countryCitiesData: [],
+  CourseData: [],
 };
 
-export const createAccount = (state = countryData, action) => {
+export const AddCourse = (state = courseData, action) => {
   switch (action.type) {
-    case GET_CITY_REQUEST:
+    case GET_COURSE_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case GET_CITY_SUCCESS:
+    case GET_COURSE_SUCCESS:
       return {
         ...state,
         loading: false,
-        countryCitiesData: action.payload,
+        CourseData: action.payload,
       };
-    case GET_CITY_FAILURE:
+    case GET_COURSE_FAILURE:
       return {
         ...state,
         loading: false,
