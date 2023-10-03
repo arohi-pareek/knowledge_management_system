@@ -11,6 +11,7 @@ export const CoursesArr = [
     name: "Java Programming",
     category: "Programming",
     rating: "3",
+    instructor:"jose portilla",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",

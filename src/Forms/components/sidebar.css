@@ -6,10 +6,11 @@
     position: fixed;
     top: 3rem;
     left: 0;
-    background-color:whitesmoke;
+    background-color: white;
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1.1);
   }
   
   .sidebar ul {
@@ -29,6 +30,7 @@
     display: block;
     padding: 10px;
     transition: 2s;
+    height: 1rem;
   }
   
   /* .side-navbar a:hover {

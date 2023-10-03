@@ -51,7 +51,8 @@ const playlistData = [
                 duration: '5:30',
                 description: 'This is the first video.',
                 videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
             }, {
                 id: 6,
                 title: 'Setstate method in react js',
@@ -211,15 +212,15 @@ const CoursesPlaylist = () => {
                         />
                     </Tooltip>
                     <div style={{ marginBottom: '10px', padding: "1rem" }}>
-                        <h2>Course content</h2>
+                        <h2 className='content'>Course content</h2>
                     </div>
                     {playlistData.map((chapterData, index) => (
-                        <Accordion key={index}>
+                        <Accordion className='accord' key={index}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`panel${index + 1}-a-content`} id={`panel${index + 1}-a-header`}>
                                 <Typography><b>{chapterData.chapter}</b></Typography>
                             </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
+                            <AccordionDetails >
+                                <Typography className='List'>
                                     <ul className="custom-list">
                                         {chapterData.videos.map((video, index) => (
                                             <li

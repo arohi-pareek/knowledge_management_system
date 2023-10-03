@@ -1,23 +1,24 @@
 import React from 'react'
+import '../style/List.css'
 import c1 from "../C1.jpg";
 import c2 from "../C2.jpg";
 import c5 from "../C5.png";
 import c6 from "../C6.png";
 import c7 from "../C7.jpg";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
 
 const List = () => {
+  const CourseArr = useSelector((state) => state.subscribe.subArr);
+  
   return (
     <div className="container">
-    
+    <section className="main-cart-section">
       
-      <section className="main-cart-section">
-        
-
-        <div className="cart-items">
-          <div className="cart-items-container">
+      
+        <div className="cart-items-container-list">
             <div className="items-info">
-              <div className="product-img">
+              <div className="list-img">
                 <img src={c1} alt="" />
               </div>
               <div className="title">
@@ -60,7 +61,7 @@ const List = () => {
               </div>
             </div>
           </div>
-        </div>
+       
       </section>
       
     </div>

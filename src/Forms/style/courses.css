@@ -3,6 +3,7 @@
     box-sizing: border-box;
     
 }
+
 /* .navbar-toggler{
     width: 100%;
     border-color: rgb(232, 232, 232);
@@ -16,42 +17,43 @@ navbar-toggler:focus{
     background-color: rgb(235, 243, 243);
     
 } */
-a{
+a {
     margin: 45px;
     color: black;
     font-size: 15px;
     font-family: var(--font-stack-heading-serif);
     text-decoration: none;
 }
-.coursesTop{
-    
+
+.coursesTop {
+
     margin-top: 20px;
     font-size: 35px;
     font-style: bold;
     font-family: 'Anton', sans-serif;
-    color: black; 
+    color: black;
     height: 200px;
     width: 100%;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color:#f7f9fa;
+    background-color: #f7f9fa;
     box-shadow: rgb(214, 209, 209);
 
     /* margin: 30px;   */
 }
-.left{
+
+.left {
     font-family: 'Anton', sans-serif;
     margin-left: 50px;
-    color:  rgb(88, 88, 88);
+    color: rgb(88, 88, 88);
     display: flex;
     justify-content: left;
-    font-size:40px;
-    
-    
+    font-size: 40px;
+
 }
 
-.rightt{
+.rightt {
     height: 110px;
     width: 90%;
     display: flex;
@@ -59,11 +61,11 @@ a{
     background-color: white;
     color: black;
     font-size: 17px;
-    
+
     font-family: 'Anton', sans-serif;
     /* margin: 10px; */
     border-radius: 8px;
-    
+
     box-shadow: rgb(129, 187, 203);
     justify-content: center;
     align-items: center;
@@ -72,54 +74,54 @@ a{
     margin-left: 55px;
 }
 
-.topimg{
+.topimg {
     height: 450px;
-    width:750px;
+    width: 750px;
     margin-bottom: 20px;
     display: flex;
     margin-left: 710px;
 }
 
-.courseBox{
+.courseBox {
     height: auto;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     background-color:var(--bg-clr);
     justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+.Cbox {
+
+    height: 450px;
+    width: 350px;
+    background-color: white;
+    color: black;
+    font-size: 17px;
+    font-family: 'Anton', sans-serif;
+    margin: 10px;
+    border-radius: 8px;
+    border-color: whitesmoke;
+    box-shadow: rgb(180, 177, 177);
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    padding: 19px;
 
 }
-/* 
-.Cbox{
 
-        height: 450px;
-        width: 350px;
-        background-color: var(--form);
-        color: black;
-        font-size: 17px;
-        font-family: 'Anton', sans-serif;
-        margin: 10px;
-        border-radius: 8px;
-        border-color: whitesmoke;
-        box-shadow: rgb(180, 177, 177);
-        border-style: solid;
-        justify-content: center;
-        align-items: center;
-        padding: 19px;
-    
-} */
-
-.courseImg{
+.courseImg {
     height: 180px;
     width: 100%;
     /* margin-left: 30px; */
     margin-top: 20px;
     box-shadow: #f7f9fa;
     margin-bottom: 20px;
-   
+
 }
 
-.cTop{
+.cTop {
     font-size: 25px;
     font-family: 'Anton', sans-serif;
     justify-content: center;
@@ -128,7 +130,8 @@ a{
     margin-left: -15px;
     color:var(--main-heading);
 }
-.courseBox{
+
+.courseBox {
     height: auto;
     width: 100%;
     display: flex;
@@ -136,26 +139,27 @@ a{
 
 }
 
-.Cbox{
+.Cbox {
 
-        height: 450px;
-        width: 350px;
-        background-color: var(--form);
-        color: black;
-        font-size: 17px;
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 10px;
-        border-radius: 8px;
-        border-color: whitesmoke;
-        box-shadow: rgb(180, 177, 177);
-        border-style: solid;
-        justify-content: center;
-        align-items: center;
-        padding: 19px;
+    height: 450px;
+    width: 350px;
+    background-color: var(--form);
+    color: black;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px;
+    border-radius: 8px;
+    border-color: whitesmoke;
+    box-shadow: rgb(180, 177, 177);
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    padding: 19px;
+
     
 }
 
-.subscribe-btn{
+.subscribe-btn {
     width: 80%;
     height: 2em;
     background-color:var(--btn-bg-color);
@@ -171,13 +175,13 @@ a{
     margin-top: 30PX;
 }
 
-.subscribe-btn:hover{
+.subscribe-btn:hover {
     cursor: pointer;
     transition: 0.27s;
     transform: scale(1.10);
 }
 
-.backdropbox{
+.backdropbox {
     margin-top: 10px;
     height: 300px;
     background-color: whitesmoke;
@@ -189,7 +193,6 @@ a{
     margin-top: 27px;
 }
 
-.dropbox{
+.dropbox {
     background-color: whitesmoke;
 }
-

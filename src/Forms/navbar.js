@@ -10,6 +10,7 @@ import "../../src/Forms/components/navbar.css"
 import { useDispatch } from "react-redux";
 import { setSnackbar } from "./components/Redux/Actions/firstaction";
 import SearchIcon from '@mui/icons-material/Search';
+import Courses from "./courses";
 
 const Navbar = () => {
 
@@ -39,6 +40,7 @@ const Navbar = () => {
   const handleSearch = () => {
     if (searchQuery === null || searchQuery.trim() === '') {
       navigate('/courses');
+      
     } else {
       navigate(`/courses/search?q=${encodeURIComponent(searchQuery)}`);
     }
@@ -51,7 +53,6 @@ const Navbar = () => {
   };
 
   const handleLogOut = () => {
-    callMessageOut("Logged Out Successfully", "success");
     navigate("/");
   };
 
