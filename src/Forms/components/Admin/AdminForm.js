@@ -36,19 +36,13 @@ const AdminForm = (props) => {
   };
 
   const validationSchema = Yup.object().shape({
-    id: Yup.string().required("id is required"),
+    id: Yup.string().required("Course ID is required"),
     type: Yup.string().required("type is required"),
-    courseName: Yup.string().required("Lead Title is required"),
+    courseName: Yup.string().required("Course Title is required"),
     courseDescription: Yup.string()
       .notRequired() // Makes the field not required
-      .max(100, "courseDescription must not exceed 100 characters"),
+      .max(100, "Course Description must not exceed 100 characters"),
   });
-
-//   useEffect (()=>{
-//     dispatch(
-//         AddCourse(value)
-//       );
-//   },[])
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -58,14 +52,10 @@ const AdminForm = (props) => {
             ...values,
             registeredUsers: ["1400"],
             uploadedBy : "1400",
-            // createdOnDate: values.createdOnDate,
-            // .format("DD-MM-YYYY")
-            // .toLocaleString(undefined, { timeZone: "Asia/India" }),
           };
         dispatch(
             AddCourse(formData)
           );
-      console.log(values);
     },
   });
 
