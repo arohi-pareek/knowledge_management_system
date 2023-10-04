@@ -48,6 +48,7 @@ const AdminForm = (props) => {
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: function (values) {
+      CloseAdminform()
         let formData = {
             ...values,
             registeredUsers: ["1400"],

@@ -1,12 +1,14 @@
 import { combineReducers } from "redux";
-import { AddCourse } from "./rootReduceOne";
 import setSnackBar from "./snackbarReducer";
 import subscribe from "./SubscribeReducer";
+import { CourseDetails } from "./rootReduceOne";
+
 
 const RootReducer = combineReducers({
-  AddCourse: AddCourse,
+
   snackbar: setSnackBar,
   subscribe: subscribe,
+  CourseDetails:CourseDetails
 });
 
 export default RootReducer;
