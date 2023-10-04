@@ -212,15 +212,15 @@ const CoursesPlaylist = () => {
                         />
                     </Tooltip>
                     <div style={{ marginBottom: '10px', padding: "1rem" }}>
-                        <h2>Course content</h2>
+                        <h2 className='content'>Course content</h2>
                     </div>
                     {playlistData.map((chapterData, index) => (
-                        <Accordion key={index}>
+                        <Accordion className='accord' key={index}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`panel${index + 1}-a-content`} id={`panel${index + 1}-a-header`}>
                                 <Typography><b>{chapterData.chapter}</b></Typography>
                             </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
+                            <AccordionDetails >
+                                <Typography className='List'>
                                     <ul className="custom-list">
                                         {chapterData.videos.map((video, index) => (
                                             <li

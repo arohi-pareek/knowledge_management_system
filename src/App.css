@@ -6,6 +6,27 @@
   height: 40vmin;
   pointer-events: none;
 }
+/* .dark-theme{
+  --main-heading:#5f99be;
+  --para-clr:#fff;
+  --btn-bg-color:#fff;
+  --btn-text-clr:black;
+  --bg-clr:#111b20;
+  --form:#36454F;
+  --foot:#111b20;;
+ --comp:#36454F;
+}
+.light-theme{
+  --main-heading:#5f99be;
+  --para-clr:#333;
+  --btn-bg-color:black;
+  --btn-text-clr:white;
+  --bg-clr:#fff;
+  --form:whitesmoke;
+  --foot:#111b20;
+  --comp:whitesmoke;
+  --shadow: 0 0.188em 1.55em rgb(156, 156, 156);
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -28,6 +49,7 @@
   color: #61dafb;
 }
 
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -40,12 +62,14 @@
 
 .layout-container {
   display: flex;
+  
 }
 
 .content {
   flex: 1; /* This allows the content area to take up the remaining space */
   padding-left: 30px; /* Adjust this value to match the width of your sidebar */
   padding-top: 3rem;
+  
 }
 
 .navbar {
@@ -66,13 +90,16 @@
   --btn-bg-color:#fff;
   --btn-text-clr:black;
   --bg-clr:#111b20;
-  --form:#36454F;
+  /* --form:#36454F; */
+  --learn:white;
+  --form:#CCCCCC;
   --foot:#111b20;;
  --comp:#36454F;
 }
 .light-theme{
   --main-heading:#5f99be;
   --para-clr:#333;
+  --learn:black;
   --btn-bg-color:#111b20;
   --btn-text-clr:#fff;
   --bg-clr:#fff;
@@ -112,18 +139,7 @@
   flex-wrap: wrap;
 }
 
-.card {
-  position: relative;
-  width:20%;
-  padding: 10px;
-  border-radius: 20px;
-  -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-  box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
+
 
 .img {
   width: 100%;
@@ -288,6 +304,9 @@
 .link{
   color: inherit;
   text-decoration: none;
+}
+.rate{
+  background-color: var(--form);
 }
 
 @media screen and (max-width: 992px) {

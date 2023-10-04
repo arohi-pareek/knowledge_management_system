@@ -3,6 +3,9 @@ import {
   ADD_COURSE_FAILURE,
   ADD_COURSE_REQUEST,
   ADD_COURSE_SUCCESS,
+  DELETE_COURSE_FAILURE,
+  DELETE_COURSE_REQUEST,
+  DELETE_COURSE_SUCCESS,
   GET_COURSE_FAILURE,
   GET_COURSE_REQUEST,
   GET_COURSE_SUCCESS,
@@ -56,12 +59,12 @@ export const DeleteCourse = (id) => async (dispatch) => {
     },
   };
 
-  dispatch({ type: GET_COURSE_REQUEST });
+  dispatch({ type: DELETE_COURSE_REQUEST });
   try {
     const response = await Axios.get(`/course/delete-course/${id}`, config);
-    dispatch({ type: GET_COURSE_SUCCESS, payload: response.data });
+    dispatch({ type: DELETE_COURSE_SUCCESS, payload: response.data });
   } catch (error) {
-    dispatch({ type: GET_COURSE_FAILURE, payload: error });
+    dispatch({ type: DELETE_COURSE_FAILURE, payload: error });
   }
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "./learning.css";
+import "../style/learning.css";
 import { useNavigate } from "react-router-dom";
 import { Button, LinearProgress } from "@material-ui/core";
 import { SUBSCRIBE_COURSE__SUCCESS } from "./Redux/Constant/ActionTypes";
@@ -12,6 +12,7 @@ const Learning = ({ subArr, subscribeCourse }) => {
   const navigate = useNavigate();
 
   function handleplayList() {
+    
     navigate("/playlist")
   }
 
@@ -42,8 +43,8 @@ const Learning = ({ subArr, subscribeCourse }) => {
               ))}
             </div>
           </div> */}
-           <div className="cart-items">
-        <div className="cart-items-container">
+           <div className="cart-item">
+        
           {subArr?.filter((course) => course.subscribe)?.map((course, index) => (
             <div key={index} className="card" onClick={() => handleplayList(course)}>
               <div className="product-img">
@@ -65,7 +66,7 @@ const Learning = ({ subArr, subscribeCourse }) => {
             </div>
           ))}
         </div>
-      </div>
+      
 
         </section>
       </div>

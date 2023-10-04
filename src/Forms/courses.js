@@ -1,4 +1,4 @@
-import "./courses.css";
+import "../Forms/style/courses.css"
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -26,6 +26,8 @@ const Courses = () => {
   const navigate = useNavigate();
 
   const CourseArr = useSelector((state) => state.subscribe.subArr);
+
+  console.log(CourseArr)
 
   const [open, setOpen] = useState(false);
   const [opendialog, setopendialog] = useState(false);

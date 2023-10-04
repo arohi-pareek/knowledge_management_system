@@ -181,7 +181,6 @@ import Google from "../../src/Images/google.png";
 import Facebook from "../../src/Images/facebook.png";
 import Github from "../../src/Images/github.png";
 import React, { useState } from "react";
-import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";

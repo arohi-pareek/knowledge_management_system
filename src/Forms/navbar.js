@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import navImg from "../logoFinal.png";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import Brightness4Icon from "@material-ui/icons/Brightness4";

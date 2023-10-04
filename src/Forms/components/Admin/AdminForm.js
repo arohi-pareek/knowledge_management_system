@@ -36,7 +36,7 @@ const AdminForm = (props) => {
   };
 
   const validationSchema = Yup.object().shape({
-    id: Yup.string().required("Course ID is required"),
+    id: Yup.number().required("Course ID is required"),
     type: Yup.string().required("type is required"),
     courseName: Yup.string().required("Course Title is required"),
     courseDescription: Yup.string()

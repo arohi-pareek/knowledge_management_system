@@ -1,6 +1,20 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
+body{
+    background-color: var(--bg-clr);
+}
+.cover{
+    background-color: var(--form);
+    width: 25em;
+    height: 33em;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 0.188em 1.550em rgb(189, 180, 180);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: red;
+    margin-top: 150px;
+    
 }
 
 /* .page{
@@ -9,10 +23,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
+    
+} */
+/* 
 .cover{
-    background-color: white;
+    background-color: red;
     width: 25em;
     height: 29em;
     position: relative;
@@ -51,7 +66,14 @@
   }
 
 .login{
-    color: black;
+    color: var(--main-heading);
+}
+.image{
+    height: 59px;
+    width: 65px;
+    margin-left: 20px;
+    margin-top: 5px;
+    
 }
 
 /* input {
@@ -70,7 +92,7 @@
 .login-btn{
     width: 40%;
     height: 3em;
-    background-color: black;
+    background-color:var(--btn-bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,22 +107,7 @@
     transform: scale(1.25);
 } */
 
-.top{
-    height: 4.5em;
-    width: 100%;
-    background-color:whitesmoke;
-    color: white;
-    box-shadow: 0 0.188em 1.550em rgb(189, 180, 180);
-    display: flex;
-}
 
-.image{
-    height: 59px;
-    width: 65px;
-    margin-left: 20px;
-    margin-top: 5px;
-    
-}
 
 .btn1{
     color: black;

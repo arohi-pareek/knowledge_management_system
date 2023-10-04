@@ -1,15 +1,19 @@
 .list {
     margin-left: 10px;
 }
-
+.content{
+  color:var(--para-clr);
+}
 .custom-list {
     list-style-type: none; /* Remove the default bullet point */
     padding: 0; /* Remove any default padding */
+    
   }
   
   .custom-list div {
     margin-left: 18px;
     margin-bottom: 10px;
+    
   }
   
   .number {
@@ -19,6 +23,7 @@
   
   .video-title {
     cursor: pointer;
+    /* background-color: red; */
   }
   
   /* Style for the numbers */
@@ -29,17 +34,22 @@
 
   .playlist-container {
     padding: 1rem;
+    
   }
   
   .playlist-header {
     margin-bottom: 10px;
     padding: 1rem;
+    /* background-color: red; */
   }
-  
+  .List{
+    background-color: var(--form);
+  }
   .custom-list {
     padding: 0;
     list-style-type: none;
     margin: 0;
+    /* background-color: var(--form); */
   }
   
   .custom-list li {
@@ -58,6 +68,9 @@
   .custom-list .number {
     margin-right: 1rem;
     font-weight: bold;
+  }
+  .accord{
+    background-color:red;
   }
   
   .custom-list .video-title {
