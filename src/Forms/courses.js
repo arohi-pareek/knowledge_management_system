@@ -131,7 +131,7 @@ const Courses = () => {
       <div style={{
         position: "fixed",
         top: "3.2rem",
-        right: "5%",
+        right: "4%",
         cursor: "pointer"
       }}><Tooltip title="FILTER"><FilterListIcon className="grid" onClick={() => setOpenDrawer(true)} /></Tooltip>
       </div>
