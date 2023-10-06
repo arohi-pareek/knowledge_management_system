@@ -50,6 +50,7 @@ export const CoursesArr = [
     name: "C++ Programming",
     category: "Programming",
     rating: "4",
+    instructor:"jose portilla",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",
@@ -88,6 +89,7 @@ export const CoursesArr = [
     name: "Web Development",
     category: "Development",
     rating: "5",
+    instructor:"jose portilla",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",
@@ -126,6 +128,7 @@ export const CoursesArr = [
     name: "ReactJS",
     category: "Development",
     rating: "5",
+    instructor:"jose portilla",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",
@@ -164,6 +167,7 @@ export const CoursesArr = [
     name: "Python Programming",
     category: "Programming",
     rating: "4",
+    instructor:"jose portilla",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",
@@ -202,6 +206,7 @@ export const CoursesArr = [
     name: "Node Js",
     category: "Programming",
     rating: "4",
+    instructor:"jose portilla",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",
@@ -240,6 +245,7 @@ export const CoursesArr = [
     name: "Python Programming",
     category: "Programming",
     rating: "4",
+    instructor:"jose portilla",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",
@@ -278,6 +284,7 @@ export const CoursesArr = [
     name: "Python Programming",
     category: "Programming",
     rating: "4",
+    instructor:"jose portilla",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",

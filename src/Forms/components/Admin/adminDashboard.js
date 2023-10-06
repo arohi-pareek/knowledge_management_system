@@ -3,13 +3,15 @@ import {
     MRT_ShowHideColumnsButton,
     MaterialReactTable,
 } from "material-react-table";
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./admin.css"
 import AdminForm from './AdminForm';
 import Draggable from 'react-draggable';
+import { useDispatch, useSelector } from 'react-redux';
+import { DeleteCourse, GetCourse } from '../Redux/Actions/firstaction';
 
 function PaperComponent(props) {
     return (
@@ -24,43 +26,35 @@ function PaperComponent(props) {
 
 const AdminDashboard = (props) => {
 
+    const dispatch = useDispatch();
+
     const [openAdminform, setOpenAdmin] = useState(false);
 
     const OpenAdminform = () => {
         setOpenAdmin(true);
     };
 
+    useEffect(() => {
+        dispatch(GetCourse())
+    }, [])
+
+
+
     const CloseAdminform = () => {
         setOpenAdmin(false);
     };
 
-    const Accountdetail = [
-        {
-            accountName: "Python Development Complete Bootcamp",
-            phone: "123-456-7890",
-            email: "Development",
-            city: "Python",
-        },
-        {
-            accountName: "ReactJS ",
-            phone: "987-654-3210",
-            email: "Development",
-            city: "ReactJS ",
-        },
-        {
-            accountName: "Full Stack web Development",
-            phone: "555-555-5555",
-            email: "Development",
-            city: "Full Stack",
-        },
-        // ... add more data as needed
-    ];
+    const HandleDelete = (id) => {
+        dispatch(DeleteCourse(id))
+    }
 
+    const Accountdetail = useSelector((state) => state.CourseDetails.CourseData);
+    console.log(Accountdetail)
 
     const columns = useMemo(
         () => [
             {
-                accessorKey: "accountName",
+                accessorKey: "courseName",
                 header: "COURSE TITLE",
                 size: 100,
                 Cell: ({ cell }) => (
@@ -68,13 +62,13 @@ const AdminDashboard = (props) => {
                 ),
             },
             {
-                accessorKey: "phone",
+                accessorKey: "id",
                 header: "COURSE STATUS",
                 size: 100,
                 Cell: ({ cell }) => <span className="text-m">{cell.getValue()}</span>,
             },
             {
-                accessorKey: "email",
+                accessorKey: "type",
                 header: "COURSE TYPE",
                 size: 100,
                 Cell: ({ cell }) => (
@@ -82,17 +76,19 @@ const AdminDashboard = (props) => {
                 ),
             },
             {
-                accessorKey: "city",
+                accessorKey: "courseDescription",
                 header: "COURSE DESCRIPTION",
                 size: 100,
+                
                 Cell: ({ cell }) => (
-                    <span className="text-m text-b">{cell.getValue()}</span>
+                    <span className="text-m text-b upperbox">{cell.getValue()}</span>
                 ),
             },
             {
                 accessorKey: "actions", // New column for icons
                 header: "Actions", // You can customize the header name
                 size: 30, // Adjust the size as needed
+                
                 Cell: ({ row }) => {
                     let item = row.original;
                     return (
@@ -113,6 +109,7 @@ const AdminDashboard = (props) => {
                                         size="small"
                                         color="#ccc"
                                         style={{ fontSize: "19px", height: "1rem" }}
+                                        onClick={() => { HandleDelete(row._valuesCache.id) }}
                                     />
                                 </Tooltip>
                             </IconButton>
@@ -129,13 +126,14 @@ const AdminDashboard = (props) => {
             .flatRows.map((row) => row.original);
         return (
             <>
-                <Grid container className="AdminHeader">
+                <Grid  container className="AdminHeader">
                     <Grid item xs={12} className="PaHeadTop">
                         <div
                             style={{
                                 width: "85%",
                                 display: "flex",
                                 justifyContent: "space-between",
+                                
                             }}
                         >
                             {/* <GenericSearch
@@ -159,7 +157,7 @@ const AdminDashboard = (props) => {
                                     <div className="AcIconCon">
                                         <Tooltip title=" MULTIPLE DELETE ">
                                             <IconButton onClick={() => console.log("")}>
-                                                <DeleteIcon fontSize="small" />
+                                                <DeleteIcon fontSize="small"  />
                                             </IconButton>
                                         </Tooltip>
                                     </div>
@@ -206,23 +204,26 @@ const AdminDashboard = (props) => {
                     width: "96%",
                     height: "90vh",
                     overflowY: "auto",
+                    
                 }}
             >
                 <>
-                    <MaterialReactTable
+                    <MaterialReactTable 
                         data={Accountdetail}
                         columns={columns}
                         displayColumnDefOptions={{
                             "mrt-row-select": {
-                                size: 5,
+                                size: 8,
                                 muiTableHeadCellProps: {
                                     sx: {
                                         paddingLeft: "25px",
+                                        
                                     },
                                 },
                                 muiTableBodyCellProps: {
                                     sx: {
                                         paddingLeft: "25px",
+                                        
                                     },
                                 },
                             },
@@ -241,7 +242,9 @@ const AdminDashboard = (props) => {
                         muiTableContainerProps={() => ({
                             sx: {
                                 border: "1px solid #8080802b",
-                                height: "60vh",
+                                height: "80vh",
+                                backgroundColor:"var(--comp)",
+                                color:"var(--para-clr)"
                             },
                         })}
                         muiTablePaperProps={() => ({
@@ -249,7 +252,7 @@ const AdminDashboard = (props) => {
                                 padding: "0rem 1rem",
                                 border: "0",
                                 boxShadow: "none",
-                            },
+                                backgroundColor:"var(--form)"                            },
                         })}
                     />
                     {/* <PaginationComp
@@ -266,7 +269,7 @@ const AdminDashboard = (props) => {
             {/* Admin Form  */}
 
             <div>
-                <Dialog
+                <Dialog 
                     open={openAdminform}
                     aria-labelledby="draggable-dialog-title"
                     PaperComponent={PaperComponent}

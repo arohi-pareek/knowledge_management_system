@@ -1,8 +1,14 @@
 .list {
     margin-left: 10px;
 }
+.content1{
+  color:black;
+  margin-top:-1rem;
+  margin-left: -1.2rem;
+}
 .content{
   color:var(--para-clr);
+
 }
 .custom-list {
     list-style-type: none; /* Remove the default bullet point */

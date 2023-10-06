@@ -7,12 +7,16 @@
     margin: 3px;
     margin-left: 8%;
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+    
 }
 
 .AdminHeader {
     align-items: center;
     justify-content: space-between;
 
+}
+.upperbox{
+    background-color: red;
 }
 
 .PaHeadTop {
@@ -25,4 +29,13 @@
 
 .AcIconCon {
     margin-left: 20%;
+}
+#outlined-basic{
+    color:var(--para-clr);
+    background-color:var(--text);
+    border-color: black;
+    
+}
+.text-m{
+    background-color: red;
 }
