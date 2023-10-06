@@ -140,17 +140,9 @@ header {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-left: 3rem;
   background-color: var(--form);
-}
-.cart-items-container-list{
-  width: 95%;
-  height: auto;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
 }
 
 .items-info {

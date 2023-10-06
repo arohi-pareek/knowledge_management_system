@@ -11,6 +11,8 @@ import { useDispatch } from "react-redux";
 import { setSnackbar } from "./components/Redux/Actions/firstaction";
 import SearchIcon from '@mui/icons-material/Search';
 import Courses from "./courses";
+import Login from "./login";
+import ReactDOM from "react-dom";
 
 const Navbar = () => {
 

@@ -26,3 +26,13 @@
 .AcIconCon {
     margin-left: 20%;
 }
+
+.input_style {
+    display: table;
+    color: #fff;
+    margin-top: 3px;
+  }
+  
+  .input_style input[type="file"] {
+    display: none;
+  }

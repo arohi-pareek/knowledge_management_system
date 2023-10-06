@@ -12,7 +12,7 @@ const Mainfile = () => {
                     <FilterCourses/>
                 </Grid>
                 <Grid item xs={10} >
-                    <Courses />
+                    <Courses/>
                 </Grid>
             </Grid>
         </>

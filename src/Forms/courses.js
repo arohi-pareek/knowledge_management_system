@@ -6,11 +6,9 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
+  Divider,
+  Drawer,
+  Grid,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -20,19 +18,66 @@ import { setSnackbar, subscribe } from "./components/Redux/Actions/firstaction";
 import GridViewIcon from "@mui/icons-material/GridView"
 import ViewListIcon from "@mui/icons-material/ViewList"
 import List from "./components/Coursesmain/List";
+import { Dialog, DialogContent, DialogTitle, IconButton, makeStyles } from "@material-ui/core";
+import CloseIcon from "@mui/icons-material/Close";
+import { Close } from "@material-ui/icons";
+import FilterListIcon from '@mui/icons-material/FilterList';
+
+const useStyles = makeStyles((theme) => ({
+
+  title: {
+    flexGrow: 1,
+  },
+  hide: {
+    display: "none",
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+
+
+  },
+  drawerPaperNotOpen: {
+    width: drawerWidth,
+    top: "5rem",
+    height: Number(window.innerHeight - 98),
+    visibility: "initial",
+    display: "none"
+  },
+  drawerPaperOpen: {
+    width: drawerWidth,
+    top: "5rem",
+    height: Number(window.innerHeight - 98),
+    display: "initial"
+  },
+  drawerHeader: {
+    display: "flex",
+    alignItems: "center",
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: "flex-start",
+    background: "	#cecbdf ",
+  },
+}));
+const drawerWidth = "19%";
+
 
 const Courses = () => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const classes = useStyles();
 
   const CourseArr = useSelector((state) => state.subscribe.subArr);
 
-  console.log(CourseArr)
-
   const [open, setOpen] = useState(false);
+  const [opendrawer, setOpenDrawer] = useState(false);
+  const [Data, setData] = useState("");
   const [opendialog, setopendialog] = useState(false);
   const [isFavorite, setIsFavorite] = useState(true);
   const [Gridview, setIsGridView] = useState(true);
+  const [showstatus, setShowstatus] = useState("");
   const [course, setCourse] = useState({
     heading: "",
     subheading: "",
@@ -64,15 +109,34 @@ const Courses = () => {
     dispatch(setSnackbar(true, type, msg));
   };
 
+  const handleDrawerClose = () => {
+    setOpenDrawer(false);
+  };
+
   return (
     <>
+      <div style={{
+        transition: "width .5s",
+        width: opendrawer ? "calc(100% - 17%)" : "100%",
+        flexBasis: "initial"
+      }}>
       <div style={{
         position: "fixed",
         top: "3.2rem",
         right: "1%",
         cursor: "pointer"
       }}>{isFavorite ? <Tooltip title="SWITCH TO LIST VIEW"><GridViewIcon className="grid" onClick={() => toggleTheme()} /></Tooltip> : <Tooltip title="SWITCH TO GRID VIEW"><ViewListIcon className="grid" onClick={() => toggleTheme()} /></Tooltip>}
-      </div>{Gridview ? <div className="courseBox">
+      </div>
+
+      <div style={{
+        position: "fixed",
+        top: "3.2rem",
+        right: "5%",
+        cursor: "pointer"
+      }}><Tooltip title="FILTER"><FilterListIcon className="grid" onClick={() => setOpenDrawer(true)} /></Tooltip>
+      </div>
+
+      {Gridview ? <div className="courseBox">
         {CourseArr.map((item, i) => {
           return (
             <p key={i} className="Cbox">
@@ -95,6 +159,8 @@ const Courses = () => {
                 <button
                   onClick={() => {
                     setopendialog(true);
+                    setData(item)
+                    console.log(item)
                   }}
                 >
                   Explore
@@ -112,6 +178,97 @@ const Courses = () => {
           );
         })}
       </div> : <List />}
+
+      <Drawer
+        className={classes.drawer}
+        id="drawer"
+        variant="persistent"
+        anchor="right"
+        open={opendrawer}
+        classes={{
+          paper: !opendrawer ? classes.drawerPaperNotOpen : classes.drawerPaperOpen
+        }}
+      >
+        <div className={classes.drawerHeader}>
+          <Tooltip title={"CLOSE"} aria-label="close">
+            <Close style={{ cursor: "pointer" }} onClick={handleDrawerClose} />
+          </Tooltip>
+          <div
+            style={{
+              display: "flex",
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: "1rem",
+              justifyContent: "center",
+              width: "70%",
+
+            }}
+          >
+            STATUS
+          </div>
+          {showstatus == "Draft" ? <Tooltip title={"DELETE"} aria-label="close">
+            {/* <DeleteIcon color="primary" style={{ cursor: "pointer" }} onClick={handleDeleteDraft} ></DeleteIcon> */}
+          </Tooltip> : <></>}
+
+        </div>
+        <Divider />
+        {/* <List>
+              {historyData.map((item, index) => {
+                if (index === 0) {
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginLeft: "1rem",
+                      }}
+                    >
+                      <div style={{ marginTop: "1rem" }}>
+                        <b>Subject : </b>
+                        {item.subject}
+                      </div>
+
+                    
+
+                      {showstatus !== "Draft" ? <div style={{ marginTop: "1rem" }}>
+                        <b>From : </b>
+                        {item.to}
+                      </div> : <></>}
+                      <div style={{ marginTop: "0.5rem" }}>
+                        <b> Status : </b>
+                        <span style={{ fontWeight: "bold", color: item.status == "Pending" ? "red" : item.status == "Responded and Closed" ? "green" : "" }}>{item.status}</span>
+                      </div>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginLeft: "1rem",
+                      }}
+                    >
+
+                      <div style={{ marginTop: "2rem" }}>
+                        <b>From : </b>
+                        {item.to}
+                      </div>
+
+                      <div style={{ marginTop: "0.5rem" }}>
+                        <b>Status : </b>
+                        <span style={{ fontWeight: "bold", color: item.status == "Pending" ? "red" : item.status == "Responded and Closed" ? "green" : "" }}>{item.status}</span>
+                      </div>
+                    </div>
+                  );
+                }
+
+              })}
+            </List> */}
+      </Drawer>
+      </div>
 
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>
@@ -144,16 +301,60 @@ const Courses = () => {
 
       <Dialog
         open={opendialog}
-        fullWidth
+        id="DescriptionDialog"
         onClose={() => {
           setopendialog(false);
         }}
       >
         <DialogTitle>
-
+          <Tooltip title="CLOSE">
+            <IconButton
+              onClick={() => setopendialog(false)}
+              aria-label="close"
+              style={{
+                position: "absolute",
+                right: "8px",
+                top: "8px",
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Tooltip>
+          COURSE DESCRIPTION
         </DialogTitle>
-        <DialogContent>
+        <DialogContent dividers>
+          <Grid container spacing={2}>
+            <Grid xs={4} style={{ padding: "1rem" }}>
+              <div style={{ padding: "1rem" }}>
+                <b>{Data?.courseDesc?.heading}</b>
+              </div>
+              <img
+                src={Data?.img}  // Make sure to replace with the correct item
+                alt=""
+                style={{ marginRight: '20px', }}  // Adjust margin as needed
+              />
 
+            </Grid>
+            <Grid xs={8} style={{ padding: "1rem" }}>
+
+
+              <>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon className="dropbox" />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography>{""}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>{""}</Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </>
+
+            </Grid>
+          </Grid>
         </DialogContent>
       </Dialog>
     </>

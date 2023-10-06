@@ -61,7 +61,7 @@ function App() {
             <Route exact path="/courses/search" element={<Mainfile />} />
             <Route exact path="/adminPanel" element={<AdminDashboard />} />
           </Routes>
-          <CustomizedSnackbars />
+          <CustomizedSnackbars/>
         </Layout>
       </BrowserRouter>
     </Provider>

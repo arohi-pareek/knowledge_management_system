@@ -14,6 +14,7 @@ import UploadForm from './uploadForm';
 import Draggable from 'react-draggable';
 import { useDispatch, useSelector } from 'react-redux';
 import { DeleteCourse, GetCourse } from '../Redux/Actions/firstaction';
+import Dynamic from './Dynamic';
 
 function PaperComponent(props) {
     return (
@@ -41,8 +42,6 @@ const AdminDashboard = (props) => {
         dispatch(GetCourse())
     }, [])
 
-
-
     const CloseAdminform = () => {
         setOpenAdmin(false);
     };
@@ -69,7 +68,7 @@ const AdminDashboard = (props) => {
             },
             {
                 accessorKey: "id",
-                header: "COURSE STATUS",
+                header: "COURSE ID",
                 size: 100,
                 Cell: ({ cell }) => <span className="text-m">{cell.getValue()}</span>,
             },
@@ -103,7 +102,7 @@ const AdminDashboard = (props) => {
                                         size="small"
                                         color="#ccc"
                                         style={{ fontSize: "19px", height: "1rem" }}
-                                        onClick={()=>{setUploadForm(true)}}
+                                        onClick={(e) => { e.stopPropagation(); setUploadForm(true) }}
                                     />
                                 </Tooltip>
                             </IconButton>
@@ -114,7 +113,7 @@ const AdminDashboard = (props) => {
                                         size="small"
                                         color="#ccc"
                                         style={{ fontSize: "19px", height: "1rem" }}
-                                        onClick={() => { HandleDelete(row._valuesCache.id) }}
+                                        onClick={(e) => { e.stopPropagation(); HandleDelete(row._valuesCache.id) }}
                                     />
                                 </Tooltip>
                             </IconButton>
@@ -208,7 +207,7 @@ const AdminDashboard = (props) => {
                     width: "96%",
                     height: "90vh",
                     overflowY: "auto",
-                    backgroundColor:"var(--btn-text-clr)",
+                    backgroundColor: "var(--btn-text-clr)",
                 }}
             >
                 <>
@@ -220,7 +219,7 @@ const AdminDashboard = (props) => {
                                 size: 5,
                                 muiTableHeadCellProps: {
                                     sx: {
-                                        paddingLeft: "25px",                                       
+                                        paddingLeft: "25px",
                                     },
                                 },
                                 muiTableBodyCellProps: {
@@ -275,6 +274,7 @@ const AdminDashboard = (props) => {
                     aria-labelledby="draggable-dialog-title"
                     PaperComponent={PaperComponent}
                 >
+
                     <AdminForm CloseAdminform={CloseAdminform} />
                 </Dialog>
             </div>
@@ -284,7 +284,8 @@ const AdminDashboard = (props) => {
                     aria-labelledby="draggable-dialog-title"
                     PaperComponent={PaperComponent}
                 >
-                    <UploadForm CloseUploadform={CloseUploadform} />
+                    {/* <UploadForm CloseUploadform={CloseUploadform} /> */}
+                    <Dynamic CloseUploadform={CloseUploadform} />
                 </Dialog>
             </div>
 
