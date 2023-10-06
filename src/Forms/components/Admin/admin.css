@@ -7,6 +7,7 @@
     margin: 3px;
     margin-left: 8%;
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+    
 }
 
 .AdminHeader {
@@ -14,6 +15,7 @@
     justify-content: space-between;
 
 }
+
 
 .PaHeadTop {
     display: flex;
@@ -36,3 +38,9 @@
   .input_style input[type="file"] {
     display: none;
   }
+#outlined-basic{
+    color:var(--para-clr);
+    background-color:var(--text);
+    border-color: black;
+    
+}

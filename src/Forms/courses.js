@@ -2,6 +2,7 @@ import "../Forms/style/courses.css"
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
 import {
   Accordion,
   AccordionDetails,
@@ -70,7 +71,7 @@ const Courses = () => {
   const classes = useStyles();
 
   const CourseArr = useSelector((state) => state.subscribe.subArr);
-
+  const [isDrawerOpen,setIsDrawerOpen]=useState(true);
   const [open, setOpen] = useState(false);
   const [opendrawer, setOpenDrawer] = useState(false);
   const [Data, setData] = useState("");
@@ -115,6 +116,9 @@ const Courses = () => {
 
   return (
     <>
+    {/* <div>
+    <Tooltip title="Filter"> <FilterListOutlinedIcon className="filterlist" /></Tooltip>
+    </div> */}
       <div style={{
         transition: "width .5s",
         width: opendrawer ? "calc(100% - 17%)" : "100%",
@@ -139,6 +143,7 @@ const Courses = () => {
       {Gridview ? <div className="courseBox">
         {CourseArr.map((item, i) => {
           return (
+            
             <p key={i} className="Cbox">
               <img
                 className="courseImg"
@@ -171,7 +176,7 @@ const Courses = () => {
                   className="subscribe-btn"
                   onClick={() => handleSubscribe(item)}
                 >
-                  {item.subscribe ? "UNSUBCRIBE" : "SUBCRIBE"}
+                  {item.subscribe ? "UNSUBSCRIBE" : "SUBSCRIBE"}
                 </button>
               </div>
             </p>

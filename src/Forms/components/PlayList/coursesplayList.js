@@ -131,7 +131,7 @@ const CoursesPlaylist = () => {
         <Grid container spacing={2} style={{ padding: "1rem" ,width: "96%",
         margin: "0 auto"}}>
             <Grid item xs={9} style={{ paddingRight: '10px' }}>
-                <div>
+                <div >
                     <video key={selectedVideo.id} controls autoPlay type="video/mp4" style={{ background: "black", width: '100%', borderRadius: "1rem", height: "30rem" }}>
                         <source src={selectedVideo?.videoUrl} />
                     </video>
@@ -187,13 +187,13 @@ const CoursesPlaylist = () => {
                 )}
 
             </Grid>
-            <Grid item xs={3} style={{ paddingLeft: '10px' }}>
+            <Grid item xs={3} style={{ padding:"1px", backgroundColor:'var(--form)'}}>
                 <div className="playlist-container">
 
                     <CircularProgress
                         variant="determinate"
                         value={overallProgress}
-                        style={{ position: "absolute", top: "8%", right: "3%", width: "2.5rem", height: "2.5rem" }}
+                        style={{ position: "absolute", top: "9.4%", right: "3.5%", width: "2.5rem", height: "2.5rem" }}
                     />
                     <Tooltip title={TotalVid}>
                         <img
@@ -201,8 +201,8 @@ const CoursesPlaylist = () => {
                             alt="Trophy"
                             style={{
                                 position: 'absolute',
-                                top: '10.5%',
-                                right: '2.5%',
+                                top: '12.1%',
+                                right: '2.9%',
                                 transform: 'translate(-50%, -50%)',
                                 width: '1.8rem', 
                                 height: '1.8rem', 
@@ -211,11 +211,11 @@ const CoursesPlaylist = () => {
                             }}
                         />
                     </Tooltip>
-                    <div style={{ marginBottom: '10px', padding: "1rem" }}>
-                        <h2 className='content'>Course content</h2>
+                    <div style={{ marginBottom: '1rem', padding: "1.1rem" }}>
+                        <h2 className='content1'>Course content</h2>
                     </div>
                     {playlistData.map((chapterData, index) => (
-                        <Accordion className='accord' key={index}>
+                        <Accordion style={{backgroundColor:'var(--text)',width:"21.9rem",marginLeft:"-17px"}}className='accord' key={index}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`panel${index + 1}-a-content`} id={`panel${index + 1}-a-header`}>
                                 <Typography><b>{chapterData.chapter}</b></Typography>
                             </AccordionSummary>

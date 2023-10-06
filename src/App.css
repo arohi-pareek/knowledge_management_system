@@ -65,12 +65,6 @@
   
 }
 
-.content {
-  flex: 1; /* This allows the content area to take up the remaining space */
-  padding-left: 30px; /* Adjust this value to match the width of your sidebar */
-  padding-top: 3rem;
-  
-}
 
 .navbar {
   z-index: 1; 
@@ -95,6 +89,7 @@
   --form:#CCCCCC;
   --foot:#111b20;;
  --comp:#36454F;
+ --text: rgb(152, 145, 145)
 }
 .light-theme{
   --main-heading:#5f99be;
@@ -105,6 +100,7 @@
   --bg-clr:#fff;
   --foot:#111b20;
   --comp:whitesmoke;
+  --text:whitesmoke;
   --shadow: 0 0.188em 1.55em rgb(156, 156, 156);
 }
 
@@ -192,12 +188,14 @@
   line-height: 24px;
 }
 
-.login {
-  height: calc(100vh - 50px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.content {
+  flex: 1; /* This allows the content area to take up the remaining space */
+  padding-left: 30px; /* Adjust this value to match the width of your sidebar */
+  padding-top: 3rem;
+  /* background-color: white; */
+  
 }
+
 
 .wrapper {
   width: 60%;
@@ -209,6 +207,7 @@
   align-items: center;
   border-radius: 20px;
 }
+
 
 
 .left,.right{
@@ -295,11 +294,7 @@
   border-radius: 5px;
 }
 
-.loginTitle{
-  position: absolute;
-  top: 150px;
-  color:lightgray
-}
+
 
 .link{
   color: inherit;

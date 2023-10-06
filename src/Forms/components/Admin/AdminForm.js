@@ -62,7 +62,7 @@ const AdminForm = (props) => {
 
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
+      <form  onSubmit={formik.handleSubmit} style={{backgroundColor:'var(--comp)'}}>
         <DialogTitle
           style={{ cursor: "move" }}
           id="draggable-dialog-title"
@@ -81,19 +81,20 @@ const AdminForm = (props) => {
               <CloseIcon />
             </IconButton>
           </Tooltip>
-          ADD COURSE
+         <h3 style={{color:"var(--main-heading)",fontStyle:"initial"}}> ADD COURSE </h3>
         </DialogTitle>
-        <DialogContent dividers>
-          <Grid container spacing={2}>
+        <DialogContent  dividers>
+          <Grid  container spacing={2}>
             <Grid item xs={6}>
-              <TextField
+              <TextField 
                 fullWidth
                 name="id"
                 id="outlined-basic"
                 label="COURSE ID"
-                variant="outlined"
+               
                 autoComplete="off"
                 size="small"
+               
                 onChange={formik.handleChange}
                 value={formik.values.id}
                 error={formik.touched.id && Boolean(formik.errors.id)}
@@ -107,6 +108,7 @@ const AdminForm = (props) => {
                 id="outlined-basic"
                 label="TYPE"
                 variant="outlined"
+               
                 autoComplete="off"
                 size="small"
                 onChange={formik.handleChange}

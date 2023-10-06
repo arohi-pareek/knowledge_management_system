@@ -193,6 +193,7 @@ import { useDispatch } from "react-redux";
 import ReactDOM from "react-dom";
 import App from "../App";
 import CryptoJS from "crypto-js";
+import "./style/login.css"
 
 const useStyles = makeStyles({
   loginBtn: {

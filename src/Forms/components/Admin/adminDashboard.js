@@ -84,14 +84,16 @@ const AdminDashboard = (props) => {
                 accessorKey: "courseDescription",
                 header: "COURSE DESCRIPTION",
                 size: 100,
+                
                 Cell: ({ cell }) => (
-                    <span className="text-m text-b">{cell.getValue()}</span>
+                    <span className="text-m text-b upperbox">{cell.getValue()}</span>
                 ),
             },
             {
                 accessorKey: "actions", // New column for icons
                 header: "Actions", // You can customize the header name
                 size: 30, // Adjust the size as needed
+                
                 Cell: ({ row }) => {
                     let item = row.original;
                     return (
@@ -130,13 +132,14 @@ const AdminDashboard = (props) => {
             .flatRows.map((row) => row.original);
         return (
             <>
-                <Grid container className="AdminHeader">
+                <Grid  container className="AdminHeader">
                     <Grid item xs={12} className="PaHeadTop">
                         <div
                             style={{
                                 width: "85%",
                                 display: "flex",
                                 justifyContent: "space-between",
+                                
                             }}
                         >
                             {/* <GenericSearch
@@ -160,7 +163,7 @@ const AdminDashboard = (props) => {
                                     <div className="AcIconCon">
                                         <Tooltip title=" MULTIPLE DELETE ">
                                             <IconButton onClick={() => console.log("")}>
-                                                <DeleteIcon fontSize="small" />
+                                                <DeleteIcon fontSize="small"  />
                                             </IconButton>
                                         </Tooltip>
                                     </div>
@@ -211,20 +214,22 @@ const AdminDashboard = (props) => {
                 }}
             >
                 <>
-                    <MaterialReactTable
+                    <MaterialReactTable 
                         data={Accountdetail}
                         columns={columns}
                         displayColumnDefOptions={{
                             "mrt-row-select": {
-                                size: 5,
+                                size: 8,
                                 muiTableHeadCellProps: {
                                     sx: {
                                         paddingLeft: "25px",
+                                        
                                     },
                                 },
                                 muiTableBodyCellProps: {
                                     sx: {
                                         paddingLeft: "25px",
+                                        
                                     },
                                 },
                             },
@@ -244,6 +249,8 @@ const AdminDashboard = (props) => {
                             sx: {
                                 border: "1px solid #8080802b",
                                 height: "80vh",
+                                // backgroundColor:"var(--comp)",
+                                // color:"var(--para-clr)"
                             },
                         })}
                         muiTablePaperProps={() => ({
@@ -269,7 +276,7 @@ const AdminDashboard = (props) => {
             {/* Admin Form  */}
 
             <div>
-                <Dialog
+                <Dialog 
                     open={openAdminform}
                     aria-labelledby="draggable-dialog-title"
                     PaperComponent={PaperComponent}

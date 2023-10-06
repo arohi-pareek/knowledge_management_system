@@ -32,6 +32,7 @@ const Navbar = () => {
     //   navigate(`/courses/search`);
     // }
   };
+  <Tooltip title="SWITCH TO LIST VIEW"></Tooltip>
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {

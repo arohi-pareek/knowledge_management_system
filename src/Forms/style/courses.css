@@ -133,8 +133,22 @@ a {
     align-items: center;
     padding: 17px;
     margin-left: -15px;
-    color: var(--main-heading);
+    color:var(--main-heading);
 }
+.filterlist{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    
+    cursor: pointer;
+}
+/* 
+.courseBox {
+    height: auto;
+    width: 100%;
+    display: flex;
+
+
+} */
 
 .Cbox {
 
@@ -159,13 +173,13 @@ a {
 .subscribe-btn {
     width: 80%;
     height: 2em;
-    background-color: var(--btn-bg-color);
+    background-color:#111b20;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.5s;
     cursor: pointer;
-    color: var(--btn-text-clr);
+    color: white;
     border-radius: 4px;
     padding: 19px;
     margin-left: 35px;
