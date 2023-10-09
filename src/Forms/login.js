@@ -290,6 +290,7 @@ const Login = () => {
         document.body.style.zoom = "95%";
         // ReactDOM.render(<App />, document.getElementById("root"));
         navigate("/dashboard");
+        callMessageOut("Logged In Successfully", "success");
       }
     } catch (error) {
       setCred({
