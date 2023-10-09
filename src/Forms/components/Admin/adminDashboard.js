@@ -6,12 +6,15 @@ import {
 import React, { useEffect, useMemo, useState } from 'react'
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
+import UploadIcon from '@mui/icons-material/Upload';
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./admin.css"
 import AdminForm from './AdminForm';
+import UploadForm from './uploadForm';
 import Draggable from 'react-draggable';
 import { useDispatch, useSelector } from 'react-redux';
 import { DeleteCourse, GetCourse } from '../Redux/Actions/firstaction';
+import Dynamic from './Dynamic';
 
 function PaperComponent(props) {
     return (
@@ -29,6 +32,7 @@ const AdminDashboard = (props) => {
     const dispatch = useDispatch();
 
     const [openAdminform, setOpenAdmin] = useState(false);
+    const [openUploadform, setUploadForm] = useState(false);
 
     const OpenAdminform = () => {
         setOpenAdmin(true);
@@ -38,10 +42,11 @@ const AdminDashboard = (props) => {
         dispatch(GetCourse())
     }, [])
 
-
-
     const CloseAdminform = () => {
         setOpenAdmin(false);
+    };
+    const CloseUploadform = () => {
+        setUploadForm(false);
     };
 
     const HandleDelete = (id) => {
@@ -63,7 +68,7 @@ const AdminDashboard = (props) => {
             },
             {
                 accessorKey: "id",
-                header: "COURSE STATUS",
+                header: "COURSE ID",
                 size: 100,
                 Cell: ({ cell }) => <span className="text-m">{cell.getValue()}</span>,
             },
@@ -94,11 +99,12 @@ const AdminDashboard = (props) => {
                     return (
                         <>
                             <IconButton>
-                                <Tooltip title="EDIT">
-                                    <EditIcon
+                                <Tooltip title="UPLOAD VIDEO">
+                                    <UploadIcon
                                         size="small"
                                         color="#ccc"
                                         style={{ fontSize: "19px", height: "1rem" }}
+                                        onClick={(e) => { e.stopPropagation(); setUploadForm(true) }}
                                     />
                                 </Tooltip>
                             </IconButton>
@@ -109,7 +115,7 @@ const AdminDashboard = (props) => {
                                         size="small"
                                         color="#ccc"
                                         style={{ fontSize: "19px", height: "1rem" }}
-                                        onClick={() => { HandleDelete(row._valuesCache.id) }}
+                                        onClick={(e) => { e.stopPropagation(); HandleDelete(row._valuesCache.id) }}
                                     />
                                 </Tooltip>
                             </IconButton>
@@ -204,7 +210,7 @@ const AdminDashboard = (props) => {
                     width: "96%",
                     height: "90vh",
                     overflowY: "auto",
-                    
+                    backgroundColor: "var(--btn-text-clr)",
                 }}
             >
                 <>
@@ -252,7 +258,8 @@ const AdminDashboard = (props) => {
                                 padding: "0rem 1rem",
                                 border: "0",
                                 boxShadow: "none",
-                                backgroundColor:"var(--form)"                            },
+                                backgroundColor:"var(--btn-text-clr)",
+                            },
                         })}
                     />
                     {/* <PaginationComp
@@ -274,9 +281,21 @@ const AdminDashboard = (props) => {
                     aria-labelledby="draggable-dialog-title"
                     PaperComponent={PaperComponent}
                 >
+
                     <AdminForm CloseAdminform={CloseAdminform} />
                 </Dialog>
             </div>
+            <div>
+                <Dialog
+                    open={openUploadform}
+                    aria-labelledby="draggable-dialog-title"
+                    PaperComponent={PaperComponent}
+                >
+                    {/* <UploadForm CloseUploadform={CloseUploadform} /> */}
+                    <Dynamic CloseUploadform={CloseUploadform} />
+                </Dialog>
+            </div>
+
         </>
     )
 }

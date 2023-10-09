@@ -64,6 +64,659 @@ const playlistData = [
         ]
     },
     {
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },{
+        chapter: "CHAPTER 1 : INTRODUCTION",
+        videos: [
+            {
+                id: 1,
+                title: 'Introduction to React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 2,
+                title: 'How to Setup and Install',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            },
+            {
+                id: 3,
+                title: 'Props in React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 4,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 5,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 6,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+        ]
+    },
+    {
+        chapter: "CHAPTER 2 : ANOTHER CHAPTER",
+        videos: [
+            {
+                id: 7,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+            {
+                id: 8,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 9,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            }
+        ]
+    },
+    {
+        chapter: "CHAPTER 2 : ANOTHER CHAPTER",
+        videos: [
+            {
+                id: 7,
+                title: 'Setstate method in react js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            },
+            {
+                id: 8,
+                title: 'Angular vs React js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+                watched: true
+            }, {
+                id: 9,
+                title: 'How to connect React js with Node js',
+                duration: '5:30',
+                description: 'This is the first video.',
+                videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+                thumbnail: "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk="
+            }
+        ]
+    },
+    {
         chapter: "CHAPTER 2 : ANOTHER CHAPTER",
         videos: [
             {
@@ -102,13 +755,16 @@ const calculateOverallProgress = () => {
     const watchedVideos = playlistData.reduce((total, chapter) => {
         return total + chapter.videos.filter(video => video.watched).length;
     }, 0);
-
+   
     return (watchedVideos / totalVideos) * 100;
 };
 
 const overallProgress = calculateOverallProgress();
 
 const CoursesPlaylist = () => {
+    const scrollbarTrackStyle = {
+        background: 'red', // Set the background color of the scrollbar track
+      };
     const [selectedVideo, setSelectedVideo] = useState(playlistData[0]);
     const [selectedTab, setSelectedTab] = useState(0);
 
@@ -120,7 +776,7 @@ const CoursesPlaylist = () => {
         setSelectedVideo(video);
         console.log(video)
     };
-
+    
     const selectedVideoInfo = playlistData.find((video) => video === selectedVideo);
 
     const totalVideos = playlistData.reduce((total, chapter) => total + chapter.videos.length, 0);
@@ -186,8 +842,10 @@ const CoursesPlaylist = () => {
                     </div>
                 )}
 
+
             </Grid>
-            <Grid item xs={3} style={{ padding:"1px", backgroundColor:'var(--form)'}}>
+           
+            <Grid  className="maingrid"item xs={3} style={{padding:"1px",display:'flex',flexdirection:'column', backgroundColor:'var(--form)',maxheight:'300px',overflowy:'auto'}}>
                 <div className="playlist-container">
 
                     <CircularProgress
@@ -211,7 +869,7 @@ const CoursesPlaylist = () => {
                             }}
                         />
                     </Tooltip>
-                    <div style={{ marginBottom: '1rem', padding: "1.1rem" }}>
+                    <div style={{ marginBottom: '1rem', padding: "1.1rem",position:'sticky',top:'0px' }}>
                         <h2 className='content1'>Course content</h2>
                     </div>
                     {playlistData.map((chapterData, index) => (
@@ -241,8 +899,8 @@ const CoursesPlaylist = () => {
                     ))}
                 </div>
             </Grid>
-
-        </Grid>
+        </Grid>    
+        
     );
 };
 

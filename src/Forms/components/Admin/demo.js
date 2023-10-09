@@ -1,416 +1,286 @@
-import React, { useMemo, useState, useEffect } from "react";
-import "../CSS/leads.css";
 import {
-  MRT_ShowHideColumnsButton,
-  MaterialReactTable,
-} from "material-react-table";
-import { Fab, Paper, Tooltip, IconButton, Grid } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-import { FiEdit2 } from "react-icons/fi";
-import { useTranslation } from "react-i18next";
-import Draggable from "react-draggable";
-import { AiOutlineHistory } from "react-icons/ai";
-import DeleteIcon from "@mui/icons-material/Delete";
-import GenericSearch from "app/views/utilities/GenericSearch";
-import GenericFilterMenu from "app/views/utilities/GenericFilterMenu";
-import GenericChip from "app/views/utilities/GenericChips";
-import Dialog from "@mui/material/Dialog";
-import { acountdetails } from "app/redux/actions/acountsAction.js/fetchacountsdata";
-import { useDispatch, useSelector } from "react-redux";
-import _ from "lodash";
-import PaginationComp from "app/views/utilities/PaginationComp";
-import LeadForm from "./LeadForm";
+  Button,
+  Grid,
+  makeStyles,
+  IconButton,
+  DialogActions,
+  DialogContent,
+  MenuItem,
+} from "@material-ui/core";
+import * as Yup from "yup";
+import { Field, FieldArray, Form, Formik } from "formik";
+import { connect, useDispatch } from "react-redux";
+import { Select, TextField, Switch } from "formik-material-ui";
+import React from "react";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons//Delete";
+import { setSnackbar } from "app/camunda_redux/redux/ducks/snackbar";
+import { Done } from "@material-ui/icons";
+import { useState } from "react";
+import { DocType } from "../../../camunda_redux/redux/action";
 
-function PaperComponent(props) {
-  return (
-    <Draggable
-      handle="#draggable-dialog-title"
-      cancel={'[class*="MuiDialogContent-root"]'}
-    >
-      <Paper {...props} />
-    </Draggable>
-  );
-}
+const Create = (props) => {
+  let reset;
 
-const Leads = (props) => {
-  const [pageSize, setPageSize] = useState(10);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalCount, setTotalCount] = useState(0);
-  const [pageSizes] = useState([5, 10, 15]);
-  const [SortBy, setSortBy] = useState({});
-  const [Filter, setFilter] = useState({});
-  const [tooltip, setTooltip] = useState(false);
-  const [openlead, setOpenlead] = useState(false);
+  const empty = {
+    attributeName: "",
+    attributeType: "String",
+    value: "",
+    isMandatory: false,
+  };
+
+  const { dialogClose } = props;
   const dispatch = useDispatch();
+  const [selected, setSelected] = useState("");
 
-  const { t } = useTranslation();
-
-  const FilterOption = [
-    {
-      value: "Select Field",
-      label: "Select Field",
-    },
-    {
-      value: "account",
-      label: "ACCOUNT",
-    },
-    {
-      value: "status",
-      label: "LEAD STATUS",
-    },
-    {
-      value: "leadTitle",
-      label: "LEAD TITLE",
-    },
-  ];
-  const StatusOption = [
-    "In Progress",
-    "Approved",
-    "Draft",
-    "Rejected",
-    "Return",
+  const attributeType = [
+    { title: "String" },
+    { title: "Int" },
+    { title: "Date" },
   ];
 
-  const FilterTypes = {
-    type: "select",
-    optionValue: FilterOption,
-    size: "small",
-    variant: "outlined",
-    label: "Filter-By",
-    color: "primary",
-  };
-
-  const FilterValueTypes = [
-    {
-      name: "subject",
-      type: "text",
-      size: "small",
-      variant: "outlined",
-      label: "Value",
-      color: "primary",
-    },
-    {
-      name: "pfileName",
-      type: "text",
-      size: "small",
-      variant: "outlined",
-      label: "Value",
-      color: "primary",
-    },
-    {
-      name: "createdOn",
-      type: "date",
-      size: "small",
-      variant: "outlined",
-      color: "primary",
-    },
-    {
-      name: "status",
-      type: "select",
-      optionValue: StatusOption,
-      size: "small",
-      variant: "outlined",
-      label: "Value",
-      color: "primary",
-    },
-  ];
-
-  const SortValueTypes = [
-    {
-      name: "account",
-      type: "text",
-      size: "small",
-      variant: "outlined",
-      label: "Account",
-      color: "primary",
-    },
-    {
-      name: "status",
-      type: "text",
-      size: "small",
-      variant: "outlined",
-      label: "Lead Status",
-      color: "primary",
-    },
-    {
-      name: "leadTitle",
-      type: "date",
-      size: "small",
-      variant: "outlined",
-      color: "primary",
-      label: "Lead Title",
-    },
-  ];
-
-  const addFilter = (e, type, value) => {
-    e.preventDefault();
-    let newFilter = { ...Filter };
-    if (value) {
-      newFilter[`${type}`] = value;
-      unstable_batchedUpdates(() => {
-        setFilter(newFilter);
-        setCurrentPage(0);
-        setPageSize(10);
-      });
-    }
-  };
-
-  const deleteChip = (property) => {
-    let newFilter = { ...Filter };
-    delete newFilter[`${property}`];
-    setFilter(newFilter);
-  };
-
-  const addSort = (sortObj) => {
-    setSortBy(sortObj);
-  };
-
-  useEffect(() => {
-    console.log("render");
-    // Define the filter object
-    let filter = {};
-    Object.entries(Filter).forEach(([property, value]) => {
-      let key = property.split("|")[0];
-      filter[`${key}`] = value;
-    });
-    // Dispatch the ProductAction function with the filter object and SortBy
-    dispatch(
-      acountdetails(pageSize, currentPage, {
-        filter: _.isEmpty(filter) ? null : filter,
-        sort: _.isEmpty(SortBy) ? null : SortBy,
-      })
-    );
-  }, [pageSize, currentPage, Filter, SortBy]);
-
-  const Accountdetail = useSelector((state) => state.acountdetails.acountdata);
-
-  // --------------------------  Acount Form & Account edit  ---------------------------------
-
-  const openleadform = () => {
-    setOpenlead(true);
-  };
-
-  const openleadformclose = () => {
-    setOpenlead(false);
-  };
-
-  // --------------------------  Lead Form & Account edit end ---------------------------------
-
-  const columns = useMemo(
-    () => [
-      {
-        accessorKey: "accountName",
-        header: "ACCOUNT",
-        size: 100,
-        Cell: ({ cell }) => (
-          <span className="text-m text-b">{cell.getValue()}</span>
-        ),
-      },
-      {
-        accessorKey: "phone",
-        header: "LEAD STATUS",
-        size: 100,
-        Cell: ({ cell }) => <span className="text-m">{cell.getValue()}</span>,
-      },
-      {
-        accessorKey: "email",
-        header: "LEAD TITLE",
-        size: 100,
-        Cell: ({ cell }) => (
-          <span className="text-m text-b">{cell.getValue()}</span>
-        ),
-      },
-      {
-        accessorKey: "city",
-        header: "LEAD DESCRIPTION",
-        size: 100,
-        Cell: ({ cell }) => (
-          <span className="text-m text-b">{cell.getValue()}</span>
-        ),
-      },
-      {
-        accessorKey: "actions", // New column for icons
-        header: "Actions", // You can customize the header name
-        size: 30, // Adjust the size as needed
-        Cell: ({ row }) => {
-          let item = row.original;
-          return (
-            <>
-              <IconButton>
-                <Tooltip title="EDIT">
-                  <EditIcon
-                    size="small"
-                    color="#ccc"
-                    style={{ fontSize: "19px", height: "1rem" }}
-                  />
-                </Tooltip>
-              </IconButton>
-
-              <IconButton>
-                <Tooltip title="DELETE">
-                  <DeleteIcon
-                    size="small"
-                    color="#ccc"
-                    style={{ fontSize: "19px", height: "1rem" }}
-                  />
-                </Tooltip>
-              </IconButton>
-            </>
-          );
-        },
-      },
-    ],
-    [Accountdetail]
-  );
-
-  const CustomToolbarMarkup = ({ table }) => {
-    const selectid = table
-      .getSelectedRowModel()
-      .flatRows.map((row) => row.original);
-    return (
-      <>
-        <Grid container className="AcHeader">
-          <Grid item xs={12} className="PaHeadTop">
-            <div
-              style={{
-                width: "85%",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <GenericSearch
-                FilterTypes={FilterTypes}
-                FilterValueTypes={FilterValueTypes}
-                addFilter={addFilter}
-                cssCls={{}}
-              />
-              <div style={{ display: "flex" }}>
-                {selectid.length > 1 && (
-                  <div className="AcIconCon">
-                    <Tooltip title=" MULTIPLE EDIT ">
-                      <IconButton>
-                        <EditIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                  </div>
-                )}
-
-                {selectid.length > 1 && (
-                  <div className="AcIconCon">
-                    <Tooltip title=" MULTIPLE DELETE ">
-                      <IconButton onClick={() => multipledelete(selectid)}>
-                        <DeleteIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                  </div>
-                )}
-              </div>
-            </div>
-            <GenericFilterMenu
-              SortValueTypes={SortValueTypes}
-              addSort={addSort}
-            />
-            <div className="PaIconCon">
-              <Tooltip title="CREATE LEAD">
-                <span>
-                  <Fab
-                    onClick={openleadform}
-                    style={{
-                      width: "2.2rem",
-                      height: ".1rem",
-                      backgroundColor: "rgb(230, 81, 71)",
-                    }}
-                  >
-                    <AddIcon style={{ fontSize: "19", color: "#fff" }} />
-                  </Fab>
-                </span>
-              </Tooltip>
-            </div>
-            <MRT_ShowHideColumnsButton table={table} />
-          </Grid>
-          <GenericChip Filter={Filter} deleteChip={deleteChip} />
-        </Grid>
-      </>
-    );
-  };
   return (
-    <>
-      <Paper
-        elevation={3}
-        style={{
-          position: "relative",
-          borderRadius: "9px",
-        }}
-      >
-        <div>
-          <MaterialReactTable
-            data={Accountdetail}
-            columns={columns}
-            displayColumnDefOptions={{
-              "mrt-row-select": {
-                size: 5,
-                muiTableHeadCellProps: {
-                  sx: {
-                    paddingLeft: "25px",
-                  },
-                },
-                muiTableBodyCellProps: {
-                  sx: {
-                    paddingLeft: "25px",
-                  },
-                },
-              },
-            }}
-            enableBottomToolbar={false}
-            enableColumnResizing
-            enableStickyHeader
-            enableRowSelection
-            // enableRowNumbers
-            enableFilters={false}
-            enableFullScreenToggle={false}
-            enableDensityToggle={false}
-            renderTopToolbar={({ table }) => (
-              <CustomToolbarMarkup table={table} />
-            )}
-            muiTableContainerProps={() => ({
-              sx: {
-                border: "1px solid #8080802b",
-                height: "60vh",
-              },
-            })}
-            muiTablePaperProps={() => ({
-              sx: {
-                padding: "0rem 1rem",
-                border: "0",
-                boxShadow: "none",
-              },
-            })}
-          />
-          <PaginationComp
-            pageSize={pageSize}
-            pageSizes={pageSizes}
-            setCurrentPage={setCurrentPage}
-            currentPage={currentPage}
-            totalCount={totalCount}
-            setPageSize={setPageSize}
-          />
-        </div>
-      </Paper>
+    <Formik
+      initialValues={{
+        filetype: "",
+        metadata: [empty],
+      }}
+      validationSchema={Yup.object().shape({
+        filetype: Yup.string()
+          .required("Your Document Type is required")
+          .max(255, "Your Document Type needs to be at most 255 characters"),
 
-      {/ --------------------------- CREATE LEAD FORM   /}
+        metadata: Yup.array().of(
+          Yup.object().shape({
+            attributeName: Yup.string()
+              .required(" Name is needed")
+              .max(32, " Name needs to be at most 32 characters"),
 
-      <div>
-        <Dialog
-          open={openlead}
-          aria-labelledby="draggable-dialog-title"
-          PaperComponent={PaperComponent}
-        >
-          <LeadForm openleadformclose={openleadformclose} />
-        </Dialog>
-      </div>
-    </>
+            value: Yup.string()
+              .when("attributeType", {
+                is: "String",
+                then: Yup.string(),
+                otherwise: Yup.string(),
+              })
+              .when("attributeType", {
+                is: "Int",
+                then: Yup.string().matches(
+                  /^\d+$/,
+                  "Number field should be a valid number"
+                ),
+                otherwise: Yup.string(),
+              })
+              .when("attributeType", {
+                is: "Date",
+                then: Yup.string(),
+                // .matches(/^\d+$/, "Date field should be a valid date"),
+                otherwise: Yup.string(),
+              }),
+          })
+        ),
+      })}
+      onSubmit={(values) => {
+        props
+          .DocType(values.filetype, values.metadata)
+          .then(async (response) => {
+            console.log(response);
+            try {
+              if (response.error) {
+                dispatch(setSnackbar(true, "error", response.error));
+                reset();
+                return;
+              } else {
+                console.log("res", response);
+                const selectEle = document?.getElementById("dd");
+                let option = document?.createElement("option");
+                option.value = response?.data?.type;
+                const capitalizeFirstLetter = (str) =>
+                  str.charAt(0).toUpperCase() + str.slice(1);
+                option.text = capitalizeFirstLetter(response?.data?.type);
+                selectEle?.appendChild(option);
+
+                dispatch(setSnackbar(true, "success", response.msg));
+                dialogClose();
+                reset();
+                return;
+              }
+            } catch (error) {
+              dispatch(setSnackbar(true, "error", error.message));
+            }
+          })
+          .catch((error) => {
+            callMessageOut(error.message);
+          });
+      }}
+    >
+      {({ values, handleReset, handleChange, errors }) => {
+        reset = handleReset;
+        console.log("sdsdfew", errors);
+
+        return (
+          <Form autoComplete="off">
+            <DialogContent dividers>
+              <Field
+                name="filetype"
+                component={TextField}
+                label="Document Type"
+                fullWidth
+                size="small"
+              />
+
+              <FieldArray name="metadata">
+                {({ push, remove }) => (
+                  <React.Fragment>
+                    {values.metadata.map((_, index) => {
+                      let type = _.attributeType;
+                      setSelected(type);
+                      console.log("erf", selected);
+                      return (
+                        <Grid
+                          key={index}
+                          container
+                          spacing={2}
+                          style={{ marginTop: ".5rem" }}
+                        >
+                          <Grid item xs={3}>
+                            <Field
+                              name={`metadata.${index}.attributeName`}
+                              component={TextField}
+                              label="Attribute Name"
+                              size="small"
+                            />
+                          </Grid>
+
+                          <Grid item xs={3}>
+                            <Field
+                              name={`metadata.[${index}].attributeType`}
+                              component={Select}
+                              label="Attribute Type"
+                              style={{
+                                width: "9.5rem",
+                              }}
+                              size="small"
+                              onChange={handleChange}
+                            >
+                              {attributeType.map((option) => (
+                                <MenuItem
+                                  key={option.title}
+                                  value={option.title}
+                                >
+                                  {option.title}
+                                </MenuItem>
+                              ))}
+                            </Field>
+                          </Grid>
+
+                          <Grid item xs={3}>
+                            {type === "String" ? (
+                              <Field
+                                name={`metadata[${index}].value`}
+                                component={TextField}
+                                type="text"
+                                label="Default Value"
+                                size="small"
+                                onChange={handleChange}
+                              />
+                            ) : type === "Int" ? (
+                              <Field
+                                name={`metadata[${index}].value`}
+                                component={TextField}
+                                type="number"
+                                label="Default Value"
+                                size="small"
+                                onChange={handleChange}
+                              />
+                            ) : (
+                              <Field
+                                type="Date"
+                                name={`metadata[${index}].value`}
+                                component={TextField}
+                                size="small"
+                                onChange={handleChange}
+                              />
+                            )}
+                          </Grid>
+
+                          <Grid
+                            item
+                            xs={3}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <div
+                              style={{
+                                marginTop: "-1rem",
+                                display: "flex",
+                                flexDirection: "column",
+                              }}
+                            >
+                              Mandatory
+                              <Field
+                                name={`metadata.[${index}].isMandatory`}
+                                type="checkbox"
+                                component={Switch}
+                                label="Mandatory"
+                                checked={values.isMandatory}
+                                onChange={handleChange}
+                              />
+                            </div>
+                            {values.metadata.length === 1 ? (
+                              <IconButton aria-label="delete" disabled>
+                                <DeleteIcon />
+                              </IconButton>
+                            ) : (
+                              <IconButton
+                                color="primary"
+                                onClick={() => remove(index)}
+                              >
+                                <DeleteIcon />
+                              </IconButton>
+                            )}
+
+                            <IconButton
+                              variant="contained"
+                              color="primary"
+                              onClick={() => push(empty)}
+                            >
+                              <AddIcon />
+                            </IconButton>
+                          </Grid>
+                        </Grid>
+                      );
+                    })}
+                  </React.Fragment>
+                )}
+              </FieldArray>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                className="submitBtn"
+                type="submit"
+                endIcon={<Done />}
+                variant="contained"
+                color="primary"
+              >
+                SAVE
+              </Button>
+            </DialogActions>
+          </Form>
+        );
+      }}
+    </Formik>
   );
 };
 
-export default Leads;
+function mapStateToProps(state) {
+  return {
+    props: state.props,
+  };
+}
+
+export default connect(mapStateToProps, {
+  DocType,
+})(Create);

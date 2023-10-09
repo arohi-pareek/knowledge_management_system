@@ -37,9 +37,17 @@
     content: counter(my-counter) ". "; /* Use a counter to display numbers */
     counter-increment: my-counter;
   }
+  .maingrid ::-webkit-scrollbar{
+    width:5px;
+  }
+  .maingrid ::-webkit-scrollbar-thumb{
+    background-color: white;
+  }
+
 
   .playlist-container {
     padding: 1rem;
+    
     
   }
   

@@ -10,7 +10,7 @@ const FilterCourses = () => {
     return (
         <>
         
-            <Typography> 100 result for searchData </Typography>
+          
             <Accordion style={{backgroundColor:'var(--form)'}} defaultExpanded >
                 <AccordionSummary 
                     expandIcon={<ExpandMoreIcon />}
@@ -75,7 +75,7 @@ const FilterCourses = () => {
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion style={{backgroundColor:'var(--form)'}}>
+            <Accordion style={{backgroundColor:'#fff'}}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"

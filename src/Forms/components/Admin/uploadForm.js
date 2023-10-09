@@ -3,66 +3,70 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import CloseIcon from "@mui/icons-material/Close";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons//Delete";
 import {
-  Tooltip,
-  IconButton,
-  Grid,
-  Button,
-  TextField,
-  Autocomplete,
+    Tooltip,
+    IconButton,
+    Grid,
+    Button,
+    TextField,
+    Autocomplete,
 } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { AddCourse } from "../Redux/Actions/firstaction";
 import { useDispatch } from "react-redux";
+import { MenuItem } from "@material-ui/core";
+import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 
 const statusS = [
-  { label: "Commit" },
-  { label: "Low" },
-  { label: "High" },
-  { label: "Week" },
-  { label: "Fast" },
+    { label: "Commit" },
+    { label: "Low" },
+    { label: "High" },
+    { label: "Week" },
+    { label: "Fast" },
 ];
 
-const AdminForm = (props) => {
-  const { CloseAdminform } = props;
-  const dispatch = useDispatch();
+const UploadForm = (props) => {
+    const { CloseUploadform } = props;
+    const dispatch = useDispatch();
 
-  const initialValues = {
-    id: "",
-    type: "",
-    courseName: "",
-    courseDescription: "",
-  };
+    const initialValues = {
+        id: "",
+        type: "",
+        courseName: "",
+        courseDescription: "",
+    };
 
-  const validationSchema = Yup.object().shape({
-    id: Yup.number().required("Course ID is required"),
-    type: Yup.string().required("type is required"),
-    courseName: Yup.string().required("Course Title is required"),
-    courseDescription: Yup.string()
-      .notRequired() // Makes the field not required
-      .max(100, "Course Description must not exceed 100 characters"),
-  });
+    const validationSchema = Yup.object().shape({
+        id: Yup.number().required("Course ID is required"),
+        type: Yup.string().required("type is required"),
+        courseName: Yup.string().required("Course Title is required"),
+        courseDescription: Yup.string()
+            .notRequired() // Makes the field not required
+            .max(100, "Course Description must not exceed 100 characters"),
+    });
 
-  const formik = useFormik({
-    initialValues: initialValues,
-    validationSchema: validationSchema,
-    onSubmit: function (values) {
-      CloseAdminform()
-        let formData = {
-            ...values,
-            registeredUsers: ["1400"],
-            uploadedBy : "1400",
-          };
-        dispatch(
-            AddCourse(formData)
-          );
-    },
-  });
+    const formik = useFormik({
+        initialValues: initialValues,
+        validationSchema: validationSchema,
+        onSubmit: function (values) {
+            CloseUploadform()
+            let formData = {
+                ...values,
+                registeredUsers: ["1400"],
+                uploadedBy: "1400",
+            };
+            dispatch(
+                AddCourse(formData)
+            );
+        },
+    });
 
-  return (
-    <>
-      <form  onSubmit={formik.handleSubmit} style={{backgroundColor:'var(--comp)'}}>
+    return (
+        <>
+            <form onSubmit={formik.handleSubmit}>
         <DialogTitle
           style={{ cursor: "move" }}
           id="draggable-dialog-title"
@@ -70,7 +74,7 @@ const AdminForm = (props) => {
         >
           <Tooltip title="CLOSE">
             <IconButton
-              onClick={() => CloseAdminform()}
+              onClick={() => CloseUploadform()}
               aria-label="close"
               style={{
                 position: "absolute",
@@ -81,20 +85,19 @@ const AdminForm = (props) => {
               <CloseIcon />
             </IconButton>
           </Tooltip>
-         <h3 style={{color:"var(--main-heading)",fontStyle:"initial"}}> ADD COURSE </h3>
+          UPLOAD VIDEO
         </DialogTitle>
-        <DialogContent  dividers>
-          <Grid  container spacing={2}>
+        <DialogContent dividers>
+          <Grid container spacing={2}>
             <Grid item xs={6}>
-              <TextField 
+              <TextField
                 fullWidth
                 name="id"
                 id="outlined-basic"
                 label="COURSE ID"
-               
+                variant="outlined"
                 autoComplete="off"
                 size="small"
-               
                 onChange={formik.handleChange}
                 value={formik.values.id}
                 error={formik.touched.id && Boolean(formik.errors.id)}
@@ -108,7 +111,6 @@ const AdminForm = (props) => {
                 id="outlined-basic"
                 label="TYPE"
                 variant="outlined"
-               
                 autoComplete="off"
                 size="small"
                 onChange={formik.handleChange}
@@ -177,8 +179,9 @@ const AdminForm = (props) => {
           </Button>
         </DialogActions>
       </form>
-    </>
-  );
+
+        </>
+    );
 };
 
-export default AdminForm;
+export default UploadForm;

@@ -30,12 +30,13 @@
 .AcIconCon {
     margin-left: 20%;
 }
-#outlined-basic{
-    color:var(--para-clr);
-    background-color:var(--text);
-    border-color: black;
-    
-}
-.text-m{
-    background-color: red;
-}
+
+.input_style {
+    display: table;
+    color: #fff;
+    margin-top: 3px;
+  }
+  
+  .input_style input[type="file"] {
+    display: none;
+  }
