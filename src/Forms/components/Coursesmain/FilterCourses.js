@@ -1,24 +1,29 @@
 import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, Typography } from '@material-ui/core'
 import React from 'react'
+import { Drawer,Box} from "@mui/material"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Cookies from 'js-cookie';
+import { useState } from 'react';
 
 const FilterCourses = () => {
+   
     return (
         <>
+        
             <Typography> 100 result for searchData </Typography>
-            <Accordion defaultExpanded>
-                <AccordionSummary
+            <Accordion style={{backgroundColor:'var(--form)'}} defaultExpanded >
+                <AccordionSummary 
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className='rate' 
                 >
-                    <Typography><b>Ratings</b></Typography>
+                    <Typography><b >Ratings</b></Typography>
                 </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        <div>
-                            <FormControlLabel
+                <AccordionDetails className='rate'>
+                    <Typography >
+                        <div >
+                            <FormControlLabel   
                                 control={<Checkbox color="primary" />}
                                 label="4.5 & more"
                             />
@@ -38,7 +43,7 @@ const FilterCourses = () => {
                     </Typography>
                 </AccordionDetails>
             </Accordion>
-            <Accordion defaultExpanded>
+            <Accordion  style={{backgroundColor:'var(--form)'}}defaultExpanded>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -46,7 +51,7 @@ const FilterCourses = () => {
                 >
                     <Typography><b>Language</b></Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails className='rate'>
                     <Typography>
                         <div>
                             <FormControlLabel
@@ -70,7 +75,7 @@ const FilterCourses = () => {
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion>
+            <Accordion style={{backgroundColor:'var(--form)'}}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -78,7 +83,7 @@ const FilterCourses = () => {
                 >
                     <Typography><b>Video duration</b></Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails className='rate'>
                     <Typography>
                         <div>
                             <FormControlLabel
@@ -102,7 +107,7 @@ const FilterCourses = () => {
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion>
+            <Accordion style={{backgroundColor:'var(--form)'}}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -110,7 +115,7 @@ const FilterCourses = () => {
                 >
                     <Typography><b>Topic</b></Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails className='rate'>
                     <Typography>
                         <div>
                             <FormControlLabel
@@ -134,7 +139,7 @@ const FilterCourses = () => {
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion>
+            <Accordion style={{backgroundColor:'var(--form)'}}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -142,7 +147,7 @@ const FilterCourses = () => {
                 >
                     <Typography><b>Features</b></Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails className='rate'>
                     <Typography>
                         <div>
                             <FormControlLabel
@@ -165,8 +170,15 @@ const FilterCourses = () => {
                     </Typography>
                 </AccordionDetails>
             </Accordion>
+            
+           
         </>
     )
 }
 
 export default FilterCourses
+
+
+
+
+

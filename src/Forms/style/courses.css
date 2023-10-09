@@ -1,6 +1,7 @@
 * {
     margin: 0;
     box-sizing: border-box;
+
 }
 
 a {
@@ -72,10 +73,34 @@ a {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    background-color: #f7f9fa;
+    background-color: var(--bg-clr);
     justify-content: space-evenly;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
+
+.listview {
+    background-color: none;
+}
+
+/* 
+.Cbox {
+
+    height: 450px;
+    width: 350px;
+    background-color: white;
+    color: black;
+    font-size: 17px;
+    font-family: 'Anton', sans-serif;
+    margin: 10px;
+    border-radius: 8px;
+    border-color: whitesmoke;
+    box-shadow: rgb(180, 177, 177);
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    padding: 19px;
+
+} */
 
 .courseImg {
     height: 180px;
@@ -94,21 +119,28 @@ a {
     align-items: center;
     padding: 17px;
     margin-left: -15px;
+    color:var(--main-heading);
 }
-
+.filterlist{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    
+    cursor: pointer;
+}
+/* 
 .courseBox {
     height: auto;
     width: 100%;
     display: flex;
 
 
-}
+} */
 
 .Cbox {
 
     height: 450px;
     width: 350px;
-    background-color: white;
+    background-color: var(--form);
     color: black;
     font-size: 17px;
     font-family: Arial, Helvetica, sans-serif;
@@ -122,6 +154,7 @@ a {
     padding: 19px;
     position: relative; 
    transition: filter 3s ease;
+
 
 }
 
@@ -138,7 +171,7 @@ a {
 .subscribe-btn {
     width: 80%;
     height: 2em;
-    background-color: black;
+    background-color:#111b20;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -173,66 +206,15 @@ a {
     background-color: whitesmoke;
 }
 
+#DescriptionDialog .MuiDialog-paperWidthSm {
 
-.course-tooltip {
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 999; 
-    max-width: 300px; 
-     
+    height: 80% !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    max-height: 80% !important
+}
+
+#drawer .MuiDrawer-paper {
+   top:5.2rem !important;
+   z-index: 0;
   }
-  
-  .course-tooltip h1 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  .course-tooltip h5 {
-    font-size: 16px;
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
-  
-  .course-tooltip .MuiAccordion-root {
-    background-color: transparent; 
-    border: none;
-    box-shadow: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .course-tooltip .MuiAccordionSummary-root {
-    padding: 0;
-  }
-  
-  .course-tooltip .MuiAccordionSummary-content {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .course-tooltip .MuiAccordionSummary-content.Mui-expanded {
-    margin: 0;
-  }
-  
-  .course-tooltip .MuiAccordionSummary-content.Mui-expanded::before {
-    display: none; 
-  }
-  
-  .course-tooltip .MuiAccordionDetails-root {
-    padding: 0;
-    margin-top: 10px;
-  }
-  
-  .course-tooltip .MuiTypography-root {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
-  
-  
-  

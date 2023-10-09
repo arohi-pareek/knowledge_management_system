@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import "./signUp.css";
 import { useNavigate } from "react-router-dom";
-import Img from "../Udemy-Symbol.png";
 
 const SignUp = () => {
   const navigate = useNavigate();
