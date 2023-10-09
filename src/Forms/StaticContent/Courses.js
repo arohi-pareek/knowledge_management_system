@@ -12,6 +12,7 @@ export const CoursesArr = [
     category: "Programming",
     rating: "3",
     instructor:"jose portilla",
+    language:"English",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",
@@ -51,8 +52,9 @@ export const CoursesArr = [
     category: "Programming",
     rating: "4",
     instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "C++ Programming",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {
@@ -90,8 +92,9 @@ export const CoursesArr = [
     category: "Development",
     rating: "5",
     instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "Web Development",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {
@@ -129,8 +132,9 @@ export const CoursesArr = [
     category: "Development",
     rating: "5",
     instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "ReactJS",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {
@@ -168,8 +172,9 @@ export const CoursesArr = [
     category: "Programming",
     rating: "4",
     instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "Python Programming",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {
@@ -207,8 +212,9 @@ export const CoursesArr = [
     category: "Programming",
     rating: "4",
     instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "Node Js",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {
@@ -246,8 +252,9 @@ export const CoursesArr = [
     category: "Programming",
     rating: "4",
     instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "Python Programming",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {
@@ -285,8 +292,9 @@ export const CoursesArr = [
     category: "Programming",
     rating: "4",
     instructor:"jose portilla",
+    language:"hindi",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "Python Programming",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {

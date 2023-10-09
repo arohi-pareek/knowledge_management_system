@@ -62,7 +62,7 @@ const AdminForm = (props) => {
 
   return (
     <>
-      <form  onSubmit={formik.handleSubmit} style={{backgroundColor:'var(--comp)'}}>
+      <form  onSubmit={formik.handleSubmit} >
         <DialogTitle
           style={{ cursor: "move" }}
           id="draggable-dialog-title"

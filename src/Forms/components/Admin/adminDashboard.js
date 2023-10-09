@@ -142,12 +142,7 @@ const AdminDashboard = (props) => {
                                 
                             }}
                         >
-                            {/* <GenericSearch
-                    FilterTypes={FilterTypes}
-                    FilterValueTypes={FilterValueTypes}
-                    addFilter={addFilter}
-                    cssCls={{}}
-                  /> */}
+{/*                             
                             <div style={{ display: "flex" }}>
                                 {selectid.length > 1 && (
                                     <div className="AcIconCon">
@@ -168,12 +163,9 @@ const AdminDashboard = (props) => {
                                         </Tooltip>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
                         </div>
-                        {/* <GenericFilterMenu
-                  SortValueTypes={SortValueTypes}
-                  addSort={addSort}
-                /> */}
+                       
                         <div className="AdmIconCon">
                             <Tooltip title="ADD COURSE">
                                 <span>

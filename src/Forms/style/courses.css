@@ -123,24 +123,27 @@ a {
     margin-top: 20px;
     box-shadow: #f7f9fa;
     margin-bottom: 20px;
+    background-size: cover;
 
 }
 
 .cTop {
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Anton', sans-serif;
     justify-content: center;
     align-items: center;
     padding: 17px;
     margin-left: -15px;
-    color:var(--main-heading);
+    color: var(--main-heading);
 }
-.filterlist{
+
+.filterlist {
     margin-left: 2rem;
     margin-top: 1rem;
-    
+
     cursor: pointer;
 }
+
 /* 
 .courseBox {
     height: auto;
@@ -166,14 +169,19 @@ a {
     justify-content: center;
     align-items: center;
     padding: 19px;
+    /* position: relative; 
+    transition: filter 3s ease; */
 
+}
 
+.Cbox:hover {
+    transform: scale(1.05);
 }
 
 .subscribe-btn {
     width: 80%;
     height: 2em;
-    background-color:#111b20;
+    background-color: #111b20;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,6 +225,7 @@ a {
 }
 
 #drawer .MuiDrawer-paper {
-   top:5.2rem !important;
-   z-index: 0;
-  }
+    top: 5.2rem !important;
+    z-index: 0;
+    height: 90vh;
+}

@@ -123,7 +123,7 @@ const Navbar = () => {
         aria-label="Search"
         value={searchQuery}
         onChange={handleSearchChange}
-        onKeyDown={handleKeyPress}
+        // onKeyDown={handleKeyPress}
       />
       {/* <SearchIcon/> */}
 
