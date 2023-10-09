@@ -3,19 +3,6 @@
     box-sizing: border-box;
 }
 
-/* .navbar-toggler{
-    width: 100%;
-    border-color: rgb(232, 232, 232);
-    height: 53px;
-    color: white;
-    background-color: white;
-    box-shadow: #f7f9fa;
-    
-}
-navbar-toggler:focus{
-    background-color: rgb(235, 243, 243);
-    
-} */
 a {
     margin: 45px;
     color: black;
@@ -38,9 +25,7 @@ a {
     padding: 10px;
     background-color: #f7f9fa;
     box-shadow: rgb(214, 209, 209);
-    margin-top: 91px;
-
-    /* margin: 30px;   */
+    margin-top: 91px; 
 }
 
 .left {
@@ -63,7 +48,7 @@ a {
     font-size: 17px;
 
     font-family: 'Anton', sans-serif;
-    /* margin: 10px; */
+    
     border-radius: 8px;
 
     box-shadow: rgb(129, 187, 203);
@@ -92,29 +77,10 @@ a {
     margin-top: 1rem;
 }
 
-.Cbox {
-
-    height: 450px;
-    width: 350px;
-    background-color: white;
-    color: black;
-    font-size: 17px;
-    font-family: 'Anton', sans-serif;
-    margin: 10px;
-    border-radius: 8px;
-    border-color: whitesmoke;
-    box-shadow: rgb(180, 177, 177);
-    border-style: solid;
-    justify-content: center;
-    align-items: center;
-    padding: 19px;
-
-}
-
 .courseImg {
     height: 180px;
     width: 100%;
-    /* margin-left: 30px; */
+    
     margin-top: 20px;
     box-shadow: #f7f9fa;
     margin-bottom: 20px;
@@ -154,8 +120,20 @@ a {
     justify-content: center;
     align-items: center;
     padding: 19px;
+    position: relative; 
+   transition: filter 3s ease;
 
 }
+
+.Cbox:hover {
+  transform: scale(1.05);
+    
+  }
+
+  .subscribed {
+    
+    background-color: lightgray;
+  }
 
 .subscribe-btn {
     width: 80%;
@@ -194,3 +172,67 @@ a {
 .dropbox {
     background-color: whitesmoke;
 }
+
+
+.course-tooltip {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 999; 
+    max-width: 300px; 
+     
+  }
+  
+  .course-tooltip h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .course-tooltip h5 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .course-tooltip .MuiAccordion-root {
+    background-color: transparent; 
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .course-tooltip .MuiAccordionSummary-root {
+    padding: 0;
+  }
+  
+  .course-tooltip .MuiAccordionSummary-content {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .course-tooltip .MuiAccordionSummary-content.Mui-expanded {
+    margin: 0;
+  }
+  
+  .course-tooltip .MuiAccordionSummary-content.Mui-expanded::before {
+    display: none; 
+  }
+  
+  .course-tooltip .MuiAccordionDetails-root {
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .course-tooltip .MuiTypography-root {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  
+  

@@ -73,7 +73,7 @@ const Courses = () => {
       </div>{Gridview ? <div className="courseBox">
         {CourseArr.map((item, i) => {
           return (
-            <p key={i} className="Cbox">
+            <p key={i} className={`Cbox ${item.subscribe ? 'subscribed' : ''}`}>
               <img
                 className="courseImg"
                 src={item.img}
@@ -159,4 +159,5 @@ const Courses = () => {
 };
 
 export default Courses;
+
 
