@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import navImg from "../logoFinal.png";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
@@ -12,6 +11,8 @@ import { useDispatch } from "react-redux";
 import { setSnackbar } from "./components/Redux/Actions/firstaction";
 import SearchIcon from '@mui/icons-material/Search';
 import Courses from "./courses";
+import Login from "./login";
+import ReactDOM from "react-dom";
 
 const Navbar = () => {
 
@@ -31,6 +32,7 @@ const Navbar = () => {
     //   navigate(`/courses/search`);
     // }
   };
+  <Tooltip title="SWITCH TO LIST VIEW"></Tooltip>
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -40,7 +42,7 @@ const Navbar = () => {
 
   const handleSearch = () => {
     if (searchQuery === null || searchQuery.trim() === '') {
-      navigate('/courses');
+      navigate('/subject');
       
     } else {
       navigate(`/courses/search?q=${encodeURIComponent(searchQuery)}`);
@@ -54,6 +56,7 @@ const Navbar = () => {
   };
 
   const handleLogOut = () => {
+    sessionStorage.clear()
     navigate("/");
   };
 
@@ -109,9 +112,9 @@ const Navbar = () => {
   return (
     <nav className="navbar bg-body-tertiary fixed-top">
       <div className="navbar-left">
-        <Link to="/" className='navbar-brand text-uppercase ls-1 fw-8'>
+        <Link to="/dashboard" className='navbar-brand text-uppercase ls-1 fw-8'>
           <span style={{ color: "orange" }}>c</span><span style={{ color: "white" }}>oursean</span>
-        </Link>
+        </Link> 
       </div>
       <input
         className="Search"
@@ -120,7 +123,7 @@ const Navbar = () => {
         aria-label="Search"
         value={searchQuery}
         onChange={handleSearchChange}
-        onKeyDown={handleKeyPress}
+        // onKeyDown={handleKeyPress}
       />
       {/* <SearchIcon/> */}
 

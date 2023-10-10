@@ -1,0 +1,46 @@
+.AdmIconCon {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 3px;
+    margin-left: 8%;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+    
+}
+
+.AdminHeader {
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+.PaHeadTop {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    
+}
+
+.AcIconCon {
+    margin-left: 20%;
+}
+
+.input_style {
+    display: table;
+    color: #fff;
+    margin-top: 3px;
+  }
+  
+  .input_style input[type="file"] {
+    display: none;
+  }
+#outlined-basic{
+    color:var(--para-clr);
+    background-color:var(--text);
+    border-color: black;
+    
+}

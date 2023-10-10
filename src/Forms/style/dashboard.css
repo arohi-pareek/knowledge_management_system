@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     box-sizing: border-box;
 }
@@ -15,7 +15,6 @@
     margin-left: 140px;
     margin-top: 30px;
     margin-bottom: 30px;
-
 }
 
 .base {
@@ -31,7 +30,7 @@
     align-items: center;
     margin-left: 140px;
     /* margin-top: 10px; */
-}
+
 
 /* .navbar-toggler{
     width: 100%;
@@ -43,6 +42,21 @@ navbar-toggler:focus{
     background-color: rgb(235, 243, 243);
     
 } */
+
+.jumbotron {
+    font-size: 20px;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 15px;
+    height: 200px;
+    margin-left: 140px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color:var(--para-clr);
+}
 
 a {
     margin: 45px;
@@ -72,12 +86,12 @@ a {
 .brands {
     height: 240px;
     width: 100%;
-    background-color: #f7f9fa;
+    background-color: var(--form);
     margin-top: 50px;
 }
 
 .brandsInside {
-    color: grey;
+    color: var(--para-clr);
     font-size: 20px;
     font-style: italic;
     font-family: Arial, Helvetica, sans-serif;
@@ -87,7 +101,6 @@ a {
     padding: 20px;
 
 }
-
 .brandsImage {
     justify-content: center;
     align-items: center;
@@ -103,7 +116,7 @@ a {
     /* margin-top: 50px; */
     height: 450px;
     width: 100%;
-    background-color: #f7f9fa;
+    background-color: var(--form);
 }
 
 .gridInside {
@@ -113,7 +126,7 @@ a {
     margin-top: 50px;
     margin-left: 525px;
     margin-bottom: 30px;
-    color: black;
+    color: var(--para-clr);
     padding: 20px;
 
 }
@@ -128,8 +141,8 @@ a {
 .box1 {
     height: 250px;
     width: 350px;
-    background-color: white;
-    color: black;
+    background-color: var(--bg-clr);
+    color: var(--para-clr);
     font-size: 17px;
     font-style: italic;
     font-family: Arial, Helvetica, sans-serif;

@@ -12,7 +12,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <ul className='icon'>
         <li><Tooltip title="Dashboard" placement="right-start" arrow><Link to="/dashboard" >  <DashboardIcon fontSize="small"/> </Link></Tooltip></li>
-        <li><Tooltip title="Courses" placement="right-start" arrow><Link to="/courses"><BookIcon fontSize="small"/></Link></Tooltip></li>
+        <li><Tooltip title="Courses" placement="right-start" arrow><Link to="/subject"><BookIcon fontSize="small"/></Link></Tooltip></li>
         <li><Tooltip title="My Learning" placement="right-start" arrow><Link to="/learning"><BookmarksIcon fontSize="small"/></Link></Tooltip></li>
         <li><Tooltip title="Admin" placement="right-start" arrow><Link to="/adminPanel"><AdminPanelSettingsIcon fontSize="small"/></Link></Tooltip></li>
       </ul>
