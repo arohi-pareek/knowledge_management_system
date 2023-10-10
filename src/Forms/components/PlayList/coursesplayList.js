@@ -252,7 +252,7 @@ const CoursesPlaylist = () => {
         style={{
           padding: "1px",
           backgroundColor: "var(--form)",
-          
+
           maxHeight: "100vh",
         }}
       >
@@ -264,8 +264,8 @@ const CoursesPlaylist = () => {
             marginBottom: "1.5rem",
             padding: "1.1rem",
             border: "1px solid",
-            position:"fixed",
-            zIndex:100,
+            position: "fixed",
+            zIndex: 100,
             width: "22%",
             marginTop: "0.5rem",
             borderRadius: "0.5rem",
@@ -313,6 +313,7 @@ const CoursesPlaylist = () => {
               }}
               className="accord"
               key={index}
+              defaultExpanded={index === 0}
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
