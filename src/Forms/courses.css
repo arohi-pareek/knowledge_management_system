@@ -193,3 +193,86 @@ a {
 .dropbox {
     background-color: whitesmoke;
 }
+
+/* courses.css */
+.content-container {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  
+    align-items: center;
+    max-width: fit-content;
+  }
+  /* Add these styles to your CSS file */
+
+.topics-heading {
+    font-size: 1.2rem; /* Adjust the font size as needed */
+    font-weight: bold;
+    margin-bottom: 8px; /* Adjust the margin-bottom as needed */
+    color: #000000; /* Adjust the color as needed */
+   
+}
+  
+  
+  .course-image {
+    margin-bottom: 1%;
+    margin-top: -20%;
+position: relative;
+    width: 900px; /* Set the width of the image */
+    height: 550px; /* Maintain aspect ratio */
+    margin-right: 30px; /* Add margin between image and text */
+  }
+  
+  .course-details {
+    max-width: fit-content; /* Allow the text to take remaining available space */
+  }
+  
+
+
+.exploreAccordion {
+   margin-top: 0;
+    
+    
+  }
+  
+  .exploreAccordion .MuiAccordionSummary-root {
+    margin-top: 0px;
+    background-color: #f4f9f9;
+    border-bottom: 0px solid #e8e3e3;
+    display: flex;
+    padding: 1px 10px; 
+    /* Adjust padding as needed */
+    
+  }
+  
+  .exploreAccordion .Mui-expanded {
+    margin-top: 1px;
+    background-color: #ffffff;
+  }
+  
+  .exploreAccordion .MuiAccordionSummary-content {
+    align-items: center;
+    
+    font-style:normal;
+   
+  }
+  
+  .exploreAccordion .MuiAccordionDetails-root {
+    padding: 15px;
+    background-color: #f3f3f3;
+  }
+  /* Add these styles to your CSS file */
+  /* Add these styles to your CSS file */
+
+
+
+.exploreAccordion .section-content {
+  font-size: 16px; 
+  font-style: normal;
+}
+
+
+
+  

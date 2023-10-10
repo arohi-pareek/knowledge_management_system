@@ -20,17 +20,19 @@ import { setSnackbar, subscribe } from "./components/Redux/Actions/firstaction";
 import GridViewIcon from "@mui/icons-material/GridView"
 import ViewListIcon from "@mui/icons-material/ViewList"
 import List from "./components/Coursesmain/List";
+import C8 from "./C8.jpg";
 
 const Courses = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const CourseArr = useSelector((state) => state.subscribe.subArr);
 
   const [open, setOpen] = useState(false);
   const [opendialog, setopendialog] = useState(false);
   const [isFavorite, setIsFavorite] = useState(true);
   const [Gridview, setIsGridView] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const [course, setCourse] = useState({
     heading: "",
     subheading: "",
@@ -60,6 +62,14 @@ const Courses = () => {
 
   const callMessageOut = (msg, type) => {
     dispatch(setSnackbar(true, type, msg));
+  };
+
+
+
+
+
+  const handleAccordionChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
   };
 
   return (
@@ -92,7 +102,7 @@ const Courses = () => {
                 Course Description:{" "}
                 <button
                   onClick={() => {
-                    setopendialog(true);
+                   setopendialog(true);
                   }}
                 >
                   Explore
@@ -139,21 +149,109 @@ const Courses = () => {
           })}
         </DialogContent>
       </Dialog>
-
-      <Dialog
-        open={opendialog}
-        fullWidth
-        onClose={() => {
-          setopendialog(false);
-        }}
-      >
-        <DialogTitle>
-
-        </DialogTitle>
+      <Dialog open={opendialog} fullWidth maxWidth="md" onClose={() => setopendialog(false)}>
+        <DialogTitle><h1>JAVA PROGRAMMING</h1></DialogTitle>
         <DialogContent>
+          <div className="content-container">
+            <div>
+            <img src={C8} alt="Course Image" className="course-image" />
+            </div>
+            <div className="course-details">
+              <Typography variant="h5" className="topics-heading" sx={{ marginBottom: 0 }}>
+                <h4>Topics To Be Covered:</h4>
+              </Typography>
+              <Accordion
+                className="exploreAccordion" // Add the className here
+                expanded={expanded === "panel1"}
+                onChange={handleAccordionChange("panel1")}
+              >
+                <AccordionSummary>
+                  <Typography  variant="h7"><b>Getting Started</b> </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                <div className="section-header"> 
+               <Typography variant="h7"></Typography>
+               </div>
+               <div className="section-content">
+                  <Typography variant="h7">
+                  Java works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc.)
+                  It is one of the most popular programming language in the world
+                  It has a large demand in the current job market
+                  It is easy to learn and simple to use
 
+                  </Typography>
+                  </div>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion
+                className="exploreAccordion" // Add the className here
+                expanded={expanded === "panel2"}
+                onChange={handleAccordionChange("panel2")}
+              >
+                <AccordionSummary>
+                  <Typography variant="h7">Programming Tool Setups</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                <div className="section-header"> 
+               <Typography variant="h7"></Typography>
+               </div>
+               <div className="section-content">
+                  <Typography variant="h7">
+                  The most basic tools are a source code editor and a compiler or interpreter, which are used ubiquitously and continuously. Other tools are used more or less depending on the language, development methodology, and individual engineer, often used for a discrete task, like a debugger or profiler
+                  </Typography>
+                  </div>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion
+                className="exploreAccordion" // Add the className here
+                expanded={expanded === "panel3"}
+                onChange={handleAccordionChange("panel3")}
+              >
+                <AccordionSummary>
+                  <Typography variant="h7">IntelliJ Basics </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography variant="h7">
+                  IntelliJ IDEA is an Integrated Development Environment (IDE) for Java and Kotlin designed to maximize developer productivity
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion
+                className="exploreAccordion" // Add the className here
+                expanded={expanded === "panel4"}
+                onChange={handleAccordionChange("panel4")}
+              >
+                <AccordionSummary>
+                  <Typography variant="h7">Expressions,Statements & More </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography variant="h7">
+                    Content of Accordion Section 1 goes here.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion
+                className="exploreAccordion" // Add the className here
+                expanded={expanded === "panel5"}
+                onChange={handleAccordionChange("panel5")}
+              >
+                <AccordionSummary>
+                  <Typography variant="h7">Inheritence </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography variant="h7">
+                    Content of Accordion Section 1 goes here.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+           
+              
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
+
+     
     </>
   );
 };
