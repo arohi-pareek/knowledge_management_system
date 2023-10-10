@@ -1,0 +1,92 @@
+
+.navbar {
+    background-color: #36454F;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height:2em;
+    top:0%;
+    position: fixed;
+    width: 100%;
+  }
+ 
+  
+  .navbar-brand img {
+    height: 40px; 
+  }
+  
+  /* .form-control {
+    width: 300px; 
+  } */
+  
+  .navbar-buttons button {
+    margin-left: 10px; 
+  }
+  .logout{
+    margin-left:10rem;
+    margin-top: -8em;
+  }
+  .sun{
+    font-size: large;
+    margin-top: 0.2rem;
+    margin-left: 8rem;
+    cursor: pointer;
+    color: white;
+  } 
+   .switch{
+    margin-left: 8rem;
+    background-color: red;
+    background-color: white;
+     width:34px;
+    height:30px; 
+    top:-2rem;
+    width:2px;
+    border-radius: 70%;
+    cursor: pointer;
+    display: flex;
+  } 
+  
+/* 
+.top{
+    height: 4.5em;
+    width: 100%;
+    background-color:red;
+    color: white;
+    box-shadow: 0 0.188em 1.550em rgb(189, 180, 180);
+    display: flex;
+}
+.navbar{
+    background-color:var(--bg-clr);
+    width: 100%;
+    height: 100%;
+}
+.form-control{
+    position: absolute;
+    width: 50em;
+    height: -1em;
+    margin-top: -57px;
+    margin-left: 420px;
+    border-radius: 35px;
+    background-color: #f7f9fa;;
+
+}
+.image{
+    height: 50px;
+    width: 50px;
+    margin-left: 20px;
+    margin-top: -6em;
+    
+}
+.sun{
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+  .switch{
+    margin-left: 84rem;
+    margin-top: 1.5rem;
+    background-color: black;
+    width:34px;
+    height:33px;
+    
+    border-radius: 70%;
+    cursor: pointer;
+  }
+ */

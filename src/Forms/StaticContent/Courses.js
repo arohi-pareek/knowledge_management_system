@@ -11,6 +11,8 @@ export const CoursesArr = [
     name: "Java Programming",
     category: "Programming",
     rating: "3",
+    instructor:"jose portilla",
+    language:"English",
     courseDesc: {
       heading: "JAVA PROGRAMMING",
       subheading: "TOPICS TO BE COVERD:",
@@ -49,8 +51,10 @@ export const CoursesArr = [
     name: "C++ Programming",
     category: "Programming",
     rating: "4",
+    instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "C++ Programming",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {
@@ -87,8 +91,10 @@ export const CoursesArr = [
     name: "Web Development",
     category: "Development",
     rating: "5",
+    instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "Web Development",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {
@@ -125,8 +131,10 @@ export const CoursesArr = [
     name: "ReactJS",
     category: "Development",
     rating: "5",
+    instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "ReactJS",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {
@@ -163,8 +171,130 @@ export const CoursesArr = [
     name: "Python Programming",
     category: "Programming",
     rating: "4",
+    instructor:"jose portilla",
+    language:"English",
     courseDesc: {
-      heading: "JAVA PROGRAMMING",
+      heading: "Python Programming",
+      subheading: "TOPICS TO BE COVERD:",
+      desc: [
+        {
+          title: "Introduction to Java",
+          description:
+            "Java is a versatile, object-oriented programming language renowned for its portability and reliability. Developed by Sun Microsystems (now Oracle) in 1995, Java emphasizes write once, run anywhere through its bytecode execution on a Java Virtual Machine (JVM).",
+        },
+        {
+          title: "Variables and Data Types",
+          description:
+            "Declaring and initializing variables, Understanding primitive data types (int, double, char, boolean) and Working with strings",
+        },
+        {
+          title: "Methods",
+          description:
+            "Writing methods,Parameters and return values and Method overloading",
+        },
+        {
+          title: "Object-Oriented Programming (OOP)",
+          description:
+            "Introduction to OOP concepts (classes, objects, inheritance, encapsulation, polymorphism), Creating and using classes and objects and Constructors and instance variables",
+        },
+        {
+          title: "Arrays and Collections",
+          description:
+            "Arrays are essential data structures in Java that allow you to store and manage collections of elements of the same data type. They provide a way to work with multiple values under a single variable name.",
+        },
+      ],
+    },
+    img: c5,
+    subscribe: false,
+  },
+  {
+    name: "Node Js",
+    category: "Programming",
+    rating: "4",
+    instructor:"jose portilla",
+    language:"English",
+    courseDesc: {
+      heading: "Node Js",
+      subheading: "TOPICS TO BE COVERD:",
+      desc: [
+        {
+          title: "Introduction to Java",
+          description:
+            "Java is a versatile, object-oriented programming language renowned for its portability and reliability. Developed by Sun Microsystems (now Oracle) in 1995, Java emphasizes write once, run anywhere through its bytecode execution on a Java Virtual Machine (JVM).",
+        },
+        {
+          title: "Variables and Data Types",
+          description:
+            "Declaring and initializing variables, Understanding primitive data types (int, double, char, boolean) and Working with strings",
+        },
+        {
+          title: "Methods",
+          description:
+            "Writing methods,Parameters and return values and Method overloading",
+        },
+        {
+          title: "Object-Oriented Programming (OOP)",
+          description:
+            "Introduction to OOP concepts (classes, objects, inheritance, encapsulation, polymorphism), Creating and using classes and objects and Constructors and instance variables",
+        },
+        {
+          title: "Arrays and Collections",
+          description:
+            "Arrays are essential data structures in Java that allow you to store and manage collections of elements of the same data type. They provide a way to work with multiple values under a single variable name.",
+        },
+      ],
+    },
+    img: c3,
+    subscribe: false,
+  },
+  {
+    name: "Python Programming",
+    category: "Programming",
+    rating: "4",
+    instructor:"jose portilla",
+    language:"English",
+    courseDesc: {
+      heading: "Python Programming",
+      subheading: "TOPICS TO BE COVERD:",
+      desc: [
+        {
+          title: "Introduction to Java",
+          description:
+            "Java is a versatile, object-oriented programming language renowned for its portability and reliability. Developed by Sun Microsystems (now Oracle) in 1995, Java emphasizes write once, run anywhere through its bytecode execution on a Java Virtual Machine (JVM).",
+        },
+        {
+          title: "Variables and Data Types",
+          description:
+            "Declaring and initializing variables, Understanding primitive data types (int, double, char, boolean) and Working with strings",
+        },
+        {
+          title: "Methods",
+          description:
+            "Writing methods,Parameters and return values and Method overloading",
+        },
+        {
+          title: "Object-Oriented Programming (OOP)",
+          description:
+            "Introduction to OOP concepts (classes, objects, inheritance, encapsulation, polymorphism), Creating and using classes and objects and Constructors and instance variables",
+        },
+        {
+          title: "Arrays and Collections",
+          description:
+            "Arrays are essential data structures in Java that allow you to store and manage collections of elements of the same data type. They provide a way to work with multiple values under a single variable name.",
+        },
+      ],
+    },
+    img: c5,
+    subscribe: false,
+  },
+  {
+    name: "Python Programming",
+    category: "Programming",
+    rating: "4",
+    instructor:"jose portilla",
+    language:"hindi",
+    courseDesc: {
+      heading: "Python Programming",
       subheading: "TOPICS TO BE COVERD:",
       desc: [
         {

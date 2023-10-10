@@ -3,10 +3,9 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Forms/components/Redux/store";
 import Navbar from "./Forms/navbar";
-import Footer from "./Forms/components/footer";
+import Footer from "./Forms/components/Footer";
 import Login from "./Forms/login";
-import SignUp from "./Forms/signUp";
-import Dashboard from "./Forms/dashboard";
+import Dashboard from "../src/Forms/components/dashboard";
 import Courses from "./Forms/courses";
 import Learning from "./Forms/components/learning";
 import Item1 from "./Forms/items/item1";
@@ -20,10 +19,12 @@ import CoursesplayList from "./Forms/components/PlayList/coursesplayList";
 import "./App.css";
 import Sidebar from "./Forms/components/sidebar";
 import CustomizedSnackbars from "./Snackbar";
+import Mainfile from "./Forms/components/Coursesmain/mainfile";
+import AdminDashboard from "./Forms/components/Admin/adminDashboard";
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const isLoginOrSignup = location.pathname === "/login" || location.pathname === "/";
+  const isLoginOrSignup = location.pathname === "/";
 
   return (
     <>
@@ -47,7 +48,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
-            <Route exact path="/courses" element={<Courses />} />
+            <Route exact path="/subject" element={<Courses />} />
             <Route exact path="/learning" element={<Learning />} />
             <Route exact path="/courses/item1" element={<Item1 />} />
             <Route exact path="/courses/item2" element={<Item2 />} />
@@ -57,8 +58,10 @@ function App() {
             <Route exact path="/courses/item6" element={<Item6 />} />
             <Route exact path="/courses/item7" element={<Item7 />} />
             <Route exact path="/playlist" element={<CoursesplayList />} />
+            <Route exact path="/courses/search" element={<Mainfile />} />
+            <Route exact path="/adminPanel" element={<AdminDashboard />} />
           </Routes>
-          <CustomizedSnackbars />
+          <CustomizedSnackbars/>
         </Layout>
       </BrowserRouter>
     </Provider>

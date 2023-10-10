@@ -1,16 +1,19 @@
 import React from "react";
-import "./dashboard.css";
+import "../style/dashboard.css";
 import Carousel from "./carousel";
+import Nav from './nav';
+
+
 // import bgImg from "../bg1.png";
-import Img from "../logoFinal.png";
-import b1 from "./img1.svg";
-import b2 from "./img2.svg";
-import b3 from "./img3.svg";
-import b4 from "./img4.svg";
-import b5 from "./img5.svg";
-import b6 from "./img6.svg";
-import b7 from "./img7.svg";
-import b8 from "./img8.svg";
+import Img from "../Images/logoFinal.png";
+import b1 from "../Images/img1.svg";
+import b2 from "../Images/img2.svg";
+import b3 from "../Images/img3.svg";
+import b4 from "../Images/img4.svg";
+import b5 from "../Images/img5.svg";
+import b6 from "../Images/img6.svg";
+import b7 from "../Images/img7.svg";
+import b8 from "../Images/img8.svg";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -19,6 +22,7 @@ const Dashboard = () => {
   function handleClick1() {
     navigate("/dashboard");
   }
+
   function handleClick2() {
     navigate("/courses");
   }
@@ -27,7 +31,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="container">
+    <div className="DashBoard_container">
       {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <button
           className="navbar-toggler"

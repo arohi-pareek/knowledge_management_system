@@ -181,8 +181,6 @@ import Google from "../../src/Images/google.png";
 import Facebook from "../../src/Images/facebook.png";
 import Github from "../../src/Images/github.png";
 import React, { useState } from "react";
-import "./login.css";
-import navImg from "../logoFinal.png";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -193,7 +191,9 @@ import {
 } from "./components/Redux/Actions/firstaction";
 import { useDispatch } from "react-redux";
 import ReactDOM from "react-dom";
+import App from "../App";
 import CryptoJS from "crypto-js";
+import "./style/login.css"
 
 const useStyles = makeStyles({
   loginBtn: {
@@ -213,6 +213,12 @@ const useStyles = makeStyles({
 });
 
 const Login = () => {
+
+  const [Cred, setCred] = useState({
+    username: "",
+    password: "",
+    error: "",
+  });
 
   const INITIAL_STATE = {
     username: "",
@@ -244,9 +250,54 @@ const Login = () => {
     dispatch(setSnackbar(true, type, msg));
   };
 
-  const handleClick = () => {
-    callMessageOut("Logged In Successfully", "success");
-    navigate("/dashboard");
+  // const handleClick = () => {
+  //   callMessageOut("Logged In Successfully", "success");
+  //   navigate("/dashboard");
+  // };
+
+  const handleClick = async (value) => {
+    try {
+      const headers = {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Accept: "application/json",
+      };
+
+      const formData = new URLSearchParams();
+      formData.append("username", value.username);
+      formData.append("password", value.password);
+      formData.append("client_id", "costa_backend");
+      formData.append("grant_type", "password");
+      formData.append("client_secret", "bf982585-cf30-42da-9872-2868746fe42c");
+
+      const login = await fetch("/auth/realms/master/protocol/openid-connect/token", {
+        method: "POST",
+        headers,
+        body: formData.toString(),
+      }).then(response => response.json());
+
+      if (login.message) {
+        setCred({
+          ...Cred,
+          error: login.message,
+        });
+      } else {
+        sessionStorage.setItem("jwt_token", login.access_token);
+        // sessionStorage.setItem("sessionId", login.session_state);
+        // localStorage.setItem("refresh_token", login.refresh_token);
+        // localStorage.setItem("client_id", "costa_cloud");
+        // localStorage.setItem("username", Cred.username);
+        // localStorage.setItem("expires_in", login.expires_in);
+        document.body.style.zoom = "95%";
+        // ReactDOM.render(<App />, document.getElementById("root"));
+        navigate("/dashboard");
+        callMessageOut("Logged In Successfully", "success");
+      }
+    } catch (error) {
+      setCred({
+        ...Cred,
+        error: error.message,
+      });
+    }
   };
 
   const google = () => {
