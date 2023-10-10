@@ -1,16 +1,12 @@
 import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, Typography } from '@material-ui/core'
 import React from 'react'
-import { Drawer,Box} from "@mui/material"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Cookies from 'js-cookie';
-import { useState } from 'react';
 
 const FilterCourses = () => {
    
     return (
         <>
-        
-          
+            <Typography> 100 result for searchData </Typography>
             <Accordion style={{backgroundColor:'var(--form)'}} defaultExpanded >
                 <AccordionSummary 
                     expandIcon={<ExpandMoreIcon />}
@@ -169,9 +165,7 @@ const FilterCourses = () => {
                         </div>
                     </Typography>
                 </AccordionDetails>
-            </Accordion>
-            
-           
+            </Accordion>   
         </>
     )
 }

@@ -250,17 +250,17 @@ const Login = () => {
     dispatch(setSnackbar(true, type, msg));
   };
 
-  const handleClick = async() => {
-    callMessageOut("Logged In Successfully", "success");
-    navigate("/dashboard");
-  };
+  // const handleClick = () => {
+  //   callMessageOut("Logged In Successfully", "success");
+  //   navigate("/dashboard");
+  // };
 
-  // const handleClick = async (value) => {
-  //   try {
-  //     const headers = {
-  //       "Content-Type": "application/x-www-form-urlencoded",
-  //       Accept: "application/json",
-  //     };
+  const handleClick = async (value) => {
+    try {
+      const headers = {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Accept: "application/json",
+      };
 
   //     const formData = new URLSearchParams();
   //     formData.append("username", value.username);
@@ -275,29 +275,30 @@ const Login = () => {
   //       body: formData.toString(),
   //     }).then(response => response.json());
 
-  //     if (login.message) {
-  //       setCred({
-  //         ...Cred,
-  //         error: login.message,
-  //       });
-  //     } else {
-  //       sessionStorage.setItem("jwt_token", login.access_token);
-  //       // sessionStorage.setItem("sessionId", login.session_state);
-  //       // localStorage.setItem("refresh_token", login.refresh_token);
-  //       // localStorage.setItem("client_id", "costa_cloud");
-  //       // localStorage.setItem("username", Cred.username);
-  //       // localStorage.setItem("expires_in", login.expires_in);
-  //       document.body.style.zoom = "95%";
-  //       // ReactDOM.render(<App />, document.getElementById("root"));
-  //       navigate("/dashboard");
-  //     }
-  //   } catch (error) {
-  //     setCred({
-  //       ...Cred,
-  //       error: error.message,
-  //     });
-  //   }
-  // };
+      if (login.message) {
+        setCred({
+          ...Cred,
+          error: login.message,
+        });
+      } else {
+        sessionStorage.setItem("jwt_token", login.access_token);
+        // sessionStorage.setItem("sessionId", login.session_state);
+        // localStorage.setItem("refresh_token", login.refresh_token);
+        // localStorage.setItem("client_id", "costa_cloud");
+        // localStorage.setItem("username", Cred.username);
+        // localStorage.setItem("expires_in", login.expires_in);
+        document.body.style.zoom = "95%";
+        // ReactDOM.render(<App />, document.getElementById("root"));
+        navigate("/dashboard");
+        callMessageOut("Logged In Successfully", "success");
+      }
+    } catch (error) {
+      setCred({
+        ...Cred,
+        error: error.message,
+      });
+    }
+  };
 
   const google = () => {
     window.open("http://localhost:5000/auth/google", "_self");

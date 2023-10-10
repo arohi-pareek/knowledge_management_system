@@ -15,9 +15,7 @@
     justify-content: space-between;
 
 }
-.upperbox{
-    background-color: red;
-}
+
 
 .PaHeadTop {
     display: flex;
@@ -40,3 +38,9 @@
   .input_style input[type="file"] {
     display: none;
   }
+#outlined-basic{
+    color:var(--para-clr);
+    background-color:var(--text);
+    border-color: black;
+    
+}

@@ -88,9 +88,9 @@ a {
     display: flex;
     flex-wrap: wrap;
     background-color: var(--bg-clr);
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     margin-top: 1.5rem;
-   margin-left: 15rem;
+    
 }
 
 .listview {
@@ -124,11 +124,12 @@ a {
     margin-top: 20px;
     box-shadow: #f7f9fa;
     margin-bottom: 20px;
+    background-size: cover;
 
 }
 
 .cTop {
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Anton', sans-serif;
     justify-content: center;
     align-items: center;
@@ -136,6 +137,22 @@ a {
     margin-left: -15px;
     color: var(--main-heading);
 }
+
+.filterlist {
+    margin-left: 2rem;
+    margin-top: 1rem;
+
+    cursor: pointer;
+}
+
+/* 
+.courseBox {
+    height: auto;
+    width: 100%;
+    display: flex;
+
+
+} */
 
 .Cbox {
 
@@ -153,8 +170,13 @@ a {
     justify-content: center;
     align-items: center;
     padding: 19px;
+    /* position: relative; 
+    transition: filter 3s ease; */
 
+}
 
+.Cbox:hover {
+    transform: scale(1.05);
 }
 
 .subscribe-btn {
@@ -204,7 +226,7 @@ a {
 }
 
 #drawer .MuiDrawer-paper {
-   top:3.1rem !important;
-   left:2.3rem  !important;
-   background-color: var(--bg-clr)  !important;
-  }
+    top: 5.2rem !important;
+    z-index: 0;
+    height: 90vh;
+}

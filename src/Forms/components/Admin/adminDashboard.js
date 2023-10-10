@@ -142,12 +142,7 @@ const AdminDashboard = (props) => {
                                 
                             }}
                         >
-                            {/* <GenericSearch
-                    FilterTypes={FilterTypes}
-                    FilterValueTypes={FilterValueTypes}
-                    addFilter={addFilter}
-                    cssCls={{}}
-                  /> */}
+{/*                             
                             <div style={{ display: "flex" }}>
                                 {selectid.length > 1 && (
                                     <div className="AcIconCon">
@@ -168,12 +163,9 @@ const AdminDashboard = (props) => {
                                         </Tooltip>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
                         </div>
-                        {/* <GenericFilterMenu
-                  SortValueTypes={SortValueTypes}
-                  addSort={addSort}
-                /> */}
+                       
                         <div className="AdmIconCon">
                             <Tooltip title="ADD COURSE">
                                 <span>
@@ -249,8 +241,8 @@ const AdminDashboard = (props) => {
                             sx: {
                                 border: "1px solid #8080802b",
                                 height: "80vh",
-                                backgroundColor:"var(--comp)",
-                                color:"var(--para-clr)"
+                                // backgroundColor:"var(--comp)",
+                                // color:"var(--para-clr)"
                             },
                         })}
                         muiTablePaperProps={() => ({
@@ -258,7 +250,7 @@ const AdminDashboard = (props) => {
                                 padding: "0rem 1rem",
                                 border: "0",
                                 boxShadow: "none",
-                                backgroundColor:"var(--btn-text-clr)",
+                                // backgroundColor:"var(--btn-text-clr)",
                             },
                         })}
                     />

@@ -745,6 +745,7 @@ const playlistData = [
             }
         ]
     },
+    
     // Add more chapters and videos as needed
 ];
 
@@ -784,8 +785,10 @@ const CoursesPlaylist = () => {
     const TotalVid = `${Math.floor((overallProgress / 100) * totalVideos)} VIDEOS OF ${totalVideos} VIDEOS COMPLETE`
 
     return (
-        <Grid container spacing={2} style={{ padding: "1rem" ,width: "96%",
-        margin: "0 auto"}}>
+        <Grid container spacing={2} style={{
+            padding: "1rem", width: "100%",
+            margin: "0 auto"
+        }}>
             <Grid item xs={9} style={{ paddingRight: '10px' }}>
                 <div >
                     <video key={selectedVideo.id} controls autoPlay type="video/mp4" style={{ background: "black", width: '100%', borderRadius: "1rem", height: "30rem" }}>
@@ -844,14 +847,16 @@ const CoursesPlaylist = () => {
 
 
             </Grid>
-           
-            <Grid  className="maingrid"item xs={3} style={{padding:"1px",display:'flex',flexdirection:'column', backgroundColor:'var(--form)',maxheight:'300px',overflowy:'auto'}}>
-                <div className="playlist-container">
+            <Grid item xs={3} style={{ padding: "1px", backgroundColor: 'var(--form)' ,overflowY: 'scroll', maxHeight: '100vh'}}>
+                <div className="playlist-container"style={{ zIndex: 2 }}>
 
-                    <CircularProgress
+                    
+                    <div style={{position: "fixed", marginBottom: '1rem',padding: "1.1rem" ,position: 'sticky', top:' 0 '}}>
+                        <h2 className='content1'>Course content</h2>
+                        <CircularProgress
                         variant="determinate"
                         value={overallProgress}
-                        style={{ position: "absolute", top: "9.4%", right: "3.5%", width: "2.5rem", height: "2.5rem" }}
+                        style={{ position: "absolute", top: "10.9%", right: "3.5%", width: "2.5rem", height: "2.5rem" }}
                     />
                     <Tooltip title={TotalVid}>
                         <img
@@ -859,21 +864,20 @@ const CoursesPlaylist = () => {
                             alt="Trophy"
                             style={{
                                 position: 'absolute',
-                                top: '12.1%',
+                                top: '13.5%',
                                 right: '2.9%',
                                 transform: 'translate(-50%, -50%)',
-                                width: '1.8rem', 
-                                height: '1.8rem', 
+                                width: '1.8rem',
+                                height: '1.8rem',
                                 borderRadius: '1rem',
                                 cursor: "pointer"
                             }}
                         />
-                    </Tooltip>
-                    <div style={{ marginBottom: '1rem', padding: "1.1rem",position:'sticky',top:'0px' }}>
-                        <h2 className='content1'>Course content</h2>
+                    </Tooltip> 
                     </div>
+                    <div style={{ position: 'relative', zIndex: 1 }}>
                     {playlistData.map((chapterData, index) => (
-                        <Accordion style={{backgroundColor:'var(--text)',width:"21.9rem",marginLeft:"-17px"}}className='accord' key={index}>
+                        <Accordion style={{ backgroundColor: 'var(--text)', width: "21.9rem", marginLeft: "-17px" }} className='accord' key={index}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`panel${index + 1}-a-content`} id={`panel${index + 1}-a-header`}>
                                 <Typography><b>{chapterData.chapter}</b></Typography>
                             </AccordionSummary>
@@ -897,6 +901,7 @@ const CoursesPlaylist = () => {
                             </AccordionDetails>
                         </Accordion>
                     ))}
+                    </div>
                 </div>
             </Grid>
         </Grid>    
