@@ -2,12 +2,7 @@ import "./courses.css";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
 import c1 from "./C1.jpg";
-import c2 from "./C2.jpg";
-import c5 from "./C5.png";
-import c6 from "./C6.png";
-import c7 from "./C7.jpg";
 import {
   Accordion,
   AccordionDetails,
@@ -19,8 +14,12 @@ import {
   Typography,
 
 } from "@mui/material";
+// import { CoursesArr } from "./StaticContent/Courses";
+import { useDispatch, useSelector } from "react-redux";
+import { setSnackbar, subscribe } from "./components/Redux/Actions/firstaction";
 
 const Courses = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [openPopup, setOpenPopup] = useState(false);
   const [popup, setPopup] = useState({
@@ -28,8 +27,11 @@ const Courses = () => {
     subheading: "",
   }
   );
-  
+
+  const CourseArr = useSelector((state) => state.subscribe.subArr);
+
   const [open, setOpen] = useState(false);
+  const [opendialog, setopendialog] = useState(false);
   const [course, setCourse] = useState({
     heading: "",
     subheading: "",
@@ -37,69 +39,28 @@ const Courses = () => {
   }
   );
 
-  function handleClick1() {
-    navigate("/dashboard");
-  }
-  function handleClick2() {
-    navigate("/courses");
-  }
-  function handleClick3() {
-    navigate("/learning");
-  }
-  function handleClick4() {
-    navigate("/courses/item1");
-  }
-  function handleClick5() {
-    navigate("/courses/item2");
-  }
-  function handleClick8() {
-    navigate("/courses/item5");
-  }
-  function handleClick9() {
-    navigate("/courses/item6");
-  }
-  function handleClick10() {
-    navigate("/courses/item7");
-  }
+  const handleSubscribe = (payload) => {
+    if (!payload.subscribe) {
+      dispatch(subscribe(payload));
+      callMessageOut(`Subscribed To ${payload.name}`, "success");
+    } else {
+      dispatch(subscribe(payload));
+      callMessageOut(`Unsubscribed To ${payload.name}`, "success");
+    }
+  };
+
+  const callMessageOut = (msg, type) => {
+    dispatch(setSnackbar(true, type, msg));
+  };
 
   return (
     <>
       <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a
-                  class="nav-item nav-link active"
-                  href="#"
-                  onClick={handleClick1}
-                >
-                  Dashboard
-                </a>
-                <a class="nav-item nav-link" href="#" onClick={handleClick2}>
-                  Courses
-                </a>
-                <a class="nav-item nav-link " href="#" onClick={handleClick3}>
-                  My Learning
-                </a>
-              </div>
-            </div>
-            <span className="navbar-toggler-icon"></span>
-          </button>
-        </nav>
         <div className="coursesTop">
           <div>
             <b className="left">COURSES</b>
           </div>
-          <div className="rightt">
+          {/* <div className="rightt">
             Welcome to the Courses Section of our educational website! Here, we
             have carefully crafted a variety of courses to cater to your
             learning needs and interests. Our goal is to provide you with
@@ -107,123 +68,31 @@ const Courses = () => {
             your pace. Whether you're a beginner looking to explore new subjects
             or an expert seeking to deepen your expertise, we have something for
             everyone. Let's embark on a journey of knowledge together!
-          </div>
+          </div> */}
           {/* <img className="topimg" src={courseBack}  alt="" />    */}
         </div>
 
         <div className="courseBox">
-          <p className="Cbox"
-          >
-            <img
-              className="courseImg"
-              src={c1}
-              alt=""
-              onClick={() => {
-                setOpen(true);
-                setCourse({
-                  heading: "JAVA PROGRAMMING",
-                  subheading: "TOPICS TO BE COVERD:",
-                  desc: [
-                    {
-                      title: "Introduction to Java",
-                      description:
-                        "Java is a versatile, object-oriented programming language renowned for its portability and reliability. Developed by Sun Microsystems (now Oracle) in 1995, Java emphasizes write once, run anywhere through its bytecode execution on a Java Virtual Machine (JVM).",
-                    },
-                    {
-                      title: "Variables and Data Types",
-                      description:
-                        "Declaring and initializing variables, Understanding primitive data types (int, double, char, boolean) and Working with strings",
-                    },
-                    {
-                      title: "Methods",
-                      description:
-                        "Writing methods,Parameters and return values and Method overloading",
-                    },
-                    {
-                      title: "Object-Oriented Programming (OOP)",
-                      description:
-                        "Introduction to OOP concepts (classes, objects, inheritance, encapsulation, polymorphism), Creating and using classes and objects and Constructors and instance variables",
-                    },
-                    {
-                      title: "Arrays and Collections",
-                      description:
-                        "Arrays are essential data structures in Java that allow you to store and manage collections of elements of the same data type. They provide a way to work with multiple values under a single variable name.",
-                    },
-                  ],
-                });
-              }}
-            />
-            <p>
-              <b className="cTop">Java Programming</b>
-            </p>
-            <p>Category: Programming</p>
-            <p>Rating: ⭐⭐⭐</p>
-            <p>
-              Course Description:{" "}
-              <button 
-              onClick={() => {
-                setOpenPopup(true);
-                setPopup({
-                  heading: "JAVA PROGRAMMING",
-                  subheading: "Category: Programming  |  Rating: ⭐⭐⭐"
-                  
-                });
-              }}
-              
-              >Explore</button>
-            </p>
-            <div>
-              <button className="subscribe-btn">SUBSCRIBE</button>
-            </div>
-          </p>
-          <p className="Cbox">
-            <img
-              className="courseImg"
-              src={c2}
-              alt=""
-              onClick={() => {
-                setOpen(true);
-                setCourse({
-                  heading: "C++ PROGRAMMING",
-                  subheading: "TOPICS TO BE COVERD:",
-                  desc: [
-                    {
-                      title: "Introduction to C++",
-                      description:
-                        "Overview of C++ and its history and Differences between C and C++",
-                    },
-                    {
-                      title: "Variables and Data Types:",
-                      description:
-                        "Declaring and initializing variables, Fundamental data types (int, float, double, char) and Working with strings",
-                    },
-                    {
-                      title: "Functions",
-                      description:
-                        "Defining and calling functions, Parameters and return values and Function overloading",
-                    },
-                    {
-                      title: "Object-Oriented Programming (OOP) Basics",
-                      description:
-                        "Classes and objects, Constructors and destructors and Member functions and data members",
-                    },
-                    {
-                      title: "Arrays and Pointers",
-                      description:
-                        "Creating and accessing arrays and Introduction to pointers and memory management",
-                    },
-                  ],
-                });
-              }}
-            />
-            <p>
-              <b className="cTop">C++ Programming</b>
-            </p>
-            <p>Category: Programming</p>
-            <p>Rating: ⭐⭐⭐⭐</p>
-            <p>
-              Course Description:{" "}
-              <button 
+          {CourseArr.map((item, i) => {
+            return (
+              <p key={i} className="Cbox">
+                <img
+                  className="courseImg"
+                  src={item.img}
+                  alt=""
+                  onClick={() => {
+                    setOpen(true);
+                    setCourse(item.courseDesc);
+                  }}
+                />
+                <p>
+                  <b className="cTop">{item.name}</b>
+                </p>
+                <p>Category: {item.category}</p>
+                <p>Rating {item.rating}</p>
+                <p>
+                  Course Description:{" "}
+                  <button 
               onClick={() => {
                 setOpenPopup(true);
                 setPopup({
@@ -233,197 +102,19 @@ const Courses = () => {
                 });
               }}
               >Explore</button>
-            </p>
-            <div>
-              <button className="subscribe-btn">SUBSCRIBE</button>
-            </div>
-          </p>
-          <p className="Cbox">
-            <img
-              className="courseImg"
-              src={c5}
-              alt=""
-              onClick={() => {
-                setOpen(true);
-                setCourse({
-                  heading: "WEB DEVELOPMENT",
-                  subheading: "TOPICS TO BE COVERD:",
-                  desc: [
-                    {
-                      title: "Introduction to Programming",
-                      description:
-                        "Learn the basics of programming concepts and start your journey into the world of coding.",
-                    },
-                    {
-                      title: "Web Development Fundamentals",
-                      description:
-                        "Explore the foundational technologies of web development, including HTML, CSS, and JavaScript.",
-                    },
-                    {
-                      title: "Data Science Essentials",
-                      description:
-                        "Discover the essential techniques for analyzing and interpreting data to gain valuable insights.",
-                    },
-                    {
-                      title: "Mobile App Development",
-                      description:
-                        "Build mobile applications for iOS and Android using popular frameworks like React Native.",
-                    },
-                    {
-                      title: "Machine Learning and AI",
-                      description:
-                        "Dive into the field of machine learning and artificial intelligence to create intelligent systems.",
-                    },
-                  ],
-                });
-              }}
-            />
-            <p>
-              <b className="cTop">Web Development</b>
-            </p>
-            <p>Category: Development</p>
-            <p>Rating: ⭐⭐⭐⭐</p>
-            <p>
-              Course Description:{" "}
-              <button 
-              onClick={() => {
-                setOpenPopup(true);
-                setPopup({
-                  heading: "WEB DEVELOPMENT",
-                  subheading: "Category: Development | Rating: ⭐⭐⭐⭐"
-                  
-                });
-              }}
-              >Explore</button>
-            </p>
-            <div>
-              <button className="subscribe-btn">SUBSCRIBE</button>
-            </div>
-          </p>
-          <p className="Cbox">
-            <img
-              className="courseImg"
-              src={c6}
-              alt=""
-              onClick={() => {
-                setOpen(true);
-                setCourse({
-                  heading: "REACT JS",
-                  subheading: "TOPICS TO BE COVERD:",
-                  desc: [
-                    {
-                      title: "Introduction to Programming",
-                      description:
-                        "Learn the basics of programming concepts and start your journey into the world of coding.",
-                    },
-                    {
-                      title: "Web Development Fundamentals",
-                      description:
-                        "Explore the foundational technologies of web development, including HTML, CSS, and JavaScript.",
-                    },
-                    {
-                      title: "Data Science Essentials",
-                      description:
-                        "Discover the essential techniques for analyzing and interpreting data to gain valuable insights.",
-                    },
-                    {
-                      title: "Mobile App Development",
-                      description:
-                        "Build mobile applications for iOS and Android using popular frameworks like React Native.",
-                    },
-                    {
-                      title: "Machine Learning and AI",
-                      description:
-                        "Dive into the field of machine learning and artificial intelligence to create intelligent systems.",
-                    },
-                  ],
-                });
-              }}
-            />
-            <p>
-              <b className="cTop">ReactJS</b>
-            </p>
-            <p>Category: Development</p>
-            <p>Rating: ⭐⭐⭐⭐⭐</p>
-            <p>
-              Course Description:{" "}
-              <button 
-              onClick={() => {
-                setOpenPopup(true);
-                setPopup({
-                  heading: "REACT JS",
-                  subheading: "Category: Development |  Rating: ⭐⭐⭐⭐⭐"
-                  
-                });
-              }}
-              >Explore</button>
-            </p>
-            <div>
-              <button className="subscribe-btn">SUBSCRIBE</button>
-            </div>
-          </p>
-          <p className="Cbox">
-            <img
-              className="courseImg"
-              src={c7}
-              alt=""
-              onClick={() => {
-                setOpen(true);
-                setCourse({
-                  heading: "PYTHON PROGRAMMING",
-                  subheading: "TOPICS TO BE COVERD:",
-                  desc: [
-                    {
-                      title: "Introduction to Programming",
-                      description:
-                        "Learn the basics of programming concepts and start your journey into the world of coding.",
-                    },
-                    {
-                      title: "Web Development Fundamentals",
-                      description:
-                        "Explore the foundational technologies of web development, including HTML, CSS, and JavaScript.",
-                    },
-                    {
-                      title: "Data Science Essentials",
-                      description:
-                        "Discover the essential techniques for analyzing and interpreting data to gain valuable insights.",
-                    },
-                    {
-                      title: "Mobile App Development",
-                      description:
-                        "Build mobile applications for iOS and Android using popular frameworks like React Native.",
-                    },
-                    {
-                      title: "Machine Learning and AI",
-                      description:
-                        "Dive into the field of machine learning and artificial intelligence to create intelligent systems.",
-                    },
-                  ],
-                });
-              }}
-            />
-            <p>
-              <b className="cTop">Python Programming</b>
-            </p>
-            <p>Category: Programming</p>
-            <p>Rating: ⭐⭐⭐⭐</p>
-            <p>
-              Course Description:{" "}
-              <button 
-              onClick={() => {
-                setOpenPopup(true);
-                setPopup({
-                  heading: "PYTHON PROGRAMMING",
-                  subheading: "Category: Programming  |  Rating: ⭐⭐⭐⭐"
-                  
-                });
-              }}
-              >Explore</button>
-            </p>
-            <div>
-              <button className="subscribe-btn">SUBSCRIBE</button>
-            </div>
-          </p>
+                </p>
+                <div>
+                  <button
+                    className="subscribe-btn"
+                    onClick={() => handleSubscribe(item)}
+                    // onClick={() => handleSubscribeColor(item)}
+                  >
+                    {item.subscribe ? "Unsubscribe" : "subscribe"}
+                  </button>
+                </div>
+              </p>
+            );
+          })}
         </div>
       
       </div>
@@ -458,7 +149,7 @@ const Courses = () => {
       </Dialog>
 
 
-      <Dialog open={openPopup} onClose={() => setOpenPopup(false)}>
+      <Dialog open={openPopup} onClose={() => setOpenPopup(false)} >
         <DialogTitle>
             <h2 >{popup.heading}<button className="dialogButton" onClick={()=>{setOpenPopup(false)}}><b>X</b></button></h2>
             <h5>
