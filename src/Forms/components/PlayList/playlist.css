@@ -1,102 +1,114 @@
 .list {
-    margin-left: 10px;
+  margin-left: 10px;
 }
-.content1{
-  color:black;
-  margin-top:-1rem;
-  margin-left: -1.2rem;
+
+.content1 {
+  color: black;
 }
-.content{
-  color:var(--para-clr);
+
+.content {
+  color: var(--para-clr);
 
 }
+
 .custom-list {
-    list-style-type: none; /* Remove the default bullet point */
-    padding: 0; /* Remove any default padding */
-    
-  }
-  
-  .custom-list div {
-    margin-left: 18px;
-    margin-bottom: 10px;
-    
-  }
-  
-  .number {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .video-title {
-    cursor: pointer;
-    /* background-color: red; */
-  }
-  
-  /* Style for the numbers */
-  .number::before {
-    content: counter(my-counter) ". "; /* Use a counter to display numbers */
-    counter-increment: my-counter;
-  }
-  .maingrid ::-webkit-scrollbar{
-    width:5px;
-  }
-  .maingrid ::-webkit-scrollbar-thumb{
-    background-color: white;
-  }
+  list-style-type: none;
+  /* Remove the default bullet point */
+  padding: 0;
+  /* Remove any default padding */
+
+}
+
+.custom-list div {
+  margin-left: 18px;
+  margin-bottom: 10px;
+
+}
+
+.number {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.video-title {
+  cursor: pointer;
+  /* background-color: red; */
+}
+
+/* Style for the numbers */
+.number::before {
+  content: counter(my-counter) ". ";
+  /* Use a counter to display numbers */
+  counter-increment: my-counter;
+}
+
+.playlist-container {
+  padding: 0rem 1rem 0rem 1rem;
+  margin-top: 5rem;
+  overflow-y: scroll;
+  max-height: 80vh;
+  overflow-x: hidden;
+  position: fixed;
+  scrollbar-width: none;
+}
+
+.playlist-header {
+  margin-bottom: 10px;
+  padding: 1rem;
+  /* background-color: red; */
+}
+
+.List {
+  background-color: var(--form);
+}
+
+.custom-list {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+  /* background-color: var(--form); */
+}
+
+.custom-list li {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-list li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.custom-list .number {
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.accord {
+  background-color: red;
+}
+
+.custom-list .video-title {
+  font-size: 1rem;
+}
+
+.playlist-video.playing {
+  background-color: #e0e0e0;
+}
+
+/* Additional styling for better appearance */
+.playlist-video {
+  transition: background-color 0.3s ease-in-out;
+}
 
 
-  .playlist-container {
-    padding: 1rem;
-    
-    
-  }
-  
-  .playlist-header {
-    margin-bottom: 10px;
-    padding: 1rem;
-    /* background-color: red; */
-  }
-  .List{
-    background-color: var(--form);
-  }
-  .custom-list {
-    padding: 0;
-    list-style-type: none;
-    margin: 0;
-    /* background-color: var(--form); */
-  }
-  
-  .custom-list li {
-    padding: 0.5rem;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .custom-list li:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  
-  .custom-list .number {
-    margin-right: 1rem;
-    font-weight: bold;
-  }
-  .accord{
-    background-color:red;
-  }
-  
-  .custom-list .video-title {
-    font-size: 1rem;
-  }
-  
-  .playlist-video.playing {
-    background-color: #e0e0e0;
-  }
-  
-  /* Additional styling for better appearance */
-  .playlist-video {
-    transition: background-color 0.3s ease-in-out;
-  }
-  
+/* PlayList Css */
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}

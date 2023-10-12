@@ -262,18 +262,18 @@ const Login = () => {
         Accept: "application/json",
       };
 
-  //     const formData = new URLSearchParams();
-  //     formData.append("username", value.username);
-  //     formData.append("password", value.password);
-  //     formData.append("client_id", "costa_backend");
-  //     formData.append("grant_type", "password");
-  //     formData.append("client_secret", "bf982585-cf30-42da-9872-2868746fe42c");
+      const formData = new URLSearchParams();
+      formData.append("username", value.username);
+      formData.append("password", value.password);
+      formData.append("client_id", "costa_backend");
+      formData.append("grant_type", "password");
+      formData.append("client_secret", "bf982585-cf30-42da-9872-2868746fe42c");
 
-  //     const login = await fetch("/auth/realms/master/protocol/openid-connect/token", {
-  //       method: "POST",
-  //       headers,
-  //       body: formData.toString(),
-  //     }).then(response => response.json());
+      const login = await fetch("/auth/realms/master/protocol/openid-connect/token", {
+        method: "POST",
+        headers,
+        body: formData.toString(),
+      }).then(response => response.json());
 
       if (login.message) {
         setCred({

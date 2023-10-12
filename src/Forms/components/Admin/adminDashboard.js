@@ -92,7 +92,7 @@ const AdminDashboard = (props) => {
             {
                 accessorKey: "actions", // New column for icons
                 header: "Actions", // You can customize the header name
-                size: 30, // Adjust the size as needed
+                size: 80, // Adjust the size as needed
                 
                 Cell: ({ row }) => {
                     let item = row.original;

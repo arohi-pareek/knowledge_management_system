@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: "flex-start",
-    background: "	#cecbdf ",
+    background: "#ececf399 ",
     boxShadow:" 0 0 10px rgba(0, 0, 0, 0.3)"
    
   },
