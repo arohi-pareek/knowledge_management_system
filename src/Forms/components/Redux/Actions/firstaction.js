@@ -61,8 +61,8 @@ export const DeleteCourse = (id) => async (dispatch) => {
 
   dispatch({ type: DELETE_COURSE_REQUEST });
   try {
-    const response = await Axios.get(`/course/delete-course/${id}`, config);
-    dispatch({ type: DELETE_COURSE_SUCCESS, payload: response.data });
+    await Axios.get(`/course/delete-course/${id}`, config);
+    dispatch({ type: DELETE_COURSE_SUCCESS, payload: { deletedCourseId: id } });
   } catch (error) {
     dispatch({ type: DELETE_COURSE_FAILURE, payload: error });
   }

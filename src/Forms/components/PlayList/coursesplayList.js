@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   List,
@@ -81,6 +81,7 @@ const playlistData = [
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+        watched: false,
       },
     ],
   },
@@ -117,7 +118,6 @@ const playlistData = [
       },
     ],
   },
-  // Add more chapters and videos as needed
 ];
 
 const tabs = ["Overview", "Q&A", "Notes", "Reviews", "Learning Tools"];
@@ -139,14 +139,49 @@ const overallProgress = calculateOverallProgress();
 const CoursesPlaylist = () => {
   const [selectedVideo, setSelectedVideo] = useState(playlistData[0]);
   const [selectedTab, setSelectedTab] = useState(0);
+  const [isChapter1Finished, setIsChapter1Finished] = useState(false);
 
   const handleChangeTab = (event, newValue) => {
     setSelectedTab(newValue);
   };
 
+  const updateVideoTime = (videoId, currentTime) => {
+    localStorage.setItem(`video-${videoId}-time`, currentTime.toString());
+  };
+
+  const playVideo = (video, currentTime) => {
+    const videoElement = document.getElementById("videoPlayer");
+    videoElement.currentTime = currentTime;
+    videoElement.addEventListener("timeupdate", () => {
+      const currentTime = videoElement.currentTime;
+      updateVideoTime(video.id, currentTime);
+    });
+
+    if (videoElement.readyState >= 2) {
+      videoElement
+        .play()
+        .catch((error) => console.error("Error playing the video:", error));
+    } else {
+      videoElement.addEventListener("loadedmetadata", () => {
+        videoElement
+          .play()
+          .catch((error) => console.error("Error playing the video:", error));
+      });
+    }
+  };
+
   const handleVideoClick = (video) => {
     setSelectedVideo(video);
-    console.log(video);
+    const storedTime = localStorage.getItem(`video-${video.id}-time`);
+    const currentTime = storedTime ? parseFloat(storedTime) : 0;
+    playVideo(video, currentTime);
+
+    console.log(storedTime, currentTime);
+
+    const isChapter1Finished = playlistData[0].videos.every((video) => {
+      return console.log(video), video.watched;
+    });
+    setIsChapter1Finished(isChapter1Finished);
   };
 
   const selectedVideoInfo = playlistData.find(
@@ -176,6 +211,7 @@ const CoursesPlaylist = () => {
         <div>
           <video
             key={selectedVideo.id}
+            id={"videoPlayer"}
             controls
             autoPlay
             type="video/mp4"
@@ -185,6 +221,7 @@ const CoursesPlaylist = () => {
               borderRadius: "1rem",
               height: "30rem",
             }}
+            currentTime={localStorage.getItem(`video-${selectedVideo.id}-time`)}
           >
             <source src={selectedVideo?.videoUrl} />
           </video>
@@ -252,7 +289,6 @@ const CoursesPlaylist = () => {
         style={{
           padding: "1px",
           backgroundColor: "var(--form)",
-
           maxHeight: "100vh",
         }}
       >
@@ -313,6 +349,7 @@ const CoursesPlaylist = () => {
               }}
               className="accord"
               key={index}
+              disabled={index !== 0 && !isChapter1Finished}
               defaultExpanded={index === 0}
             >
               <AccordionSummary
