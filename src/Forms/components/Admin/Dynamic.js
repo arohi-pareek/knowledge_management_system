@@ -1,315 +1,303 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from "react";
 import * as Yup from "yup";
 import { Field, FieldArray, Form, Formik } from "formik";
 import { Select, TextField, Switch } from "formik-material-ui";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons//Delete";
-import { AddCourse } from "../Redux/Actions/firstaction";
-import { useDispatch } from 'react-redux';
+import {
+  AddCourse,
+  GetChapter,
+  UploadPlayList,
+} from "../Redux/Actions/firstaction";
+import { useDispatch, useSelector } from "react-redux";
 import { Done } from "@material-ui/icons";
 import CloseIcon from "@mui/icons-material/Close";
-import UploadIcon from '@mui/icons-material/Upload';
+import UploadIcon from "@mui/icons-material/Upload";
 import {
-    Button,
-    Grid,
-    makeStyles,
-    IconButton,
-    DialogActions,
-    DialogContent,
-    MenuItem,
-    Tooltip,
-    DialogTitle,
+  Button,
+  Grid,
+  makeStyles,
+  IconButton,
+  DialogActions,
+  DialogContent,
+  MenuItem,
+  Tooltip,
+  DialogTitle,
 } from "@material-ui/core";
 
 const Dynamic = (props) => {
+  const dispatch = useDispatch();
+  const [selected, setSelected] = useState("");
+  const [fileName, SetFileName] = useState("");
+  const [uploadedfile, setUploadedFile] = useState("");
+  const [chapters, setChapters] = useState([]);
+  const { CloseUploadform, courseid } = props;
 
-    const dispatch = useDispatch();
-    const [selected, setSelected] = useState("");
-    const [fileName, SetFileName] = useState("")
-    const { CloseUploadform } = props;
-    let reset;
-    const empty = {
-        CourseTitle: "",
-        CourseDesc: "",
-        upload: "",
-    };
+  const empty = {
+    CourseTitle: "",
+    CourseDesc: "",
+    upload: "",
+  };
 
-    const attributeType = [
-        { title: "String" },
-        { title: "Int" },
-        { title: "Date" },
-    ];
+  const videoRef = useRef(null);
 
-    const fileChange = (e, index) => {
-        let file = e.target.files[0];
-        // formik.setFieldValue(`contact[${index}].files`, file);
-        // Update the file name in the state
-        const updatedFileNames = [...fileName];
-        updatedFileNames[index] = file ? file.name : "";
-        SetFileName(updatedFileNames);
-        console.log(updatedFileNames)
-    };
+  const fileChange = (e, index) => {
+    console.log(e.target.files[0] ,"event")
+    let file = e.target.files[0];
+  
+    // Create a FormData object
 
-    return (
-        <Formik
-            initialValues={{
-                Chapter: "",
-                metadata: [empty],
-            }}
-            const validationSchema={Yup.object().shape({
-                CourseTitle: Yup.string().required("Course ID is required"),
-                CourseDesc: Yup.string()
-                    .notRequired() // Makes the field not required
-                    .max(100, "Course Description must not exceed 100 characters"),
-                upload: Yup.mixed().required("A file is required")
-                    .test('fileFormat', 'VIDEO only', (value) => {
-                        return value && ['video/mp4',
-                            'video/quicktime',].includes(value.type);
-                    }),
-            })}
-            onSubmit={(values) => {
-                let formData = {
-                    ...values,
-                    registeredUsers: ["1400"],
-                    uploadedBy: "1400",
-                };
-                dispatch(
-                    AddCourse(formData)
-                );
-            }
-            }
-        >
-            {({ values, handleReset, handleChange, errors }) => {
-                reset = handleReset;
-                console.log("sdsdfew", errors);
+    const updatedFileNames = [...fileName];
+    updatedFileNames[index] = file ? file.name : "";
+    SetFileName(updatedFileNames);
+    setUploadedFile(file);
+    console.log(updatedFileNames);
+    const video = videoRef.current;
+    video.src = URL.createObjectURL(file);
+  };
 
-                return (
-                    <Form autoComplete="off">
-                        <DialogTitle
-                            style={{ cursor: "move" }}
-                            id="draggable-dialog-title"
-                            className="dialofAction"
+  // function formatDuration(durationInSeconds) {
+  //   const hours = Math.floor(durationInSeconds / 3600);
+  //   const minutes = Math.floor((durationInSeconds % 3600) / 60);
+  //   const seconds = Math.floor(durationInSeconds % 60);
+
+  //   const formattedHours = String(hours).padStart(2, "0");
+  //   const formattedMinutes = String(minutes).padStart(2, "0");
+  //   const formattedSeconds = String(seconds).padStart(2, "0");
+
+  //   return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+  // }
+
+  function formatDuration(durationInSeconds) {
+    const totalMinutes = Math.floor(durationInSeconds / 60);
+    const formattedMinutes = String(totalMinutes).padStart(2, "0");
+
+    return `${formattedMinutes} minutes`;
+  }
+
+  const handleVideoMetadata = () => {
+    // Access the video's duration
+    const video = videoRef.current;
+    const durationInSeconds = video.duration;
+    const formattedDuration = formatDuration(durationInSeconds);
+    console.log("Video duration:", formattedDuration);
+  };
+
+  const chapterData = useSelector((state) => state.ChapterDetails.ChapterData);
+  console.log(chapterData, "chapterData");
+
+  useEffect(() => {
+    dispatch(GetChapter(courseid));
+  }, [courseid, dispatch]);
+
+  return (
+    <Formik
+      initialValues={{
+        Chapter: "python",
+        metadata: [empty],
+      }}
+      validationSchema={Yup.object().shape({
+        // CourseTitle: Yup.string().required("Course ID is required"),
+        // CourseDesc: Yup.string()
+        //   .notRequired() // Makes the field not required
+        //   .max(100, "Course Description must not exceed 100 characters"),
+        // upload: Yup.mixed()
+        //   .required("A file is required")
+        //   .test("fileFormat", "VIDEO only", (value) => {
+        //     return (
+        //       value && ["video/mp4", "video/quicktime"].includes(value.type)
+        //     );
+        //   }),
+      })}
+      onSubmit={(values) => {
+        const formData = new FormData();
+        formData.append("file", uploadedfile);
+        dispatch(UploadPlayList(formData, courseid));
+        CloseUploadform();
+      }}
+    >
+      {({ values, handleChange, errors }) => {
+        console.log("sdsdfew", errors);
+
+        return (
+          <Form autoComplete="off">
+            <DialogTitle
+              style={{ cursor: "move" }}
+              id="draggable-dialog-title"
+              className="dialofAction"
+            >
+              <Tooltip title="CLOSE">
+                <IconButton
+                  onClick={() => CloseUploadform()}
+                  aria-label="close"
+                  style={{
+                    position: "absolute",
+                    right: "8px",
+                    top: "8px",
+                  }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Tooltip>
+              UPLOAD PLAYLIST
+            </DialogTitle>
+            <DialogContent dividers>
+              <Field
+                name="Chapter"
+                component={TextField}
+                label="CHAPTER NAME "
+                fullWidth
+                size="small"
+              />
+
+              {/* <Field
+                name="Chapter"
+                component={Select}
+                label="SELECT CHAPTER"
+                style={{
+                  width: "35rem",
+                }}
+                size="small"
+                onChange={handleChange}
+                value={values.Chapter}
+              >
+                {chapterData &&
+                  chapterData[0]?.map((chapter) => (
+                    <MenuItem key={chapter.id} value={chapter.id}>
+                      {chapter.id}
+                    </MenuItem>
+                  ))}
+              </Field> */}
+
+              <FieldArray name="metadata">
+                {({ push, remove }) => (
+                  <>
+                    {values.metadata.map((_, index) => {
+                      let type = _.attributeType;
+                      setSelected(type);
+                      console.log("erf", selected);
+                      return (
+                        <Grid
+                          key={index}
+                          container
+                          spacing={2}
+                          style={{ marginTop: ".5rem" }}
                         >
-                            <Tooltip title="CLOSE">
-                                <IconButton
-                                    onClick={() => CloseUploadform()}
-                                    aria-label="close"
-                                    style={{
-                                        position: "absolute",
-                                        right: "8px",
-                                        top: "8px",
-                                    }}
-                                >
-                                    <CloseIcon />
-                                </IconButton>
-                            </Tooltip>
-                            UPLOAD PLAYLIST
-                        </DialogTitle>
-                        <DialogContent dividers>
+                          <Grid item xs={3}>
                             <Field
-                                name="Chapter"
-                                component={TextField}
-                                label="CHAPTER NAME "
-                                fullWidth
-                                size="small"
+                              name={`metadata.${index}.CourseTitle`}
+                              component={TextField}
+                              label="Video Title"
+                              size="small"
+                              onChange={handleChange}
                             />
+                          </Grid>
 
-                            <FieldArray name="metadata">
-                                {({ push, remove }) => (
-                                    <React.Fragment>
-                                        {values.metadata.map((_, index) => {
-                                            let type = _.attributeType;
-                                            setSelected(type);
-                                            console.log("erf", selected);
-                                            return (
-                                                <Grid
-                                                    key={index}
-                                                    container
-                                                    spacing={2}
-                                                    style={{ marginTop: ".5rem" }}
-                                                >
-                                                    <Grid item xs={3}>
-                                                        <Field
-                                                            name={`metadata.${index}.CourseTitle`}
-                                                            component={TextField}
-                                                            label="Video Title"
-                                                            size="small"
-                                                            onChange={handleChange}
-                                                        />
-                                                    </Grid>
+                          <Grid item xs={4}>
+                            <Field
+                              name={`metadata.${index}.CourseDesc`}
+                              component={TextField}
+                              label="Video Description"
+                              size="small"
+                              onChange={handleChange}
+                            />
+                          </Grid>
 
-                                                    {/* <Grid item xs={3}>
-                                                        <Field
-                                                            name={`metadata.[${index}].attributeType`}
-                                                            component={Select}
-                                                            label="Attribute Type"
-                                                            style={{
-                                                                width: "9.5rem",
-                                                            }}
-                                                            size="small"
-                                                            onChange={handleChange}
-                                                        >
-                                                            {attributeType.map((option) => (
-                                                                <MenuItem
-                                                                    key={option.title}
-                                                                    value={option.title}
-                                                                >
-                                                                    {option.title}
-                                                                </MenuItem>
-                                                            ))}
-                                                        </Field>
-                                                    </Grid> */}
-                                                    <Grid item xs={4}>
-                                                        <Field
-                                                            name={`metadata.${index}.CourseDesc`}
-                                                            component={TextField}
-                                                            label="Video Description"
-                                                            size="small"
-                                                            onChange={handleChange}
-                                                        />
-                                                    </Grid>
-
-                                                    <Grid item xs={2}>
-                                                        <Field
-                                                            name={`metadata.${index}.video`}
-                                                            component={TextField}
-                                                            placeholder="upload"
-                                                            size="small"
-                                                            value={fileName[index] && fileName[index]}
-                                                            InputProps={{ readOnly: true }}
-                                                            onChange={handleChange}
-                                                        />
-                                                    </Grid>
-
-
-
-                                                    {/* <Grid item xs={3}>
-                                                        {type === "String" ? (
-                                                            <Field
-                                                                name={`metadata[${index}].value`}
-                                                                component={TextField}
-                                                                type="text"
-                                                                label="Default Value"
-                                                                size="small"
-                                                                onChange={handleChange}
-                                                            />
-                                                        ) : type === "Int" ? (
-                                                            <Field
-                                                                name={`metadata[${index}].value`}
-                                                                component={TextField}
-                                                                type="number"
-                                                                label="Default Value"
-                                                                size="small"
-                                                                onChange={handleChange}
-                                                            />
-                                                        ) : (
-                                                            <Field
-                                                                type="Date"
-                                                                name={`metadata[${index}].value`}
-                                                                component={TextField}
-                                                                size="small"
-                                                                onChange={handleChange}
-                                                            />
-                                                        )}
-                                                    </Grid> */}
-
-                                                    <Grid
-                                                        item
-                                                        xs={3}
-                                                        style={{
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "space-between",
-                                                        }}
-                                                    >
-                                                        {/* <div
-                                                            style={{
-                                                                marginTop: "-1rem",
-                                                                display: "flex",
-                                                                flexDirection: "column",
-                                                            }}
-                                                        >
-                                                            Mandatory
-                                                            <Field
-                                                                name={`metadata.[${index}].isMandatory`}
-                                                                type="checkbox"
-                                                                component={Switch}
-                                                                label="Mandatory"
-                                                                checked={values.isMandatory}
-                                                                onChange={handleChange}
-                                                            />
-                                                        </div> */}
-                                                        <IconButton
-                                                            style={{
-                                                                height: "1rem",
-                                                                width: "1rem",
-                                                                backgroundColor: "rgb(5 100 200)",
-                                                            }}
-                                                        >
-                                                            <label className="input_style">
-                                                                <UploadIcon
-                                                                    style={{
-                                                                        fontSize: "19",
-                                                                        color: "#fff",
-                                                                    }}
-                                                                />
-                                                                <input
-                                                                    name={`metadata.${index}.upload`}
-                                                                    component={TextField}
-                                                                    label="Upload"
-                                                                    size="small"
-                                                                    type="file"
-                                                                    accept="video/*"
-                                                                    onChange={(e) =>
-                                                                        fileChange(e, index)
-                                                                    }
-                                                                />
-                                                            </label>
-                                                        </IconButton>
-                                                        {values.metadata.length === 1 ? (
-                                                            <IconButton aria-label="delete" disabled>
-                                                                <DeleteIcon />
-                                                            </IconButton>
-                                                        ) : (
-                                                            <IconButton
-                                                                color="primary"
-                                                                onClick={() => remove(index)}
-                                                            >
-                                                                <DeleteIcon />
-                                                            </IconButton>
-                                                        )}
-
-                                                        <IconButton
-                                                            variant="contained"
-                                                            color="primary"
-                                                            onClick={() => push(empty)}
-                                                        >
-                                                            <AddIcon />
-                                                        </IconButton>
-                                                    </Grid>
-                                                </Grid>
-                                            );
-                                        })}
-                                    </React.Fragment>
-                                )}
-                            </FieldArray>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button
-                                className="submitBtn"
-                                type="submit"
-                                endIcon={<Done />}
-                                variant="contained"
-                                color="primary"
+                          <Grid item xs={2}>
+                            <Field
+                              name={`metadata.${index}.video`}
+                              component={TextField}
+                              placeholder="upload"
+                              size="small"
+                              value={fileName[index] && fileName[index]}
+                              InputProps={{ readOnly: true }}
+                              onChange={handleChange}
+                            />
+                          </Grid>
+                          <Grid
+                            item
+                            xs={3}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <IconButton
+                              style={{
+                                height: "1rem",
+                                width: "1rem",
+                                backgroundColor: "rgb(5 100 200)",
+                              }}
                             >
-                                SAVE
-                            </Button>
-                        </DialogActions>
-                    </Form>
-                );
-            }}
-        </Formik>
-    )
-}
+                              <label className="input_style">
+                                <UploadIcon
+                                  style={{
+                                    fontSize: "19",
+                                    color: "#fff",
+                                  }}
+                                />
+                                <input
+                                  name={`metadata.${index}.upload`}
+                                  component={TextField}
+                                  label="Upload"
+                                  size="small"
+                                  type="file"
+                                  accept="video/*"
+                                  onChange={(e) => fileChange(e, index)}
+                                />
 
-export default Dynamic
+                                <video
+                                  ref={videoRef}
+                                  onLoadedMetadata={handleVideoMetadata}
+                                  style={{ display: "none" }}
+                                />
+                              </label>
+                            </IconButton>
+                            {values.metadata.length === 1 ? (
+                              <IconButton aria-label="delete" disabled>
+                                <DeleteIcon />
+                              </IconButton>
+                            ) : (
+                              <IconButton
+                                color="primary"
+                                onClick={() => remove(index)}
+                              >
+                                <DeleteIcon />
+                              </IconButton>
+                            )}
+
+                            <IconButton
+                              variant="contained"
+                              color="primary"
+                              onClick={() => push(empty)}
+                            >
+                              <AddIcon />
+                            </IconButton>
+                          </Grid>
+                        </Grid>
+                      );
+                    })}
+                  </>
+                )}
+              </FieldArray>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                className="submitBtn"
+                type="submit"
+                endIcon={<Done />}
+                variant="contained"
+                color="primary"
+              >
+                SAVE
+              </Button>
+            </DialogActions>
+          </Form>
+        );
+      }}
+    </Formik>
+  );
+};
+
+export default Dynamic;

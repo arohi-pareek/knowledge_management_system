@@ -23,7 +23,6 @@ import UploadIcon from "@mui/icons-material/Upload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./admin.css";
 import AdminForm from "./AdminForm";
-import UploadForm from "./uploadForm";
 import Draggable from "react-draggable";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteCourse, GetCourse } from "../Redux/Actions/firstaction";
@@ -47,6 +46,7 @@ const AdminDashboard = (props) => {
   const [openAdminform, setOpenAdmin] = useState(false);
   const [openUploadform, setUploadForm] = useState(false);
   const [openChapterform, setChapterForm] = useState(false);
+  const [courseid, setCourseId] = useState(false);
 
   const OpenAdminform = () => {
     setOpenAdmin(true);
@@ -116,20 +116,6 @@ const AdminDashboard = (props) => {
           return (
             <>
               <IconButton>
-                <Tooltip title="UPLOAD VIDEO">
-                  <UploadIcon
-                    size="small"
-                    color="#ccc"
-                    style={{ fontSize: "19px", height: "1rem" }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setUploadForm(true);
-                    }}
-                  />
-                </Tooltip>
-              </IconButton>
-
-              <IconButton>
                 <Tooltip title="ADD CHAPTER">
                   <AddIcon
                     size="small"
@@ -138,6 +124,21 @@ const AdminDashboard = (props) => {
                     onClick={(e) => {
                       e.stopPropagation();
                       setChapterForm(true);
+                      setCourseId(row._valuesCache.id);
+                    }}
+                  />
+                </Tooltip>
+              </IconButton>
+              <IconButton>
+                <Tooltip title="UPLOAD VIDEO">
+                  <UploadIcon
+                    size="small"
+                    color="#ccc"
+                    style={{ fontSize: "19px", height: "1rem" }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setUploadForm(true);
+                      setCourseId(row._valuesCache.id);
                     }}
                   />
                 </Tooltip>
@@ -294,18 +295,18 @@ const AdminDashboard = (props) => {
           aria-labelledby="draggable-dialog-title"
           PaperComponent={PaperComponent}
         >
-          <Dynamic CloseUploadform={CloseUploadform} />
+          <Dynamic CloseUploadform={CloseUploadform} courseid={courseid} />
         </Dialog>
       </div>
 
       <div>
         <Dialog
-        id="chapterForm"
+          id="chapterForm"
           open={openChapterform}
           aria-labelledby="draggable-dialog-title"
           PaperComponent={PaperComponent}
         >
-          <AddChapter CloseChapterform={CloseChapterform} />
+          <AddChapter CloseChapterform={CloseChapterform} courseid={courseid} />
         </Dialog>
       </div>
     </>
