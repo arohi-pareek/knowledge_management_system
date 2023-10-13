@@ -134,7 +134,7 @@ export const GetChapter = (value) => async (dispatch) => {
   }
 };
 
-export const UploadPlayList =
+export const UploadPlayList=
   (formData, courseId, videoLength) => async (dispatch) => {
     const config = {
       headers: {
