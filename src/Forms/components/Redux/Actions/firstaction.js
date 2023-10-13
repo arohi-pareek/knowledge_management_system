@@ -1,11 +1,20 @@
 import Axios from "axios";
 import {
+  ADD_CHAPTER_FAILURE,
+  ADD_CHAPTER_REQUEST,
+  ADD_CHAPTER_SUCCESS,
   ADD_COURSE_FAILURE,
   ADD_COURSE_REQUEST,
   ADD_COURSE_SUCCESS,
+  ADD_UPLOAD_FAILURE,
+  ADD_UPLOAD_REQUEST,
+  ADD_UPLOAD_SUCCESS,
   DELETE_COURSE_FAILURE,
   DELETE_COURSE_REQUEST,
   DELETE_COURSE_SUCCESS,
+  GET_CHAPTER_FAILURE,
+  GET_CHAPTER_REQUEST,
+  GET_CHAPTER_SUCCESS,
   GET_COURSE_FAILURE,
   GET_COURSE_REQUEST,
   GET_COURSE_SUCCESS,
@@ -61,8 +70,8 @@ export const DeleteCourse = (id) => async (dispatch) => {
 
   dispatch({ type: DELETE_COURSE_REQUEST });
   try {
-    const response = await Axios.get(`/course/delete-course/${id}`, config);
-    dispatch({ type: DELETE_COURSE_SUCCESS, payload: response.data });
+    await Axios.get(`/course/delete-course/${id}`, config);
+    dispatch({ type: DELETE_COURSE_SUCCESS, payload: { deletedCourseId: id } });
   } catch (error) {
     dispatch({ type: DELETE_COURSE_FAILURE, payload: error });
   }
@@ -83,4 +92,64 @@ export const subscribe = (payload) => ({
   type: SUBSCRIBE_COURSE__SUCCESS,
   payload: payload,
 });
+
+export const AddChapter = (value) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("jwt_token"),
+      sessionId: sessionStorage.getItem("sessionId"),
+    },
+  };
+
+  dispatch({ type: ADD_CHAPTER_REQUEST });
+  try {
+    const response = await Axios.post(`/course/add-Chapter`, value, config);
+    dispatch({ type: ADD_CHAPTER_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: ADD_CHAPTER_FAILURE, payload: error });
+  }
+};
+
+export const GetChapter = (value) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("jwt_token"),
+      sessionId: sessionStorage.getItem("sessionId"),
+    },
+  };
+
+  dispatch({ type: GET_CHAPTER_REQUEST });
+  try {
+    const response = await Axios.get(`/course/get-Chapters/${value}`, value, config);
+    console.log(response)
+    dispatch({ type: GET_CHAPTER_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: GET_CHAPTER_FAILURE, payload: error });
+  }
+};
+
+export const UploadPlayList = (value,courseId,videoTitle,videoDesc,chapterId,videoLength) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("jwt_token"),
+      sessionId: sessionStorage.getItem("sessionId"),
+      courseId:courseId,
+      videoTitle:videoTitle,
+      videoDesc:videoDesc,
+      chapterId:chapterId,
+      videoLength:videoLength
+    },
+  };
+
+  dispatch({ type: ADD_UPLOAD_REQUEST });
+  try {
+    const response = await Axios.post(`/course/upload`, value, config);
+    dispatch({ type: ADD_UPLOAD_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: ADD_UPLOAD_FAILURE, payload: error });
+  }
+};
 

@@ -1,5 +1,23 @@
-
-import { ADD_COURSE_FAILURE, ADD_COURSE_REQUEST, ADD_COURSE_SUCCESS, DELETE_COURSE_FAILURE, DELETE_COURSE_REQUEST, DELETE_COURSE_SUCCESS, GET_COURSE_FAILURE, GET_COURSE_REQUEST, GET_COURSE_SUCCESS } from "../Constant/ActionTypes";
+import {
+  ADD_CHAPTER_FAILURE,
+  ADD_CHAPTER_REQUEST,
+  ADD_CHAPTER_SUCCESS,
+  ADD_COURSE_FAILURE,
+  ADD_COURSE_REQUEST,
+  ADD_COURSE_SUCCESS,
+  ADD_UPLOAD_FAILURE,
+  ADD_UPLOAD_REQUEST,
+  ADD_UPLOAD_SUCCESS,
+  DELETE_COURSE_FAILURE,
+  DELETE_COURSE_REQUEST,
+  DELETE_COURSE_SUCCESS,
+  GET_CHAPTER_FAILURE,
+  GET_CHAPTER_REQUEST,
+  GET_CHAPTER_SUCCESS,
+  GET_COURSE_FAILURE,
+  GET_COURSE_REQUEST,
+  GET_COURSE_SUCCESS,
+} from "../Constant/ActionTypes";
 
 const courseData = {
   loading: false,
@@ -7,6 +25,17 @@ const courseData = {
   CourseData: [],
 };
 
+const chapterData = {
+  loading: false,
+  error: "",
+  ChapterData: [],
+};
+
+const playListData = {
+  loading: false,
+  error: "",
+  PlayListData: [],
+};
 
 // export const AddCourse = (state = courseData, action) => {
 //   switch (action.type) {
@@ -33,8 +62,7 @@ const courseData = {
 //   }
 // };
 
-
-// // Get Course 
+// // Get Course
 
 // export const GetCourse = (state = courseData, action) => {
 //   switch (action.type) {
@@ -61,7 +89,7 @@ const courseData = {
 //   }
 // };
 
-// // Delete Course 
+// // Delete Course
 
 // export const DeleteCourse = (state = courseData, action) => {
 //   switch (action.type) {
@@ -92,7 +120,9 @@ export const CourseDetails = (state = courseData, action) => {
   const deletedCourseId = action.payload; // Assuming action.payload contains the deleted course ID.
 
   // Find the index of the deleted course in the CourseData array.
-  const updatedCourseData = state.CourseData.filter(course => course.id !== deletedCourseId);
+  const updatedCourseData = state.CourseData.filter(
+    (course) => course.id !== deletedCourseId
+  );
   switch (action.type) {
     // ---------------------- ADD Course
 
@@ -142,6 +172,9 @@ export const CourseDetails = (state = courseData, action) => {
         loading: true,
       };
     case DELETE_COURSE_SUCCESS:
+      const updatedCourseData = state.CourseData.filter(
+        (course) => course.id !== action.payload.deletedCourseId
+      );
       return {
         ...state,
         loading: false,
@@ -153,6 +186,163 @@ export const CourseDetails = (state = courseData, action) => {
         loading: false,
         error: action.payload,
       };
+
+    // ........................ IF EDIT DETAILS
+
+    default:
+      return state;
+  }
+};
+
+export const ChapterDetails = (state = chapterData, action) => {
+  const deletedCourseId = action.payload; // Assuming action.payload contains the deleted course ID.
+
+  // Find the index of the deleted course in the CourseData array.
+  const updatedCourseData = state.ChapterData.filter(
+    (course) => course.id !== deletedCourseId
+  );
+  switch (action.type) {
+    // ---------------------- ADD Chapter
+
+    case ADD_CHAPTER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ADD_CHAPTER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        ChapterData: [...state.ChapterData, action.payload],
+      };
+    case ADD_CHAPTER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    // --------------------------- GET chapter
+
+    case GET_CHAPTER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_CHAPTER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        ChapterData: [...state.ChapterData,action.payload],
+      };
+    case GET_CHAPTER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    // ---------------------- DELETE Course
+
+    // case DELETE_COURSE_REQUEST:
+    //   return {
+    //     ...state,
+    //     loading: true,
+    //   };
+    // case DELETE_COURSE_SUCCESS:
+    //   const updatedCourseData = state.CourseData.filter(
+    //     (course) => course.id !== action.payload.deletedCourseId
+    //   );
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     CourseData: updatedCourseData,
+    //   };
+    // case DELETE_COURSE_FAILURE:
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     error: action.payload,
+    //   };
+
+    // ........................ IF EDIT DETAILS
+
+    default:
+      return state;
+  }
+};
+
+
+export const PlayListDetails = (state = playListData, action) => {
+  const deletedCourseId = action.payload; // Assuming action.payload contains the deleted course ID.
+
+  // Find the index of the deleted course in the CourseData array.
+  const updatedCourseData = state.PlayListData.filter(
+    (course) => course.id !== deletedCourseId
+  );
+  switch (action.type) {
+    // ---------------------- ADD Chapter
+
+    case ADD_UPLOAD_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ADD_UPLOAD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        PlayListData: [...state.ChapterData, action.payload],
+      };
+    case ADD_UPLOAD_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    // --------------------------- GET chapter
+
+    // case GET_CHAPTER_REQUEST:
+    //   return {
+    //     ...state,
+    //     loading: true,
+    //   };
+    // case GET_CHAPTER_SUCCESS:
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     PlayListData: [...state.ChapterData,action.payload],
+    //   };
+    // case GET_CHAPTER_FAILURE:
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     error: action.payload,
+    //   };
+
+    // ---------------------- DELETE Course
+
+    // case DELETE_COURSE_REQUEST:
+    //   return {
+    //     ...state,
+    //     loading: true,
+    //   };
+    // case DELETE_COURSE_SUCCESS:
+    //   const updatedCourseData = state.CourseData.filter(
+    //     (course) => course.id !== action.payload.deletedCourseId
+    //   );
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     CourseData: updatedCourseData,
+    //   };
+    // case DELETE_COURSE_FAILURE:
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     error: action.payload,
+    //   };
 
     // ........................ IF EDIT DETAILS
 
