@@ -71,7 +71,7 @@ const Courses = () => {
   const navigate = useNavigate();
   const classes = useStyles();
 
-  const CourseArr = useSelector((state) => state.subscribe.subArr);
+  const CourseArr = useSelector((state) => state.CourseDetails.CourseData)
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [open, setOpen] = useState(false);
   const [opendrawer, setOpenDrawer] = useState(true);
@@ -247,9 +247,9 @@ const Courses = () => {
                   }}
                 />
                 <p>
-                  <b className="cTop">{item.name}</b>
+                  <b className="cTop">{item.courseName}</b>
                 </p>
-                <p>Category: {item.category}</p>
+                <p>Category: {item.type}</p>
                 <p>Rating {item.rating}</p>
                 <p>
                   Course Description:{" "}
@@ -439,6 +439,8 @@ const Courses = () => {
                   />
                   <FormControlLabel
                     control={<Checkbox color="primary" />}
+
+                    
                     label="Quizzes"
                   />
                   <FormControlLabel

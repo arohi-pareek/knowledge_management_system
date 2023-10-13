@@ -16,7 +16,7 @@ import * as Yup from "yup";
 import { AddCourse } from "../Redux/Actions/firstaction";
 import { useDispatch } from "react-redux";
 
-const statusS = [
+const status = [
   { label: "Commit" },
   { label: "Low" },
   { label: "High" },
@@ -29,14 +29,14 @@ const AdminForm = (props) => {
   const dispatch = useDispatch();
 
   const initialValues = {
-    id: "",
+    // id: "",
     type: "",
     courseName: "",
     courseDescription: "",
   };
 
   const validationSchema = Yup.object().shape({
-    id: Yup.number().required("Course ID is required"),
+    // id: Yup.number().required("Course ID is required"),
     type: Yup.string().required("type is required"),
     courseName: Yup.string().required("Course Title is required"),
     courseDescription: Yup.string()
@@ -85,7 +85,7 @@ const AdminForm = (props) => {
         </DialogTitle>
         <DialogContent  dividers>
           <Grid  container spacing={2}>
-            <Grid item xs={6}>
+            {/* <Grid item xs={6}>
               <TextField 
                 fullWidth
                 name="id"
@@ -100,7 +100,7 @@ const AdminForm = (props) => {
                 error={formik.touched.id && Boolean(formik.errors.id)}
                 helperText={formik.touched.id && formik.errors.id}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={6}>
               <TextField
                 fullWidth

@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   List,
@@ -81,6 +81,7 @@ const playlistData = [
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+        watched: false,
       },
     ],
   },
@@ -117,7 +118,6 @@ const playlistData = [
       },
     ],
   },
-  // Add more chapters and videos as needed
 ];
 
 const tabs = ["Overview", "Q&A", "Notes", "Reviews", "Learning Tools"];
@@ -139,72 +139,56 @@ const overallProgress = calculateOverallProgress();
 const CoursesPlaylist = () => {
   const [selectedVideo, setSelectedVideo] = useState(playlistData[0]);
   const [selectedTab, setSelectedTab] = useState(0);
-  const [playlistdata, setPlaylistdata] = useState([]);
-  const videoRef = useRef(null);
-  useEffect(() => {
-    // Load saved currentTime values from localStorage
-    const savedTimeData = JSON.parse(localStorage.getItem("videoTimeData")) || {};
-
-    // Update the playlistData with saved currentTime values
-    const updatedPlaylistData = playlistData.map((chapterData) => {
-      return {
-        ...chapterData,
-        videos: chapterData.videos.map((video) => {
-          return {
-            ...video,
-            currentTime: savedTimeData[video.id] || 0,
-          };
-        }),
-      };
-    });
-
-    setPlaylistdata(updatedPlaylistData);
-  }, []);
-
-
-  useEffect(() => {
-    // Save currentTime to localStorage when a video is paused
-    const handleVideoPause = () => {
-      if (selectedVideo) {
-        const currentTimeData = {
-          ...JSON.parse(localStorage.getItem("videoTimeData")),
-          [selectedVideo.id]: videoRef.current.currentTime,
-        };
-        localStorage.setItem("videoTimeData", JSON.stringify(currentTimeData));
-      }
-    };
-
-    // Add event listeners to the video element
-    if (selectedVideo && videoRef.current) {
-    //   const videoElement = document.getElementById(`video-${selectedVideo.id}`);
-    //   videoElement.addEventListener("pause", handleVideoPause);
-    videoRef.current.addEventListener("pause", handleVideoPause);
-    }
-
-    // Remove event listener when component unmounts
-    return () => {
-      if (selectedVideo && videoRef.current) {
-        // const videoElement = document.getElementById(`video-${selectedVideo.id}`);
-        // videoElement.removeEventListener("pause", handleVideoPause);
-        videoRef.current.removeEventListener("pause", handleVideoPause);
-      }
-    };
-  }, [selectedVideo]);
+  const [isChapter1Finished, setIsChapter1Finished] = useState(false);
 
   const handleChangeTab = (event, newValue) => {
     setSelectedTab(newValue);
   };
 
-  const handleVideoClick = (video) => {
-    setSelectedVideo(video);
-    console.log(video);
+  const updateVideoTime = (videoId, currentTime) => {
+    localStorage.setItem(`video-${videoId}-time`, currentTime.toString());
   };
 
-  const selectedVideoInfo = playlistdata.find(
+  const playVideo = (video, currentTime) => {
+    const videoElement = document.getElementById("videoPlayer");
+    videoElement.currentTime = currentTime;
+    videoElement.addEventListener("timeupdate", () => {
+      const currentTime = videoElement.currentTime;
+      updateVideoTime(video.id, currentTime);
+    });
+
+    if (videoElement.readyState >= 2) {
+      videoElement
+        .play()
+        .catch((error) => console.error("Error playing the video:", error));
+    } else {
+      videoElement.addEventListener("loadedmetadata", () => {
+        videoElement
+          .play()
+          .catch((error) => console.error("Error playing the video:", error));
+      });
+    }
+  };
+
+  const handleVideoClick = (video) => {
+    setSelectedVideo(video);
+    const storedTime = localStorage.getItem(`video-${video.id}-time`);
+    const currentTime = storedTime ? parseFloat(storedTime) : 0;
+    playVideo(video, currentTime);
+
+    console.log(storedTime, currentTime);
+
+    const isChapter1Finished = playlistData[0].videos.every((video) => {
+      return console.log(video), video.watched;
+    });
+    setIsChapter1Finished(isChapter1Finished);
+  };
+
+  const selectedVideoInfo = playlistData.find(
     (video) => video === selectedVideo
   );
 
-  const totalVideos = playlistdata.reduce(
+  const totalVideos = playlistData.reduce(
     (total, chapter) => total + chapter.videos.length,
     0
   );
@@ -227,6 +211,7 @@ const CoursesPlaylist = () => {
         <div>
           <video
             key={selectedVideo.id}
+            id={"videoPlayer"}
             controls
             currentTime={selectedVideo.currentTime}
 
@@ -238,6 +223,7 @@ const CoursesPlaylist = () => {
               borderRadius: "1rem",
               height: "30rem",
             }}
+            currentime={localStorage.getItem(`video-${selectedVideo.id}-time`)}
           >
             <source src={selectedVideo?.videoUrl} />
           </video>
@@ -305,7 +291,6 @@ const CoursesPlaylist = () => {
         style={{
           padding: "1px",
           backgroundColor: "var(--form)",
-
           maxHeight: "100vh",
         }}
       >
@@ -357,7 +342,7 @@ const CoursesPlaylist = () => {
           </div>
         </div>
         <div className="playlist-container">
-          {playlistdata.map((chapterData, index) => (
+          {playlistData.map((chapterData, index) => (
             <Accordion
               style={{
                 backgroundColor: "var(--text)",
@@ -366,6 +351,7 @@ const CoursesPlaylist = () => {
               }}
               className="accord"
               key={index}
+              disabled={index !== 0 && !isChapter1Finished}
               defaultExpanded={index === 0}
             >
               <AccordionSummary
