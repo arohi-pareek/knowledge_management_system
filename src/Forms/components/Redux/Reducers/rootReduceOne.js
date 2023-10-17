@@ -17,6 +17,9 @@ import {
   GET_COURSE_FAILURE,
   GET_COURSE_REQUEST,
   GET_COURSE_SUCCESS,
+  GET_VIDEO_FAILURE,
+  GET_VIDEO_REQUEST,
+  GET_VIDEO_SUCCESS,
 } from "../Constant/ActionTypes";
 
 const courseData = {
@@ -36,85 +39,6 @@ const playListData = {
   error: "",
   PlayListData: [],
 };
-
-// export const AddCourse = (state = courseData, action) => {
-//   switch (action.type) {
-//     case ADD_COURSE_REQUEST:
-//       return {
-//         ...state,
-//         loading: true,
-//       };
-//     case ADD_COURSE_SUCCESS:
-//       return {
-//         ...state,
-//         loading: false,
-//         CourseData: action.payload,
-//       };
-//     case ADD_COURSE_FAILURE:
-//       return {
-//         ...state,
-//         loading: false,
-//         error: action.payload,
-//       };
-
-//     default:
-//       return state;
-//   }
-// };
-
-// // Get Course
-
-// export const GetCourse = (state = courseData, action) => {
-//   switch (action.type) {
-//     case GET_COURSE_REQUEST:
-//       return {
-//         ...state,
-//         loading: true,
-//       };
-//     case GET_COURSE_SUCCESS:
-//       return {
-//         ...state,
-//         loading: false,
-//         CourseData: action.payload,
-//       };
-//     case GET_COURSE_FAILURE:
-//       return {
-//         ...state,
-//         loading: false,
-//         error: action.payload,
-//       };
-
-//     default:
-//       return state;
-//   }
-// };
-
-// // Delete Course
-
-// export const DeleteCourse = (state = courseData, action) => {
-//   switch (action.type) {
-//     case DELETE_COURSE_REQUEST:
-//       return {
-//         ...state,
-//         loading: true,
-//       };
-//     case DELETE_COURSE_SUCCESS:
-//       return {
-//         ...state,
-//         loading: false,
-//         CourseData: action.payload,
-//       };
-//     case DELETE_COURSE_FAILURE:
-//       return {
-//         ...state,
-//         loading: false,
-//         error: action.payload,
-//       };
-
-//     default:
-//       return state;
-//   }
-// };
 
 export const CourseDetails = (state = courseData, action) => {
   const deletedCourseId = action.payload; // Assuming action.payload contains the deleted course ID.
@@ -301,25 +225,25 @@ export const PlayListDetails = (state = playListData, action) => {
         error: action.payload,
       };
 
-    // --------------------------- GET chapter
+    // --------------------------- GET video
 
-    // case GET_CHAPTER_REQUEST:
-    //   return {
-    //     ...state,
-    //     loading: true,
-    //   };
-    // case GET_CHAPTER_SUCCESS:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     PlayListData: [...state.ChapterData,action.payload],
-    //   };
-    // case GET_CHAPTER_FAILURE:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     error: action.payload,
-    //   };
+    case GET_VIDEO_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_VIDEO_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        PlayListData: [...state.ChapterData,action.payload],
+      };
+    case GET_VIDEO_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
     // ---------------------- DELETE Course
 

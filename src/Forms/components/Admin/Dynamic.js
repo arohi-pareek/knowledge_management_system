@@ -4,7 +4,11 @@ import { Field, FieldArray, Form, Formik } from "formik";
 import { Select, TextField, Switch } from "formik-material-ui";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons//Delete";
-import { AddCourse, GetChapter,UploadPlayList } from "../Redux/Actions/firstaction";
+import {
+  AddCourse,
+  GetChapter,
+  UploadPlayList,
+} from "../Redux/Actions/firstaction";
 import { useDispatch, useSelector } from "react-redux";
 import { Done } from "@material-ui/icons";
 import CloseIcon from "@mui/icons-material/Close";
@@ -38,28 +42,37 @@ const Dynamic = (props) => {
   const videoRef = useRef(null);
 
   const fileChange = (e, index) => {
+    console.log(e.target.files[0] ,"event")
     let file = e.target.files[0];
-    // formik.setFieldValue(`contact[${index}].files`, file);
-    // Update the file name in the state
+  
+    // Create a FormData object
+
     const updatedFileNames = [...fileName];
     updatedFileNames[index] = file ? file.name : "";
     SetFileName(updatedFileNames);
-    setUploadedFile(file)
+    setUploadedFile(file);
     console.log(updatedFileNames);
     const video = videoRef.current;
     video.src = URL.createObjectURL(file);
   };
 
+  // function formatDuration(durationInSeconds) {
+  //   const hours = Math.floor(durationInSeconds / 3600);
+  //   const minutes = Math.floor((durationInSeconds % 3600) / 60);
+  //   const seconds = Math.floor(durationInSeconds % 60);
+
+  //   const formattedHours = String(hours).padStart(2, "0");
+  //   const formattedMinutes = String(minutes).padStart(2, "0");
+  //   const formattedSeconds = String(seconds).padStart(2, "0");
+
+  //   return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+  // }
+
   function formatDuration(durationInSeconds) {
-    const hours = Math.floor(durationInSeconds / 3600);
-    const minutes = Math.floor((durationInSeconds % 3600) / 60);
-    const seconds = Math.floor(durationInSeconds % 60);
+    const totalMinutes = Math.floor(durationInSeconds / 60);
+    const formattedMinutes = String(totalMinutes).padStart(2, "0");
 
-    const formattedHours = String(hours).padStart(2, "0");
-    const formattedMinutes = String(minutes).padStart(2, "0");
-    const formattedSeconds = String(seconds).padStart(2, "0");
-
-    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+    return `${formattedMinutes} minutes`;
   }
 
   const handleVideoMetadata = () => {
@@ -74,16 +87,15 @@ const Dynamic = (props) => {
   console.log(chapterData, "chapterData");
 
   useEffect(() => {
-    dispatch(GetChapter(courseid))
+    dispatch(GetChapter(courseid));
   }, [courseid, dispatch]);
 
   return (
     <Formik
       initialValues={{
-        Chapter: "",
+        Chapter: "python",
         metadata: [empty],
       }}
-      const
       validationSchema={Yup.object().shape({
         // CourseTitle: Yup.string().required("Course ID is required"),
         // CourseDesc: Yup.string()
@@ -98,12 +110,10 @@ const Dynamic = (props) => {
         //   }),
       })}
       onSubmit={(values) => {
-        let formData = {
-          // ...values,
-          file: uploadedfile,
-        };
-        dispatch(UploadPlayList(formData,"","","","",""));
-        CloseUploadform()
+        const formData = new FormData();
+        formData.append("file", uploadedfile);
+        dispatch(UploadPlayList(formData, courseid));
+        CloseUploadform();
       }}
     >
       {({ values, handleChange, errors }) => {
@@ -141,24 +151,22 @@ const Dynamic = (props) => {
               />
 
               {/* <Field
-                name={"Chapter"}
+                name="Chapter"
                 component={Select}
-                // label="CHAPTER NAME"
+                label="SELECT CHAPTER"
                 style={{
                   width: "35rem",
                 }}
                 size="small"
                 onChange={handleChange}
-                value={""}
+                value={values.Chapter}
               >
-                <MenuItem value="" disabled>
-                  <p>Select Chapter</p>
-                </MenuItem>
-                {chapterData && chapterData[0]?.map((chapter) => (
-                  <MenuItem key={chapter.id} value={chapter}>
-                    {chapter.id}
-                  </MenuItem>
-                ))}
+                {chapterData &&
+                  chapterData[0]?.map((chapter) => (
+                    <MenuItem key={chapter.id} value={chapter.id}>
+                      {chapter.id}
+                    </MenuItem>
+                  ))}
               </Field> */}
 
               <FieldArray name="metadata">
