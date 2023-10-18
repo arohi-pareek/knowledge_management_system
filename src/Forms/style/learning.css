@@ -3,9 +3,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Mulish;
-  
 }
-body{
+body {
   background-color: var(--bg-clr);
 }
 
@@ -91,13 +90,13 @@ header {
   font-style: normal;
   font-weight: bold;
   text-transform: capitalize;
-  color:var(--main-heading);
+  color: var(--main-heading);
   margin-top: 1rem;
   margin-left: 1rem;
   margin-bottom: 1rem;
 }
 
- .cart-item {
+.cart-item {
   /* background: linear-gradient(
         103.49deg,
         #ffffff -28.13%,
@@ -108,15 +107,13 @@ header {
   border-radius: 2rem;
   display: flex;
   place-items: center;
-  gap:1rem;
+  gap: 1rem;
   padding: 10px;
-  
 }
 
 /* .listcat{
   font-size: 2px;
 } */
-
 
 .cart-items hr {
   margin: 2rem auto;
@@ -124,17 +121,16 @@ header {
 }
 
 /* .cart-items{ */
-  /* width: 98%;
+/* width: 98%;
   height: 20em;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 1rem;
   background-color: var(--form); */
-  /* justify-content: space-evenly; */
+/* justify-content: space-evenly; */
 
-
-.cart-items-container-list{
+.cart-items-container-list {
   width: 93%;
   height: auto;
   display: flex;
@@ -155,12 +151,12 @@ header {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   border-bottom: 0.1rem solid #9a9191;
 }
-.list-img{
+.list-img {
   width: 100%;
   height: 150px;
   /* Set a specific height for the images */
   object-fit: cover;
-  margin-left:40px;
+  margin-left: 40px;
   /* Maintain aspect ratio and cover the whole space */
 }
 
@@ -170,7 +166,7 @@ header {
   filter: drop-shadow(0rem 0.4rem 1rem #f1f7ff);
   border-radius: 1rem;
   margin-top: 21px;
-  margin-left: 1rem;;
+  margin-left: 1rem;
 }
 
 .items-info .title {
@@ -180,8 +176,6 @@ header {
   align-items: center;
   margin-left: 300px;
   width: 300px;
-  
-  
 }
 
 .items-info .title h2 {
@@ -195,7 +189,7 @@ header {
 }
 
 .items-info .title p {
-  font-style:normal;
+  font-style: normal;
   font-weight: normal;
   font-size: 1rem;
   display: flex;
@@ -205,11 +199,11 @@ header {
   color: black;
 }
 
-.items-info .title .sub-btn{
+.items-info .title .sub-btn {
   margin-top: -0.8rem;
   width: 8rem;
   height: 2em;
-  background-color:#111b20;
+  background-color: #111b20;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,10 +216,10 @@ header {
 .sub-btn:hover {
   cursor: pointer;
   transition: 0.27s;
-  transform: scale(1.10);
+  transform: scale(1.1);
 }
-.course-details{
-  color:black
+.course-details {
+  color: black;
 }
 
 .card {
@@ -233,22 +227,21 @@ header {
   /* padding: 20px; */
   margin-bottom: 20px;
   border-radius: 20px;
-  background-color:var(--form);
-  
-    position: relative;
-    width:20%;
-    padding: 20px;
-    /* border-radius: 20px; */
-    -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-    box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-    display: flex;
-    flex-direction: column;
-    
-    cursor: pointer;
-  
+  background-color: var(--form);
+
+  position: relative;
+  width: 20%;
+  padding: 20px;
+  /* border-radius: 20px; */
+  -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+  box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+  display: flex;
+  flex-direction: column;
+
+  cursor: pointer;
 }
-.title .listcat{
+.title .listcat {
   font-size: small;
 }
 
@@ -257,7 +250,7 @@ header {
   height: 150px;
   /* Set a specific height for the images */
   object-fit: cover;
-  
+
   /* Maintain aspect ratio and cover the whole space */
 }
 
@@ -268,14 +261,12 @@ header {
 
 .progress-bar {
   margin: 10px 0;
-  color: black
+  color: black;
 }
 
 .PlayList {
   text-align: center;
 }
-
-
 
 /* 
 .learningTop{
@@ -293,10 +284,6 @@ header {
     margin: 30px;   
 } */
 
-
-
-
-
 .items-info .PlayList {
   font-style: normal;
   font-weight: bold;
@@ -309,13 +296,13 @@ header {
 
 .percentage-text {
   font-size: 14px;
-  margin-top: 5px;}
+  margin-top: 5px;
+}
 
 .card:hover img {
   filter: blur(2px);
   /* Add blur effect on hover */
 }
-
 
 .card:hover .play-icon {
   opacity: 1;
@@ -335,7 +322,16 @@ header {
   /* Add transition for smooth effect */
 }
 
-.subscribe_container{
+.subscribe_container {
   width: 95%;
   margin: 0 auto;
+}
+
+.no-subscribed-courses-message {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }

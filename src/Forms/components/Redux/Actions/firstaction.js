@@ -22,6 +22,7 @@ import {
   SUBSCRIBE_COURSE__SUCCESS,
 } from "../Constant/ActionTypes";
 
+
 export const AddCourse = (value) => async (dispatch) => {
   const config = {
     headers: {
@@ -35,8 +36,14 @@ export const AddCourse = (value) => async (dispatch) => {
   try {
     const response = await Axios.post(`/course/add-course`, value, config);
     dispatch({ type: ADD_COURSE_SUCCESS, payload: response.data });
+    dispatch(
+      setSnackbar(true, 'success', 'Course Added Successfully')
+    );
   } catch (error) {
     dispatch({ type: ADD_COURSE_FAILURE, payload: error });
+    dispatch(
+      setSnackbar(true, 'error', 'Error adding course ')
+    );
   }
 };
 
@@ -72,8 +79,14 @@ export const DeleteCourse = (id) => async (dispatch) => {
   try {
     await Axios.get(`/course/delete-course/${id}`, config);
     dispatch({ type: DELETE_COURSE_SUCCESS, payload: { deletedCourseId: id } });
+    dispatch(
+      setSnackbar(true, 'success', 'Course Deleted Successfully')
+    );
   } catch (error) {
     dispatch({ type: DELETE_COURSE_FAILURE, payload: error });
+    dispatch(
+      setSnackbar(true, 'error', 'Error Deleting course')
+    );
   }
 };
 
@@ -106,8 +119,15 @@ export const AddChapter = (value) => async (dispatch) => {
   try {
     const response = await Axios.post(`/course/add-Chapter`, value, config);
     dispatch({ type: ADD_CHAPTER_SUCCESS, payload: response.data });
+    // Dispatch setSnackbar action to show a snackbar for success
+    dispatch(
+      setSnackbar(true, 'success', 'Chapter Added Successfully')
+    );
   } catch (error) {
     dispatch({ type: ADD_CHAPTER_FAILURE, payload: error });
+    dispatch(
+      setSnackbar(true, 'error', 'Error adding chapter ')
+    );
   }
 };
 
@@ -152,8 +172,14 @@ export const UploadPlayList=
     try {
       const response = await Axios.post(`/course/upload`, formData, config);
       dispatch({ type: ADD_UPLOAD_SUCCESS, payload: response.data });
+      dispatch(
+        setSnackbar(true, 'success', 'PlayList Saved Successfully')
+      );
     } catch (error) {
       dispatch({ type: ADD_UPLOAD_FAILURE, payload: error });
+      dispatch(
+        setSnackbar(true, 'error', 'Error Saving PlayList')
+      );
     }
   };
 

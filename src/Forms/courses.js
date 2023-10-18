@@ -71,6 +71,7 @@ const Courses = () => {
   const classes = useStyles();
 
   const CourseArr = useSelector((state) => state.subscribe.subArr);
+    // const CourseArr = useSelector((state) => (state.CourseDetails.CourseData));
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [open, setOpen] = useState(false);
   const [opendrawer, setOpenDrawer] = useState(true);
@@ -211,7 +212,7 @@ const Courses = () => {
     </div> */}
       <div style={{
         transition: "width .5s",
-        width: opendrawer ? "calc(100% - 17%)" : "100%",
+        width: opendrawer ? "calc(100% - 20%)" : "100%",
         flexBasis: "initial"
       }}>
         <div style={{

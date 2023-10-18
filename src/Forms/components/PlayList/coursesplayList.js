@@ -207,13 +207,13 @@ const CoursesPlaylist = () => {
         margin: "0 auto",
       }}
     >
-      <Grid item xs={9} style={{ paddingRight: "10px" }}>
-        <div>
+      <Grid item xs={12} md={9} style={{ paddingRight: "10px" }}>
+        <div style={{ marginBottom: "1rem" }}>
           <video
             key={selectedVideo.id}
             id={"videoPlayer"}
             controls
-            autoPlay
+            autoPlaystyle={{ marginBottom: "1rem" }}
             type="video/mp4"
             style={{
               background: "black",
@@ -285,7 +285,7 @@ const CoursesPlaylist = () => {
       </Grid>
       <Grid
         item
-        xs={3}
+        xs={12} md={3}
         style={{
           padding: "1px",
           backgroundColor: "var(--form)",
@@ -302,7 +302,7 @@ const CoursesPlaylist = () => {
             border: "1px solid",
             position: "fixed",
             zIndex: 100,
-            width: "22%",
+            width: "22rem",
             marginTop: "0.5rem",
             borderRadius: "0.5rem",
             backgroundColor: "white",
@@ -344,7 +344,7 @@ const CoursesPlaylist = () => {
             <Accordion
               style={{
                 backgroundColor: "var(--text)",
-                width: "21.9rem",
+                width: "22rem",
                 marginLeft: "-17px",
               }}
               className="accord"
