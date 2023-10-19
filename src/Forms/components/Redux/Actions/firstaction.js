@@ -6,6 +6,9 @@ import {
   ADD_COURSE_FAILURE,
   ADD_COURSE_REQUEST,
   ADD_COURSE_SUCCESS,
+  ADD_QUIZ_FAILURE,
+  ADD_QUIZ_REQUEST,
+  ADD_QUIZ_SUCCESS,
   ADD_UPLOAD_FAILURE,
   ADD_UPLOAD_REQUEST,
   ADD_UPLOAD_SUCCESS,
@@ -199,5 +202,31 @@ export const UploadPlayList=
       dispatch({ type: GET_COURSE_SUCCESS, payload: response.data });
     } catch (error) {
       dispatch({ type: GET_COURSE_FAILURE, payload: error });
+    }
+  };
+
+
+  export const AddQuiz = (value) => async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("jwt_token"),
+        sessionId: sessionStorage.getItem("sessionId"),
+      },
+    };
+  
+    dispatch({ type: ADD_QUIZ_REQUEST });
+    try {
+      const response = await Axios.post(`/course/add-quiz`, value, config);
+      dispatch({ type: ADD_QUIZ_SUCCESS, payload: response.data });
+      // Dispatch setSnackbar action to show a snackbar for success
+      dispatch(
+        setSnackbar(true, 'success', 'Quiz Saved Successfully')
+      );
+    } catch (error) {
+      dispatch({ type: ADD_QUIZ_FAILURE, payload: error });
+      dispatch(
+        setSnackbar(true, 'error', 'Error Saving Quiz ')
+      );
     }
   };

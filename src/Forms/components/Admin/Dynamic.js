@@ -284,7 +284,8 @@ const Dynamic = (props) => {
                               {fileName || "Upload Thumbnail"}
                             </label>
                             <input
-                              // name={`metadata.${index}.upload`}
+                              name={`metadata.${index}.upload`}
+                              // value={fileName[index] && fileName[index]}
                               className={classes.input}
                               component={TextField}
                               label="Upload"

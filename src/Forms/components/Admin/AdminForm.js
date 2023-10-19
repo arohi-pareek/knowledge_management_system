@@ -16,33 +16,33 @@ import * as Yup from "yup";
 import { AddCourse, setSnackbar } from "../Redux/Actions/firstaction";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core";
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import CloudUploadIcon from "@material-ui/icons/CloudUpload"; 
 
 const useStyles = makeStyles({
   input: {
-    display: 'none',
+    display: "none",
   },
   button: {
-    border: '1px solid #c2b8b8e8',
-    padding: '7px 14px',
-    cursor: 'pointer',
-    display: 'inline-block',
-    width:"100%",
-    borderRadius:"0.3rem",
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
+    border: "1px solid #c2b8b8e8",
+    padding: "7px 14px",
+    cursor: "pointer",
+    display: "inline-block",
+    width: "100%",
+    borderRadius: "0.3rem",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
   },
   icon: {
-    marginRight: '15px',
-    verticalAlign: 'middle',
+    marginRight: "15px",
+    verticalAlign: "middle",
   },
 });
 
 const AdminForm = (props) => {
   const classes = useStyles();
-  const [uploadedFileName, setUploadedFileName] = useState('');
-  const [upload, setupload] = useState('');
+  const [uploadedFileName, setUploadedFileName] = useState("");
+  const [upload, setupload] = useState("");
 
   const { CloseAdminform } = props;
   const dispatch = useDispatch();
@@ -82,7 +82,7 @@ const AdminForm = (props) => {
     const file = event.target.files[0];
     if (file) {
       setUploadedFileName(file.name);
-      setupload(file)
+      setupload(file);
     }
   };
 
@@ -144,7 +144,7 @@ const AdminForm = (props) => {
                 helperText={formik.touched.courseThumbnail && formik.errors.courseThumbnail}
               /> */}
               <label htmlFor="file" className={classes.button}>
-              <CloudUploadIcon className={classes.icon} />
+                <CloudUploadIcon className={classes.icon} />
                 {uploadedFileName || "Upload Thumbnail"}
               </label>
               <input

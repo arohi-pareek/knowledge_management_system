@@ -21,6 +21,7 @@ import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import UploadIcon from "@mui/icons-material/Upload";
 import DeleteIcon from "@mui/icons-material/Delete";
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import "./admin.css";
 import AdminForm from "./AdminForm";
 import Draggable from "react-draggable";
@@ -28,6 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DeleteCourse, GetCourse } from "../Redux/Actions/firstaction";
 import Dynamic from "./Dynamic";
 import AddChapter from "./addChapter";
+import Questionform from "./questionform";
 
 function PaperComponent(props) {
   return (
@@ -46,6 +48,7 @@ const AdminDashboard = (props) => {
   const [openAdminform, setOpenAdmin] = useState(false);
   const [openUploadform, setUploadForm] = useState(false);
   const [openChapterform, setChapterForm] = useState(false);
+  const [openquestionform, setQuestionForm] = useState(false);
   const [courseid, setCourseId] = useState(false);
 
   const OpenAdminform = () => {
@@ -65,13 +68,15 @@ const AdminDashboard = (props) => {
   const CloseChapterform = () => {
     setChapterForm(false);
   };
+  const CloseQuestionform = () => {
+    setQuestionForm(false);
+  };
 
   const HandleDelete = (id) => {
     dispatch(DeleteCourse(id));
   };
 
   const Accountdetail = useSelector((state) => state.CourseDetails.CourseData);
-  console.log(Accountdetail);
 
   const columns = useMemo(
     () => [
@@ -143,7 +148,6 @@ const AdminDashboard = (props) => {
                   />
                 </Tooltip>
               </IconButton>
-
               <IconButton>
                 <Tooltip title="DELETE">
                   <DeleteIcon
@@ -153,6 +157,20 @@ const AdminDashboard = (props) => {
                     onClick={(e) => {
                       e.stopPropagation();
                       HandleDelete(row._valuesCache.id);
+                    }}
+                  />
+                </Tooltip>
+              </IconButton>
+              <IconButton>
+                <Tooltip title="ADD QUIZ">
+                  <QuestionAnswerIcon
+                    size="small"
+                    color="#ccc"
+                    style={{ fontSize: "19px", height: "1rem" }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setQuestionForm(true);
+                      setCourseId(row._valuesCache.id);
                     }}
                   />
                 </Tooltip>
@@ -307,6 +325,17 @@ const AdminDashboard = (props) => {
           PaperComponent={PaperComponent}
         >
           <AddChapter CloseChapterform={CloseChapterform} courseid={courseid} />
+        </Dialog>
+      </div>
+
+      <div>
+        <Dialog
+          id="questionForm"
+          open={openquestionform}
+          aria-labelledby="draggable-dialog-title"
+          PaperComponent={PaperComponent}
+        >
+          < Questionform CloseQuestionform={CloseQuestionform} courseid={courseid} />
         </Dialog>
       </div>
     </>

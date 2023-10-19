@@ -10,6 +10,7 @@ import {
   Tab,
   CircularProgress,
   Tooltip,
+  Button,
 } from "@material-ui/core";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -17,6 +18,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "./playlist.css";
 import ImgTrophy from "../../../../src/Images/trophy.jpg";
+import { useNavigate } from "react-router-dom";
 
 const playlistData = [
   {
@@ -179,7 +181,7 @@ const CoursesPlaylist = () => {
     console.log(storedTime, currentTime);
 
     const isChapter1Finished = playlistData[0].videos.every((video) => {
-      return console.log(video), video.watched;
+      return video.watched;
     });
     setIsChapter1Finished(isChapter1Finished);
   };
@@ -197,6 +199,10 @@ const CoursesPlaylist = () => {
     (overallProgress / 100) * totalVideos
   )} VIDEOS OF ${totalVideos} VIDEOS COMPLETE`;
 
+  const handleGoToQuiz = ()=>{
+    navigate("/Quiz")
+  }
+  const navigate = useNavigate();
   return (
     <Grid
       container
@@ -292,6 +298,7 @@ const CoursesPlaylist = () => {
           maxHeight: "100vh",
         }}
       >
+         <Button onClick={handleGoToQuiz}>GO TO QUIZ </Button>
         <div
           style={{
             display: "flex",
@@ -384,6 +391,7 @@ const CoursesPlaylist = () => {
             </Accordion>
           ))}
         </div>
+       
       </Grid>
     </Grid>
   );
