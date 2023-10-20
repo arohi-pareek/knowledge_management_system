@@ -90,7 +90,7 @@ a {
     background-color:var(--bg-clr);
     justify-content: space-evenly;
     margin-top: 1.5rem;
-    
+    margin-left: 0.5em;
 }
 
 .listview {

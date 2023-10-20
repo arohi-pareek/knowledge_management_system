@@ -73,6 +73,7 @@ const Courses = () => {
 
   const CourseArr = useSelector((state) => state.subscribe.subArr)
   console.log(CourseArr)
+  
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [open, setOpen] = useState(false);
   const [opendrawer, setOpenDrawer] = useState(true);
@@ -208,7 +209,13 @@ const Courses = () => {
 
     return true;
   });
+  const handleOpenDrawer = () => {
+    setIsDrawerOpen(true);
+  };
 
+  const handleCloseDrawer = () => {
+    setIsDrawerOpen(false);
+  };
   return (
     <>
       {/* <div>
@@ -218,6 +225,10 @@ const Courses = () => {
         transition: "width .5s",
         width: opendrawer ? "calc(100% - 20%)" : "100%",
         flexBasis: "initial",
+        position:"relative",
+        '@media (max-width: 630px)': {
+          width: "100%", // Make it full width
+        }
         
       }}>
         <div style={{
@@ -231,7 +242,7 @@ const Courses = () => {
         <div  className='filt'
         
          
-        ><Tooltip title="FILTER"><FilterListIcon className="grid" onClick={() => setOpenDrawer(true)} /></Tooltip>
+        ><Tooltip title="FILTER"><FilterListIcon className="grid" onClick={() => setOpenDrawer(true) } /></Tooltip>
         </div>
 
         {Gridview ? <div className="courseBox">
@@ -287,6 +298,15 @@ const Courses = () => {
           open={opendrawer}
           classes={{
             paper: !opendrawer ? classes.drawerPaperNotOpen : classes.drawerPaperOpen
+          }}
+          style={{
+            // Add styles to make the drawer overlap on mobile view
+            position: "absolute",
+            zIndex: 1, // Ensure it appears above the content
+            // Adjust other styles as needed
+            '@media (max-width: 630px)': {
+              width: "100%", // Make it full width
+            }
           }}
         >
           <div className={classes.drawerHeader}>
