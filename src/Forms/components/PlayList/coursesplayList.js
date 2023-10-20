@@ -227,7 +227,7 @@ const CoursesPlaylist = () => {
               borderRadius: "1rem",
               height: "30rem",
             }}
-            currentTime={localStorage.getItem(`video-${selectedVideo.id}-time`)}
+            currentime={localStorage.getItem(`video-${selectedVideo.id}-time`)}
           >
             <source src={selectedVideo?.videoUrl} />
           </video>

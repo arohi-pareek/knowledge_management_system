@@ -92,6 +92,7 @@ export const CourseDetails = (state = courseData, action) => {
         ...state,
         loading: false,
         CourseData: action.payload,
+      
       };
     case GET_COURSE_FAILURE:
       return {

@@ -3,15 +3,17 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
+import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, Typography } from '@material-ui/core'
+
 import {
   Divider,
   Drawer,
   Grid,
   Tooltip,
 } from "@mui/material";
-// import { CoursesArr } from "./StaticContent/Courses";
+import { CoursesArr } from "./StaticContent/Courses";
 import { useDispatch, useSelector } from "react-redux";
-import { setSnackbar, subscribe } from "./components/Redux/Actions/firstaction";
+import { GetCourse, setSnackbar, subscribe } from "./components/Redux/Actions/firstaction";
 import GridViewIcon from "@mui/icons-material/GridView"
 import ViewListIcon from "@mui/icons-material/ViewList"
 import List from "./components/Coursesmain/List";
@@ -19,7 +21,6 @@ import { Dialog, DialogContent, DialogTitle, IconButton, makeStyles } from "@mat
 import CloseIcon from "@mui/icons-material/Close";
 import { Close } from "@material-ui/icons";
 import FilterListIcon from '@mui/icons-material/FilterList';
-import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, Typography } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -93,6 +94,9 @@ const Courses = () => {
     features: []
   });
 
+  useEffect(() => {
+    dispatch(GetCourse());
+  }, []);
 
   const toggleTheme = () => {
     if (isFavorite === true) {
@@ -204,7 +208,13 @@ const Courses = () => {
 
     return true;
   });
+  const handleOpenDrawer = () => {
+    setIsDrawerOpen(true);
+  };
 
+  const handleCloseDrawer = () => {
+    setIsDrawerOpen(false);
+  };
   return (
     <>
       {/* <div>
@@ -213,7 +223,12 @@ const Courses = () => {
       <div style={{
         transition: "width .5s",
         width: opendrawer ? "calc(100% - 20%)" : "100%",
-        flexBasis: "initial"
+        flexBasis: "initial",
+        position:"relative",
+        '@media (max-width: 630px)': {
+          width: "100%", // Make it full width
+        }
+        
       }}>
         <div style={{
           position: "fixed",
@@ -223,12 +238,10 @@ const Courses = () => {
         }}>{isFavorite ? <Tooltip title="SWITCH TO LIST VIEW"><GridViewIcon className="grid" onClick={() => toggleTheme()} /></Tooltip> : <Tooltip title="SWITCH TO GRID VIEW"><ViewListIcon className="grid" onClick={() => toggleTheme()} /></Tooltip>}
         </div>
 
-        <div style={{
-          position: "fixed",
-          top: "3.2rem",
-          right: "4%",
-          cursor: "pointer"
-        }}><Tooltip title="FILTER"><FilterListIcon className="grid" onClick={() => setOpenDrawer(true)} /></Tooltip>
+        <div  className='filt'
+        
+         
+        ><Tooltip title="FILTER"><FilterListIcon className="grid" onClick={() => setOpenDrawer(true) } /></Tooltip>
         </div>
 
         {Gridview ? <div className="courseBox">
@@ -247,13 +260,13 @@ const Courses = () => {
                   }}
                 />
                 <p>
-                  <b className="cTop">{item.name}</b>
+                  <b className="cTop" style={{fontSize:'1.4rem'}}>{item.name}</b>
                 </p>
-                <p>Category: {item.category}</p>
-                <p>Rating {item.rating}</p>
-                <p>
+                <p style={{marginLeft:'0.6em'}}>Category: {item.category}</p>
+                <p style={{marginLeft:'0.6em'}}>Rating :{item.rating}</p>
+                <p style={{marginLeft:'0.5em'}}>
                   Course Description:{" "}
-                  <h5 style={{ marginLeft: '9rem', marginTop: '-1.2rem', cursor: 'pointer', color: 'var(--main-heading)' }}
+                  <h5 style={{ marginLeft: '9rem', marginTop: '-1rem', cursor: 'pointer', color: 'var(--main-heading)' }}
                     onClick={() => {
                       setopendialog(true);
                       setData(item)
@@ -285,6 +298,15 @@ const Courses = () => {
           classes={{
             paper: !opendrawer ? classes.drawerPaperNotOpen : classes.drawerPaperOpen
           }}
+          style={{
+            // Add styles to make the drawer overlap on mobile view
+            position: "absolute",
+            zIndex: 1, // Ensure it appears above the content
+            // Adjust other styles as needed
+            '@media (max-width: 630px)': {
+              width: "100%", // Make it full width
+            }
+          }}
         >
           <div className={classes.drawerHeader}>
             <Tooltip title={"CLOSE"} aria-label="close">
@@ -310,7 +332,7 @@ const Courses = () => {
           </div>
           <Divider />
           {/* <Typography> 100 result for searchData </Typography> */}
-          <Accordion style={{ backgroundColor: 'var(--form)' }} defaultExpanded>
+          <Accordion style={{ backgroundColor: 'var(--form)',border:'none' }} defaultExpanded>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -439,6 +461,8 @@ const Courses = () => {
                   />
                   <FormControlLabel
                     control={<Checkbox color="primary" />}
+
+                    
                     label="Quizzes"
                   />
                   <FormControlLabel
@@ -456,34 +480,7 @@ const Courses = () => {
         </Drawer>
       </div>
 
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>
-          <h1>{course.heading}</h1>
-          <h5>
-            <ul>{course.subheading}</ul>
-          </h5>
-        </DialogTitle>
-        <DialogContent className="backdropbox">
-          {course.desc.map((item, i) => {
-            return (
-              <>
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className="dropbox" />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography>{item.title}</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography>{item.description}</Typography>
-                  </AccordionDetails>
-                </Accordion>
-              </>
-            );
-          })}
-        </DialogContent>
-      </Dialog>
+     
 
       <Dialog
         open={opendialog}
@@ -682,7 +679,7 @@ const Courses = () => {
       </Dialog>
     </>
   );
-};
+}
 
 export default Courses;
 
