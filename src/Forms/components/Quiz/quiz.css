@@ -10,3 +10,9 @@ input[type="radio"] {
 label {
     cursor: pointer; /* Add a pointer cursor to indicate interactivity */
 }
+
+#instructionForm .MuiDialog-paperWidthSm{
+    width: 50% !important;
+    max-width: 50% !important;
+    max-height: 90% !important;
+  }

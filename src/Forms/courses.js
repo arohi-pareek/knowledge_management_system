@@ -1,30 +1,45 @@
-import "../Forms/style/courses.css"
+import "../Forms/style/courses.css";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
-import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, Typography } from '@material-ui/core'
-
+import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
 import {
-  Divider,
-  Drawer,
-  Grid,
-  Tooltip,
-} from "@mui/material";
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Checkbox,
+  FormControlLabel,
+  Typography,
+} from "@material-ui/core";
+import GradeIcon from "@mui/icons-material/Grade";
+import LanguageIcon from "@mui/icons-material/Language";
+import TopicIcon from "@mui/icons-material/Topic";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import FeaturedVideoIcon from "@mui/icons-material/FeaturedVideo";
+
+import { Divider, Drawer, Grid, Tooltip } from "@mui/material";
 import { CoursesArr } from "./StaticContent/Courses";
 import { useDispatch, useSelector } from "react-redux";
-import { GetCourse, setSnackbar, subscribe } from "./components/Redux/Actions/firstaction";
-import GridViewIcon from "@mui/icons-material/GridView"
-import ViewListIcon from "@mui/icons-material/ViewList"
+import {
+  GetCourse,
+  setSnackbar,
+  subscribe,
+} from "./components/Redux/Actions/firstaction";
+import GridViewIcon from "@mui/icons-material/GridView";
+import ViewListIcon from "@mui/icons-material/ViewList";
 import List from "./components/Coursesmain/List";
-import { Dialog, DialogContent, DialogTitle, IconButton, makeStyles } from "@material-ui/core";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  makeStyles,
+} from "@material-ui/core";
 import CloseIcon from "@mui/icons-material/Close";
 import { Close } from "@material-ui/icons";
-import FilterListIcon from '@mui/icons-material/FilterList';
-
+import FilterListIcon from "@mui/icons-material/FilterList";
 
 const useStyles = makeStyles((theme) => ({
-
   title: {
     flexGrow: 1,
   },
@@ -34,21 +49,19 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-
-
   },
   drawerPaperNotOpen: {
     width: drawerWidth,
     top: "5rem",
     height: Number(window.innerHeight - 98),
     visibility: "initial",
-    display: "none"
+    display: "none",
   },
   drawerPaperOpen: {
     width: drawerWidth,
     top: "5rem",
     height: Number(window.innerHeight - 98),
-    display: "initial"
+    display: "initial",
   },
   drawerHeader: {
     display: "flex",
@@ -58,21 +71,18 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: "flex-start",
     background: "#ececf399 ",
-    boxShadow:" 0 0 10px rgba(0, 0, 0, 0.3)"
-   
+    boxShadow: " 0 0 10px rgba(0, 0, 0, 0.3)",
   },
 }));
 const drawerWidth = "19%";
 
-
 const Courses = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const classes = useStyles();
 
   const CourseArr = useSelector((state) => state.subscribe.subArr);
-    // const CourseArr = useSelector((state) => (state.CourseDetails.CourseData));
+  // const CourseArr = useSelector((state) => (state.CourseDetails.CourseData));
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [open, setOpen] = useState(false);
   const [opendrawer, setOpenDrawer] = useState(true);
@@ -91,7 +101,7 @@ const Courses = () => {
     languages: [],
     videoDurations: [],
     topics: [],
-    features: []
+    features: [],
   });
 
   useEffect(() => {
@@ -102,8 +112,7 @@ const Courses = () => {
     if (isFavorite === true) {
       setIsFavorite(!isFavorite);
       setIsGridView(!Gridview);
-    }
-    else {
+    } else {
       setIsFavorite(!isFavorite);
       setIsGridView(!Gridview);
     }
@@ -128,26 +137,24 @@ const Courses = () => {
   };
 
   const handleFilterChange = (filterCategory, filterValue) => {
-    setSelectedFilters(prevFilters => {
-      if (filterCategory === 'ratings') {
+    setSelectedFilters((prevFilters) => {
+      if (filterCategory === "ratings") {
         // Toggle the selected filter value for ratings
         return {
           ...prevFilters,
           ratings: prevFilters.ratings.includes(filterValue)
-            ? prevFilters.ratings.filter(value => value !== filterValue)
-            : [...prevFilters.ratings, filterValue]
+            ? prevFilters.ratings.filter((value) => value !== filterValue)
+            : [...prevFilters.ratings, filterValue],
         };
-
       }
-      if (filterCategory === 'languages') {
+      if (filterCategory === "languages") {
         // Toggle the selected filter value for ratings
         return {
           ...prevFilters,
           languages: prevFilters.languages.includes(filterValue)
-            ? prevFilters.languages.filter(value => value !== filterValue)
-            : [...prevFilters.languages, filterValue]
+            ? prevFilters.languages.filter((value) => value !== filterValue)
+            : [...prevFilters.languages, filterValue],
         };
-
       }
 
       // if (filterCategory === 'durations') {
@@ -160,15 +167,14 @@ const Courses = () => {
       //   };
 
       // }
-      if (filterCategory === 'topics') {
+      if (filterCategory === "topics") {
         // Toggle the selected filter value for ratings
         return {
           ...prevFilters,
           topics: prevFilters.topics.includes(filterValue)
-            ? prevFilters.topics.filter(value => value !== filterValue)
-            : [...prevFilters.topics, filterValue]
+            ? prevFilters.topics.filter((value) => value !== filterValue)
+            : [...prevFilters.topics, filterValue],
         };
-
       }
       // if (filterCategory === 'features') {
       //   // Toggle the selected filter value for ratings
@@ -187,17 +193,26 @@ const Courses = () => {
     });
   };
 
-  const filteredCourses = CourseArr.filter(item => {
-    if (selectedFilters.ratings.length > 0 && !selectedFilters.ratings.includes(item.rating)) {
+  const filteredCourses = CourseArr.filter((item) => {
+    if (
+      selectedFilters.ratings.length > 0 &&
+      !selectedFilters.ratings.includes(item.rating)
+    ) {
       return false;
     }
-    if (selectedFilters.languages.length > 0 && !selectedFilters.languages.includes(item.language)) {
+    if (
+      selectedFilters.languages.length > 0 &&
+      !selectedFilters.languages.includes(item.language)
+    ) {
       return false;
     }
     // if (selectedFilters.durations.length > 0 && !selectedFilters.durations.includes(item.duration)) {
     //   return false;
     // }
-    if (selectedFilters.topics.length > 0 && !selectedFilters.topics.includes(item.name)) {
+    if (
+      selectedFilters.topics.length > 0 &&
+      !selectedFilters.topics.includes(item.name)
+    ) {
       return false;
     }
     // if (selectedFilters.features.length > 0 && !selectedFilters.features.includes(item.feature)) {
@@ -215,79 +230,111 @@ const Courses = () => {
   const handleCloseDrawer = () => {
     setIsDrawerOpen(false);
   };
+
+  const toggleDrawer = () => {
+    setOpenDrawer(!opendrawer);
+  };
+
   return (
     <>
       {/* <div>
     <Tooltip title="Filter"> <FilterListOutlinedIcon className="filterlist" /></Tooltip>
     </div> */}
-      <div style={{
-        transition: "width .5s",
-        width: opendrawer ? "calc(100% - 20%)" : "100%",
-        flexBasis: "initial",
-        position:"relative",
-        '@media (max-width: 630px)': {
-          width: "100%", // Make it full width
-        }
-        
-      }}>
-        <div style={{
-          position: "fixed",
-          top: "3.2rem",
-          right: "1%",
-          cursor: "pointer"
-        }}>{isFavorite ? <Tooltip title="SWITCH TO LIST VIEW"><GridViewIcon className="grid" onClick={() => toggleTheme()} /></Tooltip> : <Tooltip title="SWITCH TO GRID VIEW"><ViewListIcon className="grid" onClick={() => toggleTheme()} /></Tooltip>}
+      <div
+        style={{
+          transition: "width .5s",
+          width: opendrawer ? "calc(100% - 20%)" : "100%",
+          flexBasis: "initial",
+          position: "relative",
+          "@media (max-width: 630px)": {
+            width: "100%", // Make it full width
+          },
+        }}
+      >
+        <div
+          style={{
+            position: "fixed",
+            top: "3.2rem",
+            right: "1%",
+            cursor: "pointer",
+          }}
+        >
+          {isFavorite ? (
+            <Tooltip title="SWITCH TO LIST VIEW">
+              <GridViewIcon className="grid" onClick={() => toggleTheme()} />
+            </Tooltip>
+          ) : (
+            <Tooltip title="SWITCH TO GRID VIEW">
+              <ViewListIcon className="grid" onClick={() => toggleTheme()} />
+            </Tooltip>
+          )}
         </div>
 
-        <div  className='filt'
-        
-         
-        ><Tooltip title="FILTER"><FilterListIcon className="grid" onClick={() => setOpenDrawer(true) } /></Tooltip>
+        <div className="filt">
+          <Tooltip title="FILTER">
+            <FilterListIcon
+              className="grid"
+              onClick={toggleDrawer}
+            />
+          </Tooltip>
         </div>
 
-        {Gridview ? <div className="courseBox">
-          {filteredCourses.map((item, i) => {
-            return (
-
-              <p key={i} className="Cbox">
-                <img
-                  className="courseImg"
-                  src={item.img}
-
-                  alt=""
-                  onClick={() => {
-                    setopendialog(true);
-                    setCourse(item.courseDesc);
-                  }}
-                />
-                <p>
-                  <b className="cTop" style={{fontSize:'1.4rem'}}>{item.name}</b>
-                </p>
-                <p style={{marginLeft:'0.6em'}}>Category: {item.category}</p>
-                <p style={{marginLeft:'0.6em'}}>Rating :{item.rating}</p>
-                <p style={{marginLeft:'0.5em'}}>
-                  Course Description:{" "}
-                  <h5 style={{ marginLeft: '9rem', marginTop: '-1rem', cursor: 'pointer', color: 'var(--main-heading)' }}
+        {Gridview ? (
+          <div className="courseBox">
+            {filteredCourses.map((item, i) => {
+              return (
+                <p key={i} className="Cbox">
+                  <img
+                    className="courseImg"
+                    src={item.img}
+                    alt=""
                     onClick={() => {
                       setopendialog(true);
-                      setData(item)
-                      console.log(item)
+                      setCourse(item.courseDesc);
                     }}
-                  >
-                    Explore
-                  </h5>
+                  />
+                  <p>
+                    <b className="cTop" style={{ fontSize: "1.4rem" }}>
+                      {item.name}
+                    </b>
+                  </p>
+                  <p style={{ marginLeft: "0.6em" }}>
+                    Category: {item.category}
+                  </p>
+                  <p style={{ marginLeft: "0.6em" }}>Rating :{item.rating}</p>
+                  <p style={{ marginLeft: "0.5em" }}>
+                    Course Description:{" "}
+                    <h5
+                      style={{
+                        marginLeft: "9rem",
+                        marginTop: "-1rem",
+                        cursor: "pointer",
+                        color: "var(--main-heading)",
+                      }}
+                      onClick={() => {
+                        setopendialog(true);
+                        setData(item);
+                        console.log(item);
+                      }}
+                    >
+                      Explore
+                    </h5>
+                  </p>
+                  <div>
+                    <button
+                      className="subscribe-btn"
+                      onClick={() => handleSubscribe(item)}
+                    >
+                      {item.subscribe ? "UNSUBSCRIBE" : "SUBSCRIBE"}
+                    </button>
+                  </div>
                 </p>
-                <div>
-                  <button
-                    className="subscribe-btn"
-                    onClick={() => handleSubscribe(item)}
-                  >
-                    {item.subscribe ? "UNSUBSCRIBE" : "SUBSCRIBE"}
-                  </button>
-                </div>
-              </p>
-            );
-          })}
-        </div> : <List filteredCourses={filteredCourses} />}
+              );
+            })}
+          </div>
+        ) : (
+          <List filteredCourses={filteredCourses} />
+        )}
 
         <Drawer
           className={classes.drawer}
@@ -296,21 +343,26 @@ const Courses = () => {
           anchor="right"
           open={opendrawer}
           classes={{
-            paper: !opendrawer ? classes.drawerPaperNotOpen : classes.drawerPaperOpen
+            paper: !opendrawer
+              ? classes.drawerPaperNotOpen
+              : classes.drawerPaperOpen,
           }}
           style={{
             // Add styles to make the drawer overlap on mobile view
             position: "absolute",
             zIndex: 1, // Ensure it appears above the content
             // Adjust other styles as needed
-            '@media (max-width: 630px)': {
+            "@media (max-width: 630px)": {
               width: "100%", // Make it full width
-            }
+            },
           }}
         >
           <div className={classes.drawerHeader}>
             <Tooltip title={"CLOSE"} aria-label="close">
-              <Close style={{ cursor: "pointer" }} onClick={handleDrawerClose} />
+              <Close
+                style={{ cursor: "pointer" }}
+                onClick={handleDrawerClose}
+              />
             </Tooltip>
             <div
               style={{
@@ -320,37 +372,49 @@ const Courses = () => {
                 fontSize: "1rem",
                 justifyContent: "center",
                 width: "70%",
-
               }}
             >
               FILTER
             </div>
-            {showstatus == "Draft" ? <Tooltip title={"DELETE"} aria-label="close">
-              {/* <DeleteIcon color="primary" style={{ cursor: "pointer" }} onClick={handleDeleteDraft} ></DeleteIcon> */}
-            </Tooltip> : <></>}
-
+            {showstatus == "Draft" ? (
+              <Tooltip title={"DELETE"} aria-label="close">
+                {/* <DeleteIcon color="primary" style={{ cursor: "pointer" }} onClick={handleDeleteDraft} ></DeleteIcon> */}
+              </Tooltip>
+            ) : (
+              <></>
+            )}
           </div>
           <Divider />
           {/* <Typography> 100 result for searchData </Typography> */}
-          <Accordion style={{ backgroundColor: 'var(--form)',border:'none' }} defaultExpanded>
+          <Accordion
+            style={{ backgroundColor: "var(--form)", border: "none" }}
+            defaultExpanded
+          >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography><b>Topic</b></Typography>
+              <Typography style={{ display: "flex", alignItems: "center" }}>
+                <TopicIcon style={{ marginRight: "8px" }} />
+                <b>Topic</b>
+              </Typography>
             </AccordionSummary>
-            <AccordionDetails className='rate'>
+            <AccordionDetails className="rate">
               <Typography>
-
                 <div>
-                  {['Python Programming', 'Web Development', 'C++ Programming', 'Java Programming'].map((label, index) => (
+                  {[
+                    "Python Programming",
+                    "Web Development",
+                    "C++ Programming",
+                    "Java Programming",
+                  ].map((label, index) => (
                     <FormControlLabel
                       key={index}
                       control={<Checkbox color="primary" />}
                       label={label}
                       checked={selectedFilters.topics.includes(label)}
-                      onChange={() => handleFilterChange('topics', label)}
+                      onChange={() => handleFilterChange("topics", label)}
                     />
                   ))}
                 </div>
@@ -358,67 +422,79 @@ const Courses = () => {
             </AccordionDetails>
           </Accordion>
 
-          <Accordion style={{ backgroundColor: 'var(--form)' }} defaultExpanded>
+          <Accordion style={{ backgroundColor: "var(--form)" }} defaultExpanded>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography><b>Language</b></Typography>
-            </AccordionSummary>
-            <AccordionDetails className='rate'>
-              <Typography>
-
-                <div>
-                  {['English', 'hindi', 'Espanol', 'portugues'].map((label, index) => (
-                    <FormControlLabel
-                      key={index}
-                      control={<Checkbox color="primary" />}
-                      label={label}
-                      checked={selectedFilters.languages.includes(label)}
-                      onChange={() => handleFilterChange('languages', label)}
-                    />
-                  ))}
-                </div>
+              <Typography style={{ display: "flex", alignItems: "center" }}>
+                <LanguageIcon style={{ marginRight: "8px" }} />
+                <b>Language</b>
               </Typography>
-            </AccordionDetails>
-          </Accordion>
-
-          <Accordion style={{ backgroundColor: 'var(--form)' }} >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-              className='rate'
-            >
-              <Typography><b >Ratings</b></Typography>
             </AccordionSummary>
             <AccordionDetails className="rate">
               <Typography>
                 <div>
-                  {['4.5 & more', '4.0 & more', '3.5 & more', '3.0 & more'].map((label, index) => (
-                    <FormControlLabel
-                      key={index}
-                      control={<Checkbox color="primary" />}
-                      label={label}
-                      checked={selectedFilters.ratings.includes(label)}
-                      onChange={() => handleFilterChange('ratings', label)}
-                    />
-                  ))}
+                  {["English", "hindi", "Espanol", "portugues"].map(
+                    (label, index) => (
+                      <FormControlLabel
+                        key={index}
+                        control={<Checkbox color="primary" />}
+                        label={label}
+                        checked={selectedFilters.languages.includes(label)}
+                        onChange={() => handleFilterChange("languages", label)}
+                      />
+                    )
+                  )}
                 </div>
               </Typography>
             </AccordionDetails>
           </Accordion>
 
-          <Accordion style={{ backgroundColor: 'var(--form)' }}>
+          <Accordion style={{ backgroundColor: "var(--form)" }}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              className="rate"
+            >
+              <Typography style={{ display: "flex", alignItems: "center" }}>
+                <GradeIcon style={{ marginRight: "8px" }} />
+                <b>Ratings</b>
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails className="rate">
+              <Typography>
+                <div>
+                  {["4.5 & more", "4.0 & more", "3.5 & more", "3.0 & more"].map(
+                    (label, index) => (
+                      <FormControlLabel
+                        key={index}
+                        control={<Checkbox color="primary" />}
+                        label={label}
+                        checked={selectedFilters.ratings.includes(label)}
+                        onChange={() => handleFilterChange("ratings", label)}
+                      />
+                    )
+                  )}
+                </div>
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+
+          <Accordion style={{ backgroundColor: "var(--form)" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography><b>Video duration</b></Typography>
+              <Typography style={{ display: "flex", alignItems: "center" }}>
+                <OndemandVideoIcon style={{ marginRight: "8px" }} />
+                <b>Video duration</b>
+              </Typography>
             </AccordionSummary>
-            <AccordionDetails className='rate'>
+            <AccordionDetails className="rate">
               <Typography>
                 <div>
                   <FormControlLabel
@@ -442,17 +518,18 @@ const Courses = () => {
             </AccordionDetails>
           </Accordion>
 
-
-
-          <Accordion style={{ backgroundColor: 'var(--form)' }}>
+          <Accordion style={{ backgroundColor: "var(--form)" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography><b>Features</b></Typography>
+              <Typography style={{ display: "flex", alignItems: "center" }}>
+                <FeaturedVideoIcon style={{ marginRight: "8px" }} />
+                <b>Features</b>
+              </Typography>
             </AccordionSummary>
-            <AccordionDetails className='rate'>
+            <AccordionDetails className="rate">
               <Typography>
                 <div>
                   <FormControlLabel
@@ -461,8 +538,6 @@ const Courses = () => {
                   />
                   <FormControlLabel
                     control={<Checkbox color="primary" />}
-
-                    
                     label="Quizzes"
                   />
                   <FormControlLabel
@@ -479,8 +554,6 @@ const Courses = () => {
           </Accordion>
         </Drawer>
       </div>
-
-     
 
       <Dialog
         open={opendialog}
@@ -506,9 +579,9 @@ const Courses = () => {
           COURSE DESCRIPTION
         </DialogTitle>
         <DialogContent dividers>
-          <div style={{ display: 'flex' }}>
-            <div style={{ width: '25%', position: 'fixed' }}>
-              <div style={{ padding: '1rem' }}>
+          <div style={{ display: "flex" }}>
+            <div style={{ width: "25%", position: "fixed" }}>
+              <div style={{ padding: "1rem" }}>
                 {/* <b>{Data?.courseDesc?.heading}</b> */}
                 <p>
                   <b className="cTop">{Data?.courseDesc?.heading}</b>
@@ -517,12 +590,10 @@ const Courses = () => {
               <img
                 src={Data?.img}
                 alt=""
-                style={{ marginRight: '20px', width: '75%' }}
+                style={{ marginRight: "20px", width: "75%" }}
               />
             </div>
-            <div style={{ width: '75%', marginLeft: '25%', overflow: 'auto' }}>
-
-
+            <div style={{ width: "75%", marginLeft: "25%", overflow: "auto" }}>
               <>
                 {/* <p>
                   <b className="cTop">JAVA PROGRAMMING</b>
@@ -531,155 +602,194 @@ const Courses = () => {
                 <p>Rating: ⭐⭐⭐</p>
                 <p>_______________________________________________</p>
                 <Typography>
-
-                  <Accordion style={{ backgroundColor: 'var(--form)' }} defaultExpanded>
+                  <Accordion
+                    style={{ backgroundColor: "var(--form)" }}
+                    defaultExpanded
+                  >
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <Typography><b>Course Title: Comprehensive Java Programming Course</b></Typography>
+                      <Typography>
+                        <b>
+                          Course Title: Comprehensive Java Programming Course
+                        </b>
+                      </Typography>
                     </AccordionSummary>
-                    <AccordionDetails className='rate'>
+                    <AccordionDetails className="rate">
                       <Typography>
                         <div>
-                          Unlock the Power
-                          of Java Programming and Launch Your Software Development Journey! Are you eager to become a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java Programming
-                          Course is designed to take you from a beginner to a confident Java
-                          developer. Whether you're new to programming or seeking to deepen your
-                          coding skills, this course offers an immersive learning experience
-                          that equips you with the knowledge and practical skills needed to
-                          succeed.
+                          Unlock the Power of Java Programming and Launch Your
+                          Software Development Journey! Are you eager to become
+                          a proficient Java programmer and create dynamic
+                          applications? Look no further! Our Comprehensive Java
+                          Programming Course is designed to take you from a
+                          beginner to a confident Java developer. Whether you're
+                          new to programming or seeking to deepen your coding
+                          skills, this course offers an immersive learning
+                          experience that equips you with the knowledge and
+                          practical skills needed to succeed.
                         </div>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion style={{ backgroundColor: 'var(--form)' }} defaultExpanded>
+                  <Accordion
+                    style={{ backgroundColor: "var(--form)" }}
+                    defaultExpanded
+                  >
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <Typography><b>Course Title: Comprehensive Java Programming Course</b></Typography>
+                      <Typography>
+                        <b>
+                          Course Title: Comprehensive Java Programming Course
+                        </b>
+                      </Typography>
                     </AccordionSummary>
-                    <AccordionDetails className='rate'>
+                    <AccordionDetails className="rate">
                       <Typography>
                         <div>
-                          Unlock the Power
-                          of Java Programming and Launch Your Software Development Journey! Are you eager to become a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java Programming
-                          Course is designed to take you from a beginner to a confident Java
-                          developer. Whether you're new to programming or seeking to deepen your
-                          coding skills, this course offers an immersive learning experience
-                          that equips you with the knowledge and practical skills needed to
-                          succeed.
+                          Unlock the Power of Java Programming and Launch Your
+                          Software Development Journey! Are you eager to become
+                          a proficient Java programmer and create dynamic
+                          applications? Look no further! Our Comprehensive Java
+                          Programming Course is designed to take you from a
+                          beginner to a confident Java developer. Whether you're
+                          new to programming or seeking to deepen your coding
+                          skills, this course offers an immersive learning
+                          experience that equips you with the knowledge and
+                          practical skills needed to succeed.
                         </div>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion style={{ backgroundColor: 'var(--form)' }}>
+                  <Accordion style={{ backgroundColor: "var(--form)" }}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <Typography><b>Course Title: Comprehensive Java Programming Course</b></Typography>
+                      <Typography>
+                        <b>
+                          Course Title: Comprehensive Java Programming Course
+                        </b>
+                      </Typography>
                     </AccordionSummary>
-                    <AccordionDetails className='rate'>
+                    <AccordionDetails className="rate">
                       <Typography>
                         <div>
-                          Unlock the Power
-                          of Java Programming and Launch Your Software Development Journey! Are you eager to become a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java Programming
-                          Course is designed to take you from a beginner to a confident Java
-                          developer. Whether you're new to programming or seeking to deepen your
-                          coding skills, this course offers an immersive learning experience
-                          that equips you with the knowledge and practical skills needed to
-                          succeed.
+                          Unlock the Power of Java Programming and Launch Your
+                          Software Development Journey! Are you eager to become
+                          a proficient Java programmer and create dynamic
+                          applications? Look no further! Our Comprehensive Java
+                          Programming Course is designed to take you from a
+                          beginner to a confident Java developer. Whether you're
+                          new to programming or seeking to deepen your coding
+                          skills, this course offers an immersive learning
+                          experience that equips you with the knowledge and
+                          practical skills needed to succeed.
                         </div>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion style={{ backgroundColor: 'var(--form)' }}>
+                  <Accordion style={{ backgroundColor: "var(--form)" }}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <Typography><b>Course Title: Comprehensive Java Programming Course</b></Typography>
+                      <Typography>
+                        <b>
+                          Course Title: Comprehensive Java Programming Course
+                        </b>
+                      </Typography>
                     </AccordionSummary>
-                    <AccordionDetails className='rate'>
+                    <AccordionDetails className="rate">
                       <Typography>
                         <div>
-                          Unlock the Power
-                          of Java Programming and Launch Your Software Development Journey! Are you eager to become a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java Programming
-                          Course is designed to take you from a beginner to a confident Java
-                          developer. Whether you're new to programming or seeking to deepen your
-                          coding skills, this course offers an immersive learning experience
-                          that equips you with the knowledge and practical skills needed to
-                          succeed.
+                          Unlock the Power of Java Programming and Launch Your
+                          Software Development Journey! Are you eager to become
+                          a proficient Java programmer and create dynamic
+                          applications? Look no further! Our Comprehensive Java
+                          Programming Course is designed to take you from a
+                          beginner to a confident Java developer. Whether you're
+                          new to programming or seeking to deepen your coding
+                          skills, this course offers an immersive learning
+                          experience that equips you with the knowledge and
+                          practical skills needed to succeed.
                         </div>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion style={{ backgroundColor: 'var(--form)' }}>
+                  <Accordion style={{ backgroundColor: "var(--form)" }}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <Typography><b>Course Title: Comprehensive Java Programming Course</b></Typography>
+                      <Typography>
+                        <b>
+                          Course Title: Comprehensive Java Programming Course
+                        </b>
+                      </Typography>
                     </AccordionSummary>
-                    <AccordionDetails className='rate'>
+                    <AccordionDetails className="rate">
                       <Typography>
                         <div>
-                          Unlock the Power
-                          of Java Programming and Launch Your Software Development Journey! Are you eager to become a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java Programming
-                          Course is designed to take you from a beginner to a confident Java
-                          developer. Whether you're new to programming or seeking to deepen your
-                          coding skills, this course offers an immersive learning experience
-                          that equips you with the knowledge and practical skills needed to
-                          succeed.
+                          Unlock the Power of Java Programming and Launch Your
+                          Software Development Journey! Are you eager to become
+                          a proficient Java programmer and create dynamic
+                          applications? Look no further! Our Comprehensive Java
+                          Programming Course is designed to take you from a
+                          beginner to a confident Java developer. Whether you're
+                          new to programming or seeking to deepen your coding
+                          skills, this course offers an immersive learning
+                          experience that equips you with the knowledge and
+                          practical skills needed to succeed.
                         </div>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion style={{ backgroundColor: 'var(--form)' }}>
+                  <Accordion style={{ backgroundColor: "var(--form)" }}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <Typography><b>Course Title: Comprehensive Java Programming Course</b></Typography>
+                      <Typography>
+                        <b>
+                          Course Title: Comprehensive Java Programming Course
+                        </b>
+                      </Typography>
                     </AccordionSummary>
-                    <AccordionDetails className='rate'>
+                    <AccordionDetails className="rate">
                       <Typography>
                         <div>
-                          Unlock the Power
-                          of Java Programming and Launch Your Software Development Journey! Are you eager to become a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java Programming
-                          Course is designed to take you from a beginner to a confident Java
-                          developer. Whether you're new to programming or seeking to deepen your
-                          coding skills, this course offers an immersive learning experience
-                          that equips you with the knowledge and practical skills needed to
-                          succeed.
+                          Unlock the Power of Java Programming and Launch Your
+                          Software Development Journey! Are you eager to become
+                          a proficient Java programmer and create dynamic
+                          applications? Look no further! Our Comprehensive Java
+                          Programming Course is designed to take you from a
+                          beginner to a confident Java developer. Whether you're
+                          new to programming or seeking to deepen your coding
+                          skills, this course offers an immersive learning
+                          experience that equips you with the knowledge and
+                          practical skills needed to succeed.
                         </div>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
                 </Typography>
               </>
-
             </div>
           </div>
         </DialogContent>
       </Dialog>
     </>
   );
-}
+};
 
 export default Courses;
-
