@@ -1,8 +1,7 @@
 import { combineReducers } from "redux";
 import setSnackBar from "./snackbarReducer";
 import subscribe from "./SubscribeReducer";
-import { CourseDetails ,PlayListDetails} from "./rootReduceOne";
-import { ChapterDetails } from "./rootReduceOne";
+import { CourseDetails ,PlayListDetails,QuizDetails ,ChapterDetails} from "./rootReduceOne";
 
 
 const RootReducer = combineReducers({
@@ -11,7 +10,8 @@ const RootReducer = combineReducers({
   subscribe: subscribe,
   CourseDetails:CourseDetails,
   ChapterDetails:ChapterDetails,
-  PlayListDetails : PlayListDetails
+  PlayListDetails : PlayListDetails,
+  QuizDetails:QuizDetails
 });
 
 export default RootReducer;

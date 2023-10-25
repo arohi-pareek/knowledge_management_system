@@ -71,9 +71,8 @@ const Courses = () => {
   const navigate = useNavigate();
   const classes = useStyles();
 
-  const CourseArr = useSelector((state) => state.subscribe.subArr)
-  console.log(CourseArr)
-  
+  const CourseArr = useSelector((state) => state.subscribe.subArr);
+    // const CourseArr = useSelector((state) => (state.CourseDetails.CourseData));
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [open, setOpen] = useState(false);
   const [opendrawer, setOpenDrawer] = useState(true);
@@ -224,12 +223,7 @@ const Courses = () => {
       <div style={{
         transition: "width .5s",
         width: opendrawer ? "calc(100% - 20%)" : "100%",
-        flexBasis: "initial",
-        position:"relative",
-        '@media (max-width: 630px)': {
-          width: "100%", // Make it full width
-        }
-        
+        flexBasis: "initial"
       }}>
         <div style={{
           position: "fixed",

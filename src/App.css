@@ -190,7 +190,7 @@
 
 .content {
   flex: 1; /* This allows the content area to take up the remaining space */
-  padding-left: 30px; /* Adjust this value to match the width of your sidebar */
+  padding-left: 35px; /* Adjust this value to match the width of your sidebar */
   padding-top: 3rem;
   /* background-color: white; */
   
@@ -207,8 +207,6 @@
   align-items: center;
   border-radius: 20px;
 }
-
-
 
 .left,.right{
   flex: 1;

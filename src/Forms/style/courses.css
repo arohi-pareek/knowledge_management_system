@@ -237,7 +237,7 @@ a {
 #drawer .MuiDrawer-paper {
     top: 5.2rem !important;
     z-index: 0;
-    height: 90vh;
+    height: 95vh;
     background-color: var(--form) !important;
 }
 @media (max-width: 630px)

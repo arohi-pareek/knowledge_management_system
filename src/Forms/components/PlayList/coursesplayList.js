@@ -10,6 +10,7 @@ import {
   Tab,
   CircularProgress,
   Tooltip,
+  Button,
 } from "@material-ui/core";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -17,6 +18,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "./playlist.css";
 import ImgTrophy from "../../../../src/Images/trophy.jpg";
+import { useNavigate } from "react-router-dom";
 
 const playlistData = [
   {
@@ -179,7 +181,7 @@ const CoursesPlaylist = () => {
     console.log(storedTime, currentTime);
 
     const isChapter1Finished = playlistData[0].videos.every((video) => {
-      return console.log(video), video.watched;
+      return video.watched;
     });
     setIsChapter1Finished(isChapter1Finished);
   };
@@ -197,6 +199,10 @@ const CoursesPlaylist = () => {
     (overallProgress / 100) * totalVideos
   )} VIDEOS OF ${totalVideos} VIDEOS COMPLETE`;
 
+  const handleGoToQuiz = ()=>{
+    navigate("/Quiz")
+  }
+  const navigate = useNavigate();
   return (
     <Grid
       container
@@ -207,15 +213,13 @@ const CoursesPlaylist = () => {
         margin: "0 auto",
       }}
     >
-      <Grid item xs={9} style={{ paddingRight: "10px" }}>
-        <div>
+      <Grid item xs={12} md={9} style={{ paddingRight: "10px" }}>
+        <div style={{ marginBottom: "1rem" }}>
           <video
             key={selectedVideo.id}
             id={"videoPlayer"}
             controls
-            currentTime={selectedVideo.currentTime}
-
-            autoPlay
+            autoPlaystyle={{ marginBottom: "1rem" }}
             type="video/mp4"
             style={{
               background: "black",
@@ -287,13 +291,14 @@ const CoursesPlaylist = () => {
       </Grid>
       <Grid
         item
-        xs={3}
+        xs={12} md={3}
         style={{
           padding: "1px",
           backgroundColor: "var(--form)",
           maxHeight: "100vh",
         }}
       >
+         <Button onClick={handleGoToQuiz}>GO TO QUIZ </Button>
         <div
           style={{
             display: "flex",
@@ -304,7 +309,7 @@ const CoursesPlaylist = () => {
             border: "1px solid",
             position: "fixed",
             zIndex: 100,
-            width: "22%",
+            width: "22rem",
             marginTop: "0.5rem",
             borderRadius: "0.5rem",
             backgroundColor: "white",
@@ -346,7 +351,7 @@ const CoursesPlaylist = () => {
             <Accordion
               style={{
                 backgroundColor: "var(--text)",
-                width: "21.9rem",
+                width: "22rem",
                 marginLeft: "-17px",
               }}
               className="accord"
@@ -386,6 +391,7 @@ const CoursesPlaylist = () => {
             </Accordion>
           ))}
         </div>
+       
       </Grid>
     </Grid>
   );
