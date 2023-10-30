@@ -38,6 +38,11 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { Close } from "@material-ui/icons";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import Slide from '@mui/material/Slide';
+
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="right" ref={ref} {...props} />;
+// });
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -82,10 +87,13 @@ const Courses = () => {
   const classes = useStyles();
 
   const CourseArr = useSelector((state) => state.subscribe.subArr);
+  const search = useSelector((state) => state.searchReducer.searchQuery);
+  const filterD = useSelector((state) => state.filterReducer.isDrawerOpen);
+
   // const CourseArr = useSelector((state) => (state.CourseDetails.CourseData));
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [open, setOpen] = useState(false);
-  const [opendrawer, setOpenDrawer] = useState(true);
+  const [opendrawer, setOpenDrawer] = useState(false);
   const [Data, setData] = useState("");
   const [opendialog, setopendialog] = useState(false);
   const [isFavorite, setIsFavorite] = useState(true);
@@ -102,6 +110,10 @@ const Courses = () => {
     videoDurations: [],
     topics: [],
     features: [],
+  });
+  const [dialogStyle, setDialogStyle] = useState({
+    transform: 'translateX(0)',
+    width: '100%',
   });
 
   useEffect(() => {
@@ -126,6 +138,15 @@ const Courses = () => {
       dispatch(subscribe(payload));
       callMessageOut(`Unsubscribed To ${payload.name}`, "success");
     }
+
+    
+  
+    // After a delay, close the dialog
+    setTimeout(() => {
+      setopendialog(false);
+      // Perform the subscription action here
+    }, 500); // Adjust the duration as needed
+  
   };
 
   const callMessageOut = (msg, type) => {
@@ -167,15 +188,15 @@ const Courses = () => {
       //   };
 
       // }
-      if (filterCategory === "topics") {
-        // Toggle the selected filter value for ratings
-        return {
-          ...prevFilters,
-          topics: prevFilters.topics.includes(filterValue)
-            ? prevFilters.topics.filter((value) => value !== filterValue)
-            : [...prevFilters.topics, filterValue],
-        };
-      }
+      // if (filterCategory === "topics") {
+      //   // Toggle the selected filter value for ratings
+      //   return {
+      //     ...prevFilters,
+      //     topics: prevFilters.topics.includes(filterValue)
+      //       ? prevFilters.topics.filter((value) => value !== filterValue)
+      //       : [...prevFilters.topics, filterValue],
+      //   };
+      // }
       // if (filterCategory === 'features') {
       //   // Toggle the selected filter value for ratings
       //   return {
@@ -193,36 +214,54 @@ const Courses = () => {
     });
   };
 
+  // const filteredCourses = CourseArr.filter((item) => {
+  //   if (
+  //     selectedFilters.ratings.length > 0 &&
+  //     !selectedFilters.ratings.includes(item.rating)
+  //   ) {
+  //     return false;
+  //   }
+  //   if (
+  //     selectedFilters.languages.length > 0 &&
+  //     !selectedFilters.languages.includes(item.language)
+  //   ) {
+  //     return false;
+  //   }
+  //   // if (selectedFilters.durations.length > 0 && !selectedFilters.durations.includes(item.duration)) {
+  //   //   return false;
+  //   // }
+  //   if (
+  //     selectedFilters.topics.length > 0 &&
+  //     !selectedFilters.topics.includes(item.name)
+  //   ) {
+  //     return false;
+  //   }
+  //   // if (selectedFilters.features.length > 0 && !selectedFilters.features.includes(item.feature)) {
+  //   //   return false;
+  //   // }
+
+  //   // Add similar filtering logic for other filter categories (languages, video duration, topic, features)
+
+  //   return true;
+  // });
+
   const filteredCourses = CourseArr.filter((item) => {
-    if (
-      selectedFilters.ratings.length > 0 &&
-      !selectedFilters.ratings.includes(item.rating)
-    ) {
-      return false;
-    }
-    if (
-      selectedFilters.languages.length > 0 &&
-      !selectedFilters.languages.includes(item.language)
-    ) {
-      return false;
-    }
-    // if (selectedFilters.durations.length > 0 && !selectedFilters.durations.includes(item.duration)) {
-    //   return false;
-    // }
-    if (
-      selectedFilters.topics.length > 0 &&
-      !selectedFilters.topics.includes(item.name)
-    ) {
-      return false;
-    }
-    // if (selectedFilters.features.length > 0 && !selectedFilters.features.includes(item.feature)) {
-    //   return false;
-    // }
+    const nameMatchesSearch =
+      search === "" || item.name?.toLowerCase().includes(search?.toLowerCase());
 
-    // Add similar filtering logic for other filter categories (languages, video duration, topic, features)
+    const ratingsMatchFilter =
+      selectedFilters.ratings.length === 0 ||
+      selectedFilters.ratings.includes(item.rating);
+    const languagesMatchFilter =
+      selectedFilters.languages.length === 0 ||
+      selectedFilters.languages.includes(item.language);
+    // Add similar checks for other filter categories (durations, topics, features, etc.)
 
-    return true;
+    // Check if the item matches the search and all selected filters
+    return nameMatchesSearch && ratingsMatchFilter && languagesMatchFilter;
+    // Combine additional filter checks in a similar manner.
   });
+
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true);
   };
@@ -272,63 +311,62 @@ const Courses = () => {
 
         <div className="filt">
           <Tooltip title="FILTER">
-            <FilterListIcon
-              className="grid"
-              onClick={toggleDrawer}
-            />
+            <FilterListIcon className="grid" onClick={toggleDrawer} />
           </Tooltip>
         </div>
 
         {Gridview ? (
           <div className="courseBox">
-            {filteredCourses.map((item, i) => {
+            {filteredCourses.filter((item) => !item.subscribe).map((item, i) => {
               return (
-                <p key={i} className="Cbox">
-                  <img
-                    className="courseImg"
-                    src={item.img}
-                    alt=""
+                <>
+                  <p
+                    key={i}
+                    className="Cbox"
                     onClick={() => {
                       setopendialog(true);
+                      setData(item);
                       setCourse(item.courseDesc);
                     }}
-                  />
-                  <p>
-                    <b className="cTop" style={{ fontSize: "1.4rem" }}>
-                      {item.name}
-                    </b>
-                  </p>
-                  <p style={{ marginLeft: "0.6em" }}>
-                    Category: {item.category}
-                  </p>
-                  <p style={{ marginLeft: "0.6em" }}>Rating :{item.rating}</p>
-                  <p style={{ marginLeft: "0.5em" }}>
-                    Course Description:{" "}
-                    <h5
-                      style={{
-                        marginLeft: "9rem",
-                        marginTop: "-1rem",
-                        cursor: "pointer",
-                        color: "var(--main-heading)",
-                      }}
-                      onClick={() => {
-                        setopendialog(true);
-                        setData(item);
-                        console.log(item);
-                      }}
-                    >
-                      Explore
-                    </h5>
-                  </p>
-                  <div>
+                  >
+                    <img className="courseImg" src={item.img} alt="" />
+                    <p>
+                      <b className="cTop" style={{ fontSize: "1.4rem" }}>
+                        {item.name}
+                      </b>
+                    </p>
+                    <p style={{ marginLeft: "0.6em" }}>
+                      Category: {item.category}
+                    </p>
+                    <p style={{ marginLeft: "0.6em" }}>Rating :{item.rating}</p>
+                    <p style={{ marginLeft: "0.5em" }}>
+                      Course Description:{" "}
+                      <h5
+                        style={{
+                          marginLeft: "9rem",
+                          marginTop: "-1rem",
+                          cursor: "pointer",
+                          color: "var(--main-heading)",
+                        }}
+                        onClick={() => {
+                          setopendialog(true);
+                          setData(item);
+                          console.log(item);
+                        }}
+                      >
+                        Explore
+                      </h5>
+                    </p>
+                    {/* <div>
                     <button
                       className="subscribe-btn"
                       onClick={() => handleSubscribe(item)}
                     >
                       {item.subscribe ? "UNSUBSCRIBE" : "SUBSCRIBE"}
                     </button>
-                  </div>
-                </p>
+                  </div> */}
+                  </p>
+                </>
               );
             })}
           </div>
@@ -342,6 +380,7 @@ const Courses = () => {
           variant="persistent"
           anchor="right"
           open={opendrawer}
+          // open={filterD}
           classes={{
             paper: !opendrawer
               ? classes.drawerPaperNotOpen
@@ -386,7 +425,7 @@ const Courses = () => {
           </div>
           <Divider />
           {/* <Typography> 100 result for searchData </Typography> */}
-          <Accordion
+          {/* <Accordion
             style={{ backgroundColor: "var(--form)", border: "none" }}
             defaultExpanded
           >
@@ -420,7 +459,7 @@ const Courses = () => {
                 </div>
               </Typography>
             </AccordionDetails>
-          </Accordion>
+          </Accordion> */}
 
           <Accordion style={{ backgroundColor: "var(--form)" }} defaultExpanded>
             <AccordionSummary
@@ -452,38 +491,42 @@ const Courses = () => {
             </AccordionDetails>
           </Accordion>
 
-          <Accordion style={{ backgroundColor: "var(--form)" }}>
+          <Accordion style={{ backgroundColor: "var(--form)" }} defaultExpanded>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
-              className="rate"
             >
               <Typography style={{ display: "flex", alignItems: "center" }}>
-                <GradeIcon style={{ marginRight: "8px" }} />
-                <b>Ratings</b>
+                <FeaturedVideoIcon style={{ marginRight: "8px" }} />
+                <b>Features</b>
               </Typography>
             </AccordionSummary>
             <AccordionDetails className="rate">
               <Typography>
                 <div>
-                  {["4.5 & more", "4.0 & more", "3.5 & more", "3.0 & more"].map(
-                    (label, index) => (
-                      <FormControlLabel
-                        key={index}
-                        control={<Checkbox color="primary" />}
-                        label={label}
-                        checked={selectedFilters.ratings.includes(label)}
-                        onChange={() => handleFilterChange("ratings", label)}
-                      />
-                    )
-                  )}
+                  <FormControlLabel
+                    control={<Checkbox color="primary" />}
+                    label="Subtitles"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox color="primary" />}
+                    label="Quizzes"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox color="primary" />}
+                    label="Practice Sets"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox color="primary" />}
+                    label="Coding Exercise"
+                  />
                 </div>
               </Typography>
             </AccordionDetails>
           </Accordion>
 
-          <Accordion style={{ backgroundColor: "var(--form)" }}>
+          <Accordion style={{ backgroundColor: "var(--form)" }} defaultExpanded>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -518,46 +561,44 @@ const Courses = () => {
             </AccordionDetails>
           </Accordion>
 
-          <Accordion style={{ backgroundColor: "var(--form)" }}>
+          <Accordion style={{ backgroundColor: "var(--form)" }} >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
+              className="rate"
             >
               <Typography style={{ display: "flex", alignItems: "center" }}>
-                <FeaturedVideoIcon style={{ marginRight: "8px" }} />
-                <b>Features</b>
+                <GradeIcon style={{ marginRight: "8px" }} />
+                <b>Ratings</b>
               </Typography>
             </AccordionSummary>
             <AccordionDetails className="rate">
               <Typography>
                 <div>
-                  <FormControlLabel
-                    control={<Checkbox color="primary" />}
-                    label="Subtitles"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox color="primary" />}
-                    label="Quizzes"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox color="primary" />}
-                    label="Practice Sets"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox color="primary" />}
-                    label="Coding Exercise"
-                  />
+                  {["4.5 & more", "4.0 & more", "3.5 & more", "3.0 & more"].map(
+                    (label, index) => (
+                      <FormControlLabel
+                        key={index}
+                        control={<Checkbox color="primary" />}
+                        label={label}
+                        checked={selectedFilters.ratings.includes(label)}
+                        onChange={() => handleFilterChange("ratings", label)}
+                      />
+                    )
+                  )}
                 </div>
               </Typography>
             </AccordionDetails>
           </Accordion>
+
         </Drawer>
       </div>
 
       <Dialog
         open={opendialog}
         id="DescriptionDialog"
+        // TransitionComponent={Transition}
         onClose={() => {
           setopendialog(false);
         }}
@@ -582,7 +623,7 @@ const Courses = () => {
           <div style={{ display: "flex" }}>
             <div style={{ width: "25%", position: "fixed" }}>
               <div style={{ padding: "1rem" }}>
-                {/* <b>{Data?.courseDesc?.heading}</b> */}
+
                 <p>
                   <b className="cTop">{Data?.courseDesc?.heading}</b>
                 </p>
@@ -595,12 +636,27 @@ const Courses = () => {
             </div>
             <div style={{ width: "75%", marginLeft: "25%", overflow: "auto" }}>
               <>
-                {/* <p>
-                  <b className="cTop">JAVA PROGRAMMING</b>
-                </p> */}
-                <p>Category: Programming</p>
-                <p>Rating: ⭐⭐⭐</p>
-                <p>_______________________________________________</p>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    padding: "1rem ",
+                  }}
+                >
+                  <p>Category: Programming</p>
+                  <p>Rating: ⭐⭐⭐</p>
+
+                  <button
+                    className="subscribe-btn"
+                    onClick={() => {
+                      setopendialog(false);
+                      handleSubscribe(Data);
+                      // navigate("/learning")
+                    }}
+                  >
+                    {Data.subscribe ? "UNSUBSCRIBE" : "SUBSCRIBE"}
+                  </button>
+                </div>
                 <Typography>
                   <Accordion
                     style={{ backgroundColor: "var(--form)" }}
@@ -788,6 +844,7 @@ const Courses = () => {
           </div>
         </DialogContent>
       </Dialog>
+
     </>
   );
 };

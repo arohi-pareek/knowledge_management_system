@@ -1,18 +1,34 @@
-.quiz-option {
-    margin: 10px; /* Adjust the margin to your liking */
+/* .quiz-option {
+  margin: 10px;
 }
 
 input[type="radio"] {
-    margin-right: 5px;
-    cursor: pointer; /* Add some space between the radio button and the label */
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 label {
-    cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+  cursor: pointer;
 }
 
-#instructionForm .MuiDialog-paperWidthSm{
-    width: 50% !important;
-    max-width: 50% !important;
-    max-height: 90% !important;
-  }
+
+*/
+#instructionForm .MuiDialog-paperWidthSm {
+  width: 50% !important;
+  max-width: 50% !important;
+  max-height: 90% !important;
+} 
+/* new css */
+.newquiz-option {
+  padding: 2rem 2rem 1rem 1rem;
+}
+
+input[type="radio"] {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+  font-size: 1.1rem;
+}
