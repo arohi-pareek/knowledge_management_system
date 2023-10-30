@@ -24,8 +24,33 @@ import {
   Tooltip,
   DialogTitle,
 } from "@material-ui/core";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+
+const useStyles = makeStyles({
+  input: {
+    display: "none",
+  },
+  button: {
+    border: "1px solid #c2b8b8e8",
+    padding: "7px 14px",
+    cursor: "pointer",
+    display: "inline-block",
+    width: "100%",
+    borderRadius: "0.3rem",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    marginBottom: "0.5rem"
+  },
+  icon: {
+    marginRight: "15px",
+    verticalAlign: "middle",
+  },
+});
 
 const Dynamic = (props) => {
+  const classes = useStyles();
+  const [uploadedFileName, setUploadedFileName] = useState("");
   const dispatch = useDispatch();
   const [selected, setSelected] = useState("");
   const [fileName, SetFileName] = useState("");
@@ -42,9 +67,9 @@ const Dynamic = (props) => {
   const videoRef = useRef(null);
 
   const fileChange = (e, index) => {
-    console.log(e.target.files[0] ,"event")
+    console.log(e.target.files[0], "event");
     let file = e.target.files[0];
-  
+
     // Create a FormData object
 
     const updatedFileNames = [...fileName];
@@ -203,7 +228,7 @@ const Dynamic = (props) => {
                             />
                           </Grid>
 
-                          <Grid item xs={2}>
+                          {/* <Grid item xs={2}>
                             <Field
                               name={`metadata.${index}.video`}
                               component={TextField}
@@ -213,17 +238,17 @@ const Dynamic = (props) => {
                               InputProps={{ readOnly: true }}
                               onChange={handleChange}
                             />
-                          </Grid>
+                          </Grid> */}
                           <Grid
                             item
-                            xs={3}
+                            xs={5}
                             style={{
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "space-between",
                             }}
                           >
-                            <IconButton
+                            {/* <IconButton
                               style={{
                                 height: "1rem",
                                 width: "1rem",
@@ -253,7 +278,29 @@ const Dynamic = (props) => {
                                   style={{ display: "none" }}
                                 />
                               </label>
-                            </IconButton>
+                            </IconButton> */}
+                            <label htmlFor="file" className={classes.button}>
+                              <CloudUploadIcon className={classes.icon} />
+                              {fileName || "Upload Thumbnail"}
+                            </label>
+                            <input
+                              name={`metadata.${index}.upload`}
+                              // value={fileName[index] && fileName[index]}
+                              className={classes.input}
+                              component={TextField}
+                              label="Upload"
+                              size="small"
+                              type="file"
+                              id="file"
+                              accept="video/*"
+                              onChange={(e) => fileChange(e, index)}
+                            />
+
+                            <video
+                              ref={videoRef}
+                              onLoadedMetadata={handleVideoMetadata}
+                              style={{ display: "none" }}
+                            />
                             {values.metadata.length === 1 ? (
                               <IconButton aria-label="delete" disabled>
                                 <DeleteIcon />

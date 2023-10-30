@@ -22,6 +22,7 @@ import Sidebar from "./Forms/components/sidebar";
 import CustomizedSnackbars from "./Snackbar";
 import Mainfile from "./Forms/components/Coursesmain/mainfile";
 import AdminDashboard from "./Forms/components/Admin/adminDashboard";
+import Quiz from "./Forms/components/Quiz/quiz";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -61,6 +62,7 @@ function App() {
             <Route exact path="/playlist" element={<CoursesplayList />} />
             <Route exact path="/courses/search" element={<Mainfile />} />
             <Route exact path="/adminPanel" element={<AdminDashboard />} />
+            <Route exact path="/quiz" element={<Quiz />} />
           </Routes>
           <CustomizedSnackbars/>
         </Layout>

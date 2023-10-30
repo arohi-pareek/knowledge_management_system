@@ -1,0 +1,18 @@
+.quiz-option {
+    margin: 10px; /* Adjust the margin to your liking */
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    cursor: pointer; /* Add some space between the radio button and the label */
+}
+
+label {
+    cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+}
+
+#instructionForm .MuiDialog-paperWidthSm{
+    width: 50% !important;
+    max-width: 50% !important;
+    max-height: 90% !important;
+  }

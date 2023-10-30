@@ -120,11 +120,10 @@ import { useNavigate } from "react-router-dom";
 import { Button, LinearProgress } from "@material-ui/core";
 import { SUBSCRIBE_COURSE__SUCCESS } from "./Redux/Constant/ActionTypes";
 import { connect } from "react-redux";
+import { Typography } from "@mui/material";
 
 const Learning = ({ subArr, subscribeCourse }) => {
 
-
-  console.log(subArr, "subArr")
   const navigate = useNavigate();
 
   function handleplayList() {
@@ -134,31 +133,9 @@ const Learning = ({ subArr, subscribeCourse }) => {
 
   return (
     <div className="container">
-
-
       <div className="subscribe_container">
         <section className="main-cart-section">
           <h1>SUBSCRIBED COURSES</h1>
-
-          {/* <div className="cart-items">
-            <div className="cart-items-container">
-              {subArr?.filter((course) => course.subscribe)?.map((course, index) => (
-                <div key={index} className="card" onClick={() => handleplayList(course)} >
-                  <div className="product-img">
-                    <img src={course.img} alt="" />
-                    <div className="play-icon">▶</div>
-                  </div>
-                  <div className="title">
-                    <h3>{course.name}</h3>
-                  </div>
-                  <div className="progress-bar">
-                    <LinearProgress variant="determinate" value={course.progress} />
-                    <div className="percentage-text">{`${100}% completed`}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div> */}
            <div className="cart-item">
         
           {subArr?.filter((course) => course.subscribe)?.map((course, index) => (
@@ -182,10 +159,14 @@ const Learning = ({ subArr, subscribeCourse }) => {
             </div>
           ))}
         </div>
-      
-
         </section>
       </div>
+
+      {/* {!subArr.some((course) => course.subscribe) && (
+      <div className="no-subscribed-courses-message">
+        <p>You are not subscribed to any courses.</p>
+      </div>
+    )} */}
 
     </div>
   )

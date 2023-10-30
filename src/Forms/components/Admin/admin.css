@@ -41,3 +41,9 @@
     width: 40% !important;
     max-width: 40% !important;
   }
+  #questionForm .MuiDialog-paperWidthSm{
+    width: 90% !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    /* height: 90% !important; */
+  }

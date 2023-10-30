@@ -5,6 +5,9 @@ import {
   ADD_COURSE_FAILURE,
   ADD_COURSE_REQUEST,
   ADD_COURSE_SUCCESS,
+  ADD_QUIZ_FAILURE,
+  ADD_QUIZ_REQUEST,
+  ADD_QUIZ_SUCCESS,
   ADD_UPLOAD_FAILURE,
   ADD_UPLOAD_REQUEST,
   ADD_UPLOAD_SUCCESS,
@@ -17,6 +20,9 @@ import {
   GET_COURSE_FAILURE,
   GET_COURSE_REQUEST,
   GET_COURSE_SUCCESS,
+  GET_QUIZ_FAILURE,
+  GET_QUIZ_REQUEST,
+  GET_QUIZ_SUCCESS,
   GET_VIDEO_FAILURE,
   GET_VIDEO_REQUEST,
   GET_VIDEO_SUCCESS,
@@ -38,6 +44,12 @@ const playListData = {
   loading: false,
   error: "",
   PlayListData: [],
+};
+
+const quizData = {
+  loading: false,
+  error: "",
+  QuizData: [],
 };
 
 export const CourseDetails = (state = courseData, action) => {
@@ -80,6 +92,7 @@ export const CourseDetails = (state = courseData, action) => {
         ...state,
         loading: false,
         CourseData: action.payload,
+      
       };
     case GET_COURSE_FAILURE:
       return {
@@ -269,6 +282,54 @@ export const PlayListDetails = (state = playListData, action) => {
     //   };
 
     // ........................ IF EDIT DETAILS
+
+    default:
+      return state;
+  }
+};
+
+export const QuizDetails = (state = quizData, action) => {
+
+  switch (action.type) {
+    // ---------------------- ADD Quiz
+
+    case ADD_QUIZ_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ADD_QUIZ_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        QuizData: [...state.QuizData, action.payload],
+      };
+    case ADD_QUIZ_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    // --------------------------- GET Quiz
+
+    case GET_QUIZ_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_QUIZ_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        QuizData: [...state.QuizData,action.payload],
+      };
+    case GET_QUIZ_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
     default:
       return state;

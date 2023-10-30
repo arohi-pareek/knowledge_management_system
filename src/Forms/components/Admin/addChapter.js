@@ -4,7 +4,7 @@ import { Field, FieldArray, Form, Formik } from "formik";
 import { Select, TextField, Switch } from "formik-material-ui";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons//Delete";
-import { AddChapter } from "../Redux/Actions/firstaction";
+import { AddChapter, setSnackbar } from "../Redux/Actions/firstaction";
 import { useDispatch } from "react-redux";
 import { Done } from "@material-ui/icons";
 import CloseIcon from "@mui/icons-material/Close";
@@ -27,6 +27,9 @@ const AddChapterform = (props) => {
 
   const empty = {
     title: "",
+  };
+  const callMessageOut = (msg, type) => {
+    dispatch(setSnackbar(true, type, msg));
   };
 
   return (
