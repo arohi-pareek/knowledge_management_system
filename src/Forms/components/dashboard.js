@@ -2,9 +2,6 @@ import React from "react";
 import "../style/dashboard.css";
 import Carousel from "./carousel";
 import Nav from './nav';
-
-
-// import bgImg from "../bg1.png";
 import Img from "../Images/logoFinal.png";
 import b1 from "../Images/img1.svg";
 import b2 from "../Images/img2.svg";
@@ -15,7 +12,6 @@ import b6 from "../Images/img6.svg";
 import b7 from "../Images/img7.svg";
 import b8 from "../Images/img8.svg";
 import { useNavigate } from "react-router-dom";
-
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -29,6 +25,11 @@ const Dashboard = () => {
   }
   function handleClick3() {
     navigate("/learning");
+  }
+
+
+  function startLearning() {
+    window.location.href = '/start-learning'; 
   }
 
   return (
@@ -61,8 +62,16 @@ const Dashboard = () => {
         </button>
       </nav> */}
       <Carousel />
+      <br />
+      <br />
+      <br />
+{/*       
+      <h1 className="head">Let's Start Learning</h1>
+       <button className="start-learning-button" onClick={handleClick3}>
+        Start Learning
+      </button> */}
       {/* <img className="bgimage" src={bgImg} alt="" /> */}
-      {/* <div className="brands">
+      <div className="brands">
         <p className="brandsInside">
           Trusted by over 14,400 companies and millions of learners around the
           world
@@ -77,8 +86,8 @@ const Dashboard = () => {
           <img className="img1" src={b7} alt="" />
           <img className="img1" src={b8} alt="" />
         </div>
-      </div> */}
-      {/* <div className="jumbotron jumbotron-fluid">
+      </div>
+      <div className="jumbotron jumbotron-fluid">
         <div className="container">
           <h1 className="display-4">A broad selection of courses</h1>
           <p className="lead">
@@ -90,7 +99,7 @@ const Dashboard = () => {
             </div>
           </p>
         </div>
-      </div> */}
+      </div>
       <div className="grid">
         <p className="gridInside">
           How learners like you are achieving their goals
@@ -130,10 +139,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* <div className="footer">
-        <img className="fimg" src={Img} alt="" />
-        <div className="f">© 2023 Educom-Let Us Study, Inc.</div>
-      </div> */}
     </div>
   );
 };

@@ -207,7 +207,7 @@ const CoursesPlaylist = () => {
         margin: "0 auto",
       }}
     >
-      <Grid item xs={9} style={{ paddingRight: "10px" }}>
+      <Grid item xs={12} md={9} style={{ paddingRight: "10px" }}>
         <div>
           <video
             key={selectedVideo.id}
@@ -285,7 +285,8 @@ const CoursesPlaylist = () => {
       </Grid>
       <Grid
         item
-        xs={3}
+        xs={12}
+        md={3}
         style={{
           padding: "1px",
           backgroundColor: "var(--form)",

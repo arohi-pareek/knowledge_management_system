@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
    
   },
 }));
-const drawerWidth = "19%";
+const drawerWidth = "17%";
 
 
 const Courses = () => {
@@ -211,7 +211,7 @@ const Courses = () => {
     </div> */}
       <div style={{
         transition: "width .5s",
-        width: opendrawer ? "calc(100% - 17%)" : "100%",
+        width: opendrawer ? "calc(100% - 20%)" : "100%",
         flexBasis: "initial"
       }}>
         <div style={{
