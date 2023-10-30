@@ -273,6 +273,7 @@ const CoursesPlaylist = () => {
           }}
         >
           <h2 className="content1">Course content</h2>
+
           <div>
             <CircularProgress
               variant="determinate"

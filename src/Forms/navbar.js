@@ -130,7 +130,7 @@ const Navbar = () => {
       <div className="navbar-right">
       <div>
         <form>
-        <input class="search_content" type="search" placeholder="Search" aria-label="Search"/>
+        {/* <input class="search_content" type="search" placeholder="Search" aria-label="Search"/> */}
       </form>
         </div>
         <div className="icon-container">
