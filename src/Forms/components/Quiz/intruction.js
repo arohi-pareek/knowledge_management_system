@@ -37,11 +37,17 @@ const Intruction = (props) => {
         </h3>
       </DialogTitle>
       <DialogContent dividers>
-        <ul style={{ listStyleType: 'disc', marginLeft: '1.5rem' }}>
-          <li style={{ margin: '0.5rem 0' }}>Instruction 1: Lorem ipsum dolor sit amet.</li>
-          <li style={{ margin: '0.5rem 0' }}>Instruction 2: Consectetur adipiscing elit.</li>
-          <li style={{ margin: '0.5rem 0' }}>Instruction 3: Nulla facilisi.</li>
-          <li style={{ margin: '0.5rem 0' }}>Instruction 4: Cras vel semper massa.</li>
+        <ul style={{ listStyleType: "disc", marginLeft: "1.5rem" }}>
+          <li style={{ margin: "0.5rem 0" }}>All Questions are Required</li>
+          <li style={{ margin: "0.5rem 0" }}>
+            There is Four Option in which one Option is Correct
+          </li>
+          <li style={{ margin: "0.5rem 0" }}>
+            Every Question Contains specific Marks
+          </li>
+          <li style={{ margin: "0.5rem 0" }}>
+            Once You Answer all the Question Submit Button will get enable
+          </li>
         </ul>
       </DialogContent>
       <DialogActions>

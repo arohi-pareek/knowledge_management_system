@@ -107,7 +107,8 @@ header {
   /* box-shadow: rgba(0, 0, 0, 0.08) 0rem 0.4rem 1.2rem; */
   border-radius: 2rem;
   display: flex;
-  place-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 10px;
 }

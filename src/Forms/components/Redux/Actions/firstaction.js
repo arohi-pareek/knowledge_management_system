@@ -25,7 +25,6 @@ import {
   SUBSCRIBE_COURSE__SUCCESS,
 } from "../Constant/ActionTypes";
 
-
 export const AddCourse = (value) => async (dispatch) => {
   const config = {
     headers: {
@@ -39,14 +38,10 @@ export const AddCourse = (value) => async (dispatch) => {
   try {
     const response = await Axios.post(`/course/add-course`, value, config);
     dispatch({ type: ADD_COURSE_SUCCESS, payload: response.data });
-    dispatch(
-      setSnackbar(true, 'success', 'Course Added Successfully')
-    );
+    dispatch(setSnackbar(true, "success", "Course Added Successfully"));
   } catch (error) {
     dispatch({ type: ADD_COURSE_FAILURE, payload: error });
-    dispatch(
-      setSnackbar(true, 'error', 'Error adding course ')
-    );
+    dispatch(setSnackbar(true, "error", "Error adding course "));
   }
 };
 
@@ -82,14 +77,10 @@ export const DeleteCourse = (id) => async (dispatch) => {
   try {
     await Axios.get(`/course/delete-course/${id}`, config);
     dispatch({ type: DELETE_COURSE_SUCCESS, payload: { deletedCourseId: id } });
-    dispatch(
-      setSnackbar(true, 'success', 'Course Deleted Successfully')
-    );
+    dispatch(setSnackbar(true, "success", "Course Deleted Successfully"));
   } catch (error) {
     dispatch({ type: DELETE_COURSE_FAILURE, payload: error });
-    dispatch(
-      setSnackbar(true, 'error', 'Error Deleting course')
-    );
+    dispatch(setSnackbar(true, "error", "Error Deleting course"));
   }
 };
 
@@ -123,14 +114,10 @@ export const AddChapter = (value) => async (dispatch) => {
     const response = await Axios.post(`/course/add-Chapter`, value, config);
     dispatch({ type: ADD_CHAPTER_SUCCESS, payload: response.data });
     // Dispatch setSnackbar action to show a snackbar for success
-    dispatch(
-      setSnackbar(true, 'success', 'Chapter Added Successfully')
-    );
+    dispatch(setSnackbar(true, "success", "Chapter Added Successfully"));
   } catch (error) {
     dispatch({ type: ADD_CHAPTER_FAILURE, payload: error });
-    dispatch(
-      setSnackbar(true, 'error', 'Error adding chapter ')
-    );
+    dispatch(setSnackbar(true, "error", "Error adding chapter "));
   }
 };
 
@@ -157,7 +144,7 @@ export const GetChapter = (value) => async (dispatch) => {
   }
 };
 
-export const UploadPlayList=
+export const UploadPlayList =
   (formData, courseId, videoLength) => async (dispatch) => {
     const config = {
       headers: {
@@ -175,58 +162,48 @@ export const UploadPlayList=
     try {
       const response = await Axios.post(`/course/upload`, formData, config);
       dispatch({ type: ADD_UPLOAD_SUCCESS, payload: response.data });
-      dispatch(
-        setSnackbar(true, 'success', 'PlayList Saved Successfully')
-      );
+      dispatch(setSnackbar(true, "success", "PlayList Saved Successfully"));
     } catch (error) {
       dispatch({ type: ADD_UPLOAD_FAILURE, payload: error });
-      dispatch(
-        setSnackbar(true, 'error', 'Error Saving PlayList')
-      );
+      dispatch(setSnackbar(true, "error", "Error Saving PlayList"));
     }
   };
 
-  export const GetVideo = (value) => async (dispatch) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + sessionStorage.getItem("jwt_token"),
-        sessionId: sessionStorage.getItem("sessionId"),
-      },
-    };
-  
-    dispatch({ type: GET_COURSE_REQUEST });
-    try {
-      const response = await Axios.get(`/course/get-videos`, value, config);
-      console.log(response);
-      dispatch({ type: GET_COURSE_SUCCESS, payload: response.data });
-    } catch (error) {
-      dispatch({ type: GET_COURSE_FAILURE, payload: error });
-    }
+export const GetVideo = (value) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("jwt_token"),
+      sessionId: sessionStorage.getItem("sessionId"),
+    },
   };
 
+  dispatch({ type: GET_COURSE_REQUEST });
+  try {
+    const response = await Axios.get(`/course/get-videos`, value, config);
+    console.log(response);
+    dispatch({ type: GET_COURSE_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: GET_COURSE_FAILURE, payload: error });
+  }
+};
 
-  export const AddQuiz = (value) => async (dispatch) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + sessionStorage.getItem("jwt_token"),
-        sessionId: sessionStorage.getItem("sessionId"),
-      },
-    };
-  
-    dispatch({ type: ADD_QUIZ_REQUEST });
-    try {
-      const response = await Axios.post(`/course/add-quiz`, value, config);
-      dispatch({ type: ADD_QUIZ_SUCCESS, payload: response.data });
-      // Dispatch setSnackbar action to show a snackbar for success
-      dispatch(
-        setSnackbar(true, 'success', 'Quiz Saved Successfully')
-      );
-    } catch (error) {
-      dispatch({ type: ADD_QUIZ_FAILURE, payload: error });
-      dispatch(
-        setSnackbar(true, 'error', 'Error Saving Quiz ')
-      );
-    }
+export const AddQuiz = (value) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("jwt_token"),
+      sessionId: sessionStorage.getItem("sessionId"),
+    },
   };
+
+  dispatch({ type: ADD_QUIZ_REQUEST });
+  try {
+    const response = await Axios.post(`/course/add-quiz`, value, config);
+    dispatch({ type: ADD_QUIZ_SUCCESS, payload: response.data });
+    dispatch(setSnackbar(true, "success", "Quiz Saved Successfully"));
+  } catch (error) {
+    dispatch({ type: ADD_QUIZ_FAILURE, payload: error });
+    dispatch(setSnackbar(true, "error", "Error Saving Quiz "));
+  }
+};

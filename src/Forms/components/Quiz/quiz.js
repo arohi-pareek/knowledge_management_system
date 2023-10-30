@@ -28,8 +28,6 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [instruction, setInstruction] = useState(true);
 
-  console.log(score, "score");
-
   const handleQuizSubmission = () => {
     let totalScore = 0;
     for (let i = 0; i < quizData.length; i++) {
@@ -38,6 +36,7 @@ const Quiz = () => {
       }
     }
     setScore(totalScore);
+    console.log(score)
   };
 
   const handleAnswerSelection = (questionIndex, selectedChoice) => {
