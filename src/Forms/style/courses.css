@@ -25,7 +25,7 @@ a {
     text-decoration: none;
 }
 
-.coursesTop {
+/* .coursesTop { */
 
     /* margin-top: 20px;
     font-size: 35px;
@@ -41,7 +41,7 @@ a {
     box-shadow: rgb(214, 209, 209); */
 
     /* margin: 30px;   */
-}
+/* } */
 
 .left {
     font-family: 'Anton', sans-serif;
@@ -209,6 +209,14 @@ a {
     transition: 0.27s;
     transform: scale(1.10);
 }
+.shrinkAndMove {
+    
+    position: fixed;
+    
+    /* left: 20px; Adjust the left position as needed */
+    
+    
+  }
 
 .backdropbox {
     margin-top: 10px;
@@ -227,7 +235,6 @@ a {
 }
 
 #DescriptionDialog .MuiDialog-paperWidthSm {
-
     height: 80% !important;
     width: 90% !important;
     max-width: 90% !important;
@@ -250,5 +257,4 @@ a {
    .filt{
     right:8%;
    }
-
 }

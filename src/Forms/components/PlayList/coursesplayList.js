@@ -298,7 +298,7 @@ const CoursesPlaylist = () => {
           maxHeight: "100vh",
         }}
       >
-         <Button onClick={handleGoToQuiz}>GO TO QUIZ </Button>
+         {/* <Button onClick={handleGoToQuiz}>GO TO QUIZ </Button> */}
         <div
           style={{
             display: "flex",
@@ -356,7 +356,7 @@ const CoursesPlaylist = () => {
               }}
               className="accord"
               key={index}
-              disabled={index !== 0 && !isChapter1Finished}
+              // disabled={index !== 0 && !isChapter1Finished}
               defaultExpanded={index === 0}
             >
               <AccordionSummary
@@ -390,6 +390,41 @@ const CoursesPlaylist = () => {
               </AccordionDetails>
             </Accordion>
           ))}
+           <Accordion
+              style={{
+                backgroundColor: "var(--text)",
+                width: "22rem",
+                marginLeft: "-17px",
+              }}
+              className="accord"
+              // disabled={index !== 0 && !isChapter1Finished}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+              >
+                <Typography>
+                  <b>{"CHAPTER 3 : QUIZ"}</b>
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography className="List">
+                  <ul className="custom-list">
+     
+                      <li
+                        
+                        onClick={handleGoToQuiz}
+                        
+                      >
+                        <div className="video-info">
+                          <span className="number">{ "3"}</span>
+                          <span className="video-title">{"Start your Quiz"}</span>
+                        </div>
+                      </li>
+
+                  </ul>
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
         </div>
        
       </Grid>

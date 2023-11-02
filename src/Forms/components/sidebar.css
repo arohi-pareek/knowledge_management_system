@@ -40,5 +40,31 @@
   .icon{
    margin-left:-50px;
   }
+  .icon p {
+    background-color: gainsboro;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    width: 1.4rem;
+    height: 1.2rem;
+    border-radius: 50%;
+   
+    position: absolute;
+    top: 10.9rem;
+    right: -4.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 
+   
+    right: -1.2rem;
+   
+   
+   
+    color: #fff;
+   
+   
+   
+    color: var(--main-color); */
+  }
 
   

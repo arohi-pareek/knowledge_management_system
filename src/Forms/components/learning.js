@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState, useEffect }from "react";
 import "../style/learning.css";
 import { useNavigate } from "react-router-dom";
 import { Button, LinearProgress } from "@material-ui/core";
@@ -7,6 +7,15 @@ import { connect } from "react-redux";
 import { Typography } from "@mui/material";
 
 const Learning = ({ subArr, subscribeCourse }) => {
+  const [subscribedCount, setSubscribedCount] = useState(0);
+
+  useEffect(() => {
+    // Calculate the number of subscribed courses
+    const count = subArr.filter((course) => course.subscribe).length;
+    setSubscribedCount(count);
+  }, [subArr]); // Update count whenever subArr changes
+
+  
 
   const navigate = useNavigate();
 
