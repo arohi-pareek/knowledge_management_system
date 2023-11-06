@@ -27,6 +27,7 @@ const AddChapterform = (props) => {
 
   const empty = {
     title: "",
+    description : ""
   };
   const callMessageOut = (msg, type) => {
     dispatch(setSnackbar(true, type, msg));
@@ -42,6 +43,7 @@ const AddChapterform = (props) => {
         Arraymetadata: Yup.array().of(
           Yup.object().shape({
             title: Yup.string().required("Chapter Name is Required"),
+            description: Yup.string().required("Description is Required"),
           })
         ),
        
@@ -50,9 +52,8 @@ const AddChapterform = (props) => {
         console.log(values)
         let formData = {
           ...values,
-          courseId: courseid
         };
-        dispatch(AddChapter(formData));
+        dispatch(AddChapter(formData.metadata,courseid));
         CloseChapterform()
       }}
     >
@@ -91,11 +92,21 @@ const AddChapterform = (props) => {
                           spacing={2}
                           style={{ marginTop: ".5rem" }}
                         >
-                          <Grid item xs={10}>
+                          <Grid item xs={12}>
                             <Field
                               name={`metadata.${index}.title`}
                               component={TextField}
                               label="Chapter Name "
+                              size="small"
+                              style={{ width: "100%" }}
+                              onChange={handleChange}
+                            />
+                          </Grid>
+                          <Grid item xs={10}>
+                            <Field
+                              name={`metadata.${index}.description`}
+                              component={TextField}
+                              label="Chapter Description "
                               size="small"
                               style={{ width: "100%" }}
                               onChange={handleChange}

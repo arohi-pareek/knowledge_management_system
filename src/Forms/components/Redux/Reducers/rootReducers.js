@@ -6,9 +6,11 @@ import {
   PlayListDetails,
   QuizDetails,
   ChapterDetails,
+  Subscribe
 } from "./rootReduceOne";
 import searchReducer from "./searchReducer";
 import filterReducer from "./filterReducer";
+
 
 const RootReducer = combineReducers({
   snackbar: setSnackBar,
@@ -18,7 +20,8 @@ const RootReducer = combineReducers({
   PlayListDetails: PlayListDetails,
   QuizDetails: QuizDetails,
   searchReducer: searchReducer,
-  filterReducer:filterReducer
+  filterReducer:filterReducer,
+  Subscribe:Subscribe
 });
 
 export default RootReducer;

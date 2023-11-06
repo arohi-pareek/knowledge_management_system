@@ -26,6 +26,7 @@ import {
   GET_VIDEO_FAILURE,
   GET_VIDEO_REQUEST,
   GET_VIDEO_SUCCESS,
+  SUBSCRIBE_COURSE__SUCCESS,
 } from "../Constant/ActionTypes";
 
 const courseData = {
@@ -51,6 +52,13 @@ const quizData = {
   error: "",
   QuizData: [],
 };
+
+const subscribeData = {
+  loading: false,
+  error: "",
+  SubscribeData: [],
+};
+
 
 export const CourseDetails = (state = courseData, action) => {
   const deletedCourseId = action.payload; 
@@ -132,12 +140,8 @@ export const CourseDetails = (state = courseData, action) => {
 };
 
 export const ChapterDetails = (state = chapterData, action) => {
-  const deletedCourseId = action.payload;
+  console.log(action,"chapter")
 
-  // Find the index of the deleted course in the CourseData array.
-  const updatedCourseData = state.ChapterData.filter(
-    (course) => course.id !== deletedCourseId
-  );
   switch (action.type) {
     // ---------------------- ADD Chapter
 
@@ -170,7 +174,7 @@ export const ChapterDetails = (state = chapterData, action) => {
       return {
         ...state,
         loading: false,
-        ChapterData: [...state.ChapterData,action.payload],
+        ChapterData: action.payload,
       };
     case GET_CHAPTER_FAILURE:
       return {
@@ -329,6 +333,22 @@ export const QuizDetails = (state = quizData, action) => {
         ...state,
         loading: false,
         error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const Subscribe = (state = subscribeData, action) => {
+
+  switch (action.type) {
+
+    case SUBSCRIBE_COURSE__SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        SubscribeData:action.payload,
       };
 
     default:

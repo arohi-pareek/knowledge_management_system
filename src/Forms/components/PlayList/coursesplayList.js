@@ -29,7 +29,7 @@ const playlistData = [
         title: "Introduction to React js",
         duration: "5:30",
         description: "This is the first video.",
-        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        videoUrl: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
         watched: true,
@@ -43,7 +43,7 @@ const playlistData = [
           "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
-        watched: true,
+        watched: false,
       },
       {
         id: 3,
@@ -53,7 +53,7 @@ const playlistData = [
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
-        watched: true,
+        watched: false,
       },
       {
         id: 4,
@@ -63,7 +63,7 @@ const playlistData = [
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
-        watched: true,
+        watched: false,
       },
       {
         id: 5,
@@ -73,7 +73,7 @@ const playlistData = [
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
-        watched: true,
+        watched: false,
       },
       {
         id: 6,
@@ -98,6 +98,7 @@ const playlistData = [
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+        watched: false,
       },
       {
         id: 8,
@@ -107,7 +108,7 @@ const playlistData = [
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
-        watched: true,
+        watched: false,
       },
       {
         id: 9,
@@ -117,10 +118,20 @@ const playlistData = [
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
         thumbnail:
           "https://media.istockphoto.com/id/1434947710/photo/businessman-headphones-and-laptop-webinar-in-office-with-coffee-on-table-video-call-or.jpg?s=1024x1024&w=is&k=20&c=NvC5p29pg1jBXw-IEzCTYg3Mv1A11k8BGVFqRw-DCDk=",
+        watched: false,
       },
     ],
   },
 ];
+
+const watchedStatus = playlistData.map((chapter) => {
+  return chapter.videos.map((video) => ({
+    title: video.title,
+    watched: video.watched,
+  }));
+});
+
+console.log(watchedStatus);
 
 const tabs = ["Overview", "Q&A", "Notes", "Reviews", "Learning Tools"];
 
@@ -199,10 +210,13 @@ const CoursesPlaylist = () => {
     (overallProgress / 100) * totalVideos
   )} VIDEOS OF ${totalVideos} VIDEOS COMPLETE`;
 
-  const handleGoToQuiz = ()=>{
-    navigate("/Quiz")
-  }
+  const handleGoToQuiz = () => {
+    navigate("/Quiz");
+  };
   const navigate = useNavigate();
+
+  let isChapter1Watched = true; // Initialize as true
+
   return (
     <Grid
       container
@@ -291,14 +305,15 @@ const CoursesPlaylist = () => {
       </Grid>
       <Grid
         item
-        xs={12} md={3}
+        xs={12}
+        md={3}
         style={{
           padding: "1px",
           backgroundColor: "var(--form)",
           maxHeight: "100vh",
         }}
       >
-         {/* <Button onClick={handleGoToQuiz}>GO TO QUIZ </Button> */}
+        {/* <Button onClick={handleGoToQuiz}>GO TO QUIZ </Button> */}
         <div
           style={{
             display: "flex",
@@ -347,7 +362,7 @@ const CoursesPlaylist = () => {
           </div>
         </div>
         <div className="playlist-container">
-          {playlistData.map((chapterData, index) => (
+          {/* {playlistData.map((chapterData, index) => (
             <Accordion
               style={{
                 backgroundColor: "var(--text)",
@@ -356,7 +371,6 @@ const CoursesPlaylist = () => {
               }}
               className="accord"
               key={index}
-              // disabled={index !== 0 && !isChapter1Finished}
               defaultExpanded={index === 0}
             >
               <AccordionSummary
@@ -389,44 +403,146 @@ const CoursesPlaylist = () => {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-          ))}
-           <Accordion
-              style={{
-                backgroundColor: "var(--text)",
-                width: "22rem",
-                marginLeft: "-17px",
-              }}
-              className="accord"
-              // disabled={index !== 0 && !isChapter1Finished}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-              >
-                <Typography>
-                  <b>{"CHAPTER 3 : QUIZ"}</b>
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className="List">
-                  <ul className="custom-list">
-     
-                      <li
-                        
-                        onClick={handleGoToQuiz}
-                        
-                      >
-                        <div className="video-info">
-                          <span className="number">{ "3"}</span>
-                          <span className="video-title">{"Start your Quiz"}</span>
-                        </div>
-                      </li>
+          ))} */}
 
-                  </ul>
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
+          {playlistData.map((chapterData, index) => {
+            if (index === 0) {
+              // Check if all videos in Chapter 1 are watched
+              isChapter1Watched = chapterData.videos.every(
+                (video) => video.watched
+              );
+            }
+
+            const isChapterLocked = index === 1 && !isChapter1Watched;
+
+            return (
+              <Accordion
+                style={{
+                  backgroundColor: "var(--text)",
+                  width: "22rem",
+                  marginLeft: "-17px",
+                }}
+                className={`accord ${isChapterLocked ? "locked" : ""}`}
+                disabled={index !== 0 && isChapterLocked}
+                key={index}
+                defaultExpanded={index === 0}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls={`panel${index + 1}-a-content`}
+                  id={`panel${index + 1}-a-header`}
+                >
+                  <Typography>
+                    <b>{chapterData.chapter}</b>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography className="List">
+                    <ul className="custom-list">
+                      {chapterData.videos.map((video, videoIndex) => {
+                        const isVideoLocked = !video.watched;
+
+                        return (
+                          <li
+                            key={video.id}
+                            onClick={() => {
+                              !isVideoLocked && handleVideoClick(video);
+                            }}
+                            className={`playlist-video ${
+                              video === selectedVideo ? "playing" : ""
+                            } ${isVideoLocked ? "locked" : ""}`}
+                          >
+                            <div className="video-info">
+                              <span className="number">{videoIndex + 1}</span>
+                              <span className="video-title">{video.title}</span>
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            );
+          })}
+
+          {/* {playlistData.map((chapterData, index) => {
+  return (
+    <Accordion
+      style={{
+        backgroundColor: "var(--text)",
+        width: "22rem",
+        marginLeft: "-17px",
+      }}
+      className={`accord`}
+      key={index}
+      defaultExpanded={index === 0}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls={`panel${index + 1}-a-content`}
+        id={`panel${index + 1}-a-header`}
+      >
+        <Typography>
+          <b>{chapterData.chapter}</b>
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography className="List">
+          <ul className="custom-list">
+            {chapterData.videos.map((video, videoIndex) => {
+              const isVideoLocked = !video.watched;
+
+              return (
+                <li
+                  key={video.id}
+                  onClick={() => handleVideoClick(video)}
+                  className={`playlist-video ${
+                    video === selectedVideo ? "playing" : ""
+                  } ${isVideoLocked ? "locked" : ""}`}
+                >
+                  <div className="video-info">
+                    <span className="number">{videoIndex + 1}</span>
+                    <span className="video-title">{video.title}</span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+})} */}
+
+          <Accordion
+            style={{
+              backgroundColor: "var(--text)",
+              width: "22rem",
+              marginLeft: "-17px",
+            }}
+            className="accord"
+            disabled={true}
+          >
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>
+                <b>{"CHAPTER 3 : QUIZ"}</b>
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography className="List">
+                <ul className="custom-list">
+                  <li onClick={handleGoToQuiz}>
+                    <div className="video-info">
+                      <span className="number">{"3"}</span>
+                      <span className="video-title">{"Start your Quiz"}</span>
+                    </div>
+                  </li>
+                </ul>
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
         </div>
-       
       </Grid>
     </Grid>
   );
