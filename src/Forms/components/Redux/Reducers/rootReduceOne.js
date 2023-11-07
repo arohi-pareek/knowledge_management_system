@@ -53,7 +53,7 @@ const quizData = {
 };
 
 export const CourseDetails = (state = courseData, action) => {
-  const deletedCourseId = action.payload; // Assuming action.payload contains the deleted course ID.
+  const deletedCourseId = action.payload; 
 
   // Find the index of the deleted course in the CourseData array.
   const updatedCourseData = state.CourseData.filter(
@@ -132,7 +132,7 @@ export const CourseDetails = (state = courseData, action) => {
 };
 
 export const ChapterDetails = (state = chapterData, action) => {
-  const deletedCourseId = action.payload; // Assuming action.payload contains the deleted course ID.
+  const deletedCourseId = action.payload;
 
   // Find the index of the deleted course in the CourseData array.
   const updatedCourseData = state.ChapterData.filter(
@@ -211,7 +211,7 @@ export const ChapterDetails = (state = chapterData, action) => {
 
 
 export const PlayListDetails = (state = playListData, action) => {
-  const deletedCourseId = action.payload; // Assuming action.payload contains the deleted course ID.
+  const deletedCourseId = action.payload; 
 
   // Find the index of the deleted course in the CourseData array.
   const updatedCourseData = state.PlayListData.filter(

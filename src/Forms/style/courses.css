@@ -165,20 +165,24 @@ a {
 
 .Cbox {
 
-    height: 330px;
-    width: 290px;
+    height: auto;
+    width: 18rem;
     background-color: var(--form);
     color: black;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 18px;
+    /* margin: 18px; */
+    margin-top: 1rem;
+    margin-left: 1rem;
     border-radius: 8px;
     border-color: whitesmoke;
     box-shadow: rgb(180, 177, 177);
     border-style: solid;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
+    overflow: hidden;
+    cursor: pointer;
     /* position: relative; 
     transition: filter 3s ease; */
 
@@ -189,19 +193,20 @@ a {
 }
 
 .subscribe-btn {
-    width: 49%;
+    width: auto;
     height: 1.5em;
     background-color: #111b20;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.5s;
+    /* transition: 0.5s; */
     cursor: pointer;
     color: white;
     border-radius: 6px;
     padding: 16px;
-    margin-left: 61px;
-    margin-top: 30PX;
+    /* margin-left: 61px;
+    margin-top: 30PX; */
+    /* transition: background-color 0.3s ease, transform 0.3s ease; */
 }
 
 .subscribe-btn:hover {
@@ -233,7 +238,32 @@ a {
 .dropbox {
     background-color: whitesmoke;
 }
-
+/* .flying-img{
+    position: absolute;
+    z-index: 10;
+    animation: fly_to_cart 1ms ease-out infinite;
+} */
+@keyframes fly_to_cart {
+    0%{
+        right: 0;
+        top:0;
+    }
+    45%,50%{
+        right:500px;
+        top:40px;
+    }
+    80%,90%{
+        right:500px;
+        top:450px;
+        transform: scale(.2);
+    }
+    100%{
+        right:calc(500px+40px);
+        top:450px;
+        transform: scale(.2);
+    }
+}
+  
 #DescriptionDialog .MuiDialog-paperWidthSm {
     height: 80% !important;
     width: 90% !important;
@@ -244,7 +274,7 @@ a {
 #drawer .MuiDrawer-paper {
     top: 5.2rem !important;
     z-index: 0;
-    height: 95vh;
+    height: 90vh;
     background-color: var(--form) !important;
 }
 @media (max-width: 630px)
@@ -258,3 +288,27 @@ a {
     right:8%;
    }
 }
+
+.dialog-enter {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  
+  .dialog-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 1.5s ease, opacity 0.5s ease; /* Adjust the duration to make it slower */
+  }
+  
+  .dialog-exit {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .dialog-exit-active {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 1.5s ease, opacity 0.5s ease; /* Adjust the duration to make it slower */
+  }
+  
+  

@@ -6,47 +6,43 @@ import FullscreenIcon from "@material-ui/icons/Fullscreen";
 import FullscreenExitIcon from "@material-ui/icons/FullscreenExit";
 import { IconButton, Tooltip } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import "../../src/Forms/components/navbar.css"
-import { useDispatch } from "react-redux";
+import "../../src/Forms/components/navbar.css";
+import { useDispatch, useSelector } from "react-redux";
 import { setSnackbar } from "./components/Redux/Actions/firstaction";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import Courses from "./courses";
 import Login from "./login";
 import ReactDOM from "react-dom";
+import { setSearchQuery  } from "./components/Redux/Reducers/searchReducer";
 
 const Navbar = () => {
-
   const [theme, setTheme] = useState("light-theme");
   const [btnState, setbtnState] = useState("Switch to Dark Mode");
   const [isFavorite, setIsFavorite] = useState(true);
   const [fullScreen, setFullScreen] = useState(false);
   const [isSearching, SetIsSearching] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
+  const searchQuery = useSelector((state) => state.searchReducer.searchQuery);
 
   const handleSearchChange = (event) => {
-    const newSearchQuery = event.target.value;
-    setSearchQuery(newSearchQuery);
-    // if (newSearchQuery === null || newSearchQuery.trim() === '') {
-    //   navigate('/courses');
-    // } else {
-    //   navigate(`/courses/search`);
-    // }
+    dispatch(setSearchQuery(event.target.value));
   };
-  <Tooltip title="SWITCH TO LIST VIEW"></Tooltip>
+
+  // const handleSearchChange = (event) => {
+  //   const newSearchQuery = event.target.value;
+  //   if (newSearchQuery.length >= 3) {
+  //     dispatch(setSearchQuery(newSearchQuery));
+  //   }
+  // };
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       handleSearch();
     }
   };
 
-  const handleSearch = () => {
-    if (searchQuery === null || searchQuery.trim() === '') {
-      navigate('/subject');
-      
-    } else {
-      navigate(`/courses/search?q=${encodeURIComponent(searchQuery)}`);
-    }
+  const handleSearch = (event) => {
+    dispatch({ type: 'OPEN_DRAWER' });
   };
 
   const navigate = useNavigate();
@@ -56,7 +52,7 @@ const Navbar = () => {
   };
 
   const handleLogOut = () => {
-    sessionStorage.clear()
+    sessionStorage.clear();
     navigate("/");
   };
 
@@ -69,7 +65,7 @@ const Navbar = () => {
     setFullScreen(true);
 
     const elem = document.documentElement;
-    console.log(document.documentElement)
+    console.log(document.documentElement);
 
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
@@ -96,15 +92,16 @@ const Navbar = () => {
 
   const toggleTheme = () => {
     if (theme === "dark-theme") {
-      setTheme('light-theme');
-      setbtnState('Switch to Dark mode');
+      setTheme("light-theme");
+      setbtnState("Switch to Dark mode");
       setIsFavorite(!isFavorite);
     } else {
       setTheme("dark-theme");
-      setbtnState('Switch to Light Mode');
+      setbtnState("Switch to Light Mode");
       setIsFavorite(!isFavorite);
     }
   };
+
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
@@ -112,10 +109,12 @@ const Navbar = () => {
   return (
     <nav className="navbar bg-body-tertiary fixed-top">
       <div className="navbar-left">
-        <Link to="/dashboard" className='navbar-brand text-uppercase ls-1 fw-8'>
-          <span style={{ color: "orange" }}>c</span><span style={{ color: "white" }}>oursean</span>
-        </Link> 
+        <Link to="/dashboard" className="navbar-brand text-uppercase ls-1 fw-8">
+          <span style={{ color: "orange" }}>c</span>
+          <span style={{ color: "white" }}>oursean</span>
+        </Link>
       </div>
+      {/* <form onSubmit={handleSubmit}> */}
       <input
         className="Search"
         type="search"
@@ -123,19 +122,38 @@ const Navbar = () => {
         aria-label="Search"
         value={searchQuery}
         onChange={handleSearchChange}
-        // onKeyDown={handleKeyPress}
+        onClick={handleSearch}
       />
-      {/* <SearchIcon/> */}
-
+      {/* <button type="submit" style={{ display: "none" }}>
+          Search
+        </button>
+      </form> */}
       <div className="navbar-right">
         <div className="icon-container">
-          <div onClick={() => toggleTheme()} color={isFavorite ? 'secondary' : 'default'}>
-            {isFavorite ? <Brightness7Icon style={{ cursor: "pointer" }}/> : <Brightness4Icon style={{ cursor: "pointer" }}/>}</div>
-          <ExitToAppIcon onClick={() => handleLogOut()} style={{ cursor: "pointer" }} />
+          <div
+            onClick={() => toggleTheme()}
+            color={isFavorite ? "secondary" : "default"}
+          >
+            {isFavorite ? (
+              <Brightness7Icon style={{ cursor: "pointer" }} />
+            ) : (
+              <Brightness4Icon style={{ cursor: "pointer" }} />
+            )}
+          </div>
+          <ExitToAppIcon
+            onClick={() => handleLogOut()}
+            style={{ cursor: "pointer" }}
+          />
           {fullScreen ? (
-                <FullscreenExitIcon style={{ cursor: "pointer" }} onClick={closeFullScreen} />
+            <FullscreenExitIcon
+              style={{ cursor: "pointer" }}
+              onClick={closeFullScreen}
+            />
           ) : (
-                  <FullscreenIcon style={{ cursor: "pointer" }} onClick={openFullScreen}/>
+            <FullscreenIcon
+              style={{ cursor: "pointer" }}
+              onClick={openFullScreen}
+            />
           )}
         </div>
       </div>

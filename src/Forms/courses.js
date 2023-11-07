@@ -39,7 +39,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { Close } from "@material-ui/icons";
 import FilterListIcon from "@mui/icons-material/FilterList";
-
+import CourseCard from "../Forms/components/CourseCard";
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
@@ -83,7 +83,9 @@ const Courses = () => {
   const classes = useStyles();
 
   const CourseArr = useSelector((state) => state.subscribe.subArr);
+  
   const [subscribedCourses, setSubscribedCourses] = useState([]);
+
   const [clickedCourse, setClickedCourse] = useState(null);
   // const CourseArr = useSelector((state) => (state.CourseDetails.CourseData));
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
@@ -125,17 +127,14 @@ const Courses = () => {
     if (!payload.subscribe) {
       dispatch(subscribe(payload));
       callMessageOut(`Subscribed To ${payload.name}`, "success");
-      setSubscribedCourses((prevSubscribedCourses) => [
-        ...prevSubscribedCourses,
-        payload.id,
-      ]);
+      setSubscribedCourses((prevCourses) => [...prevCourses, payload]); 
+      
       setClickedCourse(payload.id);
     } else {
       dispatch(subscribe(payload));
       callMessageOut(`Unsubscribed To ${payload.name}`, "success");
-      setSubscribedCourses((prevSubscribedCourses) =>
-        prevSubscribedCourses.filter((courseId) => courseId !== payload.id)
-      );
+      
+    
       setClickedCourse(null);
     }
   };
@@ -293,11 +292,11 @@ const Courses = () => {
 
         {Gridview ? (
           <div className="courseBox">
-            {filteredCourses.map((item, i) => {
+            {filteredCourses.filter((item)=>!item.subscribe).map((item, i) => {
+             
               return (
-                <p key={i} className={`Cbox ${
-                  clickedCourse === item.id ? "shrinkAndMove" : ""
-                }`} >
+                <p key={i} className="Cbox">
+                
                   <img
                     className="courseImg"
                     src={item.img}
@@ -312,6 +311,7 @@ const Courses = () => {
                       
                     }}
                   />
+                  
                   <p>
                     <b className="cTop" style={{ fontSize: "1.4rem" }}>
                       {item.name}
@@ -339,14 +339,7 @@ const Courses = () => {
                       Explore
                     </h5>
                   </p>
-                  <div>
-                    <button
-                      className="subscribe-btn"
-                      onClick={() => handleSubscribe(item)}
-                    >
-                      {subscribedCourses.includes(item.subscribe) ? "UNSUBSCRIBE" : "SUBSCRIBE"}
-                    </button>
-                  </div>
+                 
                 </p>
               );
             })}
@@ -613,196 +606,211 @@ const Courses = () => {
               />
             </div>
             <div style={{ width: "75%", marginLeft: "25%", overflow: "auto" }}>
-              <>
-                {/* <p>
-                  <b className="cTop">JAVA PROGRAMMING</b>
-                </p> */}
-                <p>Category: Programming</p>
-                <p>Rating: ⭐⭐⭐</p>
-                <p>_______________________________________________</p>
-                <Typography>
-                  <Accordion
-                    style={{ backgroundColor: "var(--form)" }}
-                    defaultExpanded
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>
-                        <b>
-                          Course Title: Comprehensive Java Programming Course
-                        </b>
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails className="rate">
-                      <Typography>
-                        <div>
-                          Unlock the Power of Java Programming and Launch Your
-                          Software Development Journey! Are you eager to become
-                          a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java
-                          Programming Course is designed to take you from a
-                          beginner to a confident Java developer. Whether you're
-                          new to programming or seeking to deepen your coding
-                          skills, this course offers an immersive learning
-                          experience that equips you with the knowledge and
-                          practical skills needed to succeed.
-                        </div>
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    style={{ backgroundColor: "var(--form)" }}
-                    defaultExpanded
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>
-                        <b>
-                          Course Title: Comprehensive Java Programming Course
-                        </b>
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails className="rate">
-                      <Typography>
-                        <div>
-                          Unlock the Power of Java Programming and Launch Your
-                          Software Development Journey! Are you eager to become
-                          a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java
-                          Programming Course is designed to take you from a
-                          beginner to a confident Java developer. Whether you're
-                          new to programming or seeking to deepen your coding
-                          skills, this course offers an immersive learning
-                          experience that equips you with the knowledge and
-                          practical skills needed to succeed.
-                        </div>
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion style={{ backgroundColor: "var(--form)" }}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>
-                        <b>
-                          Course Title: Comprehensive Java Programming Course
-                        </b>
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails className="rate">
-                      <Typography>
-                        <div>
-                          Unlock the Power of Java Programming and Launch Your
-                          Software Development Journey! Are you eager to become
-                          a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java
-                          Programming Course is designed to take you from a
-                          beginner to a confident Java developer. Whether you're
-                          new to programming or seeking to deepen your coding
-                          skills, this course offers an immersive learning
-                          experience that equips you with the knowledge and
-                          practical skills needed to succeed.
-                        </div>
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion style={{ backgroundColor: "var(--form)" }}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>
-                        <b>
-                          Course Title: Comprehensive Java Programming Course
-                        </b>
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails className="rate">
-                      <Typography>
-                        <div>
-                          Unlock the Power of Java Programming and Launch Your
-                          Software Development Journey! Are you eager to become
-                          a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java
-                          Programming Course is designed to take you from a
-                          beginner to a confident Java developer. Whether you're
-                          new to programming or seeking to deepen your coding
-                          skills, this course offers an immersive learning
-                          experience that equips you with the knowledge and
-                          practical skills needed to succeed.
-                        </div>
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion style={{ backgroundColor: "var(--form)" }}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>
-                        <b>
-                          Course Title: Comprehensive Java Programming Course
-                        </b>
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails className="rate">
-                      <Typography>
-                        <div>
-                          Unlock the Power of Java Programming and Launch Your
-                          Software Development Journey! Are you eager to become
-                          a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java
-                          Programming Course is designed to take you from a
-                          beginner to a confident Java developer. Whether you're
-                          new to programming or seeking to deepen your coding
-                          skills, this course offers an immersive learning
-                          experience that equips you with the knowledge and
-                          practical skills needed to succeed.
-                        </div>
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion style={{ backgroundColor: "var(--form)" }}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>
-                        <b>
-                          Course Title: Comprehensive Java Programming Course
-                        </b>
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails className="rate">
-                      <Typography>
-                        <div>
-                          Unlock the Power of Java Programming and Launch Your
-                          Software Development Journey! Are you eager to become
-                          a proficient Java programmer and create dynamic
-                          applications? Look no further! Our Comprehensive Java
-                          Programming Course is designed to take you from a
-                          beginner to a confident Java developer. Whether you're
-                          new to programming or seeking to deepen your coding
-                          skills, this course offers an immersive learning
-                          experience that equips you with the knowledge and
-                          practical skills needed to succeed.
-                        </div>
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                </Typography>
-              </>
+            <>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                padding: "1rem ",
+              }}
+            >
+              <p>Category: Programming</p>
+              <p>Rating: ⭐⭐⭐</p>
+
+              <button
+                className="subscribe-btn"
+                onClick={() => {
+                  setopendialog(false);
+                  handleSubscribe(Data);
+                  // navigate("/learning")
+                }}
+              >
+                {Data.subscribe ? "UNSUBSCRIBE" : "SUBSCRIBE"}
+              </button>
+            </div>
+            <Typography>
+              <Accordion
+                style={{ backgroundColor: "var(--form)" }}
+                defaultExpanded
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>
+                    <b>
+                      Course Title: Comprehensive Java Programming Course
+                    </b>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className="rate">
+                  <Typography>
+                    <div>
+                      Unlock the Power of Java Programming and Launch Your
+                      Software Development Journey! Are you eager to become
+                      a proficient Java programmer and create dynamic
+                      applications? Look no further! Our Comprehensive Java
+                      Programming Course is designed to take you from a
+                      beginner to a confident Java developer. Whether you're
+                      new to programming or seeking to deepen your coding
+                      skills, this course offers an immersive learning
+                      experience that equips you with the knowledge and
+                      practical skills needed to succeed.
+                    </div>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion
+                style={{ backgroundColor: "var(--form)" }}
+                defaultExpanded
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>
+                    <b>
+                      Course Title: Comprehensive Java Programming Course
+                    </b>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className="rate">
+                  <Typography>
+                    <div>
+                      Unlock the Power of Java Programming and Launch Your
+                      Software Development Journey! Are you eager to become
+                      a proficient Java programmer and create dynamic
+                      applications? Look no further! Our Comprehensive Java
+                      Programming Course is designed to take you from a
+                      beginner to a confident Java developer. Whether you're
+                      new to programming or seeking to deepen your coding
+                      skills, this course offers an immersive learning
+                      experience that equips you with the knowledge and
+                      practical skills needed to succeed.
+                    </div>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion style={{ backgroundColor: "var(--form)" }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>
+                    <b>
+                      Course Title: Comprehensive Java Programming Course
+                    </b>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className="rate">
+                  <Typography>
+                    <div>
+                      Unlock the Power of Java Programming and Launch Your
+                      Software Development Journey! Are you eager to become
+                      a proficient Java programmer and create dynamic
+                      applications? Look no further! Our Comprehensive Java
+                      Programming Course is designed to take you from a
+                      beginner to a confident Java developer. Whether you're
+                      new to programming or seeking to deepen your coding
+                      skills, this course offers an immersive learning
+                      experience that equips you with the knowledge and
+                      practical skills needed to succeed.
+                    </div>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion style={{ backgroundColor: "var(--form)" }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>
+                    <b>
+                      Course Title: Comprehensive Java Programming Course
+                    </b>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className="rate">
+                  <Typography>
+                    <div>
+                      Unlock the Power of Java Programming and Launch Your
+                      Software Development Journey! Are you eager to become
+                      a proficient Java programmer and create dynamic
+                      applications? Look no further! Our Comprehensive Java
+                      Programming Course is designed to take you from a
+                      beginner to a confident Java developer. Whether you're
+                      new to programming or seeking to deepen your coding
+                      skills, this course offers an immersive learning
+                      experience that equips you with the knowledge and
+                      practical skills needed to succeed.
+                    </div>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion style={{ backgroundColor: "var(--form)" }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>
+                    <b>
+                      Course Title: Comprehensive Java Programming Course
+                    </b>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className="rate">
+                  <Typography>
+                    <div>
+                      Unlock the Power of Java Programming and Launch Your
+                      Software Development Journey! Are you eager to become
+                      a proficient Java programmer and create dynamic
+                      applications? Look no further! Our Comprehensive Java
+                      Programming Course is designed to take you from a
+                      beginner to a confident Java developer. Whether you're
+                      new to programming or seeking to deepen your coding
+                      skills, this course offers an immersive learning
+                      experience that equips you with the knowledge and
+                      practical skills needed to succeed.
+                    </div>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion style={{ backgroundColor: "var(--form)" }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>
+                    <b>
+                      Course Title: Comprehensive Java Programming Course
+                    </b>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className="rate">
+                  <Typography>
+                    <div>
+                      Unlock the Power of Java Programming and Launch Your
+                      Software Development Journey! Are you eager to become
+                      a proficient Java programmer and create dynamic
+                      applications? Look no further! Our Comprehensive Java
+                      Programming Course is designed to take you from a
+                      beginner to a confident Java developer. Whether you're
+                      new to programming or seeking to deepen your coding
+                      skills, this course offers an immersive learning
+                      experience that equips you with the knowledge and
+                      practical skills needed to succeed.
+                    </div>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Typography>
+          </>
             </div>
           </div>
         </DialogContent>

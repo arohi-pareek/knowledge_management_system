@@ -38,10 +38,12 @@ const List = (props) => {
         <section className="main-cart-section">
           <div className="cart-items">
             <div className="cart-items-container-list">
-              {filteredCourses.map((item, i) => (
+              {filteredCourses.filter((item)=>!item.subscribe).map((item, i) => (
                 <div className="items-info" key={i}> {/* Added key attribute */}
+                
                   <div className="product-img">
                     <img src={item.img} alt="" />
+                   
                   </div>
                   <div className="title">
                     <h3>{item.name}</h3>
