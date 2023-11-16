@@ -30,10 +30,6 @@
   margin-right: 10px;
 }
 
-.video-title {
-  cursor: pointer;
-  /* background-color: red; */
-}
 
 /* Style for the numbers */
 .number::before {
@@ -111,4 +107,18 @@
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+
+
+.accord.locked .MuiAccordionSummary-root {
+  background-color: #eee; 
+  cursor: not-allowed; 
+}
+
+
+.playlist-video.locked {
+  background-color: #f7f7f7; 
+  color: #999; 
+  cursor: not-allowed;
 }

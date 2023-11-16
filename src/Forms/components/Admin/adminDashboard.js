@@ -21,7 +21,7 @@ import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import UploadIcon from "@mui/icons-material/Upload";
 import DeleteIcon from "@mui/icons-material/Delete";
-import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import "./admin.css";
 import AdminForm from "./AdminForm";
 import Draggable from "react-draggable";
@@ -88,12 +88,12 @@ const AdminDashboard = (props) => {
           <span className="text-m text-b">{cell.getValue()}</span>
         ),
       },
-      {
-        accessorKey: "id",
-        header: "COURSE ID",
-        size: 100,
-        Cell: ({ cell }) => <span className="text-m">{cell.getValue()}</span>,
-      },
+      // {
+      //   accessorKey: "id",
+      //   header: "COURSE ID",
+      //   size: 100,
+      //   Cell: ({ cell }) => <span className="text-m">{cell.getValue()}</span>,
+      // },
       {
         accessorKey: "type",
         header: "COURSE TYPE",
@@ -129,7 +129,7 @@ const AdminDashboard = (props) => {
                     onClick={(e) => {
                       e.stopPropagation();
                       setChapterForm(true);
-                      setCourseId(row._valuesCache.id);
+                      setCourseId(item.id);
                     }}
                   />
                 </Tooltip>
@@ -143,7 +143,7 @@ const AdminDashboard = (props) => {
                     onClick={(e) => {
                       e.stopPropagation();
                       setUploadForm(true);
-                      setCourseId(row._valuesCache.id);
+                      setCourseId(item.id);
                     }}
                   />
                 </Tooltip>
@@ -156,7 +156,7 @@ const AdminDashboard = (props) => {
                     style={{ fontSize: "19px", height: "1rem" }}
                     onClick={(e) => {
                       e.stopPropagation();
-                      HandleDelete(row._valuesCache.id);
+                      HandleDelete(item.id);
                     }}
                   />
                 </Tooltip>
@@ -170,7 +170,7 @@ const AdminDashboard = (props) => {
                     onClick={(e) => {
                       e.stopPropagation();
                       setQuestionForm(true);
-                      setCourseId(row._valuesCache.id);
+                      setCourseId(item.id);
                     }}
                   />
                 </Tooltip>
@@ -309,6 +309,7 @@ const AdminDashboard = (props) => {
 
       <div>
         <Dialog
+          id="DynamicForm"
           open={openUploadform}
           aria-labelledby="draggable-dialog-title"
           PaperComponent={PaperComponent}
@@ -335,7 +336,10 @@ const AdminDashboard = (props) => {
           aria-labelledby="draggable-dialog-title"
           PaperComponent={PaperComponent}
         >
-          < Questionform CloseQuestionform={CloseQuestionform} courseid={courseid} />
+          <Questionform
+            CloseQuestionform={CloseQuestionform}
+            courseid={courseid}
+          />
         </Dialog>
       </div>
     </>

@@ -20,7 +20,7 @@ label {
 } 
 /* new css */
 .newquiz-option {
-  padding: 2rem 2rem 1rem 1rem;
+  padding: 2rem 1rem 1rem 1rem;
 }
 
 input[type="radio"] {

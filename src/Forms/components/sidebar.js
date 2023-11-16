@@ -10,17 +10,17 @@ import { useSelector } from "react-redux";
 import { Badge } from "@mui/material";
 
 const Sidebar = () => {
-  const snackbarData = useSelector((state) => {
-    console.log(state);
-    return state.subscribe.subArr;
-  });
+  // const snackbarData = useSelector((state) => {
+  //   console.log(state);
+  //   return state.subscribe.subArr;
+  // });
   // Function to filter and count items with subscribe: true
-  const countSubscribedItems = () => {
-    const subscribedItems = snackbarData?.filter(
-      (item) => item.subscribe === true
-    );
-    return subscribedItems.length;
-  };
+  // const countSubscribedItems = () => {
+  //   const subscribedItems = snackbarData?.filter(
+  //     (item) => item.subscribe === true
+  //   );
+  //   return subscribedItems.length;
+  // };
   return (
     <div className="sidebar">
       <ul className="icon">
@@ -42,9 +42,9 @@ const Sidebar = () => {
         <li>
           <Tooltip title="My Learning" placement="right-start" arrow>
             <Link to="/learning">
-              <Badge badgeContent={countSubscribedItems()} color="primary">
+              {/* <Badge badgeContent={countSubscribedItems()} color="primary"> */}
                 <BookmarksIcon fontSize="small" />
-              </Badge>
+              {/* </Badge> */}
             </Link>
           </Tooltip>
         </li>

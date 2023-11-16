@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     overflow: "hidden",
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
-    marginBottom: "0.5rem"
+    marginBottom: "0.5rem",
   },
   icon: {
     marginRight: "15px",
@@ -56,12 +56,13 @@ const Dynamic = (props) => {
   const [fileName, SetFileName] = useState("");
   const [uploadedfile, setUploadedFile] = useState("");
   const [chapters, setChapters] = useState([]);
+  const formikRef = useRef(null);
   const { CloseUploadform, courseid } = props;
 
   const empty = {
     CourseTitle: "",
     CourseDesc: "",
-    upload: "",
+    upload: null,
   };
 
   const videoRef = useRef(null);
@@ -72,7 +73,7 @@ const Dynamic = (props) => {
 
     // Create a FormData object
 
-    const updatedFileNames = [...fileName];
+    const updatedFileNames = [fileName];
     updatedFileNames[index] = file ? file.name : "";
     SetFileName(updatedFileNames);
     setUploadedFile(file);
@@ -81,24 +82,34 @@ const Dynamic = (props) => {
     video.src = URL.createObjectURL(file);
   };
 
-  // function formatDuration(durationInSeconds) {
-  //   const hours = Math.floor(durationInSeconds / 3600);
-  //   const minutes = Math.floor((durationInSeconds % 3600) / 60);
-  //   const seconds = Math.floor(durationInSeconds % 60);
-
-  //   const formattedHours = String(hours).padStart(2, "0");
-  //   const formattedMinutes = String(minutes).padStart(2, "0");
-  //   const formattedSeconds = String(seconds).padStart(2, "0");
-
-  //   return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-  // }
+  // const fileChange = (e, formik, index) => {
+  //   let file = e.target.files[0];
+  //   formikRef.current?.setFieldValue(`metadata.[${index}].upload`, file);
+  //   // Update the file name in the state
+  //   console.log(file);
+  //   const updatedFileNames = [...fileName];
+  //   updatedFileNames[index] = file ? file.name : "";
+  //   SetFileName(updatedFileNames);
+  // };
 
   function formatDuration(durationInSeconds) {
-    const totalMinutes = Math.floor(durationInSeconds / 60);
-    const formattedMinutes = String(totalMinutes).padStart(2, "0");
+    const hours = Math.floor(durationInSeconds / 3600);
+    const minutes = Math.floor((durationInSeconds % 3600) / 60);
+    const seconds = Math.floor(durationInSeconds % 60);
 
-    return `${formattedMinutes} minutes`;
+    const formattedHours = String(hours).padStart(2, "0");
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const formattedSeconds = String(seconds).padStart(2, "0");
+
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
   }
+
+  // function formatDuration(durationInSeconds) {
+  //   const totalMinutes = Math.floor(durationInSeconds / 60);
+  //   const formattedMinutes = String(totalMinutes).padStart(2, "0");
+
+  //   return `${formattedMinutes} minutes`;
+  // }
 
   const handleVideoMetadata = () => {
     // Access the video's duration
@@ -121,6 +132,7 @@ const Dynamic = (props) => {
         Chapter: "python",
         metadata: [empty],
       }}
+      innerRef={formikRef}
       validationSchema={Yup.object().shape({
         // CourseTitle: Yup.string().required("Course ID is required"),
         // CourseDesc: Yup.string()
@@ -137,7 +149,7 @@ const Dynamic = (props) => {
       onSubmit={(values) => {
         const formData = new FormData();
         formData.append("file", uploadedfile);
-        dispatch(UploadPlayList(formData, courseid));
+        dispatch(UploadPlayList(formData, "python", "h", courseid));
         CloseUploadform();
       }}
     >
@@ -167,32 +179,32 @@ const Dynamic = (props) => {
               UPLOAD PLAYLIST
             </DialogTitle>
             <DialogContent dividers>
-              <Field
+              {/* <Field
                 name="Chapter"
                 component={TextField}
                 label="CHAPTER NAME "
                 fullWidth
                 size="small"
-              />
+              /> */}
 
-              {/* <Field
+              <Field
                 name="Chapter"
                 component={Select}
                 label="SELECT CHAPTER"
                 style={{
-                  width: "35rem",
+                  width: "46rem",
                 }}
                 size="small"
                 onChange={handleChange}
                 value={values.Chapter}
               >
                 {chapterData &&
-                  chapterData[0]?.map((chapter) => (
+                  chapterData?.map((chapter) => (
                     <MenuItem key={chapter.id} value={chapter.id}>
-                      {chapter.id}
+                      {chapter.title}
                     </MenuItem>
                   ))}
-              </Field> */}
+              </Field>
 
               <FieldArray name="metadata">
                 {({ push, remove }) => (
@@ -248,7 +260,7 @@ const Dynamic = (props) => {
                               justifyContent: "space-between",
                             }}
                           >
-                            {/* <IconButton
+                            <IconButton
                               style={{
                                 height: "1rem",
                                 width: "1rem",
@@ -278,14 +290,14 @@ const Dynamic = (props) => {
                                   style={{ display: "none" }}
                                 />
                               </label>
-                            </IconButton> */}
-                            <label htmlFor="file" className={classes.button}>
+                            </IconButton>
+                            {/* <label htmlFor="file" className={classes.button}>
                               <CloudUploadIcon className={classes.icon} />
                               {fileName || "Upload Thumbnail"}
                             </label>
                             <input
-                              name={`metadata.${index}.upload`}
-                              // value={fileName[index] && fileName[index]}
+                              name={`metadata.[${index}].upload`}
+                              value={fileName[index] && fileName[index]}
                               className={classes.input}
                               component={TextField}
                               label="Upload"
@@ -295,12 +307,12 @@ const Dynamic = (props) => {
                               accept="video/*"
                               onChange={(e) => fileChange(e, index)}
                             />
-
                             <video
                               ref={videoRef}
                               onLoadedMetadata={handleVideoMetadata}
                               style={{ display: "none" }}
-                            />
+                            /> */}
+
                             {values.metadata.length === 1 ? (
                               <IconButton aria-label="delete" disabled>
                                 <DeleteIcon />
