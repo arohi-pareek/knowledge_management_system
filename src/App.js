@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Forms/components/Redux/store";
 import Navbar from "./Forms/navbar";
-import Footer from "./Forms/components/footer";
+import Footer from "./Forms/components/Footer";
 import Login from "./Forms/login";
 import Dashboard from "../src/Forms/components/dashboard";
 import Courses from "./Forms/courses";
