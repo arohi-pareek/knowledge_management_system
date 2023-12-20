@@ -13,6 +13,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setSnackbar, subscribe } from "../Redux/Actions/firstaction";
+import c1 from "../../C1.jpg"
+
 const List = (props) => {
   const [Data, setData] = useState("");
   const [opendialog, setopendialog] = useState(false);
@@ -31,23 +33,23 @@ const List = (props) => {
   const callMessageOut = (msg, type) => {
     dispatch(setSnackbar(true, type, msg));
   };
-    const CourseArr = useSelector((state) => state.subscribe.subArr);
+    // const CourseArr = useSelector((state) => state.subscribe.subArr);
+    const CourseArr = useSelector((state) => state.CourseDetails.CourseData);
     console.log(CourseArr)
     return (
         <div className="container">
         <section className="main-cart-section">
           <div className="cart-items">
             <div className="cart-items-container-list">
-              {filteredCourses.filter((item)=>!item.subscribe).map((item, i) => (
+              {filteredCourses.filter((item) => !item.subscribed).map((item, i) => (
                 <div className="items-info" key={i}> {/* Added key attribute */}
                 
                   <div className="product-img">
-                    <img src={item.img} alt="" />
-                   
+                    <img src={c1} alt=""/>
                   </div>
                   <div className="title">
-                    <h3>{item.name}</h3>
-                    <p>Category: {item.category}</p>
+                    <h3>{item.courseName}</h3>
+                    <p>Category: {item.type}</p>
                     
                     <p className='listcat'>Rating:  {item.rating}</p>
                     <p className='desc'>Course Description:
@@ -277,35 +279,3 @@ const List = (props) => {
 
 export default List
 
-{/* <div className="items-info">
-              <div className="product-img">
-                <img src={c2} alt="" />
-              </div>
-              <div className="title">
-                <h3>C++ PROGRAMMING</h3>
-              </div>
-            </div>
-            <div className="items-info">
-              <div className="product-img">
-                <img src={c5} alt="" />
-              </div>
-              <div className="title">
-                <h3>WEB DEVELOPMENT</h3>
-              </div>
-            </div>
-            <div className="items-info">
-              <div className="product-img">
-                <img src={c6} alt="" />
-              </div>
-              <div className="title">
-                <h3>REACT JS</h3>
-              </div>
-            </div>
-            <div className="items-info">
-              <div className="product-img">
-                <img src={c7} alt="" />
-              </div>
-              <div className="title">
-                <h3>PYTHON PROGRAMMING</h3>
-              </div>
-            </div> */}

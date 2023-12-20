@@ -38,12 +38,17 @@
   }
 
   #chapterForm .MuiDialog-paperWidthSm{
-    width: 40% !important;
-    max-width: 40% !important;
+    width: 50% !important;
+    max-width: 50% !important;
   }
   #questionForm .MuiDialog-paperWidthSm{
-    width: 90% !important;
-    max-width: 90% !important;
+    width: 50% !important;
+    max-width: 50% !important;
     max-height: 90% !important;
     /* height: 90% !important; */
+  }
+
+  #DynamicForm .MuiDialog-paperWidthSm{
+    width: 50% !important;
+    max-width: 50% !important;
   }

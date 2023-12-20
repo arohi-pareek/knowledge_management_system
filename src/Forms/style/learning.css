@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -151,7 +150,6 @@ header {
   background-color: var(--form);
 }
 
-
 .items-info {
   width: 100%;
   height: 11rem;
@@ -162,9 +160,9 @@ header {
   border-bottom: 0.1rem solid #9a9191;
   /* border: 1px solid #ccc;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);*/
-} 
+}
 
-.list-img{
+.list-img {
   width: 100%;
   height: 150px;
   /* Set a specific height for the images */
@@ -229,11 +227,11 @@ header {
   border-radius: 4px;
   /* padding: 19px; */
 }
-.items-info .title .listcat{
-  margin-left:-5.8em ;
+.items-info .title .listcat {
+  margin-left: -5.8em;
 }
-.items-info .title .desc{
-  margin-left:1.9em ;
+.items-info .title .desc {
+  margin-left: 1.9em;
 }
 .sub-btn:hover {
   cursor: pointer;
@@ -272,8 +270,7 @@ header {
   width: 100%;
   height: 150px;
   /* Set a specific height for the images */
-  
-  
+
   /* Maintain aspect ratio and cover the whole space */
 }
 
@@ -355,66 +352,64 @@ header {
   width: 95%;
   margin: 0 auto;
 }
-.exp{
+.exp {
   margin-left: 1rem;
-   margin-top: 0.2rem;
-    cursor: pointer;
-     color: var(--main-heading);
+  margin-top: 0.2rem;
+  cursor: pointer;
+  color: var(--main-heading);
 }
 @media (max-width: 630px) {
   .items-info {
     flex-direction: row; /* For smaller screens, show items in a row */
   }
 
-  .items-info .product-img img  {
+  .items-info .product-img img {
     /* flex: 1; Make images take up equal space when in a row */
     width: 8em;
-    height:5em;
+    height: 5em;
   }
-  
-.items-info .title {
-  display: flex;
-  /* justify-content: center; */
-  /* flex-direction: column; */
-  align-items: center;
-  margin-left: 5em;
-  margin-top: -2.5em;
-  width: 170px;
-  
-  
-}
 
-.items-info .title .listcat{
-  margin-left:-5.8em ;
-}
-.items-info .title .desc{
-  margin-left:-0em ;
-}
-.exp{
-  margin-left: 0.5em;
-}
-.items-info .title p {
-  font-style:normal;
-  font-weight: normal;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  text-transform: capitalize;
-  text-align: left;
-  color: black;
-}
-.cart-items-container-list{
-  width: 99%;
-  height: auto;
-  display: flex;
-  gap: 1rem;
-  border-radius: 1rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-  margin-left: 0.8rem;
-  justify-content: space-between;
-  background-color: var(--form);
-}
+  .items-info .title {
+    display: flex;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    align-items: center;
+    margin-left: 5em;
+    margin-top: -2.5em;
+    width: 170px;
+  }
+
+  .items-info .title .listcat {
+    margin-left: -5.8em;
+  }
+  .items-info .title .desc {
+    margin-left: -0em;
+  }
+  .exp {
+    margin-left: 0.5em;
+  }
+  .items-info .title p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    text-align: left;
+    color: black;
+  }
+  .cart-items-container-list {
+    width: 99%;
+    height: auto;
+    display: flex;
+    gap: 1rem;
+    border-radius: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-left: 0.8rem;
+    justify-content: space-between;
+    background-color: var(--form);
+  }
 }
 @media (min-width: 631px) and (max-width: 1024px) {
   .items-info {
@@ -431,7 +426,7 @@ header {
     /* flex-direction: column; */
     align-items: center;
     margin-left: 3em; /* Reset the left margin */
-     /* Make the title take the full width */
+    /* Make the title take the full width */
     text-align: center; /* Center-align text */
   }
 
@@ -457,18 +452,32 @@ header {
     text-align: center; /* Center-align text */
     color: black;
   }
-  .cart-items-container-list{
+  .cart-items-container-list {
     width: 99%;
     height: auto;
     margin-left: 0.6rem;
-    /* display: flex;
-    gap: 1rem;
-    border-radius: 1rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-    
-    justify-content: space-between;
-    background-color: var(--form); */
+  }
+  .unsubscribe-btn {
+    width: 50%;
+    height: 1.5em;
+    background-color: #f4f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: #b6b4b4;
+    /* transition: 0.5s; */
+    cursor: pointer;
+    color: black;
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 12px;
+    /* transition: background-color 0.3s ease, transform 0.3s ease; */
+  }
+
+  .unsubscribe-btn:hover {
+    cursor: pointer;
+    transition: 0.27s;
+    transform: scale(1.10);
   }
 }
 

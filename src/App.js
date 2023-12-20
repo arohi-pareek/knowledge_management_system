@@ -62,8 +62,8 @@ function App() {
             <Route exact path="/playlist" element={<CoursesplayList />} />
             <Route exact path="/courses/search" element={<Mainfile />} />
             <Route exact path="/adminPanel" element={<AdminDashboard />} />
-            <Route exact path="/quiz" element={<Quiz />} />
-            <Route exact path="/aa" element={<NewQuiz />} />
+            <Route exact path="/quiz" element={<NewQuiz />} />
+            {/* <Route exact path="/aa" element={<Quiz />} /> */}
           </Routes>
           <CustomizedSnackbars/>
         </Layout>

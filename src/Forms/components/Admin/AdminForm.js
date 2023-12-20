@@ -16,7 +16,7 @@ import * as Yup from "yup";
 import { AddCourse, setSnackbar } from "../Redux/Actions/firstaction";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload"; 
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 
 const useStyles = makeStyles({
   input: {
@@ -68,12 +68,22 @@ const AdminForm = (props) => {
     validationSchema: validationSchema,
     onSubmit: function (values) {
       CloseAdminform();
-      let formData = {
-        ...values,
-        registeredUsers: ["1400"],
-        // courseThumbnail:upload,
-        uploadedBy: "1400",
-      };
+      // let formData = {
+      //   ...values,
+      //   file: upload,
+      // };
+
+       // Create a new FormData object
+    const formData = new FormData();
+
+    // Append form values to the FormData
+    formData.append('type', values.type);
+    formData.append('courseName', values.courseName);
+    formData.append('courseDescription', values.courseDescription);
+
+    // Append the uploaded file to the FormData
+    formData.append('file', upload);
+    
       dispatch(AddCourse(formData));
     },
   });

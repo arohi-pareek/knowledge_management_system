@@ -22,6 +22,7 @@ import { Divider, Drawer, Grid, Tooltip } from "@mui/material";
 import { CoursesArr } from "./StaticContent/Courses";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  AddSubscribe,
   GetCourse,
   setSnackbar,
   subscribe,
@@ -39,7 +40,13 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { Close } from "@material-ui/icons";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import CourseCard from "../Forms/components/CourseCard";
+import Slide from "@mui/material/Slide";
+import c1 from "../Forms/C1.jpg"
+
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="right" ref={ref} {...props} />;
+// });
+
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
@@ -82,12 +89,11 @@ const Courses = () => {
   const navigate = useNavigate();
   const classes = useStyles();
 
-  const CourseArr = useSelector((state) => state.subscribe.subArr);
-  
-  const [subscribedCourses, setSubscribedCourses] = useState([]);
+  // const CourseArr = useSelector((state) => state.subscribe.subArr);
+  const search = useSelector((state) => state.searchReducer.searchQuery);
+  const filterD = useSelector((state) => state.filterReducer.isDrawerOpen);
 
-  const [clickedCourse, setClickedCourse] = useState(null);
-  // const CourseArr = useSelector((state) => (state.CourseDetails.CourseData));
+  const CourseArr = useSelector((state) => state.CourseDetails.CourseData);
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [open, setOpen] = useState(false);
   const [opendrawer, setOpenDrawer] = useState(true);
@@ -108,6 +114,10 @@ const Courses = () => {
     topics: [],
     features: [],
   });
+  const [dialogStyle, setDialogStyle] = useState({
+    transform: "translateX(0)",
+    width: "100%",
+  });
 
   useEffect(() => {
     dispatch(GetCourse());
@@ -123,20 +133,28 @@ const Courses = () => {
     }
   };
 
-  const handleSubscribe = (payload) => {
-    if (!payload.subscribe) {
-      dispatch(subscribe(payload));
-      callMessageOut(`Subscribed To ${payload.name}`, "success");
-      setSubscribedCourses((prevCourses) => [...prevCourses, payload]); 
-      
-      setClickedCourse(payload.id);
-    } else {
-      dispatch(subscribe(payload));
-      callMessageOut(`Unsubscribed To ${payload.name}`, "success");
-      
-    
-      setClickedCourse(null);
-    }
+  // const handleSubscribe = (payload) => {
+  //   if (!payload.subscribe) {
+  //     dispatch(subscribe(payload));
+  //     callMessageOut(`Subscribed To ${payload.name}`, "success");
+  //   } else {
+  //     dispatch(subscribe(payload));
+  //     callMessageOut(`Unsubscribed To ${payload.name}`, "success");
+  //   }
+
+  //   // After a delay, close the dialog
+  //   setTimeout(() => {
+  //     setopendialog(false);
+  //     // Perform the subscription action here
+  //   }, 500); // Adjust the duration as needed
+
+  // };
+
+  const handleSubscribe = (Data) => {
+    const formdata = new FormData();
+    formdata.append("userId", "6541df204297384ef7b27f32");
+    formdata.append("courseId", Data.id);
+    dispatch(AddSubscribe(formdata));
   };
 
   const callMessageOut = (msg, type) => {
@@ -292,57 +310,66 @@ const Courses = () => {
 
         {Gridview ? (
           <div className="courseBox">
-            {filteredCourses.filter((item)=>!item.subscribe).map((item, i) => {
-             
-              return (
-                <p key={i} className="Cbox">
-                
-                  <img
-                    className="courseImg"
-                    src={item.img}
-                    alt=""
-                    onClick={() => {
-                      setopendialog(true);
-                      setCourse(item.courseDesc);
-                      
-                        setopendialog(true);
-                        setData(item);
-                        console.log(item);
-                      
-                    }}
-                  />
-                  
-                  <p>
-                    <b className="cTop" style={{ fontSize: "1.4rem" }}>
-                      {item.name}
-                    </b>
-                  </p>
-                  <p style={{ marginLeft: "0.6em" }}>
-                    Category: {item.category}
-                  </p>
-                  <p style={{ marginLeft: "0.6em" }}>Rating :{item.rating}</p>
-                  <p style={{ marginLeft: "0.5em" }}>
-                    Course Description:{" "}
-                    <h5
-                      style={{
-                        marginLeft: "9rem",
-                        marginTop: "-1rem",
-                        cursor: "pointer",
-                        color: "var(--main-heading)",
-                      }}
+            {filteredCourses
+              .filter((item) => !item.subscribed)
+              .map((item, i) => {
+                return (
+                  <>
+                    <p
+                      key={i}
+                      className="Cbox"
                       onClick={() => {
                         setopendialog(true);
                         setData(item);
-                        console.log(item);
+                        setCourse(item.courseDescription);
                       }}
                     >
-                      Explore
-                    </h5>
-                  </p>
-                 
-                </p>
-              );
-            })}
+                      <img
+                        className="courseImg"
+                        src={c1}
+                        alt=""
+                      />
+                      <p>
+                        <b className="cTop" style={{ fontSize: "1.4rem" }}>
+                          {item.courseName}
+                        </b>
+                      </p>
+                      <p style={{ marginLeft: "0.6em" }}>
+                        Category: {item.type}
+                      </p>
+                      <p style={{ marginLeft: "0.6em" }}>
+                        Rating :{item.rating}
+                      </p>
+                      <p style={{ marginLeft: "0.5em" }}>
+                        Course Description:{" "}
+                        <h5
+                          style={{
+                            marginLeft: "9rem",
+                            marginTop: "-1rem",
+                            cursor: "pointer",
+                            color: "var(--main-heading)",
+                          }}
+                          onClick={() => {
+                            setopendialog(true);
+                            setData(item);
+                            console.log(item);
+                          }}
+                        >
+                          Explore
+                        </h5>
+                      </p>
+                      {/* <div>
+                    <button
+                      className="subscribe-btn"
+                      onClick={() => handleSubscribe(item)}
+                    >
+                      {item.subscribe ? "UNSUBSCRIBE" : "SUBSCRIBE"}
+                    </button>
+                  </div> */}
+                    </p>
+                  </>
+                );
+              })}
           </div>
         ) : (
           <List filteredCourses={filteredCourses} />
@@ -594,13 +621,12 @@ const Courses = () => {
           <div style={{ display: "flex" }}>
             <div style={{ width: "25%", position: "fixed" }}>
               <div style={{ padding: "1rem" }}>
-                {/* <b>{Data?.courseDesc?.heading}</b> */}
                 <p>
-                  <b className="cTop">{Data?.courseDesc?.heading}</b>
+                  <b className="cTop">{Data?.courseName}</b>
                 </p>
               </div>
               <img
-                src={Data?.img}
+                src={c1}
                 alt=""
                 style={{ marginRight: "20px", width: "75%" }}
               />
